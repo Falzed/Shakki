@@ -12,3 +12,5 @@ Toteutetaan shakkiohjelma jota voi pelata itseään (tai hotseat-tyylisesti tois
 ###Varianttien lisäys
 * Voidaan lisätä tiedosto (luultavasti yksinkertainen tekstitiedosto, ehkä xml) joka kuvaa koko variantin tai esim. yksittäisen nappulatyypin liikkumissäännöt.
   * Mahdollisesti jonkinlainen käyttöliittymä tälle
+
+![Luokkakaavio](/dokumentaatio/luokkakaavio.png)
