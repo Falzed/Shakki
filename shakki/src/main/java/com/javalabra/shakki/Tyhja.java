@@ -10,9 +10,10 @@ package com.javalabra.shakki;
  * @author Oskari
  */
 public class Tyhja implements Nappula {
-    
+
     public Tyhja() {
     }
+
     @Override
     public void checkSpecials() {
     }

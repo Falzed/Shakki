@@ -7,7 +7,7 @@ public class Torni implements Nappula {
         VALKOINEN, MUSTA
     }
     private Puoli puoli;
-    private int[] sijainti = {-1,-1};
+    private int[] sijainti = {-1, -1};
     private Lauta lauta;
 
     public Torni(String puoli, Lauta lauta) {
@@ -48,7 +48,7 @@ public class Torni implements Nappula {
             return false;
         } else if (koordinaatit[0] < this.sijainti[0]) {
             int delta = this.sijainti[0] - koordinaatit[0];
-            int[] testiKoordinaatit = {0,0};
+            int[] testiKoordinaatit = {0, 0};
             for (int i = 1; i < delta; i++) {
                 testiKoordinaatit[0] = this.sijainti[0] - i;
                 testiKoordinaatit[1] = this.sijainti[1];
@@ -67,7 +67,7 @@ public class Torni implements Nappula {
             }
         } else if (koordinaatit[0] > this.sijainti[0]) {
             int delta = koordinaatit[0] - this.sijainti[0];
-            int[] testiKoordinaatit = {0,0};
+            int[] testiKoordinaatit = {0, 0};
             for (int i = 1; i < delta; i++) {
                 testiKoordinaatit[0] = this.sijainti[0] + i;
                 testiKoordinaatit[1] = this.sijainti[1];
@@ -86,7 +86,7 @@ public class Torni implements Nappula {
             }
         } else if (koordinaatit[1] < this.sijainti[1]) {
             int delta = this.sijainti[1] - koordinaatit[1];
-            int[] testiKoordinaatit = {0,0};
+            int[] testiKoordinaatit = {0, 0};
             for (int i = 1; i < delta; i++) {
                 testiKoordinaatit[1] = this.sijainti[1] - i;
                 testiKoordinaatit[0] = this.sijainti[0];
@@ -105,7 +105,7 @@ public class Torni implements Nappula {
             }
         } else if (koordinaatit[1] > this.sijainti[1]) {
             int delta = koordinaatit[1] - this.sijainti[1];
-            int[] testiKoordinaatit = {0,0};
+            int[] testiKoordinaatit = {0, 0};
             for (int i = 1; i < delta; i++) {
                 testiKoordinaatit[1] = this.sijainti[1] + i;
                 testiKoordinaatit[0] = this.sijainti[0];
@@ -122,7 +122,7 @@ public class Torni implements Nappula {
             } else {
                 lauta.aseta(this, koordinaatit);
             }
-        } 
+        }
         return true;
     }
 

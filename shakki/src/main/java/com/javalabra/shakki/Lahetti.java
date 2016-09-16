@@ -7,7 +7,7 @@ public class Lahetti implements Nappula {
         VALKOINEN, MUSTA
     }
     private Puoli puoli;
-    private int[] sijainti = {-1,-1};
+    private int[] sijainti = {-1, -1};
     private Lauta lauta;
 
     public Lahetti(String puoli, Lauta lauta) {
@@ -40,13 +40,13 @@ public class Lahetti implements Nappula {
 
     @Override
     public boolean move(int[] koordinaatit) {
-        if (koordinaatit[0]-this.sijainti[0]!=koordinaatit[1]-this.sijainti[1] &&
-                koordinaatit[0]-this.sijainti[0]!=this.sijainti[1]-koordinaatit[1]) {
+        if (koordinaatit[0] - this.sijainti[0] != koordinaatit[1] - this.sijainti[1]
+                && koordinaatit[0] - this.sijainti[0] != this.sijainti[1] - koordinaatit[1]) {
             return false;
         } else if (koordinaatit[0] == this.sijainti[0]
                 && koordinaatit[0] == this.sijainti[0]) {
             return false;
-        } else if (koordinaatit[0] < this.sijainti[0] && koordinaatit[1]<this.sijainti[1]) {
+        } else if (koordinaatit[0] < this.sijainti[0] && koordinaatit[1] < this.sijainti[1]) {
             int delta = this.sijainti[0] - koordinaatit[0];
             for (int i = 1; i < delta; i++) {
                 int[] testiKoordinaatit
@@ -72,7 +72,7 @@ public class Lahetti implements Nappula {
     public boolean captureMove(int[] koordinaatit) {
         return move(koordinaatit);
     }
-    
+
     @Override
     public int[] getKoordinaatit() {
         return this.sijainti;

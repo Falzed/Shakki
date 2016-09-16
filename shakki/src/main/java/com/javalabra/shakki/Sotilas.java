@@ -12,7 +12,7 @@ public class Sotilas implements Nappula {
         VALKOINEN, MUSTA
     }
     private Puoli puoli;
-    private int[] sijainti = {-1,-1};
+    private int[] sijainti = {-1, -1};
     private Lauta lauta;
 
     public Sotilas(String puoli, Lauta lauta) {
