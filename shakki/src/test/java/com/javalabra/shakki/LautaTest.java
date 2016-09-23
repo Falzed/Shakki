@@ -1,5 +1,7 @@
 package com.javalabra.shakki;
 
+import components.Sotilas;
+import components.Lauta;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

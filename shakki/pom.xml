@@ -36,10 +36,10 @@
                 <version>1.1.8</version>
                 <configuration>
                     <targetClasses>
-                        <param>shakki.logiikka.*</param>
+                        <param>com.javalabra.shakki.*</param>
                     </targetClasses>
                     <targetTests>
-                        <param>shakki.logiikka.*</param>
+                        <param>com.javalabra.shakki.*</param>
                     </targetTests>
                 </configuration>
             </plugin>
