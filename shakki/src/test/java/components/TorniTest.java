@@ -1,4 +1,4 @@
-package com.javalabra.shakki;
+package components;
 
 import components.Torni;
 import components.Lauta;
@@ -19,7 +19,7 @@ public class TorniTest {
         koordinaatit[1] = 4;
         Torni torni1 = new Torni("valkoinen", lauta);
         lauta.aseta(torni1, koordinaatit);
-        
+
         assertFalse(torni1.move(koordinaatit));
         koordinaatit[0] = 4;
         koordinaatit[1] = 2;
@@ -31,13 +31,13 @@ public class TorniTest {
         koordinaatit[1] = 4;
         assertTrue(torni1.move(koordinaatit));
         koordinaatit[0] = 2;
-        koordinaatit[1] = 5;
+        koordinaatit[1] = 6;
         assertTrue(torni1.move(koordinaatit));
         koordinaatit[0] = 2;
         koordinaatit[1] = 3;
         assertTrue(torni1.move(koordinaatit));
     }
-    
+
     @Test
     public void eiVoiLiikkuaToisenNappulanLäpi() {
         Lauta lauta = new Lauta();
@@ -45,16 +45,16 @@ public class TorniTest {
         int[] koordinaatit = {0, 0};
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        Torni torni1 = new Torni("valkoinen",lauta);
+        Torni torni1 = new Torni("valkoinen", lauta);
         lauta.aseta(torni1, koordinaatit);
         koordinaatit[0] = 4;
         koordinaatit[1] = 4;
         Torni torni2 = new Torni("valkoinen", lauta);
         lauta.aseta(torni2, koordinaatit);
-        
+
         koordinaatit[0] = 5;
         koordinaatit[1] = 4;
-        assertFalse(torni1.move(koordinaatit));        
+        assertFalse(torni1.move(koordinaatit));
     }
 
     @Test
@@ -64,13 +64,13 @@ public class TorniTest {
         int[] koordinaatit = {0, 0};
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        Torni torni1 = new Torni("valkoinen",lauta);
+        Torni torni1 = new Torni("valkoinen", lauta);
         lauta.aseta(torni1, koordinaatit);
         koordinaatit[0] = 4;
         koordinaatit[1] = 4;
         Torni torni2 = new Torni("musta", lauta);
         lauta.aseta(torni2, koordinaatit);
-        
+
         assertTrue(torni1.captureMove(koordinaatit));
     }
 }

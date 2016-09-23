@@ -1,7 +1,7 @@
 package components;
 
 public class Torni extends Nappula {
-    
+
     public static char valkoinenMerkki = 'R';
     public static char mustaMerkki = 'r';
 
@@ -29,7 +29,7 @@ public class Torni extends Nappula {
         return true;
     }
 
-    private boolean moveLeft(int[] koordinaatit) {
+    public boolean moveLeft(int[] koordinaatit) {
         int delta = super.getKoordinaatit()[0] - koordinaatit[0];
         int[] testiKoordinaatit = {0, 0};
         for (int i = 1; i < delta; i++) {
@@ -39,6 +39,9 @@ public class Torni extends Nappula {
                 return false;
             }
         }
+        return onkoTyhja(koordinaatit);
+    }
+    private boolean onkoTyhja(int[] koordinaatit) {
         if (!getLauta().getNappula(koordinaatit).isEmpty()) {
             if (getLauta().getNappula(koordinaatit).getPuoli().equals(getPuoli())) {
                 return false;
@@ -51,7 +54,7 @@ public class Torni extends Nappula {
         return true;
     }
 
-    private boolean moveRight(int[] koordinaatit) {
+    public boolean moveRight(int[] koordinaatit) {
         int delta = koordinaatit[0] - getKoordinaatit()[0];
         int[] testiKoordinaatit = {0, 0};
         for (int i = 1; i < delta; i++) {
@@ -61,19 +64,10 @@ public class Torni extends Nappula {
                 return false;
             }
         }
-        if (!getLauta().getNappula(koordinaatit).isEmpty()) {
-            if (getLauta().getNappula(koordinaatit).getPuoli().equals(getPuoli())) {
-                return false;
-            } else {
-                getLauta().syo(this, koordinaatit);
-            }
-        } else {
-            getLauta().aseta(this, koordinaatit);
-        }
-        return true;
+        return onkoTyhja(koordinaatit);
     }
 
-    private boolean moveUp(int[] koordinaatit) {
+    public boolean moveUp(int[] koordinaatit) {
         int delta = getKoordinaatit()[1] - koordinaatit[1];
         int[] testiKoordinaatit = {0, 0};
         for (int i = 1; i < delta; i++) {
@@ -83,19 +77,10 @@ public class Torni extends Nappula {
                 return false;
             }
         }
-        if (!getLauta().getNappula(koordinaatit).isEmpty()) {
-            if (getLauta().getNappula(koordinaatit).getPuoli().equals(getPuoli())) {
-                return false;
-            } else {
-                getLauta().syo(this, koordinaatit);
-            }
-        } else {
-            getLauta().aseta(this, koordinaatit);
-        }
-        return true;
+        return onkoTyhja(koordinaatit);
     }
 
-    private boolean moveDown(int[] koordinaatit) {
+    public boolean moveDown(int[] koordinaatit) {
         int delta = koordinaatit[1] - getKoordinaatit()[1];
         int[] testiKoordinaatit = {0, 0};
         for (int i = 1; i < delta; i++) {
@@ -105,28 +90,19 @@ public class Torni extends Nappula {
                 return false;
             }
         }
-        if (!getLauta().getNappula(koordinaatit).isEmpty()) {
-            if (getLauta().getNappula(koordinaatit).getPuoli()==(getPuoli())) {
-                return false;
-            } else {
-                getLauta().syo(this, koordinaatit);
-            }
-        } else {
-            getLauta().aseta(this, koordinaatit);
-        }
-        return true;
+        return onkoTyhja(koordinaatit);
     }
 
     public boolean captureMove(int[] koordinaatit) {
         return move(koordinaatit);
     }
-    
+
     @Override
     public char getMerkki() {
-        if(getPuoli().equals(Puoli.VALKOINEN)) {
+        if (getPuoli().equals(Puoli.VALKOINEN)) {
             return valkoinenMerkki;
         }
-        if(getPuoli().equals(Puoli.MUSTA)) {
+        if (getPuoli().equals(Puoli.MUSTA)) {
             return mustaMerkki;
         }
         return super.getMerkki();

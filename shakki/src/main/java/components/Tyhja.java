@@ -1,6 +1,5 @@
 package components;
 
-
 public class Tyhja extends Nappula {
 
     public Tyhja() {
@@ -12,10 +11,9 @@ public class Tyhja extends Nappula {
         return true;
     }
 
-
     @Override
     public void asetaKoordinaatit(int[] koordinaatit) {
-        throw new UnsupportedOperationException("Tyhjän ruudun ei tarvitse tietää koordinaattejaan"); 
+        throw new UnsupportedOperationException("Tyhjän ruudun ei tarvitse tietää koordinaattejaan");
     }
 
     @Override

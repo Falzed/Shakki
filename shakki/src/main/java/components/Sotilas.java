@@ -11,43 +11,46 @@ public class Sotilas extends Nappula {
 
     @Override
     public boolean move(int[] koordinaatit) {
-        if (!captureMove(koordinaatit)) {
-            if (koordinaatit[0] != getKoordinaatit()[0]) {
-                return false;
-            } else if (koordinaatit[0] == getKoordinaatit()[0]
-                    && koordinaatit[1] == getKoordinaatit()[1]) {
-                return false;
-            } else if (getPuoli() == Puoli.VALKOINEN) {
-                if (koordinaatit[1] != getKoordinaatit()[1] + 1) {
-                    if (getKoordinaatit()[1] != 1) {
-                        return false;
-                    }
-                    if (koordinaatit[1] != getKoordinaatit()[1] + 2) {
-                        return false;
-                    }
-                    int[] valissa = {getKoordinaatit()[0], getKoordinaatit()[1] + 1};
-                    if (!getLauta().getNappula(valissa).isEmpty()) {
-                        return false;
-                    }
-                }
-            } else if (getPuoli() == Puoli.MUSTA) {
-                if (koordinaatit[1] != getKoordinaatit()[1] - 1) {
-                    if (getKoordinaatit()[1] != 6) {
-                        return false;
-                    }
-                    if (koordinaatit[1] != getKoordinaatit()[1] - 2) {
-                        return false;
-                    }
-                    int[] valissa = {getKoordinaatit()[0], getKoordinaatit()[1] - 1};
-                    if (!getLauta().getNappula(valissa).isEmpty()) {
-                        return false;
-                    }
-                }
-            } else if (!getLauta().getNappula(koordinaatit).isEmpty()) {
+        if (captureMove(koordinaatit)) {
+            return true;
+        }
+        if (koordinaatit[0] != getKoordinaatit()[0]) {
+            return false;
+        } else if (koordinaatit[0] == getKoordinaatit()[0]
+                && koordinaatit[1] == getKoordinaatit()[1]) {
+            return false;
+        } else if (getPuoli() == Puoli.VALKOINEN) {
+            if (koordinaatit[1] > getKoordinaatit()[1] + 2) {
                 return false;
             }
-            getLauta().aseta(this, koordinaatit);
+            if (koordinaatit[1] < getKoordinaatit()[1] + 1) {
+                return false;
+            }
+            if (koordinaatit[1] == getKoordinaatit()[1] + 1
+                    && getLauta().getNappula(koordinaatit).isEmpty()) {
+                return true;
+            }
+            int[] valissa = {getKoordinaatit()[0], getKoordinaatit()[1] + 1};
+            if (!getLauta().getNappula(valissa).isEmpty()) {
+                return false;
+            }
+        } else if (getPuoli() == Puoli.MUSTA) {
+            if (koordinaatit[1] != getKoordinaatit()[1] - 1) {
+                if (getKoordinaatit()[1] != 6) {
+                    return false;
+                }
+                if (koordinaatit[1] != getKoordinaatit()[1] - 2) {
+                    return false;
+                }
+                int[] valissa = {getKoordinaatit()[0], getKoordinaatit()[1] - 1};
+                if (!getLauta().getNappula(valissa).isEmpty()) {
+                    return false;
+                }
+            }
+        } else if (!getLauta().getNappula(koordinaatit).isEmpty()) {
+            return false;
         }
+        getLauta().aseta(this, koordinaatit);
         return true;
     }
 

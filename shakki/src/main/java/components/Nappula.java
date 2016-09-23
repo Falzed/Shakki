@@ -1,6 +1,7 @@
 package components;
 
 public class Nappula {
+
     public enum Puoli {
 
         VALKOINEN, MUSTA, TYHJA
@@ -19,6 +20,7 @@ public class Nappula {
         }
         this.lauta = lauta;
     }
+
     public Nappula() {
         puoli = Puoli.TYHJA;
     }
@@ -30,20 +32,24 @@ public class Nappula {
     public void asetaKoordinaatit(int[] koordinaatit) {
         this.sijainti[0] = koordinaatit[0];
         this.sijainti[1] = koordinaatit[1];
-    }   
-    
+    }
+
     public int[] getKoordinaatit() {
         return this.sijainti;
     }
+
     public Lauta getLauta() {
         return this.lauta;
     }
+
     public boolean isEmpty() {
         return false;
     }
+
     public char getMerkki() {
         return 'a';
     }
+
     public boolean move(int[] koordinaatit) {
         return false;
     }

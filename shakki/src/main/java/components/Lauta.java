@@ -92,8 +92,8 @@ public class Lauta {
         if (sotilas.matcher(string).matches()) {
             return parseSotilas(string, vuoro);
         }
-        Pattern sotilasSyönti = Pattern.compile("x[a-z][1-8]");
-        if (sotilasSyönti.matcher(string).matches()) {
+        Pattern sotilasSyonti = Pattern.compile("x[a-z][1-8]");
+        if (sotilasSyonti.matcher(string).matches()) {
             return parseSotilasSyonti(string, vuoro);
         }
         Pattern upseeri = Pattern.compile("[A-Z][a-z][1-8]");
@@ -148,8 +148,10 @@ public class Lauta {
             if (koordinaatit[0] > 0) {
                 testKoord[0] = koordinaatit[0] - 1;
                 if (getNappula(testKoord).getMerkki() == 'P') {
-                    startEndPoints[0] = testKoord;
+                    startEndPoints[0][0] = testKoord[0];
+                    startEndPoints[0][1] = testKoord[1];
                     n++;
+                } else {
                 }
             }
             if (koordinaatit[0] < 7) {
@@ -164,7 +166,8 @@ public class Lauta {
             if (koordinaatit[0] > 0) {
                 testKoord[0] = koordinaatit[0] - 1;
                 if (getNappula(testKoord).getMerkki() == 'p') {
-                    startEndPoints[0] = testKoord;
+                    startEndPoints[0][0] = testKoord[0];
+                    startEndPoints[0][1] = testKoord[1];
                     n++;
                 }
             }
