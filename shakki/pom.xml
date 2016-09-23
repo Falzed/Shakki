@@ -36,10 +36,10 @@
                 <version>1.1.8</version>
                 <configuration>
                     <targetClasses>
-                        <param>com.javalabra.shakki.*</param>
+                        <param>components.*</param>
                     </targetClasses>
                     <targetTests>
-                        <param>com.javalabra.shakki.*</param>
+                        <param>components.*</param>
                     </targetTests>
                 </configuration>
             </plugin>

@@ -151,7 +151,6 @@ public class Lauta {
                     startEndPoints[0][0] = testKoord[0];
                     startEndPoints[0][1] = testKoord[1];
                     n++;
-                } else {
                 }
             }
             if (koordinaatit[0] < 7) {

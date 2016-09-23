@@ -100,29 +100,30 @@ public class Main {
                 break;
             }
             int[][] startEndPoints = lauta.parseCommand(line, vuoro);
-            if (startEndPoints != null) {
-                if (startEndPoints[0][0] < 8 && startEndPoints[0][0] > -1 && startEndPoints[0][1] < 8 && startEndPoints[0][1] > -1) {
-                    Nappula nappula = lauta.getNappula(startEndPoints[0]);
-                    if (nappula.getPuoli() == vuoro) {
-                        if (nappula.move(startEndPoints[1])) {
-                            if (vuoro == Nappula.Puoli.VALKOINEN) {
-                                vuoro = Nappula.Puoli.MUSTA;
-                            } else {
-                                vuoro = Nappula.Puoli.VALKOINEN;
-                            }
-                        } else {
-                            System.out.print("(" + startEndPoints[0][0] + "," + startEndPoints[0][1] + ")");
-                            System.out.println("-(" + startEndPoints[1][0] + "," + startEndPoints[1][1] + ")");
-                            System.out.println("Laiton siirto");
-                        }
+            if (startEndPoints == null) {
+                continue;
+            }
+            if (startEndPoints[0][0] < 8 && startEndPoints[0][0] > -1 && startEndPoints[0][1] < 8 && startEndPoints[0][1] > -1) {
+                Nappula nappula = lauta.getNappula(startEndPoints[0]);
+                if (nappula.getPuoli() != vuoro) {
+                    System.out.println("Ruudussa ei nappulaasi");
+                    continue;
+                }
+                if (nappula.move(startEndPoints[1])) {
+                    if (vuoro == Nappula.Puoli.VALKOINEN) {
+                        vuoro = Nappula.Puoli.MUSTA;
                     } else {
-                        System.out.println("Ruudussa ei nappulaasi");
+                        vuoro = Nappula.Puoli.VALKOINEN;
                     }
                 } else {
-                    System.out.println("ruutu "
-                            + "(koordinaatit {" + startEndPoints[0][0] + ","
-                            + startEndPoints[0][1] + "})" + " ei laudalla");
+                    System.out.print("(" + startEndPoints[0][0] + "," + startEndPoints[0][1] + ")");
+                    System.out.println("-(" + startEndPoints[1][0] + "," + startEndPoints[1][1] + ")");
+                    System.out.println("Laiton siirto");
                 }
+            } else {
+                System.out.println("ruutu "
+                        + "(koordinaatit {" + startEndPoints[0][0] + ","
+                        + startEndPoints[0][1] + "})" + " ei laudalla");
             }
         }
     }
