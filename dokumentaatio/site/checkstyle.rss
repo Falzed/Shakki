@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2016</copyright>
     <item>
-      <title>File: 7,
+      <title>File: 11,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.javalabra.shakki.Nappula.java">com/javalabra/shakki/Nappula.java</a>
+                  <a href="${project.url}/checkstyle.html#components.Lahetti.java">components/Lahetti.java</a>
                 </td>
                 <td>
                   0
@@ -60,7 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.javalabra.shakki.Sotilas.java">com/javalabra/shakki/Sotilas.java</a>
+                  <a href="${project.url}/checkstyle.html#components.Kuningatar.java">components/Kuningatar.java</a>
                 </td>
                 <td>
                   0
@@ -74,7 +74,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.javalabra.shakki.Tyhja.java">com/javalabra/shakki/Tyhja.java</a>
+                  <a href="${project.url}/checkstyle.html#components.Tyhja.java">components/Tyhja.java</a>
                 </td>
                 <td>
                   0
@@ -88,7 +88,21 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.javalabra.shakki.Lahetti.java">com/javalabra/shakki/Lahetti.java</a>
+                  <a href="${project.url}/checkstyle.html#components.Ratsu.java">components/Ratsu.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#components.Kuningas.java">components/Kuningas.java</a>
                 </td>
                 <td>
                   0
@@ -116,7 +130,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.javalabra.shakki.Lauta.java">com/javalabra/shakki/Lauta.java</a>
+                  <a href="${project.url}/checkstyle.html#ui.UI.java">ui/UI.java</a>
                 </td>
                 <td>
                   0
@@ -130,7 +144,49 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.javalabra.shakki.Torni.java">com/javalabra/shakki/Torni.java</a>
+                  <a href="${project.url}/checkstyle.html#components.Lauta.java">components/Lauta.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#components.Nappula.java">components/Nappula.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#components.Torni.java">components/Torni.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#components.Sotilas.java">components/Sotilas.java</a>
                 </td>
                 <td>
                   0
