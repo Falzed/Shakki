@@ -9,6 +9,8 @@ public class Sotilas extends Nappula {
         super(puoli, lauta);
     }
 
+    
+    //TODO: En passant, korotus
     @Override
     public boolean move(int[] koordinaatit) {
         if (captureMove(koordinaatit)) {

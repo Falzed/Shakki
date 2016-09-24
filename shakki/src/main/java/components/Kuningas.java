@@ -9,6 +9,7 @@ public class Kuningas extends Nappula {
         super(puoli, lauta);
     }
 
+    //TODO: Tornitus, ei voi liikkua uhattuun ruutuun
     @Override
     public boolean move(int[] koordinaatit) {
 
