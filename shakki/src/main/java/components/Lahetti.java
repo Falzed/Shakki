@@ -4,9 +4,14 @@ public class Lahetti extends Nappula {
 
     public static char valkoinenMerkki = '\u2657';
     public static char mustaMerkki = '\u265D';
+    public static char notaatioMerkki = 'B';
 
     public Lahetti(String puoli, Lauta lauta) {
         super(puoli, lauta);
+    }
+    @Override
+    public char getNotaatioMerkki() {
+        return notaatioMerkki;
     }
 
 //    @Override

@@ -4,6 +4,7 @@ public class Ratsu extends Nappula {
 
     public static char valkoinenMerkki = '\u2658';
     public static char mustaMerkki = '\u265E';
+    private static char notaatioMerkki = 'N';
 
     public Ratsu(String puoli, Lauta lauta) {
         super(puoli, lauta);
@@ -13,6 +14,10 @@ public class Ratsu extends Nappula {
     public void asetaKoordinaatit(int[] koordinaatit) {
         getKoordinaatit()[0] = koordinaatit[0];
         getKoordinaatit()[1] = koordinaatit[1];
+    }
+    @Override
+    public char getNotaatioMerkki() {
+        return notaatioMerkki;
     }
  
 //   @Override

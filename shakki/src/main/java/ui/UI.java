@@ -1,9 +1,21 @@
 package ui;
 
+import components.Kuningas;
+import components.Kuningatar;
+import components.Lahetti;
 import javax.swing.*;
 import java.awt.Font;
 import java.awt.Dimension;
 import components.Lauta;
+import components.Nappula;
+import components.Ratsu;
+import components.Sotilas;
+import components.Torni;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Scanner;
+import logic.Liikkuminen;
+import logic.Parser;
 
 public class UI extends javax.swing.JFrame {
 
@@ -14,8 +26,10 @@ public class UI extends javax.swing.JFrame {
     //Netbeansin generoimaa, refaktoroin toivottavasti myöhemmin luettavampaan muotoon
     @SuppressWarnings("unchecked")
     private void initComponents() {
-
+        lauta = new Lauta();
         lauta.alustaLauta();
+        variants.Standard.setUp(lauta);
+        vuoro = Nappula.Puoli.VALKOINEN;
 
         a1 = new javax.swing.JPanel();
         Dimension dimension = new Dimension(100, 100);
@@ -2384,6 +2398,12 @@ public class UI extends javax.swing.JFrame {
 //        );
         komentoKentta = new javax.swing.JTextField();
         komentoKentta.setText("");
+        komentoKentta.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                suoritaKomento();
+                updateUI();
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -2694,14 +2714,68 @@ public class UI extends javax.swing.JFrame {
 //        }
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new UI().setVisible(true);
-            }
-        });
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new UI(new Lauta()).setVisible(true);
+//            }
+//        });
+        UI ui = new UI();
+        ui.aja();
+
     }
 
-    public void update() {
+    public void aja() {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                UI ui = new UI();
+                ui.setVisible(true);
+
+            }
+        });
+        Nappula.Puoli vuoro = Nappula.Puoli.VALKOINEN;
+
+        JLabel[] labels = getLabels();
+
+//        while (true) {
+//            lauta.printBoardState();
+//            updateUI();
+//            System.out.println("");
+//            if (vuoro == Nappula.Puoli.VALKOINEN) {
+//                System.out.print("Valkoisen ");
+//            } else {
+//                System.out.print("Mustan ");
+//            }
+//            System.out.println("vuoro, komento muotoa d2-d4, tyhjä lopettaa pelin");
+//            int[][] startEndPoints = Parser.parseCommand(line, vuoro, lauta);
+//            if (startEndPoints == null) {
+//                continue;
+//            }
+//            if (startEndPoints[0][0] < 8 && startEndPoints[0][0] > -1 && startEndPoints[0][1] < 8 && startEndPoints[0][1] > -1) {
+//                Nappula nappula = lauta.getNappula(startEndPoints[0]);
+//                if (nappula.getPuoli() != vuoro) {
+//                    System.out.println("Ruudussa ei nappulaasi");
+//                    continue;
+//                }
+//                if (Liikkuminen.koitaSiirtya(nappula, startEndPoints[1], lauta)) {
+//                    if (vuoro == Nappula.Puoli.VALKOINEN) {
+//                        vuoro = Nappula.Puoli.MUSTA;
+//                    } else {
+//                        vuoro = Nappula.Puoli.VALKOINEN;
+//                    }
+//                } else {
+//                    System.out.print("(" + startEndPoints[0][0] + "," + startEndPoints[0][1] + ")");
+//                    System.out.println("-(" + startEndPoints[1][0] + "," + startEndPoints[1][1] + ")");
+//                    System.out.println("Laiton siirto");
+//                }
+//            } else {
+//                System.out.println("ruutu "
+//                        + "(koordinaatit {" + startEndPoints[0][0] + ","
+//                        + startEndPoints[0][1] + "})" + " ei laudalla");
+//            }
+//        }
+    }
+
+    public void updateUI() {
         a1label.setText(Character.toString(lauta.getNappula("a1").getMerkki()));
         a2label.setText(Character.toString(lauta.getNappula("a2").getMerkki()));
         a3label.setText(Character.toString(lauta.getNappula("a3").getMerkki()));
@@ -2773,6 +2847,116 @@ public class UI extends javax.swing.JFrame {
         h6label.setText(Character.toString(lauta.getNappula("h6").getMerkki()));
         h7label.setText(Character.toString(lauta.getNappula("h7").getMerkki()));
         h8label.setText(Character.toString(lauta.getNappula("h8").getMerkki()));
+    }
+
+    public String getKomento() {
+        return komentoKentta.getText();
+    }
+
+    public void suoritaKomento() {
+        int[][] startEndPoints = Parser.parseCommand(komentoKentta.getText(), vuoro, lauta);
+        if (startEndPoints == null) {
+            System.out.println("Laiton siirto");
+        } else {
+            if (startEndPoints[0][0] < 8 && startEndPoints[0][0] > -1 && startEndPoints[0][1] < 8 && startEndPoints[0][1] > -1) {
+                Nappula nappula = lauta.getNappula(startEndPoints[0]);
+                if (nappula.getPuoli() != vuoro) {
+                    System.out.println("Ruudussa ei nappulaasi");
+                }
+                if (Liikkuminen.koitaSiirtya(nappula, startEndPoints[1], lauta)) {
+                    if (vuoro == Nappula.Puoli.VALKOINEN) {
+                        vuoro = Nappula.Puoli.MUSTA;
+                    } else {
+                        vuoro = Nappula.Puoli.VALKOINEN;
+                    }
+                } else {
+                    System.out.print("(" + startEndPoints[0][0] + "," + startEndPoints[0][1] + ")");
+                    System.out.println("-(" + startEndPoints[1][0] + "," + startEndPoints[1][1] + ")");
+                    System.out.println("Laiton siirto");
+                }
+            } else {
+                System.out.println("ruutu "
+                        + "(koordinaatit {" + startEndPoints[0][0] + ","
+                        + startEndPoints[0][1] + "})" + " ei laudalla");
+            }
+        }
+        komentoKentta.setText("");
+    }
+
+    public JLabel[] getLabels() {
+        JLabel[] labels = new JLabel[64];
+        labels[0] = a1label;
+        labels[1] = a2label;
+        labels[2] = a3label;
+        labels[3] = a4label;
+        labels[4] = a5label;
+        labels[5] = a6label;
+        labels[6] = a7label;
+        labels[7] = a8label;
+
+        labels[8] = b1label;
+        labels[9] = b2label;
+        labels[10] = b3label;
+        labels[11] = b4label;
+        labels[12] = b5label;
+        labels[13] = b6label;
+        labels[14] = b7label;
+        labels[15] = b8label;
+
+        labels[16] = c1label;
+        labels[17] = c2label;
+        labels[18] = c3label;
+        labels[19] = c4label;
+        labels[20] = c5label;
+        labels[21] = c6label;
+        labels[22] = c7label;
+        labels[23] = c8label;
+
+        labels[24] = d1label;
+        labels[25] = d2label;
+        labels[26] = d3label;
+        labels[27] = d4label;
+        labels[28] = d5label;
+        labels[29] = d6label;
+        labels[30] = d7label;
+        labels[31] = d8label;
+
+        labels[32] = e1label;
+        labels[33] = e2label;
+        labels[34] = e3label;
+        labels[35] = e4label;
+        labels[36] = e5label;
+        labels[37] = e6label;
+        labels[38] = e7label;
+        labels[39] = e8label;
+
+        labels[40] = f1label;
+        labels[41] = f2label;
+        labels[42] = f3label;
+        labels[43] = f4label;
+        labels[44] = f5label;
+        labels[45] = f6label;
+        labels[46] = f7label;
+        labels[47] = f8label;
+
+        labels[48] = g1label;
+        labels[49] = g2label;
+        labels[50] = g3label;
+        labels[51] = g4label;
+        labels[52] = g5label;
+        labels[53] = g6label;
+        labels[54] = g7label;
+        labels[55] = g8label;
+
+        labels[56] = h1label;
+        labels[57] = h2label;
+        labels[58] = h3label;
+        labels[59] = h4label;
+        labels[60] = h5label;
+        labels[61] = h6label;
+        labels[62] = h7label;
+        labels[63] = h8label;
+        return labels;
     }
 
     private Lauta lauta;
@@ -2922,4 +3106,6 @@ public class UI extends javax.swing.JFrame {
     private JLabel h8label;
 
     private javax.swing.JTextField komentoKentta;
+
+    private Nappula.Puoli vuoro;
 }

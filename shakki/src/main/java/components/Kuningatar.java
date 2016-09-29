@@ -2,8 +2,9 @@ package components;
 
 public class Kuningatar extends Nappula {
 
-    public static char valkoinenMerkki = '\u2655';
-    public static char mustaMerkki = '\u265B';
+    private static char valkoinenMerkki = '\u2655';
+    private static char mustaMerkki = '\u265B';
+    private static char notaatioMerkki = 'Q';
 
     public Kuningatar(String puoli, Lauta lauta) {
         super(puoli, lauta);
@@ -177,5 +178,9 @@ public class Kuningatar extends Nappula {
             return mustaMerkki;
         }
         return super.getMerkki();
+    }
+    @Override
+    public char getNotaatioMerkki() {
+        return notaatioMerkki;
     }
 }

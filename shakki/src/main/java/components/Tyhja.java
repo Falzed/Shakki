@@ -2,6 +2,8 @@ package components;
 
 public class Tyhja extends Nappula {
 
+    private static char notaatioMerkki = ' ';
+
     public Tyhja() {
         super();
     }

@@ -8,6 +8,7 @@ public class Nappula {
     }
     private Puoli puoli;
     private int[] sijainti = {-1, -1};
+    private static char notaatioMerkki;
 
     public Nappula(String puoli, Lauta lauta) {
         if (puoli.equals("valkoinen")) {
@@ -41,7 +42,10 @@ public class Nappula {
     }
 
     public char getMerkki() {
-        return 'a';
+        return ' ';
+    }
+    public char getNotaatioMerkki() {
+        return notaatioMerkki;
     }
 
 //    public boolean koitaSiirtya(int[] koordinaatit, Lauta lauta) {

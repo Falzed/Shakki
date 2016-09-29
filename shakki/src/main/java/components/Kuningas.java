@@ -2,8 +2,9 @@ package components;
 
 public class Kuningas extends Nappula {
 
-    public static char valkoinenMerkki = '\u2654';
-    public static char mustaMerkki = '\u265A';
+    private static char valkoinenMerkki = '\u2654';
+    private static char mustaMerkki = '\u265A';
+    private static char notaatioMerkki = 'K';
 
     public Kuningas(String puoli, Lauta lauta) {
         super(puoli, lauta);
