@@ -4,9 +4,14 @@ public class Torni extends Nappula {
 
     public static char valkoinenMerkki = '\u2656';
     public static char mustaMerkki = '\u265C';
+    private static char notaatioMerkki = 'R';
 
     public Torni(String puoli, Lauta lauta) {
         super(puoli, lauta);
+    }
+    @Override
+    public char getNotaatioMerkki() {
+        return notaatioMerkki;
     }
 
 //    @Override

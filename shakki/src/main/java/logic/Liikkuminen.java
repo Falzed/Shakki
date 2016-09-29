@@ -5,53 +5,6 @@ import components.Nappula;
 
 public class Liikkuminen {
 
-    public static boolean koitaSiirtya(int[] mista, int[] minne, Lauta lauta) {
-        Nappula nappula = lauta.getNappula(mista);
-        if (nappula.getMerkki() == 'Q' || nappula.getMerkki() == 'q') {
-            return kuningatarLiikkuminen(mista, minne, lauta, nappula.getPuoli());
-        }
-        if (nappula.getMerkki() == 'K' || nappula.getMerkki() == 'k') {
-            return kuningasLiikkuminen(mista, minne, lauta, nappula.getPuoli());
-        }
-        if (nappula.getMerkki() == 'R' || nappula.getMerkki() == 'r') {
-            return torniLiikkuminen(mista, minne, lauta, nappula.getPuoli());
-        }
-        if (nappula.getMerkki() == 'N' || nappula.getMerkki() == 'n') {
-            return ratsuLiikkuminen(mista, minne, lauta, nappula.getPuoli());
-        }
-        if (nappula.getMerkki() == 'B' || nappula.getMerkki() == 'b') {
-            return lahettiLiikkuminen(mista, minne, lauta, nappula.getPuoli());
-        }
-        if (nappula.getMerkki() == 'P' || nappula.getMerkki() == 'p') {
-            return sotilasLiikkuminen(mista, minne, lauta, nappula.getPuoli());
-        }
-
-        return false;
-    }
-
-    public static boolean koitaSiirtya(Nappula nappula, int[] minne, Lauta lauta) {
-        int[] mista = nappula.getKoordinaatit();
-        return Liikkuminen.koitaSiirtya(mista, minne, lauta);
-    }
-
-    //TODO: Tornitus, ei voi liikkua uhattuun ruutuun
-    private static boolean kuningasLiikkuminen(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
-
-        //TODO: tarkista ettei ruutu uhattu
-        //if(getLauta().ruutuShakissa(minne)) { return false }
-        if (Math.abs(minne[0] - mista[0]) > 1) {
-            return false;
-        }
-        if (Math.abs(minne[1] - mista[1]) > 1) {
-            return false;
-        }
-        if (minne[1] - mista[1] == 0
-                && minne[0] - mista[0] == 0) {
-            return false;
-        }
-        return siirry(mista, minne, lauta);
-    }
-
     private static boolean siirry(int[] mista, int[] minne, Lauta lauta) {
         Nappula nappula = lauta.getNappula(mista);
         if (lauta.getNappula(minne).isEmpty()) {
@@ -67,7 +20,74 @@ public class Liikkuminen {
         return true;
     }
 
-    private static boolean kuningatarLiikkuminen(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
+    private static boolean eiOma(int[] mista, int[] minne, Lauta lauta) {
+        Nappula nappula = lauta.getNappula(mista);
+        if (!lauta.getNappula(minne).isEmpty()) {
+            if (lauta.getNappula(minne).getPuoli() == nappula.getPuoli()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean koitaSiirtya(int[] mista, int[] minne, Lauta lauta) {
+        Nappula nappula = lauta.getNappula(mista);
+        if(!voikoSiirtya(mista, minne, lauta)) {
+            return false;
+        }
+
+        return siirry(mista, minne, lauta);
+    }
+
+    public static boolean koitaSiirtya(Nappula nappula, int[] minne, Lauta lauta) {
+        int[] mista = nappula.getKoordinaatit();
+        return Liikkuminen.koitaSiirtya(mista, minne, lauta);
+    }
+    public static boolean voikoSiirtya(int[] mista, int[] minne, Lauta lauta) {
+        Nappula nappula = lauta.getNappula(mista);
+        boolean voiko = false;
+        if (nappula.getMerkki() == '\u2655' || nappula.getMerkki() == '\u265B') {
+            voiko = kuningatarVoikoLiikkua(mista, minne, lauta, nappula.getPuoli());
+        }
+        if (nappula.getMerkki() == '\u2654' || nappula.getMerkki() == '\u265A') {
+            voiko = kuningasVoikoLiikkua(mista, minne, lauta, nappula.getPuoli());
+        }
+        if (nappula.getMerkki() == '\u2656' || nappula.getMerkki() == '\u265C') {
+            voiko = torniVoikoLiikkua(mista, minne, lauta, nappula.getPuoli());
+        }
+        if (nappula.getMerkki() == '\u2658' || nappula.getMerkki() == '\u265E') {
+            voiko = ratsuVoikoLiikkua(mista, minne, lauta, nappula.getPuoli());
+        }
+        if (nappula.getMerkki() == '\u2657' || nappula.getMerkki() == '\u265D') {
+            voiko = lahettiVoikoLiikkua(mista, minne, lauta, nappula.getPuoli());
+        }
+        if (nappula.getMerkki() == '\u2659' || nappula.getMerkki() == '\u265F') {
+            voiko = sotilasVoikoLiikkua(mista, minne, lauta, nappula.getPuoli());
+        }
+
+        return voiko;
+    }
+    public static boolean voikoSiirtya(Nappula nappula, int[] minne, Lauta lauta) {
+        return voikoSiirtya(nappula.getKoordinaatit(), minne, lauta);
+    }
+
+    private static boolean kuningasVoikoLiikkua(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
+        //TODO: tornitus, tarkista ettei ruutu uhattu
+        //if(getLauta().ruutuShakissa(minne)) { return false }
+        if (Math.abs(minne[0] - mista[0]) > 1) {
+            return false;
+        }
+        if (Math.abs(minne[1] - mista[1]) > 1) {
+            return false;
+        }
+        if (minne[1] - mista[1] == 0
+                && minne[0] - mista[0] == 0) {
+            return false;
+        }
+        return eiOma(mista, minne, lauta);
+    }
+
+    private static boolean kuningatarVoikoLiikkua(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
         //Tornimaisesti liikkuminen
         if (minne[0] == mista[0]) {
             if (minne[1] < mista[1]) {
@@ -105,10 +125,10 @@ public class Liikkuminen {
                 && minne[1] > mista[1]) {
             return moveRightUp(mista, minne, lauta, puoli);
         }
-        return siirry(mista, minne, lauta);
+        return eiOma(mista, minne, lauta);
     }
 
-    private static boolean torniLiikkuminen(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
+    private static boolean torniVoikoLiikkua(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
         if (minne[0] != mista[0]
                 && minne[1] != mista[1]) {
             return false;
@@ -124,10 +144,10 @@ public class Liikkuminen {
         } else if (minne[1] > mista[1]) {
             return moveUp(mista, minne, lauta, puoli);
         }
-        return siirry(mista, minne, lauta);
+        return eiOma(mista, minne, lauta);
     }
 
-    private static boolean lahettiLiikkuminen(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
+    private static boolean lahettiVoikoLiikkua(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
         if (minne[0] - mista[0] != minne[1] - mista[1]
                 && minne[0] - mista[0] != mista[1] - minne[1]) {
             return false;
@@ -147,17 +167,17 @@ public class Liikkuminen {
                 && minne[1] > mista[1]) {
             return moveRightUp(mista, minne, lauta, puoli);
         }
-        return siirry(mista, minne, lauta);
+        return eiOma(mista, minne, lauta);
     }
 
-    private static boolean ratsuLiikkuminen(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
+    private static boolean ratsuVoikoLiikkua(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
         if (!oneTwo(mista, minne, lauta, puoli)) {
             return false;
         }
-        return siirry(mista, minne, lauta);
+        return eiOma(mista, minne, lauta);
     }
 
-    private static boolean sotilasLiikkuminen(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
+    private static boolean sotilasVoikoLiikkua(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
         if (captureMove(mista, minne, lauta, puoli)) {
             return true;
         }
@@ -201,7 +221,7 @@ public class Liikkuminen {
                 && !lauta.getNappula(minne).isEmpty()) {
             return false;
         }
-        return siirry(mista, minne, lauta);
+        return eiOma(mista, minne, lauta);
     }
 
     private static boolean captureMove(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
@@ -224,7 +244,7 @@ public class Liikkuminen {
         } else if (lauta.getNappula(minne).getPuoli().equals(puoli)) {
             return false;
         }
-        return siirry(mista, minne, lauta);
+        return eiOma(mista, minne, lauta);
     }
 
     private static boolean oneTwo(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
@@ -254,7 +274,7 @@ public class Liikkuminen {
                 return false;
             }
         }
-        return siirry(mista, minne, lauta);
+        return eiOma(mista, minne, lauta);
     }
 
     private static boolean moveLeftUp(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
@@ -266,7 +286,7 @@ public class Liikkuminen {
                 return false;
             }
         }
-        return siirry(mista, minne, lauta);
+        return eiOma(mista, minne, lauta);
     }
 
     private static boolean moveRightDown(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
@@ -278,7 +298,7 @@ public class Liikkuminen {
                 return false;
             }
         }
-        return siirry(mista, minne, lauta);
+        return eiOma(mista, minne, lauta);
     }
 
     private static boolean moveRightUp(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
@@ -290,7 +310,7 @@ public class Liikkuminen {
                 return false;
             }
         }
-        return siirry(mista, minne, lauta);
+        return eiOma(mista, minne, lauta);
     }
 
     private static boolean moveLeft(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
@@ -316,7 +336,7 @@ public class Liikkuminen {
                 return false;
             }
         }
-        return siirry(mista, minne, lauta);
+        return eiOma(mista, minne, lauta);
     }
 
     private static boolean moveRight(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
@@ -329,23 +349,10 @@ public class Liikkuminen {
                 return false;
             }
         }
-        return siirry(mista, minne, lauta);
+        return eiOma(mista, minne, lauta);
     }
 
     private static boolean moveUp(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
-        int delta = mista[1] - minne[1];
-        int[] testiKoordinaatit = {0, 0};
-        for (int i = 1; i < delta; i++) {
-            testiKoordinaatit[1] = mista[1] - i;
-            testiKoordinaatit[0] = mista[0];
-            if (!lauta.getNappula(testiKoordinaatit).isEmpty()) {
-                return false;
-            }
-        }
-        return siirry(mista, minne, lauta);
-    }
-
-    private static boolean moveDown(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
         int delta = minne[1] - mista[1];
         int[] testiKoordinaatit = {0, 0};
         for (int i = 1; i < delta; i++) {
@@ -355,6 +362,19 @@ public class Liikkuminen {
                 return false;
             }
         }
-        return siirry(mista, minne, lauta);
+        return eiOma(mista, minne, lauta);
+    }
+
+    private static boolean moveDown(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
+        int delta = mista[1] - minne[1];
+        int[] testiKoordinaatit = {0, 0};
+        for (int i = 1; i < delta; i++) {
+            testiKoordinaatit[1] = mista[1] - i;
+            testiKoordinaatit[0] = mista[0];
+            if (!lauta.getNappula(testiKoordinaatit).isEmpty()) {
+                return false;
+            }
+        }
+        return eiOma(mista, minne, lauta);
     }
 }

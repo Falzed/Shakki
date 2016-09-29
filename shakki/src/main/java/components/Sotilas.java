@@ -2,11 +2,16 @@ package components;
 
 public class Sotilas extends Nappula {
 
-    public static char valkoinenMerkki = '\u2659';
-    public static char mustaMerkki = '\u265F';
+    private static char valkoinenMerkki = '\u2659';
+    private static char mustaMerkki = '\u265F';
+    private static char notaatioMerkki = ' ';
 
     public Sotilas(String puoli, Lauta lauta) {
         super(puoli, lauta);
+    }
+    @Override
+    public char getNotaatioMerkki() {
+        return notaatioMerkki;
     }
 
     //TODO: En passant, korotus

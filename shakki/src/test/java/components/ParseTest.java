@@ -12,57 +12,58 @@ public class ParseTest {
         Lauta lauta = new Lauta();
         lauta.alustaLauta();
         int[] koordinaatit = new int[2];
-        koordinaatit[0] = 0;
-        koordinaatit[1] = 0;
-        lauta.aseta(new Torni("valkoinen", lauta), koordinaatit);
-        koordinaatit[0] = 7;
-        lauta.aseta(new Torni("valkoinen", lauta), koordinaatit);
-
-        koordinaatit[1] = 7;
-        lauta.aseta(new Torni("musta", lauta), koordinaatit);
-        koordinaatit[0] = 0;
-        lauta.aseta(new Torni("musta", lauta), koordinaatit);
-        koordinaatit[0] = 1;
-        koordinaatit[1] = 0;
-        lauta.aseta(new Ratsu("valkoinen", lauta), koordinaatit);
-        koordinaatit[0] = 6;
-        lauta.aseta(new Ratsu("valkoinen", lauta), koordinaatit);
-
-        koordinaatit[1] = 7;
-        lauta.aseta(new Ratsu("musta", lauta), koordinaatit);
-        koordinaatit[0] = 1;
-        lauta.aseta(new Ratsu("musta", lauta), koordinaatit);
-        koordinaatit[0] = 2;
-        koordinaatit[1] = 0;
-        lauta.aseta(new Lahetti("valkoinen", lauta), koordinaatit);
-        koordinaatit[0] = 5;
-        lauta.aseta(new Lahetti("valkoinen", lauta), koordinaatit);
-
-        koordinaatit[1] = 7;
-        lauta.aseta(new Lahetti("musta", lauta), koordinaatit);
-        koordinaatit[0] = 2;
-        lauta.aseta(new Lahetti("musta", lauta), koordinaatit);
-        koordinaatit[0] = 3;
-        koordinaatit[1] = 0;
-        lauta.aseta(new Kuningatar("valkoinen", lauta), koordinaatit);
-        koordinaatit[1] = 7;
-        lauta.aseta(new Kuningatar("musta", lauta), koordinaatit);
-        koordinaatit[0] = 4;
-        koordinaatit[1] = 0;
-        lauta.aseta(new Kuningas("valkoinen", lauta), koordinaatit);
-        koordinaatit[1] = 7;
-        lauta.aseta(new Kuningas("musta", lauta), koordinaatit);
-
-        koordinaatit[1] = 1;
-        for (int i = 0; i < 8; i++) {
-            koordinaatit[0] = i;
-            lauta.aseta(new Sotilas("valkoinen", lauta), koordinaatit);
-        }
-        koordinaatit[1] = 6;
-        for (int i = 0; i < 8; i++) {
-            koordinaatit[0] = i;
-            lauta.aseta(new Sotilas("musta", lauta), koordinaatit);
-        }
+        variants.Standard.setUp(lauta);
+//        koordinaatit[0] = 0;
+//        koordinaatit[1] = 0;
+//        lauta.aseta(new Torni("valkoinen", lauta), koordinaatit);
+//        koordinaatit[0] = 7;
+//        lauta.aseta(new Torni("valkoinen", lauta), koordinaatit);
+//
+//        koordinaatit[1] = 7;
+//        lauta.aseta(new Torni("musta", lauta), koordinaatit);
+//        koordinaatit[0] = 0;
+//        lauta.aseta(new Torni("musta", lauta), koordinaatit);
+//        koordinaatit[0] = 1;
+//        koordinaatit[1] = 0;
+//        lauta.aseta(new Ratsu("valkoinen", lauta), koordinaatit);
+//        koordinaatit[0] = 6;
+//        lauta.aseta(new Ratsu("valkoinen", lauta), koordinaatit);
+//
+//        koordinaatit[1] = 7;
+//        lauta.aseta(new Ratsu("musta", lauta), koordinaatit);
+//        koordinaatit[0] = 1;
+//        lauta.aseta(new Ratsu("musta", lauta), koordinaatit);
+//        koordinaatit[0] = 2;
+//        koordinaatit[1] = 0;
+//        lauta.aseta(new Lahetti("valkoinen", lauta), koordinaatit);
+//        koordinaatit[0] = 5;
+//        lauta.aseta(new Lahetti("valkoinen", lauta), koordinaatit);
+//
+//        koordinaatit[1] = 7;
+//        lauta.aseta(new Lahetti("musta", lauta), koordinaatit);
+//        koordinaatit[0] = 2;
+//        lauta.aseta(new Lahetti("musta", lauta), koordinaatit);
+//        koordinaatit[0] = 3;
+//        koordinaatit[1] = 0;
+//        lauta.aseta(new Kuningatar("valkoinen", lauta), koordinaatit);
+//        koordinaatit[1] = 7;
+//        lauta.aseta(new Kuningatar("musta", lauta), koordinaatit);
+//        koordinaatit[0] = 4;
+//        koordinaatit[1] = 0;
+//        lauta.aseta(new Kuningas("valkoinen", lauta), koordinaatit);
+//        koordinaatit[1] = 7;
+//        lauta.aseta(new Kuningas("musta", lauta), koordinaatit);
+//
+//        koordinaatit[1] = 1;
+//        for (int i = 0; i < 8; i++) {
+//            koordinaatit[0] = i;
+//            lauta.aseta(new Sotilas("valkoinen", lauta), koordinaatit);
+//        }
+//        koordinaatit[1] = 6;
+//        for (int i = 0; i < 8; i++) {
+//            koordinaatit[0] = i;
+//            lauta.aseta(new Sotilas("musta", lauta), koordinaatit);
+//        }
 
         System.out.print("1. d4");
         Nappula.Puoli vuoro = Nappula.Puoli.VALKOINEN;
