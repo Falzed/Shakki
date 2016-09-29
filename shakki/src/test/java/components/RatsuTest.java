@@ -8,6 +8,7 @@ package components;
 import components.Lauta;
 import components.Sotilas;
 import components.Ratsu;
+import logic.Liikkuminen;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -65,28 +66,28 @@ public class RatsuTest {
 
         koordinaatit[0] = 5;
         koordinaatit[1] = 5;
-        assertTrue(ratsu.move(koordinaatit));
+        assertTrue(Liikkuminen.koitaSiirtya(ratsu, koordinaatit, lauta));
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        assertTrue(ratsu.move(koordinaatit));
+        assertTrue(Liikkuminen.koitaSiirtya(ratsu, koordinaatit, lauta));
         koordinaatit[0] = 1;
         koordinaatit[1] = 5;
-        assertTrue(ratsu.move(koordinaatit));
+        assertTrue(Liikkuminen.koitaSiirtya(ratsu, koordinaatit, lauta));
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        assertTrue(ratsu.move(koordinaatit));
+        assertTrue(Liikkuminen.koitaSiirtya(ratsu, koordinaatit, lauta));
         koordinaatit[0] = 2;
         koordinaatit[1] = 6;
-        assertTrue(ratsu.move(koordinaatit));
+        assertTrue(Liikkuminen.koitaSiirtya(ratsu, koordinaatit, lauta));
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        assertTrue(ratsu.move(koordinaatit));
+        assertTrue(Liikkuminen.koitaSiirtya(ratsu, koordinaatit, lauta));
         koordinaatit[0] = 2;
         koordinaatit[1] = 2;
-        assertTrue(ratsu.move(koordinaatit));
+        assertTrue(Liikkuminen.koitaSiirtya(ratsu, koordinaatit, lauta));
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        assertTrue(ratsu.move(koordinaatit));
+        assertTrue(Liikkuminen.koitaSiirtya(ratsu, koordinaatit, lauta));
 
     }
 
@@ -105,6 +106,6 @@ public class RatsuTest {
         Sotilas sotilas1 = new Sotilas("valkoinen", lauta);
         lauta.aseta(sotilas1, koordinaatit);
 
-        assertFalse(ratsu.move(koordinaatit));
+        assertFalse(Liikkuminen.koitaSiirtya(ratsu, koordinaatit, lauta));
     }
 }

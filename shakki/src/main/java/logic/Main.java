@@ -109,7 +109,7 @@ public class Main {
                     System.out.println("Ruudussa ei nappulaasi");
                     continue;
                 }
-                if (nappula.move(startEndPoints[1])) {
+                if (Liikkuminen.koitaSiirtya(nappula,startEndPoints[1], lauta)) {
                     if (vuoro == Nappula.Puoli.VALKOINEN) {
                         vuoro = Nappula.Puoli.MUSTA;
                     } else {
