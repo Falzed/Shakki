@@ -21,6 +21,10 @@ public class Lauta {
         return nappulat[koordinaatit[0]][koordinaatit[1]];
     }
 
+    public Nappula getNappula(String string) {
+        int [] koordinaatit = parseAlgebraic(string);
+        return getNappula(koordinaatit);
+    }
     public void alustaLauta() {
         int[] koordinaatit = {0, 0};
         Tyhja tyhja = new Tyhja();

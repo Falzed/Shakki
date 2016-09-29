@@ -2,44 +2,35 @@ package components;
 
 public class Kuningas extends Nappula {
 
-    public static char valkoinenMerkki = 'K';
-    public static char mustaMerkki = 'k';
+    public static char valkoinenMerkki = '\u2654';
+    public static char mustaMerkki = '\u265A';
 
     public Kuningas(String puoli, Lauta lauta) {
         super(puoli, lauta);
     }
 
     //TODO: Tornitus, ei voi liikkua uhattuun ruutuun
-    @Override
-    public boolean move(int[] koordinaatit) {
-
-        //TODO: tarkista ettei ruutu uhattu
-        //if(getLauta().ruutuShakissa(koordinaatit)) { return false }
-        if (Math.abs(koordinaatit[0] - getKoordinaatit()[0]) > 1) {
-            return false;
-        }
-        if (Math.abs(koordinaatit[1] - getKoordinaatit()[1]) > 1) {
-            return false;
-        }
-        if (koordinaatit[1] - getKoordinaatit()[1] == 0
-                && koordinaatit[0] - getKoordinaatit()[0] == 0) {
-            return false;
-        }
-        if (!getLauta().getNappula(koordinaatit).isEmpty()) {
-            if (getLauta().getNappula(koordinaatit).getPuoli().equals(getPuoli())) {
-                return false;
-            } else {
-                getLauta().syo(this, koordinaatit);
-            }
-        } else {
-            getLauta().aseta(this, koordinaatit);
-        }
-        return true;
-    }
-
-    public boolean captureMove(int[] koordinaatit) {
-        return move(koordinaatit);
-    }
+//    @Override
+//    public boolean koitaSiirtya(int[] koordinaatit, Lauta lauta) {
+//
+//        //TODO: tarkista ettei ruutu uhattu
+//        //if(getLauta().ruutuShakissa(koordinaatit)) { return false }
+//        if (Math.abs(koordinaatit[0] - getKoordinaatit()[0]) > 1) {
+//            return false;
+//        }
+//        if (Math.abs(koordinaatit[1] - getKoordinaatit()[1]) > 1) {
+//            return false;
+//        }
+//        if (koordinaatit[1] - getKoordinaatit()[1] == 0
+//                && koordinaatit[0] - getKoordinaatit()[0] == 0) {
+//            return false;
+//        }
+//        return siirry(koordinaatit, lauta);
+//    }
+//
+//    public boolean captureMove(int[] koordinaatit, Lauta lauta) {
+//        return koitaSiirtya(koordinaatit, lauta);
+//    }
 
     @Override
     public char getMerkki() {

@@ -4,6 +4,7 @@ import components.Sotilas;
 import components.Lauta;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import logic.Liikkuminen;
 
 public class SotilasTest {
 
@@ -19,11 +20,11 @@ public class SotilasTest {
 
         koordinaatit[0] = 3;
         koordinaatit[1] = 5;
-        assertTrue(sotilas1.move(koordinaatit));
+        assertTrue(Liikkuminen.koitaSiirtya(sotilas1, koordinaatit, lauta));
 
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        assertFalse(sotilas1.move(koordinaatit));
+        assertFalse(Liikkuminen.koitaSiirtya(sotilas1, koordinaatit, lauta));
     }
 
     @Test
@@ -38,11 +39,11 @@ public class SotilasTest {
 
         koordinaatit[0] = 3;
         koordinaatit[1] = 3;
-        assertTrue(sotilas1.move(koordinaatit));
+        assertTrue(Liikkuminen.koitaSiirtya(sotilas1, koordinaatit, lauta));
 
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        assertFalse(sotilas1.move(koordinaatit));
+        assertFalse(Liikkuminen.koitaSiirtya(sotilas1, koordinaatit, lauta));
     }
 
     @Test
@@ -65,10 +66,10 @@ public class SotilasTest {
 
         koordinaatit[0] = 3;
         koordinaatit[1] = 5;
-        assertFalse(sotilas1.captureMove(koordinaatit));
+        assertFalse(Liikkuminen.koitaSiirtya(sotilas1, koordinaatit, lauta));
         koordinaatit[0] = 4;
         koordinaatit[1] = 5;
-        assertTrue(sotilas1.captureMove(koordinaatit));
+        assertTrue(Liikkuminen.koitaSiirtya(sotilas1, koordinaatit, lauta));
     }
 
     @Test
@@ -91,11 +92,10 @@ public class SotilasTest {
 
         koordinaatit[0] = 3;
         koordinaatit[1] = 3;
-        assertFalse(sotilas1.captureMove(koordinaatit));
+        assertFalse(Liikkuminen.koitaSiirtya(sotilas1, koordinaatit, lauta));
         koordinaatit[0] = 2;
         koordinaatit[1] = 3;
-        System.out.println("MARK");
-        assertTrue(sotilas1.captureMove(koordinaatit));
+        assertTrue(Liikkuminen.koitaSiirtya(sotilas1, koordinaatit, lauta));
     }
 
     @Test
@@ -110,10 +110,10 @@ public class SotilasTest {
 
         koordinaatit[0] = 4;
         koordinaatit[1] = 4;
-        assertFalse(sotilas1.move(koordinaatit));
+        assertFalse(Liikkuminen.koitaSiirtya(sotilas1, koordinaatit, lauta));
 
         koordinaatit[0] = 2;
         koordinaatit[1] = 4;
-        assertFalse(sotilas1.move(koordinaatit));
+        assertFalse(Liikkuminen.koitaSiirtya(sotilas1, koordinaatit, lauta));
     }
 }

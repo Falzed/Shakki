@@ -1,6 +1,7 @@
 package components;
 
 import org.junit.Test;
+import logic.Liikkuminen;
 import static org.junit.Assert.*;
 
 public class ParseTest {
@@ -76,7 +77,7 @@ public class ParseTest {
                 assertTrue(lauta.parseCommand("d4", vuoro)[i][j] == startEndPoints[i][j]);
             }
         }
-        lauta.getNappula(startPoint).move(endPoint);
+        Liikkuminen.koitaSiirtya(lauta.getNappula(startPoint), endPoint, lauta);
 
         System.out.println(" d6");
         vuoro = Nappula.Puoli.MUSTA;
@@ -91,7 +92,7 @@ public class ParseTest {
                 assertTrue(lauta.parseCommand("d6", vuoro)[i][j] == startEndPoints[i][j]);
             }
         }
-        lauta.getNappula(startPoint).move(endPoint);
+        Liikkuminen.koitaSiirtya(lauta.getNappula(startPoint), endPoint, lauta);
 
         System.out.print("2. c4");
         vuoro = Nappula.Puoli.VALKOINEN;
@@ -106,7 +107,7 @@ public class ParseTest {
                 assertTrue(lauta.parseCommand("c4", vuoro)[i][j] == startEndPoints[i][j]);
             }
         }
-        lauta.getNappula(startPoint).move(endPoint);
+        Liikkuminen.koitaSiirtya(lauta.getNappula(startPoint), endPoint, lauta);
 
         System.out.println(" e5");
         vuoro = Nappula.Puoli.MUSTA;
@@ -121,7 +122,7 @@ public class ParseTest {
                 assertTrue(lauta.parseCommand("e5", vuoro)[i][j] == startEndPoints[i][j]);
             }
         }
-        lauta.getNappula(startPoint).move(endPoint);
+        Liikkuminen.koitaSiirtya(lauta.getNappula(startPoint), endPoint, lauta);
 
         System.out.print("3. xe5");
         vuoro = Nappula.Puoli.VALKOINEN;
@@ -136,6 +137,6 @@ public class ParseTest {
                 assertTrue(lauta.parseCommand("xe5", vuoro)[i][j] == startEndPoints[i][j]);
             }
         }
-        lauta.getNappula(startPoint).move(endPoint);
+        Liikkuminen.koitaSiirtya(lauta.getNappula(startPoint), endPoint, lauta);
     }
 }
