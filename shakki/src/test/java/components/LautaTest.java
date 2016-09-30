@@ -23,7 +23,7 @@ public class LautaTest {
 
     @Test
     public void voiAsettaaTyhjään() {
-        Lauta lauta = new Lauta();
+        Lauta lauta = new Lauta(8, 8);
         lauta.alustaLauta();
         int[] koordinaatit = {0, 0};
         assertTrue(lauta.aseta(new Sotilas("valkoinen"), koordinaatit));
@@ -33,8 +33,65 @@ public class LautaTest {
     public void eiVoiAsettaaToisennappulanPäälle() {
         Lauta lauta = new Lauta();
         lauta.alustaLauta();
-        int[] koordinaatit = {0, 0};
-        lauta.aseta(new Sotilas("valkoinen"), koordinaatit);
-        assertFalse(lauta.aseta(new Sotilas("valkoinen"), koordinaatit));
+        lauta.aseta(new Sotilas("valkoinen"), "a1");
+        assertFalse(lauta.aseta(new Sotilas("valkoinen"), "a1"));
+    }
+
+    @Test
+    public void getNappulaAlgebraic() {
+        Lauta lauta = new Lauta();
+        lauta.alustaLauta();
+        variants.Standard.setUp(lauta);
+        assertEquals(lauta.getNappula("d1").getMerkki(), '\u2655');
+    }
+
+    @Test
+    public void eiVoiSyodaTyhjaa() {
+        Lauta lauta = new Lauta();
+        lauta.alustaLauta();
+        variants.Standard.setUp(lauta);
+        int[] koord = {3, 5};
+        assertFalse(lauta.syo(lauta.getNappula("d1"), koord));
+    }
+
+    @Test
+    public void eiVoiSyodaOmaa() {
+        Lauta lauta = new Lauta();
+        lauta.alustaLauta();
+        variants.Standard.setUp(lauta);
+        lauta.aseta(new Kuningatar("valkoinen"), "d5");
+        assertFalse(lauta.syo(lauta.getNappula("d1"), "d5"));
+    }
+
+    @Test
+    public void voiSyodaVastustajan() {
+        Lauta lauta = new Lauta();
+        lauta.alustaLauta();
+        variants.Standard.setUp(lauta);
+        lauta.aseta(new Kuningatar("musta"), "d5");
+        assertTrue(lauta.syo(lauta.getNappula("d1"), "d5"));
+    }
+
+    @Test
+    public void eiVoiAsettaaOlemattomaanRuutuun() {
+        Lauta lauta = new Lauta();
+        lauta.alustaLauta();
+        assertFalse(lauta.aseta(new Sotilas("valkoinen"), "z0"));
+        assertFalse(lauta.aseta(new Sotilas("valkoinen"), "d9"));
+        int[] koord = {-3, 100};
+        assertFalse(lauta.aseta(new Sotilas("valkoinen"), koord));
+        koord[0]=8;
+        koord[1]=0;
+        assertFalse(lauta.aseta(new Sotilas("valkoinen"), koord));
+    }
+
+    @Test
+    public void eiVoisyodaOlematontaRuutua() {
+        Lauta lauta = new Lauta();
+        lauta.alustaLauta();
+        variants.Standard.setUp(lauta);
+        int[] koord= {-3, 100};
+        assertFalse(lauta.syo(lauta.getNappula("d1"), "z0"));
+        assertFalse(lauta.syo(lauta.getNappula("d1"), koord));
     }
 }

@@ -1,8 +1,9 @@
 package variants;
+
 import components.*;
 
-public class Standard extends Variant{
-    
+public class Standard extends Variant {
+
     public static void setUp(Lauta lauta) {
         lauta.alustaLauta();
         System.out.println("alustettu");
@@ -52,8 +53,6 @@ public class Standard extends Variant{
         lauta.aseta(new Kuningas("valkoinen"), koordinaatit);
         koordinaatit[1] = 7;
         lauta.aseta(new Kuningas("musta"), koordinaatit);
-        
-        
 
         System.out.println("sotilaat");
         koordinaatit[1] = 1;

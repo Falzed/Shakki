@@ -15,7 +15,9 @@ import components.Torni;
 import components.Ratsu;
 import java.util.Scanner;
 import java.util.regex.*;
+import javax.swing.JLabel;
 import ui.*;
+import javax.swing.JTextField;
 
 /**
  *
@@ -23,12 +25,50 @@ import ui.*;
  */
 public class Main {
 
-    /**
-     *
-     * @param args
-     */
     public static void main(String[] args) {
         UI ui = new UI();
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                UI ui = new UI();
+                ui.setVisible(true);
+
+            }
+        });
+        Nappula.Puoli vuoro = Nappula.Puoli.VALKOINEN;
+
+        JLabel[] labels = ui.getLabels();
+        
+        
+    }
+    public static Nappula.Puoli suoritaKomento(Lauta lauta, Nappula.Puoli vuoro, JTextField komentoKentta) {
+        int[][] startEndPoints = Parser.parseCommand(komentoKentta.getText(), vuoro, lauta);
+        if (startEndPoints == null) {
+            System.out.println("Laiton siirto");
+        } else {
+            if (startEndPoints[0][0] < 8 && startEndPoints[0][0] > -1 && startEndPoints[0][1] < 8 && startEndPoints[0][1] > -1) {
+                Nappula nappula = lauta.getNappula(startEndPoints[0]);
+                if (nappula.getPuoli() != vuoro) {
+                    System.out.println("Ruudussa ei nappulaasi");
+                }
+                if (Liikkuminen.koitaSiirtya(nappula, startEndPoints[1], lauta)) {
+                    if (vuoro == Nappula.Puoli.VALKOINEN) {
+                        vuoro = Nappula.Puoli.MUSTA;
+                    } else {
+                        vuoro = Nappula.Puoli.VALKOINEN;
+                    }
+                } else {
+                    System.out.print("(" + startEndPoints[0][0] + "," + startEndPoints[0][1] + ")");
+                    System.out.println("-(" + startEndPoints[1][0] + "," + startEndPoints[1][1] + ")");
+                    System.out.println("Laiton siirto");
+                }
+            } else {
+                System.out.println("ruutu "
+                        + "(koordinaatit {" + startEndPoints[0][0] + ","
+                        + startEndPoints[0][1] + "})" + " ei laudalla");
+            }
+        }
+        komentoKentta.setText("");
+        return vuoro;
     }
 //        Lauta lauta = new Lauta();
 //        lauta.alustaLauta();
