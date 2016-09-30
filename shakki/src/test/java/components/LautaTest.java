@@ -26,7 +26,7 @@ public class LautaTest {
         Lauta lauta = new Lauta();
         lauta.alustaLauta();
         int[] koordinaatit = {0, 0};
-        assertTrue(lauta.aseta(new Sotilas("valkoinen", lauta), koordinaatit));
+        assertTrue(lauta.aseta(new Sotilas("valkoinen"), koordinaatit));
     }
 
     @Test
@@ -34,7 +34,7 @@ public class LautaTest {
         Lauta lauta = new Lauta();
         lauta.alustaLauta();
         int[] koordinaatit = {0, 0};
-        lauta.aseta(new Sotilas("valkoinen", lauta), koordinaatit);
-        assertFalse(lauta.aseta(new Sotilas("valkoinen", lauta), koordinaatit));
+        lauta.aseta(new Sotilas("valkoinen"), koordinaatit);
+        assertFalse(lauta.aseta(new Sotilas("valkoinen"), koordinaatit));
     }
 }

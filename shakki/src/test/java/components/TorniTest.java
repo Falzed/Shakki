@@ -18,7 +18,7 @@ public class TorniTest {
         int[] koordinaatit = {0, 0};
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        Torni torni1 = new Torni("valkoinen", lauta);
+        Torni torni1 = new Torni("valkoinen");
         lauta.aseta(torni1, koordinaatit);
 
         assertFalse(Liikkuminen.koitaSiirtya(torni1, koordinaatit, lauta));
@@ -46,11 +46,11 @@ public class TorniTest {
         int[] koordinaatit = {0, 0};
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        Torni torni1 = new Torni("valkoinen", lauta);
+        Torni torni1 = new Torni("valkoinen");
         lauta.aseta(torni1, koordinaatit);
         koordinaatit[0] = 4;
         koordinaatit[1] = 4;
-        Torni torni2 = new Torni("valkoinen", lauta);
+        Torni torni2 = new Torni("valkoinen");
         lauta.aseta(torni2, koordinaatit);
 
         koordinaatit[0] = 5;
@@ -65,11 +65,11 @@ public class TorniTest {
         int[] koordinaatit = {0, 0};
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        Torni torni1 = new Torni("valkoinen", lauta);
+        Torni torni1 = new Torni("valkoinen");
         lauta.aseta(torni1, koordinaatit);
         koordinaatit[0] = 4;
         koordinaatit[1] = 4;
-        Torni torni2 = new Torni("musta", lauta);
+        Torni torni2 = new Torni("musta");
         lauta.aseta(torni2, koordinaatit);
 
         assertTrue(Liikkuminen.koitaSiirtya(torni1, koordinaatit, lauta));

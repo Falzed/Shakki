@@ -14,7 +14,7 @@ public class KuningasTest {
         int[] koordinaatit = {0, 0};
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        Kuningas kuningas = new Kuningas("valkoinen", lauta);
+        Kuningas kuningas = new Kuningas("valkoinen");
         lauta.aseta(kuningas, koordinaatit);
         assertFalse(Liikkuminen.koitaSiirtya(kuningas,koordinaatit, lauta));
         koordinaatit[0] = 4;
@@ -53,9 +53,9 @@ public class KuningasTest {
         int[] koordinaatit = {0, 0};
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        Kuningas kuningas = new Kuningas("valkoinen", lauta);
+        Kuningas kuningas = new Kuningas("valkoinen");
         lauta.aseta(kuningas, koordinaatit);
-        Lahetti lahetti2 = new Lahetti("musta", lauta);
+        Lahetti lahetti2 = new Lahetti("musta");
         koordinaatit[0] = 4;
         koordinaatit[1] = 4;
         lauta.aseta(lahetti2, koordinaatit);
@@ -69,9 +69,9 @@ public class KuningasTest {
         int[] koordinaatit = {0, 0};
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        Kuningatar kuningas = new Kuningatar("valkoinen", lauta);
+        Kuningatar kuningas = new Kuningatar("valkoinen");
         lauta.aseta(kuningas, koordinaatit);
-        Lahetti lahetti2 = new Lahetti("valkoinen", lauta);
+        Lahetti lahetti2 = new Lahetti("valkoinen");
         koordinaatit[0] = 5;
         koordinaatit[1] = 6;
         lauta.aseta(lahetti2, koordinaatit);
