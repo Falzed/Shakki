@@ -1,9 +1,16 @@
 package components;
 
+/**
+ *Luokka toteuttaa tyhjän ruudun.
+ * @author oemkulma
+ */
 public class Tyhja extends Nappula {
 
     private static char notaatioMerkki = ' ';
 
+    /**
+     *
+     */
     public Tyhja() {
         super();
     }

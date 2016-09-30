@@ -14,7 +14,7 @@ public class LahettiTest {
         int[] koordinaatit = {0, 0};
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        Lahetti lahetti1 = new Lahetti("valkoinen", lauta);
+        Lahetti lahetti1 = new Lahetti("valkoinen");
         lauta.aseta(lahetti1, koordinaatit);
 
         koordinaatit[0] = 5;
@@ -56,9 +56,9 @@ public class LahettiTest {
         int[] koordinaatit = {0, 0};
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        Lahetti lahetti1 = new Lahetti("valkoinen", lauta);
+        Lahetti lahetti1 = new Lahetti("valkoinen");
         lauta.aseta(lahetti1, koordinaatit);
-        Lahetti lahetti2 = new Lahetti("musta", lauta);
+        Lahetti lahetti2 = new Lahetti("musta");
         koordinaatit[0] = 4;
         koordinaatit[1] = 5;
         lauta.aseta(lahetti2, koordinaatit);
@@ -74,9 +74,9 @@ public class LahettiTest {
         int[] koordinaatit = {0, 0};
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        Lahetti lahetti1 = new Lahetti("valkoinen", lauta);
+        Lahetti lahetti1 = new Lahetti("valkoinen");
         lauta.aseta(lahetti1, koordinaatit);
-        Lahetti lahetti2 = new Lahetti("musta", lauta);
+        Lahetti lahetti2 = new Lahetti("musta");
         koordinaatit[0] = 5;
         koordinaatit[1] = 6;
         lauta.aseta(lahetti2, koordinaatit);

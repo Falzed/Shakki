@@ -17,8 +17,15 @@ import java.util.Scanner;
 import logic.Liikkuminen;
 import logic.Parser;
 
+/**
+ * Luokka toteuttaa ohjelman graafisen käyttöliittymän.
+ * @author oemkulma
+ */
 public class UI extends javax.swing.JFrame {
 
+    /**
+     *
+     */
     public UI() {
         initComponents();
     }
@@ -2775,6 +2782,9 @@ public class UI extends javax.swing.JFrame {
 //        }
     }
 
+    /**
+     *
+     */
     public void updateUI() {
         a1label.setText(Character.toString(lauta.getNappula("a1").getMerkki()));
         a2label.setText(Character.toString(lauta.getNappula("a2").getMerkki()));
@@ -2853,6 +2863,9 @@ public class UI extends javax.swing.JFrame {
         return komentoKentta.getText();
     }
 
+    /**
+     *
+     */
     public void suoritaKomento() {
         int[][] startEndPoints = Parser.parseCommand(komentoKentta.getText(), vuoro, lauta);
         if (startEndPoints == null) {

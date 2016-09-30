@@ -21,47 +21,47 @@ public class RatsuTest {
         int[] koordinaatit = {0, 0};
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        Ratsu ratsu = new Ratsu("valkoinen", lauta);
+        Ratsu ratsu = new Ratsu("valkoinen");
         lauta.aseta(ratsu, koordinaatit);
 
         koordinaatit[0] = 3;
         koordinaatit[1] = 5;
-        Sotilas sotilas1 = new Sotilas("valkoinen", lauta);
+        Sotilas sotilas1 = new Sotilas("valkoinen");
         lauta.aseta(sotilas1, koordinaatit);
 
         koordinaatit[0] = 3;
         koordinaatit[1] = 3;
-        Sotilas sotilas2 = new Sotilas("valkoinen", lauta);
+        Sotilas sotilas2 = new Sotilas("valkoinen");
         lauta.aseta(sotilas2, koordinaatit);
 
         koordinaatit[0] = 2;
         koordinaatit[1] = 4;
-        Sotilas sotilas3 = new Sotilas("valkoinen", lauta);
+        Sotilas sotilas3 = new Sotilas("valkoinen");
         lauta.aseta(sotilas3, koordinaatit);
 
         koordinaatit[0] = 4;
         koordinaatit[1] = 4;
-        Sotilas sotilas4 = new Sotilas("valkoinen", lauta);
+        Sotilas sotilas4 = new Sotilas("valkoinen");
         lauta.aseta(sotilas4, koordinaatit);
 
         koordinaatit[0] = 4;
         koordinaatit[1] = 5;
-        Sotilas sotilas5 = new Sotilas("valkoinen", lauta);
+        Sotilas sotilas5 = new Sotilas("valkoinen");
         lauta.aseta(sotilas5, koordinaatit);
 
         koordinaatit[0] = 2;
         koordinaatit[1] = 5;
-        Sotilas sotilas6 = new Sotilas("valkoinen", lauta);
+        Sotilas sotilas6 = new Sotilas("valkoinen");
         lauta.aseta(sotilas6, koordinaatit);
 
         koordinaatit[0] = 2;
         koordinaatit[1] = 3;
-        Sotilas sotilas7 = new Sotilas("valkoinen", lauta);
+        Sotilas sotilas7 = new Sotilas("valkoinen");
         lauta.aseta(sotilas7, koordinaatit);
 
         koordinaatit[0] = 4;
         koordinaatit[1] = 3;
-        Sotilas sotilas8 = new Sotilas("valkoinen", lauta);
+        Sotilas sotilas8 = new Sotilas("valkoinen");
         lauta.aseta(sotilas8, koordinaatit);
 
         koordinaatit[0] = 5;
@@ -98,12 +98,12 @@ public class RatsuTest {
         int[] koordinaatit = {0, 0};
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        Ratsu ratsu = new Ratsu("valkoinen", lauta);
+        Ratsu ratsu = new Ratsu("valkoinen");
         lauta.aseta(ratsu, koordinaatit);
 
         koordinaatit[0] = 5;
         koordinaatit[1] = 5;
-        Sotilas sotilas1 = new Sotilas("valkoinen", lauta);
+        Sotilas sotilas1 = new Sotilas("valkoinen");
         lauta.aseta(sotilas1, koordinaatit);
 
         assertFalse(Liikkuminen.koitaSiirtya(ratsu, koordinaatit, lauta));

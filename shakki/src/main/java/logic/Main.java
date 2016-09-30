@@ -17,8 +17,16 @@ import java.util.Scanner;
 import java.util.regex.*;
 import ui.*;
 
+/**
+ *
+ * @author oemkulma
+ */
 public class Main {
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         UI ui = new UI();
     }
