@@ -3,46 +3,59 @@ package logic;
 import components.Lauta;
 import components.Nappula;
 
+/**
+ * Luokka hoitaa kaiken laudalla liikkumisen, ja tarjoaa myös metodit jotka
+ * kertovat voisiko nappula liikkua tiettyyn ruutuun. *
+ * @author oemkulma
+ */
 public class Liikkuminen {
 
-    private static boolean siirry(int[] mista, int[] minne, Lauta lauta) {
-        Nappula nappula = lauta.getNappula(mista);
-        if (lauta.getNappula(minne).isEmpty()) {
-            lauta.aseta(nappula, minne);
-        } else {
-            if (lauta.getNappula(minne).getPuoli() == nappula.getPuoli()) {
-                System.out.println("Et voi syödä omaa nappulaasi");
-                return false;
-            } else {
-                lauta.syo(nappula, minne);
-            }
-        }
-        return true;
-    }
-
-    private static boolean eiOma(int[] mista, int[] minne, Lauta lauta) {
-        Nappula nappula = lauta.getNappula(mista);
-        if (!lauta.getNappula(minne).isEmpty()) {
-            if (lauta.getNappula(minne).getPuoli() == nappula.getPuoli()) {
-                return false;
-            }
-        }
-        return true;
-    }
-
+    /**
+     * Metodi koittaa siirtää annetussa ruudussa olevan nappulan annettuun
+     * kohderuutuun.
+     *
+     * @param mista lähtöruudun koordinaatit
+     * @param minne kohderuudun koordinaatit
+     * @param lauta lauta jolla nappula ja ruudut ovat
+     *
+     * @return onnistuiko siirto
+     */
     public static boolean koitaSiirtya(int[] mista, int[] minne, Lauta lauta) {
         Nappula nappula = lauta.getNappula(mista);
-        if(!voikoSiirtya(mista, minne, lauta)) {
+        if (!voikoSiirtya(mista, minne, lauta)) {
             return false;
         }
 
         return siirry(mista, minne, lauta);
     }
 
+    /**
+     *
+     * Metodi koittaa siirtää annetun nappulan annettuun kohderuutuun.
+     *
+     * @param nappula siirrettävä nappula
+     * @param minne kohderuudun koordinaatit
+     * @param lauta lauta jolla nappula ja ruudut ovat
+     *
+     * @return onnistuiko siirto
+     */
     public static boolean koitaSiirtya(Nappula nappula, int[] minne, Lauta lauta) {
         int[] mista = nappula.getKoordinaatit();
         return Liikkuminen.koitaSiirtya(mista, minne, lauta);
     }
+
+    
+    /**
+     *
+     * Metodi tarkistaa, onko annetussa ruudussa olevan nappulan annettuun
+     * kohderuutuun siirtäminen laillinen siirto.
+     *
+     * @param mista lähtöruudun koordinaatit
+     * @param minne kohderuudun koordinaatit
+     * @param lauta lauta jolla nappula ja ruudut ovat
+     *
+     * @return onko siirto laillinen
+     */
     public static boolean voikoSiirtya(int[] mista, int[] minne, Lauta lauta) {
         Nappula nappula = lauta.getNappula(mista);
         boolean voiko = false;
@@ -67,8 +80,43 @@ public class Liikkuminen {
 
         return voiko;
     }
+
+    /**
+     *
+     * Metodi tarkistaa, onko annetussa ruudussa olevan nappulan annettuun
+     * kohderuutuun siirtäminen laillinen siirto.
+     *
+     * @param nappula siirrettävä nappula
+     * @param minne kohderuudun koordinaatit
+     * @param lauta lauta jolla nappula ja ruudut ovat
+     *
+     * @return onko siirto laillinen
+     */
     public static boolean voikoSiirtya(Nappula nappula, int[] minne, Lauta lauta) {
         return voikoSiirtya(nappula.getKoordinaatit(), minne, lauta);
+    }
+
+    private static boolean siirry(int[] mista, int[] minne, Lauta lauta) {
+        Nappula nappula = lauta.getNappula(mista);
+        if (lauta.getNappula(minne).isEmpty()) {
+            lauta.aseta(nappula, minne);
+        } else if (lauta.getNappula(minne).getPuoli() == nappula.getPuoli()) {
+            System.out.println("Et voi syödä omaa nappulaasi");
+            return false;
+        } else {
+            lauta.syo(nappula, minne);
+        }
+        return true;
+    }
+
+    private static boolean eiOma(int[] mista, int[] minne, Lauta lauta) {
+        Nappula nappula = lauta.getNappula(mista);
+        if (!lauta.getNappula(minne).isEmpty()) {
+            if (lauta.getNappula(minne).getPuoli() == nappula.getPuoli()) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private static boolean kuningasVoikoLiikkua(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {

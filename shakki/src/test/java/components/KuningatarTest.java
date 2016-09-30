@@ -14,7 +14,7 @@ public class KuningatarTest {
         int[] koordinaatit = {0, 0};
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        Kuningatar kuningatar1 = new Kuningatar("valkoinen", lauta);
+        Kuningatar kuningatar1 = new Kuningatar("valkoinen");
         lauta.aseta(kuningatar1, koordinaatit);
 
         assertFalse(Liikkuminen.koitaSiirtya(kuningatar1, koordinaatit, lauta));
@@ -42,7 +42,7 @@ public class KuningatarTest {
         int[] koordinaatit = {0, 0};
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        Kuningatar kuningatar = new Kuningatar("valkoinen", lauta);
+        Kuningatar kuningatar = new Kuningatar("valkoinen");
         lauta.aseta(kuningatar, koordinaatit);
 
         assertFalse(Liikkuminen.koitaSiirtya(kuningatar, koordinaatit, lauta));
@@ -64,9 +64,9 @@ public class KuningatarTest {
         int[] koordinaatit = {0, 0};
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        Kuningatar kuningatar = new Kuningatar("valkoinen", lauta);
+        Kuningatar kuningatar = new Kuningatar("valkoinen");
         lauta.aseta(kuningatar, koordinaatit);
-        Lahetti lahetti2 = new Lahetti("musta", lauta);
+        Lahetti lahetti2 = new Lahetti("musta");
         koordinaatit[0] = 4;
         koordinaatit[1] = 5;
         lauta.aseta(lahetti2, koordinaatit);
@@ -82,9 +82,9 @@ public class KuningatarTest {
         int[] koordinaatit = {0, 0};
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        Kuningatar kuningatar = new Kuningatar("valkoinen", lauta);
+        Kuningatar kuningatar = new Kuningatar("valkoinen");
         lauta.aseta(kuningatar, koordinaatit);
-        Lahetti lahetti2 = new Lahetti("musta", lauta);
+        Lahetti lahetti2 = new Lahetti("musta");
         koordinaatit[0] = 5;
         koordinaatit[1] = 6;
         lauta.aseta(lahetti2, koordinaatit);
@@ -98,9 +98,9 @@ public class KuningatarTest {
         int[] koordinaatit = {0, 0};
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        Kuningatar kuningatar = new Kuningatar("valkoinen", lauta);
+        Kuningatar kuningatar = new Kuningatar("valkoinen");
         lauta.aseta(kuningatar, koordinaatit);
-        Lahetti lahetti2 = new Lahetti("valkoinen", lauta);
+        Lahetti lahetti2 = new Lahetti("valkoinen");
         koordinaatit[0] = 5;
         koordinaatit[1] = 6;
         lauta.aseta(lahetti2, koordinaatit);

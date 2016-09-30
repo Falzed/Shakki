@@ -15,7 +15,7 @@ public class SotilasTest {
         int[] koordinaatit = {0, 0};
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        Sotilas sotilas1 = new Sotilas("valkoinen", lauta);
+        Sotilas sotilas1 = new Sotilas("valkoinen");
         lauta.aseta(sotilas1, koordinaatit);
 
         koordinaatit[0] = 3;
@@ -34,7 +34,7 @@ public class SotilasTest {
         int[] koordinaatit = {0, 0};
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        Sotilas sotilas1 = new Sotilas("musta", lauta);
+        Sotilas sotilas1 = new Sotilas("musta");
         lauta.aseta(sotilas1, koordinaatit);
 
         koordinaatit[0] = 3;
@@ -53,15 +53,15 @@ public class SotilasTest {
         int[] koordinaatit = {0, 0};
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        Sotilas sotilas1 = new Sotilas("valkoinen", lauta);
+        Sotilas sotilas1 = new Sotilas("valkoinen");
         lauta.aseta(sotilas1, koordinaatit);
         koordinaatit[0] = 4;
         koordinaatit[1] = 5;
-        Sotilas sotilas2 = new Sotilas("musta", lauta);
+        Sotilas sotilas2 = new Sotilas("musta");
         lauta.aseta(sotilas2, koordinaatit);
         koordinaatit[0] = 3;
         koordinaatit[1] = 5;
-        Sotilas sotilas3 = new Sotilas("musta", lauta);
+        Sotilas sotilas3 = new Sotilas("musta");
         lauta.aseta(sotilas3, koordinaatit);
 
         koordinaatit[0] = 3;
@@ -79,15 +79,15 @@ public class SotilasTest {
         int[] koordinaatit = {0, 0};
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        Sotilas sotilas1 = new Sotilas("musta", lauta);
+        Sotilas sotilas1 = new Sotilas("musta");
         lauta.aseta(sotilas1, koordinaatit);
         koordinaatit[0] = 2;
         koordinaatit[1] = 3;
-        Sotilas sotilas2 = new Sotilas("valkoinen", lauta);
+        Sotilas sotilas2 = new Sotilas("valkoinen");
         lauta.aseta(sotilas2, koordinaatit);
         koordinaatit[0] = 3;
         koordinaatit[1] = 3;
-        Sotilas sotilas3 = new Sotilas("valkoinen", lauta);
+        Sotilas sotilas3 = new Sotilas("valkoinen");
         lauta.aseta(sotilas3, koordinaatit);
 
         koordinaatit[0] = 3;
@@ -105,7 +105,7 @@ public class SotilasTest {
         int[] koordinaatit = {0, 0};
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        Sotilas sotilas1 = new Sotilas("valkoinen", lauta);
+        Sotilas sotilas1 = new Sotilas("valkoinen");
         lauta.aseta(sotilas1, koordinaatit);
 
         koordinaatit[0] = 4;

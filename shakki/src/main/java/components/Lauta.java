@@ -1,21 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package components;
 
 import java.util.regex.Pattern;
 
 /**
- *
+ * Luokka toteuttaa shakkilaudan. Lauta tietää mikä nappula on missäkin ruudussa.
  * @author Oskari
  */
 public class Lauta {
 
-    private int leveys = 8;
-    private int pituus = 8;
-    private Nappula[][] nappulat = new Nappula[leveys][pituus];
+    private int leveys;
+    private int pituus;
+    private Nappula[][] nappulat;
+    
+    public Lauta() {   
+        this.leveys = 8;
+        this.pituus = 8;
+        nappulat = new Nappula[leveys][pituus];
+    }
+    public Lauta(int leveys, int pituus) {
+        this.leveys=leveys;
+        this.pituus=pituus;
+        nappulat = new Nappula[leveys][pituus];
+    }
 
     public Nappula getNappula(int[] koordinaatit) {
         return nappulat[koordinaatit[0]][koordinaatit[1]];
@@ -25,6 +31,10 @@ public class Lauta {
         int [] koordinaatit = parseAlgebraic(string);
         return getNappula(koordinaatit);
     }
+
+    /**
+     * Alustaa laudan jokaiseen ruutuun Tyhja-olion.
+     */
     public void alustaLauta() {
         int[] koordinaatit = {0, 0};
         Tyhja tyhja = new Tyhja();
@@ -35,6 +45,12 @@ public class Lauta {
         }
     }
 
+    /**
+     *  Metodi asettaa annetun nappulan tyhjään ruutuun.
+     * @param nappula laudalle asetettava nappula
+     * @param koordinaatit minne nappula asetetaan
+     * @return onnistuiko asetus
+     */
     public boolean aseta(Nappula nappula, int[] koordinaatit) {
         if (nappulat[koordinaatit[0]][koordinaatit[1]].isEmpty()) {
             nappulat[koordinaatit[0]][koordinaatit[1]] = nappula;
@@ -52,6 +68,12 @@ public class Lauta {
         return true;
     }
 
+    /**
+     *  Metodi siirtää nappulan toiseen ruutuun ja syö siinä olevan nappulan.
+     * @param nappula siirrettävä nappula
+     * @param koordinaatit ruutu missä nappula syö toisen nappulan
+     * @return onnistuiko siirto (ei voi syödä omaa)
+     */
     public boolean syo(Nappula nappula, int[] koordinaatit) {
         if (nappulat[koordinaatit[0]][koordinaatit[1]].isEmpty()) {
             System.out.println("Ruudussa ei ole syötävää nappulaa");
@@ -65,6 +87,11 @@ public class Lauta {
         return true;
     }
 
+    /**
+     * Printtaa laudan konsolille. Ei tällä hetkellä toimi kunnolla unicoden 
+     * kanssa, ja on muutenkin turha kun graafinen UI on olemassa.
+     * 
+     */
     public void printBoardState() {
         int[] koordinaatit = {0, 0};
         for (int i = 7; i >= 0; i--) {
@@ -77,6 +104,12 @@ public class Lauta {
         }
     }
 
+    /**
+     * Tulkitsee algebrallisen koordinaatin (esim d4) x,y koordinaateiksi 
+     * (esim 3,3).
+     * @param string algebralliset koordinaatit
+     * @return x,y koordinaatit
+     */
     public int[] parseAlgebraic(String string) {
         int[] koordinaatit = new int[2];
         koordinaatit[0] = string.charAt(0) - 97;
@@ -84,6 +117,14 @@ public class Lauta {
         return koordinaatit;
     }
 
+    /**
+     * Tulkitsee algebrallisen komennon siirron alku- ja loppukoordinaateiksi.
+     * Esim d2-d4 => ((3,1),(3,3)), d4 => ((3,1),(3,3)),
+     * Qxd4 => ((3,0),(3,3)) (syö jotain d4:stä)
+     * @param string annettu komento
+     * @param vuoro onko valkoisen vai mustan vuoro
+     * @return alku- ja loppukoordinaatit
+     */
     public int[][] parseCommand(String string, Nappula.Puoli vuoro) {
         Pattern pattern = Pattern.compile("[a-z][1-8]-[a-z][1-8]");
         int[][] startEndPoints = new int[2][2];
@@ -107,7 +148,7 @@ public class Lauta {
         return null;
     }
 
-    public int[][] parseSotilas(String string, Nappula.Puoli vuoro) {
+    private int[][] parseSotilas(String string, Nappula.Puoli vuoro) {
         int[][] startEndPoints = new int[2][2];
         int[] koordinaatit = new int[2];
         koordinaatit[0] = string.charAt(0) - 97;
@@ -141,7 +182,7 @@ public class Lauta {
         return startEndPoints;
     }
 
-    public int[][] parseSotilasSyonti(String string, Nappula.Puoli vuoro) {
+    private int[][] parseSotilasSyonti(String string, Nappula.Puoli vuoro) {
         int[] koordinaatit = parseAlgebraic(string.substring(1));
         int[][] startEndPoints = new int[2][2];
         startEndPoints[1] = koordinaatit;
