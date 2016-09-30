@@ -8,10 +8,10 @@ Toteutetaan shakkiohjelma jota voi pelata itseään (tai hotseat-tyylisesti tois
   * muttei laitonta
 * Peruutustoiminto
 * Siirtosarjan syöttö algebrallisella merkintätavalla (esim. 1. e4 e5 2. Nf3 Nc6)
+* Voi syöttää siirtosarjan (esim. 1. d4 d5 2. d4 e5 3. xe5 jne) ja jatkaa siitä pelaamista
 
 ###Varianttien lisäys
 * Voidaan lisätä tiedosto (luultavasti yksinkertainen tekstitiedosto, ehkä xml) joka kuvaa koko variantin tai esim. yksittäisen nappulatyypin liikkumissäännöt.
   * Mahdollisesti jonkinlainen käyttöliittymä tälle
 
-(Tällä hetkellä nappulat rajapinnalla eikä yli/aliluokilla koska olin tyhmä kun aloin koodata, syytän flunssaa)
 ![Luokkakaavio](/dokumentaatio/luokkakaavio.png)

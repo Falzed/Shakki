@@ -3,6 +3,12 @@ package logic;
 import components.Lauta;
 import components.Nappula;
 
+/**
+ * Luokka tarjoaa apumetodit jotka kertovat voiko aloitusruudusta kulkea ratsun
+ * lailla kohderuutuun.
+ *
+ * @author Oskari
+ */
 public class RatsuLiikkuminen {
 
     public static boolean oneTwo(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {

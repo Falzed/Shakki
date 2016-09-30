@@ -3,6 +3,11 @@ package logic;
 import components.Lauta;
 import components.Nappula;
 
+/**
+ *Luokka tarjoaa apumetodit jotka kertovat voiko aloitusruudusta kulkea 
+ * lähetin lailla kohderuutuun.
+ * @author Oskari
+ */
 public class VinottainLiikkuminen {
 
     public static boolean moveLeftDown(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {

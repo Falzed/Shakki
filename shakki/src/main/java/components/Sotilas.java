@@ -1,7 +1,7 @@
 package components;
 
 /**
- *
+ * Luokka toteuttaa standardishakin sotilaan. Korotus ja en passant puuttuvat vielä.
  * @author oemkulma
  */
 public class Sotilas extends Nappula {

@@ -2,12 +2,17 @@ package variants;
 
 import components.*;
 
+/**
+ * Luokka toteuttaa standardishakin.
+ * @author Oskari
+ */
 public class Standard implements Variant {
 
     public Standard() {
         
     }
 
+    @Override
     public void setUp() {
         lauta.alustaLauta();
 //        //System.out.println("alustettu");

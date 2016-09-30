@@ -1,6 +1,10 @@
 package variants;
 import components.*;
 
+/**
+ * Rajapinta shakkivarianteille.
+ * @author Oskari
+ */
 public interface Variant {
     Nappula.Puoli aloittaja = Nappula.Puoli.VALKOINEN;
     int laudanLeveys = 8;

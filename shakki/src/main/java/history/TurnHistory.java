@@ -3,19 +3,17 @@ package history;
 import java.util.LinkedList;
 import variants.*;
 
+/**
+ * Luokka toteuttaa laudan vuorohistorian.
+ * @author Oskari
+ */
 public class TurnHistory {
 
     private final LinkedList<Turn> history;
-    private final Variant variant;
 
-    public TurnHistory(Variant variant) {
-        this.history = new LinkedList<>();
-        this.variant = variant;
-    }
 
     public TurnHistory() {
         this.history = new LinkedList<>();
-        this.variant = new variants.Standard();
     }
 
     public void addTurn(Turn turn) {

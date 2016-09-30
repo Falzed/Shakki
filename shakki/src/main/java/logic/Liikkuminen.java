@@ -105,6 +105,13 @@ public class Liikkuminen {
         return true;
     }
 
+    /**
+     *
+     * @param mista aloitusruudun koordinaatit
+     * @param minne kohderuudun koordinaatit
+     * @param lauta jolla liikutaan
+     * @return onko kohde ruutu eri puolta kuin aloitusruudussa oleva nappula
+     */
     public static boolean eiOma(int[] mista, int[] minne, Lauta lauta) {
         Nappula nappula = lauta.getNappula(mista);
         if (!lauta.getNappula(minne).isEmpty()) {

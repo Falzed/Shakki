@@ -3,6 +3,11 @@ package logic;
 import components.Lauta;
 import components.Nappula;
 
+/**
+ *Luokka tarjoaa apumetodit jotka kertovat voiko aloitusruudusta kulkea 
+ * sotilas kohderuutuun.
+ * @author Oskari
+ */
 public class SotilasLiikkuminen {
 
     public static boolean sotilasVoikoLiikkua(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {

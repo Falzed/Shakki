@@ -9,7 +9,12 @@ import javax.swing.JButton;
 import logic.Game;
 
 /**
- * Luokka toteuttaa ohjelman graafisen käyttöliittymän.
+ * Luokka toteuttaa ohjelman graafisen käyttöliittymän. Siirrot syötetään laudan
+ * alapuolella olevaan tekstikenttään, joko muodossa (algebrallinen
+ * koordinaatti)-(algebrallinen koordinaatti) tai liikutettava nappula
+ * algebrallisessa notaatiossa ja pelkkä loppupiste (esim Qd6 siirtää
+ * kuningattaren d6:een). Sotilaalla syödessä lisätään x tällöin x komennon
+ * eteen.
  *
  * @author oemkulma
  */
@@ -17,6 +22,7 @@ public class UI extends javax.swing.JFrame {
 
     /**
      *
+     * @param peli
      */
     public UI(Game peli) {
         initComponents(peli);
@@ -1573,8 +1579,9 @@ public class UI extends javax.swing.JFrame {
         komentoKentta.setText("");
         komentoKentta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                peli.suoritaKomento(komentoKentta, historiaKentta);
+                peli.suoritaKomento(komentoKentta.getText());
                 historiaKentta.setText(peli.getTurnHistory().toString());
+                komentoKentta.setText("");
                 updateUI();
             }
         });
@@ -2000,6 +2007,7 @@ public class UI extends javax.swing.JFrame {
     public String getKomento() {
         return komentoKentta.getText();
     }
+
     public JLabel[] getLabels() {
         JLabel[] labels = new JLabel[64];
         labels[0] = a1label;
@@ -2221,7 +2229,6 @@ public class UI extends javax.swing.JFrame {
     private JLabel h8label;
 
     private javax.swing.JTextField komentoKentta;
-
 
     private javax.swing.JTextArea historiaKentta;
     private javax.swing.JScrollPane scrollpane;

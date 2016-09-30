@@ -3,6 +3,11 @@ package logic;
 import components.Lauta;
 import components.Nappula;
 
+/**
+ * Luokka tarjoaa apumetodit jotka kertovat voiko aloitusruudusta kulkea 
+ * tornin lailla kohderuutuun.
+ * @author Oskari
+ */
 public class OrtogonaalisestiLiikkuminen {
     public static boolean moveLeft(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
 //    private boolean moveLeft(int[] minne, String suunta) {

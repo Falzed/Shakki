@@ -43,6 +43,7 @@ public class Parser {
      * @param string annettu komento
      * @param vuoro onko valkoisen vai mustan vuoro
      * param lauta lauta jolla siirretään nappulaa
+     * @param lauta
      * @return alku- ja loppukoordinaatit
      */
     public static int[][] parseCommand(String string, Nappula.Puoli vuoro, Lauta lauta) {

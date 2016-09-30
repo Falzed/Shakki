@@ -1,5 +1,9 @@
 package history;
 
+/**
+ * Luokka toteuttaa yhden shakkivuoron (molempien pelaajien siirrot).
+ * @author Oskari
+ */
 public class Turn {
 
     private int turnNumber;
