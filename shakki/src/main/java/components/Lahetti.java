@@ -1,7 +1,7 @@
 package components;
 
 /**
- *
+ *Luokka toteuttaa standardishakin lähetin.
  * @author oemkulma
  */
 public class Lahetti extends Nappula {
@@ -11,7 +11,7 @@ public class Lahetti extends Nappula {
     private static char notaatioMerkki = 'B';
 
     /**
-     *Luokka toteuttaa standardishakin lähetin.
+     *
      * @param puoli   valkoinen vai musta  * 
      */
     public Lahetti(String puoli) {

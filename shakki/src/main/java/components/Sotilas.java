@@ -12,7 +12,7 @@ public class Sotilas extends Nappula {
 
     /**
      *
-     * @param puoli
+     * @param puoli valkoinen vai musta
      * 
      */
     public Sotilas(String puoli) {

@@ -37,9 +37,11 @@
                 <configuration>
                     <targetClasses>
                         <param>components.*</param>
+                        <param>logic.*</param>
                     </targetClasses>
                     <targetTests>
                         <param>components.*</param>
+                        <param>logic.*</param>
                     </targetTests>
                 </configuration>
             </plugin>
@@ -56,6 +58,11 @@
                 <artifactId>maven-jxr-plugin</artifactId>
                 <version>2.5</version>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.3</version>
+            </plugin> 
         </plugins>
     </build>
     

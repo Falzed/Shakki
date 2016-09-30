@@ -2407,7 +2407,7 @@ public class UI extends javax.swing.JFrame {
         komentoKentta.setText("");
         komentoKentta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                suoritaKomento();
+                vuoro = logic.Main.suoritaKomento(lauta, vuoro, komentoKentta);
                 updateUI();
             }
         });
@@ -2703,29 +2703,6 @@ public class UI extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     public static void main(String args[]) {
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-
-        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new UI(new Lauta()).setVisible(true);
-//            }
-//        });
         UI ui = new UI();
         ui.aja();
 
@@ -2865,36 +2842,37 @@ public class UI extends javax.swing.JFrame {
 
     /**
      *
+     * @return 
      */
-    public void suoritaKomento() {
-        int[][] startEndPoints = Parser.parseCommand(komentoKentta.getText(), vuoro, lauta);
-        if (startEndPoints == null) {
-            System.out.println("Laiton siirto");
-        } else {
-            if (startEndPoints[0][0] < 8 && startEndPoints[0][0] > -1 && startEndPoints[0][1] < 8 && startEndPoints[0][1] > -1) {
-                Nappula nappula = lauta.getNappula(startEndPoints[0]);
-                if (nappula.getPuoli() != vuoro) {
-                    System.out.println("Ruudussa ei nappulaasi");
-                }
-                if (Liikkuminen.koitaSiirtya(nappula, startEndPoints[1], lauta)) {
-                    if (vuoro == Nappula.Puoli.VALKOINEN) {
-                        vuoro = Nappula.Puoli.MUSTA;
-                    } else {
-                        vuoro = Nappula.Puoli.VALKOINEN;
-                    }
-                } else {
-                    System.out.print("(" + startEndPoints[0][0] + "," + startEndPoints[0][1] + ")");
-                    System.out.println("-(" + startEndPoints[1][0] + "," + startEndPoints[1][1] + ")");
-                    System.out.println("Laiton siirto");
-                }
-            } else {
-                System.out.println("ruutu "
-                        + "(koordinaatit {" + startEndPoints[0][0] + ","
-                        + startEndPoints[0][1] + "})" + " ei laudalla");
-            }
-        }
-        komentoKentta.setText("");
-    }
+//    public void suoritaKomento() {
+//        int[][] startEndPoints = Parser.parseCommand(komentoKentta.getText(), vuoro, lauta);
+//        if (startEndPoints == null) {
+//            System.out.println("Laiton siirto");
+//        } else {
+//            if (startEndPoints[0][0] < 8 && startEndPoints[0][0] > -1 && startEndPoints[0][1] < 8 && startEndPoints[0][1] > -1) {
+//                Nappula nappula = lauta.getNappula(startEndPoints[0]);
+//                if (nappula.getPuoli() != vuoro) {
+//                    System.out.println("Ruudussa ei nappulaasi");
+//                }
+//                if (Liikkuminen.koitaSiirtya(nappula, startEndPoints[1], lauta)) {
+//                    if (vuoro == Nappula.Puoli.VALKOINEN) {
+//                        vuoro = Nappula.Puoli.MUSTA;
+//                    } else {
+//                        vuoro = Nappula.Puoli.VALKOINEN;
+//                    }
+//                } else {
+//                    System.out.print("(" + startEndPoints[0][0] + "," + startEndPoints[0][1] + ")");
+//                    System.out.println("-(" + startEndPoints[1][0] + "," + startEndPoints[1][1] + ")");
+//                    System.out.println("Laiton siirto");
+//                }
+//            } else {
+//                System.out.println("ruutu "
+//                        + "(koordinaatit {" + startEndPoints[0][0] + ","
+//                        + startEndPoints[0][1] + "})" + " ei laudalla");
+//            }
+//        }
+//        komentoKentta.setText("");
+//    }
 
     public JLabel[] getLabels() {
         JLabel[] labels = new JLabel[64];

@@ -11,9 +11,9 @@ public class Kuningatar extends Nappula {
     private static char notaatioMerkki = 'Q';
 
     /**
+     *Luokka toteuttaa standardishakin kuningattaren.
+     * @param puoli onko kuningatar valkoinen vai musta
      *
-     * @param puoli
-     * @param lauta
      */
     public Kuningatar(String puoli) {
         super(puoli);

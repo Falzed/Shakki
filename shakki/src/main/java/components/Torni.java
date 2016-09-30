@@ -12,7 +12,7 @@ public class Torni extends Nappula {
 
     /**
      *
-     * @param puoli
+     * @param puoli puoli valkoinen vai musta
      */
     public Torni(String puoli) {
         super(puoli);

@@ -12,7 +12,7 @@ public class Ratsu extends Nappula {
 
     /**
      *
-     * @param puoli
+     * @param puoli valkoinen vai musta
      */
     public Ratsu(String puoli) {
         super(puoli);
