@@ -8,7 +8,7 @@ public class Nappula {
     }
     private Puoli puoli;
     private int[] sijainti = {-1, -1};
-    private Lauta lauta;
+    private static char notaatioMerkki;
 
     public Nappula(String puoli, Lauta lauta) {
         if (puoli.equals("valkoinen")) {
@@ -18,7 +18,6 @@ public class Nappula {
         } else {
             System.out.println("Puoli ei kelpaa tai puuttuu");
         }
-        this.lauta = lauta;
     }
 
     public Nappula() {
@@ -38,19 +37,32 @@ public class Nappula {
         return this.sijainti;
     }
 
-    public Lauta getLauta() {
-        return this.lauta;
-    }
-
     public boolean isEmpty() {
         return false;
     }
 
     public char getMerkki() {
-        return 'a';
+        return ' ';
+    }
+    public char getNotaatioMerkki() {
+        return notaatioMerkki;
     }
 
-    public boolean move(int[] koordinaatit) {
-        return false;
-    }
+//    public boolean koitaSiirtya(int[] koordinaatit, Lauta lauta) {
+//        return false;
+//    }
+
+//    public boolean siirry(int[] koordinaatit, Lauta lauta) {
+//        if (lauta.getNappula(koordinaatit).isEmpty()) {
+//            lauta.aseta(this, koordinaatit);
+//        } else {
+//            if (lauta.getNappula(koordinaatit).getPuoli() == getPuoli()) {
+//                System.out.println("Et voi syödä omaa nappulaasi");
+//                return false;
+//            } else {
+//                lauta.syo(this, koordinaatit);
+//            }
+//        }
+//        return true;
+//    }
 }

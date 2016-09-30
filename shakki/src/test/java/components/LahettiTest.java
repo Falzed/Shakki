@@ -3,6 +3,7 @@ package components;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
+import logic.Liikkuminen;
 
 public class LahettiTest {
 
@@ -18,34 +19,34 @@ public class LahettiTest {
 
         koordinaatit[0] = 5;
         koordinaatit[1] = 4;
-        assertFalse(lahetti1.move(koordinaatit));
+        assertFalse(Liikkuminen.koitaSiirtya(lahetti1, koordinaatit, lauta));
         koordinaatit[0] = 2;
         koordinaatit[1] = 4;
-        assertFalse(lahetti1.move(koordinaatit));
+        assertFalse(Liikkuminen.koitaSiirtya(lahetti1, koordinaatit, lauta));
         koordinaatit[0] = 3;
         koordinaatit[1] = 5;
-        assertFalse(lahetti1.move(koordinaatit));
+        assertFalse(Liikkuminen.koitaSiirtya(lahetti1, koordinaatit, lauta));
         koordinaatit[0] = 3;
         koordinaatit[1] = 3;
-        assertFalse(lahetti1.move(koordinaatit));
+        assertFalse(Liikkuminen.koitaSiirtya(lahetti1, koordinaatit, lauta));
         koordinaatit[0] = 4;
         koordinaatit[1] = 5;
-        assertTrue(lahetti1.move(koordinaatit));
+        assertTrue(Liikkuminen.koitaSiirtya(lahetti1, koordinaatit, lauta));
         koordinaatit[0] = 6;
         koordinaatit[1] = 7;
-        assertTrue(lahetti1.move(koordinaatit));
+        assertTrue(Liikkuminen.koitaSiirtya(lahetti1, koordinaatit, lauta));
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        assertTrue(lahetti1.move(koordinaatit));
+        assertTrue(Liikkuminen.koitaSiirtya(lahetti1, koordinaatit, lauta));
         koordinaatit[0] = 4;
         koordinaatit[1] = 3;
-        assertTrue(lahetti1.move(koordinaatit));
+        assertTrue(Liikkuminen.koitaSiirtya(lahetti1, koordinaatit, lauta));
         koordinaatit[0] = 6;
         koordinaatit[1] = 1;
-        assertTrue(lahetti1.move(koordinaatit));
+        assertTrue(Liikkuminen.koitaSiirtya(lahetti1, koordinaatit, lauta));
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        assertTrue(lahetti1.move(koordinaatit));
+        assertTrue(Liikkuminen.koitaSiirtya(lahetti1, koordinaatit, lauta));
     }
 
     @Test
@@ -63,7 +64,7 @@ public class LahettiTest {
         lauta.aseta(lahetti2, koordinaatit);
         koordinaatit[0] = 5;
         koordinaatit[1] = 6;
-        assertFalse(lahetti1.move(koordinaatit));
+        assertFalse(Liikkuminen.koitaSiirtya(lahetti1, koordinaatit, lauta));
     }
 
     @Test
@@ -79,6 +80,6 @@ public class LahettiTest {
         koordinaatit[0] = 5;
         koordinaatit[1] = 6;
         lauta.aseta(lahetti2, koordinaatit);
-        assertTrue(lahetti1.move(koordinaatit));
+        assertTrue(Liikkuminen.koitaSiirtya(lahetti1, koordinaatit, lauta));
     }
 }

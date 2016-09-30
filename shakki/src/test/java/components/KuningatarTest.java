@@ -3,6 +3,7 @@ package components;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
+import logic.Liikkuminen;
 
 public class KuningatarTest {
 
@@ -16,22 +17,22 @@ public class KuningatarTest {
         Kuningatar kuningatar1 = new Kuningatar("valkoinen", lauta);
         lauta.aseta(kuningatar1, koordinaatit);
 
-        assertFalse(kuningatar1.move(koordinaatit));
+        assertFalse(Liikkuminen.koitaSiirtya(kuningatar1, koordinaatit, lauta));
         koordinaatit[0] = 6;
         koordinaatit[1] = 7;
-        assertTrue(kuningatar1.move(koordinaatit));
+        assertTrue(Liikkuminen.koitaSiirtya(kuningatar1, koordinaatit, lauta));
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        assertTrue(kuningatar1.move(koordinaatit));
+        assertTrue(Liikkuminen.koitaSiirtya(kuningatar1, koordinaatit, lauta));
         koordinaatit[0] = 4;
         koordinaatit[1] = 3;
-        assertTrue(kuningatar1.move(koordinaatit));
+        assertTrue(Liikkuminen.koitaSiirtya(kuningatar1, koordinaatit, lauta));
         koordinaatit[0] = 6;
         koordinaatit[1] = 1;
-        assertTrue(kuningatar1.move(koordinaatit));
+        assertTrue(Liikkuminen.koitaSiirtya(kuningatar1, koordinaatit, lauta));
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
-        assertTrue(kuningatar1.move(koordinaatit));
+        assertTrue(Liikkuminen.koitaSiirtya(kuningatar1, koordinaatit, lauta));
     }
 
     @Test
@@ -44,16 +45,16 @@ public class KuningatarTest {
         Kuningatar kuningatar = new Kuningatar("valkoinen", lauta);
         lauta.aseta(kuningatar, koordinaatit);
 
-        assertFalse(kuningatar.move(koordinaatit));
+        assertFalse(Liikkuminen.koitaSiirtya(kuningatar, koordinaatit, lauta));
         koordinaatit[0] = 2;
         koordinaatit[1] = 4;
-        assertTrue(kuningatar.move(koordinaatit));
-        koordinaatit[0] = 2;
-        koordinaatit[1] = 6;
-        assertTrue(kuningatar.move(koordinaatit));
+        assertTrue(Liikkuminen.koitaSiirtya(kuningatar, koordinaatit, lauta));
+        koordinaatit[0] = 3;
+        koordinaatit[1] = 4;
+        assertTrue(Liikkuminen.koitaSiirtya(kuningatar, koordinaatit, lauta));
         koordinaatit[0] = 2;
         koordinaatit[1] = 3;
-        assertTrue(kuningatar.move(koordinaatit));
+        assertTrue(Liikkuminen.koitaSiirtya(kuningatar, koordinaatit, lauta));
     }
 
     @Test
@@ -71,7 +72,7 @@ public class KuningatarTest {
         lauta.aseta(lahetti2, koordinaatit);
         koordinaatit[0] = 5;
         koordinaatit[1] = 6;
-        assertFalse(kuningatar.move(koordinaatit));
+        assertFalse(Liikkuminen.koitaSiirtya(kuningatar, koordinaatit, lauta));
     }
 
     @Test
@@ -87,7 +88,7 @@ public class KuningatarTest {
         koordinaatit[0] = 5;
         koordinaatit[1] = 6;
         lauta.aseta(lahetti2, koordinaatit);
-        assertTrue(kuningatar.move(koordinaatit));
+        assertTrue(Liikkuminen.koitaSiirtya(kuningatar, koordinaatit, lauta));
     }
 
     @Test
@@ -103,6 +104,6 @@ public class KuningatarTest {
         koordinaatit[0] = 5;
         koordinaatit[1] = 6;
         lauta.aseta(lahetti2, koordinaatit);
-        assertFalse(kuningatar.move(koordinaatit));
+        assertFalse(Liikkuminen.koitaSiirtya(kuningatar, koordinaatit, lauta));
     }
 }

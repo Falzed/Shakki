@@ -2,8 +2,9 @@ package components;
 
 public class Ratsu extends Nappula {
 
-    public static char valkoinenMerkki = 'N';
-    public static char mustaMerkki = 'n';
+    public static char valkoinenMerkki = '\u2658';
+    public static char mustaMerkki = '\u265E';
+    private static char notaatioMerkki = 'N';
 
     public Ratsu(String puoli, Lauta lauta) {
         super(puoli, lauta);
@@ -14,48 +15,48 @@ public class Ratsu extends Nappula {
         getKoordinaatit()[0] = koordinaatit[0];
         getKoordinaatit()[1] = koordinaatit[1];
     }
-
     @Override
-    public boolean move(int[] koordinaatit) {
-        if (!oneTwo(koordinaatit)) {
-            return false;
-        }
-        return onkoTyhja(koordinaatit);
+    public char getNotaatioMerkki() {
+        return notaatioMerkki;
     }
-    private boolean onkoTyhja(int[] koordinaatit) {
-        if (!getLauta().getNappula(koordinaatit).isEmpty()) {
-            if (getLauta().getNappula(koordinaatit).getPuoli().equals(getPuoli())) {
-                return false;
-            } else {
-                getLauta().syo(this, koordinaatit);
-            }
-        } else {
-            getLauta().aseta(this, koordinaatit);
-        }
-        return true;
-    }
-
-    private boolean oneTwo(int[] koordinaatit) {
-        if (Math.abs(koordinaatit[0] - getKoordinaatit()[0]) == 1) {
-            if (Math.abs(koordinaatit[1] - getKoordinaatit()[1]) == 2) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        if (Math.abs(koordinaatit[0] - getKoordinaatit()[0]) == 2) {
-            if (Math.abs(koordinaatit[1] - getKoordinaatit()[1]) == 1) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        return false;
-    }
-
-    public boolean captureMove(int[] koordinaatit) {
-        return move(koordinaatit);
-    }
+ 
+//   @Override
+//    public boolean koitaSiirtya(int[] koordinaatit, Lauta lauta) {
+//        if (!oneTwo(koordinaatit)) {
+//            return false;
+//        }
+//        return siirry(koordinaatit, lauta);
+//    }
+//    private boolean onkoTyhja(int[] koordinaatit, Lauta lauta) {
+//        if (!lauta.getNappula(koordinaatit).isEmpty()) {
+//            if (lauta.getNappula(koordinaatit).getPuoli().equals(getPuoli())) {
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+//
+//    private boolean oneTwo(int[] koordinaatit) {
+//        if (Math.abs(koordinaatit[0] - getKoordinaatit()[0]) == 1) {
+//            if (Math.abs(koordinaatit[1] - getKoordinaatit()[1]) == 2) {
+//                return true;
+//            } else {
+//                return false;
+//            }
+//        }
+//        if (Math.abs(koordinaatit[0] - getKoordinaatit()[0]) == 2) {
+//            if (Math.abs(koordinaatit[1] - getKoordinaatit()[1]) == 1) {
+//                return true;
+//            } else {
+//                return false;
+//            }
+//        }
+//        return false;
+//    }
+//
+//    public boolean captureMove(int[] koordinaatit, Lauta lauta) {
+//        return koitaSiirtya(koordinaatit, lauta);
+//    }
 
     @Override
     public char getMerkki() {

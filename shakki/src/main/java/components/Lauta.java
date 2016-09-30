@@ -21,6 +21,10 @@ public class Lauta {
         return nappulat[koordinaatit[0]][koordinaatit[1]];
     }
 
+    public Nappula getNappula(String string) {
+        int [] koordinaatit = parseAlgebraic(string);
+        return getNappula(koordinaatit);
+    }
     public void alustaLauta() {
         int[] koordinaatit = {0, 0};
         Tyhja tyhja = new Tyhja();
@@ -108,15 +112,17 @@ public class Lauta {
         int[] koordinaatit = new int[2];
         koordinaatit[0] = string.charAt(0) - 97;
         koordinaatit[1] = string.charAt(1) - 49;
+//        System.out.println(startEndPoints[0][0]+","+startEndPoints[0][1]+"-"+startEndPoints[1][0]+","+startEndPoints[1][0]);
         int[] testKoord = new int[2];
 
         if (vuoro == Nappula.Puoli.VALKOINEN) {
+//            System.out.println((int) getNappula(testKoord).getMerkki());
             testKoord[0] = koordinaatit[0];
             testKoord[1] = koordinaatit[1] - 1;
             if (getNappula(testKoord).isEmpty()) {
                 testKoord[1] = koordinaatit[1] - 2;
             }
-            if (getNappula(testKoord).getMerkki() == 'P') {
+            if (getNappula(testKoord).getMerkki() == '\u2659') {
                 startEndPoints[1] = parseAlgebraic(string);
                 startEndPoints[0] = testKoord;
             }
@@ -127,7 +133,7 @@ public class Lauta {
             if (getNappula(testKoord).isEmpty()) {
                 testKoord[1] = koordinaatit[1] + 2;
             }
-            if (getNappula(testKoord).getMerkki() == 'p') {
+            if (getNappula(testKoord).getMerkki() == '\u265F') {
                 startEndPoints[1] = parseAlgebraic(string);
                 startEndPoints[0] = testKoord;
             }
@@ -147,7 +153,7 @@ public class Lauta {
 
             if (koordinaatit[0] > 0) {
                 testKoord[0] = koordinaatit[0] - 1;
-                if (getNappula(testKoord).getMerkki() == 'P') {
+                if (getNappula(testKoord).getMerkki() == '\u2659') {
                     startEndPoints[0][0] = testKoord[0];
                     startEndPoints[0][1] = testKoord[1];
                     n++;
@@ -155,7 +161,7 @@ public class Lauta {
             }
             if (koordinaatit[0] < 7) {
                 testKoord[0] = koordinaatit[0] + 1;
-                if (getNappula(testKoord).getMerkki() == 'P') {
+                if (getNappula(testKoord).getMerkki() == '\u2659') {
                     startEndPoints[0] = testKoord;
                     n++;
                 }
@@ -164,7 +170,7 @@ public class Lauta {
             testKoord[1] = koordinaatit[1] + 1;
             if (koordinaatit[0] > 0) {
                 testKoord[0] = koordinaatit[0] - 1;
-                if (getNappula(testKoord).getMerkki() == 'p') {
+                if (getNappula(testKoord).getMerkki() == '\u265F') {
                     startEndPoints[0][0] = testKoord[0];
                     startEndPoints[0][1] = testKoord[1];
                     n++;
@@ -172,7 +178,7 @@ public class Lauta {
             }
             if (koordinaatit[0] < 7) {
                 testKoord[0] = koordinaatit[0] + 1;
-                if (getNappula(testKoord).getMerkki() == 'p') {
+                if (getNappula(testKoord).getMerkki() == '\u265F') {
                     startEndPoints[0] = testKoord;
                     n++;
                 }
