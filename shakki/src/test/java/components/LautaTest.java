@@ -92,6 +92,7 @@ public class LautaTest {
         variants.Standard.setUp(lauta);
         int[] koord= {-3, 100};
         assertFalse(lauta.syo(lauta.getNappula("d1"), "z0"));
+        assertFalse(lauta.syo(lauta.getNappula("d1"), "d9"));
         assertFalse(lauta.syo(lauta.getNappula("d1"), koord));
     }
 }

@@ -32,11 +32,38 @@ public class TurnHistory {
         }
     }
 
+    public Turn getViimeinenVuoro() {
+        return history.getLast();
+    }
+
+    public int getVuoroNumero() {
+        if(history.size()==0) {
+            return 1;
+        }
+        if (history.getLast().isComplete()) {
+            return history.getLast().getTurnNumber() + 1;
+        }
+        return history.getLast().getTurnNumber();
+    }
+    
+    public static TurnHistory parseString(String string) {
+        TurnHistory retHistory = new TurnHistory();
+        String[] strings = string.split(Character.toString('\n'));
+        for(int i=0; i<strings.length; i++) {
+            Turn turn = new Turn(strings[i]);
+            retHistory.addTurn(turn);
+        }
+        return retHistory;
+    }
+
     @Override
     public String toString() {
         String string = "";
         for (Turn turn : history) {
-            string.concat(turn.toString());
+            string = string.concat(turn.toString());
+            if (turn.getTurnNumber() != history.getLast().getTurnNumber()) {
+                string = string.concat("\n");
+            }
         }
         return string;
     }

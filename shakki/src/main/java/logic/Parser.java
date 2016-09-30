@@ -17,15 +17,24 @@ public class Parser {
      * @return x,y koordinaatit
      */
     public static int[] parseAlgebraic(String string) {
-        Pattern pattern = Pattern.compile("[a-z][1-8]*");
-        if(!pattern.matcher(string).matches()) {
-            return null;
-        }
+//        Pattern pattern = Pattern.compile("[a-z][1-8]");
+//        if(!pattern.matcher(string).matches()) {
+//            return null;
+//        }
         int[] koordinaatit = new int[2];
         koordinaatit[0] = string.charAt(0) - 97;
         koordinaatit[1] = string.charAt(1) - 49;
         return koordinaatit;
     }
+    
+//    private static String parseFirstPart(String string) {
+//        String ret = "";
+//        for(int i=0; i<string.length(); i++) {
+//            if(string.charAt(i)>96 && string.charAt(i)<123) {
+//                ret = ret.concat(Character.toString(string.charAt(i)));
+//            }
+//        }
+//    }
 
     /**
      * Tulkitsee algebrallisen komennon siirron alku- ja loppukoordinaateiksi.
@@ -41,7 +50,9 @@ public class Parser {
         int[][] startEndPoints = new int[2][2];
         if (pattern.matcher(string).matches()) {
             startEndPoints[0] = parseAlgebraic(string);
+            System.out.println(startEndPoints[0]);
             startEndPoints[1] = parseAlgebraic(string.substring(3));
+            System.out.println(startEndPoints[0]);
             return startEndPoints;
         }
         Pattern sotilas = Pattern.compile("[a-z][1-8]");

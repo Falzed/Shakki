@@ -1,5 +1,8 @@
-package components;
+package logic;
 
+import components.Lauta;
+import components.Nappula;
+import components.Torni;
 import org.junit.Test;
 import logic.Liikkuminen;
 import org.junit.Assert;

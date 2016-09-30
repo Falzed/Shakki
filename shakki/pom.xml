@@ -38,10 +38,14 @@
                     <targetClasses>
                         <param>components.*</param>
                         <param>logic.*</param>
+                        <param>history.*</param>
+                        <param>variants.*</param>
                     </targetClasses>
                     <targetTests>
                         <param>components.*</param>
                         <param>logic.*</param>
+                        <param>history.*</param>
+                        <param>variants.*</param>
                     </targetTests>
                 </configuration>
             </plugin>

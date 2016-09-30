@@ -58,7 +58,7 @@ public class Lauta {
      */
     public boolean aseta(Nappula nappula, int[] koordinaatit) {
         if (koordinaatit[0] < 0 || koordinaatit[0] >= leveys
-                || koordinaatit[1] < 0 || koordinaatit[0] >= pituus) {
+                || koordinaatit[1] < 0 || koordinaatit[1] >= pituus) {
             return false;
         }
         if (nappulat[koordinaatit[0]][koordinaatit[1]].isEmpty()) {
@@ -83,7 +83,7 @@ public class Lauta {
             return false;
         }
         if (koordinaatit[0] < 0 || koordinaatit[0] >= leveys
-                || koordinaatit[1] < 0 || koordinaatit[0] >= pituus) {
+                || koordinaatit[1] < 0 || koordinaatit[1] >= pituus) {
             return false;
         }
         return aseta(nappula, koordinaatit);
