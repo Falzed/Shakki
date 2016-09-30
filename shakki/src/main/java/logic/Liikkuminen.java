@@ -39,6 +39,9 @@ public class Liikkuminen {
      * @return onnistuiko siirto
      */
     public static boolean koitaSiirtya(Nappula nappula, int[] minne, Lauta lauta) {
+        if (nappula.isEmpty()) {
+            return false;
+        }
         int[] mista = nappula.getKoordinaatit();
         return Liikkuminen.koitaSiirtya(mista, minne, lauta);
     }
@@ -54,6 +57,9 @@ public class Liikkuminen {
      * @return onko siirto laillinen
      */
     public static boolean voikoSiirtya(int[] mista, int[] minne, Lauta lauta) {
+        if (lauta.getNappula(mista).isEmpty()) {
+            return false;
+        }
         Nappula nappula = lauta.getNappula(mista);
         boolean voiko = false;
         if (nappula.getMerkki() == '\u2655' || nappula.getMerkki() == '\u265B') {

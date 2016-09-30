@@ -26,7 +26,7 @@ public class Parser {
         koordinaatit[1] = string.charAt(1) - 49;
         return koordinaatit;
     }
-    
+
 //    private static String parseFirstPart(String string) {
 //        String ret = "";
 //        for(int i=0; i<string.length(); i++) {
@@ -35,14 +35,14 @@ public class Parser {
 //            }
 //        }
 //    }
-
     /**
      * Tulkitsee algebrallisen komennon siirron alku- ja loppukoordinaateiksi.
-     * Esim d2-d4 =&gt; ((3,1),(3,3)), d4 =&gt;((3,1),(3,3)),
-     * Qxd4 =&gt; ((3,0),(3,3)) (syö jotain d4:stä)
+     * Esim d2-d4 =&gt; ((3,1),(3,3)), d4 =&gt;((3,1),(3,3)), Qxd4 =&gt;
+     * ((3,0),(3,3)) (syö jotain d4:stä)
+     *
      * @param string annettu komento
-     * @param vuoro onko valkoisen vai mustan vuoro
-     * param lauta lauta jolla siirretään nappulaa
+     * @param vuoro onko valkoisen vai mustan vuoro param lauta lauta jolla
+     * siirretään nappulaa
      * @param lauta
      * @return alku- ja loppukoordinaatit
      */
@@ -158,10 +158,10 @@ public class Parser {
     private static int[][] parseUpseeri(String string, Nappula.Puoli vuoro, Lauta lauta) {
         char notaatio = string.charAt(0);
         int[] koordinaatit = parseAlgebraic(string.substring(1));
-        System.out.println(koordinaatit[0]+","+koordinaatit[1]);
+        System.out.println(koordinaatit[0] + "," + koordinaatit[1]);
         int[][] startEndPoints = new int[2][2];
         startEndPoints[1] = koordinaatit;
-        System.out.println(startEndPoints[1][0]+","+startEndPoints[1][1]);
+        System.out.println(startEndPoints[1][0] + "," + startEndPoints[1][1]);
         int[] testKoord = new int[2];
         int n = 0;
         Nappula nappula;
@@ -186,7 +186,7 @@ public class Parser {
         if (n == 0) {
             return null;
         }
-        System.out.println(startEndPoints[1][0]+","+startEndPoints[1][1]);
+        System.out.println(startEndPoints[1][0] + "," + startEndPoints[1][1]);
         return startEndPoints;
     }
 }

@@ -128,6 +128,13 @@ public class Lauta {
         }
         return syo(nappula, koordinaatit);
     }
+    
+    public int getLeveys() {
+        return leveys;
+    }
+    public int getPituus() {
+        return pituus;
+    }
 
     /**
      * Printtaa laudan konsolille. Ei tällä hetkellä toimi kunnolla unicoden

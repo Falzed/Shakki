@@ -6,16 +6,16 @@ import components.*;
  * @author Oskari
  */
 public interface Variant {
-    Nappula.Puoli aloittaja = Nappula.Puoli.VALKOINEN;
-    int laudanLeveys = 8;
-    int laudanPituus = 8;
-    Lauta lauta = new Lauta(laudanLeveys, laudanPituus);
+    Nappula.Puoli ALOITTAJA = Nappula.Puoli.VALKOINEN;
+    int LAUDAN_LEVEYS = 8;
+    int LAUDAN_PITUUS = 8;
+    Lauta LAUTA = new Lauta(LAUDAN_LEVEYS, LAUDAN_PITUUS);
     public void setUp();
     
     default public Lauta getLauta() {
-        return lauta;
+        return LAUTA;
     }
     default public Nappula.Puoli getAloittaja() {
-        return aloittaja;
+        return ALOITTAJA;
     }
 }

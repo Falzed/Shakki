@@ -4,7 +4,7 @@ import history.Turn;
 import history.TurnHistory;
 
 
-public class genericDebugger {
+public class GenericDebugger {
     public static void main(String[] args) {
         String vertaus = "1. d4 d5\n"
                 + "2. c4 e5\n"

@@ -5,12 +5,12 @@ import variants.*;
 
 /**
  * Luokka toteuttaa laudan vuorohistorian.
+ *
  * @author Oskari
  */
 public class TurnHistory {
 
     private final LinkedList<Turn> history;
-
 
     public TurnHistory() {
         this.history = new LinkedList<>();
@@ -35,7 +35,7 @@ public class TurnHistory {
     }
 
     public int getVuoroNumero() {
-        if(history.size()==0) {
+        if (history.size() == 0) {
             return 1;
         }
         if (history.getLast().isComplete()) {
@@ -43,11 +43,11 @@ public class TurnHistory {
         }
         return history.getLast().getTurnNumber();
     }
-    
+
     public static TurnHistory parseString(String string) {
         TurnHistory retHistory = new TurnHistory();
         String[] strings = string.split(Character.toString('\n'));
-        for(int i=0; i<strings.length; i++) {
+        for (int i = 0; i < strings.length; i++) {
             Turn turn = new Turn(strings[i]);
             retHistory.addTurn(turn);
         }
