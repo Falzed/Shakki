@@ -9,6 +9,10 @@ import logic.Liikkuminen;
 import logic.Parser;
 import logic.Shakitus;
 
+/**
+ * Luokka on vain main-metodi minne tulee välillä työnnettyä bugista koodia ajettavaksi.
+ * @author Oskari
+ */
 public class GenericDebugger {
 
     public static void main(String[] args) {

@@ -112,10 +112,10 @@ public class Shakitus {
     public static boolean shakissa(Lauta lauta, Nappula.Puoli puoli) {
         for (int i = 0; i < lauta.getLeveys(); i++) {
             for (int j = 0; j < lauta.getPituus(); j++) {
-                int[] mista = {i, j};
-                if (lauta.getNappula(mista).getPuoli() == puoli
-                        && lauta.getNappula(mista).getNotaatioMerkki() == 'K') {
-                    return Shakitus.uhattu(lauta, mista, puoli);
+                int[] koordinaatit = {i, j};
+                if (lauta.getNappula(koordinaatit).getPuoli() == puoli
+                        && lauta.getNappula(koordinaatit).getNotaatioMerkki() == 'K') {
+                    return Shakitus.uhattu(lauta, koordinaatit, puoli);
                 }
             }
         }
