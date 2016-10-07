@@ -15,8 +15,14 @@ public class Nappula {
      */
     public enum Puoli {
 
+        /**
+         * valkoinen.
+         */
         VALKOINEN,
 
+        /**
+         * musta.
+         */
         MUSTA,
 
         /**
@@ -69,35 +75,74 @@ public class Nappula {
         return kopio;
     }
 
+    /**
+     * getteri.
+     * @return puoli
+     */
     public Puoli getPuoli() {
         return puoli;
     }
 
+    /**
+     * setteri.
+     * @param koordinaatit koordinaatit
+     */
     public void asetaKoordinaatit(int[] koordinaatit) {
         this.sijainti[0] = koordinaatit[0];
         this.sijainti[1] = koordinaatit[1];
     }
 
+    /**
+     * getteri.
+     * @return koordinaatit
+     */
     public int[] getKoordinaatit() {
         return this.sijainti;
     }
+
+    /**
+     * Onko tyhjä vai ei, ei ole.
+     * @return false
+     */
     public boolean isEmpty() {
         return false;
     }
+
+    /**
+     * getteri.
+     * @return merkki
+     */
     public char getMerkki() {
         return ' ';
     }
 
+    /**
+     * getteri.
+     * @return onko liikkunut
+     */
     public boolean onkoLiikkunut() {
         return liikkunut;
     }
+
+    /**
+     * setteri.
+     */
     public void setLiikkunut() {
         this.liikkunut = true;
     }
+
+    /**
+     * getteri.
+     * @return notaatiomerkki
+     */
     public char getNotaatioMerkki() {
         return notaatioMerkki;
     }
     
+    /**
+     * Onko sotilas, ei ole.
+     * @return false
+     */
     public boolean onSotilas() {
         return false;
     }

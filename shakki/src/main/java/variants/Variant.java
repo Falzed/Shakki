@@ -46,6 +46,10 @@ public interface Variant {
      */
     public void setUp();
 
+    /**
+     *
+     * @return
+     */
     default public Lauta getLauta() {
         if (LAUTOJEN_MAARA == 1) {
             return LAUTA;
@@ -54,6 +58,10 @@ public interface Variant {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     default public Nappula.Puoli getAloittaja() {
         return ALOITTAJA;
     }

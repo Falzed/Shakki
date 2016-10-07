@@ -106,20 +106,33 @@ public class Game {
         }
     }
 
+    /**
+     * getteri.
+     * @return lauta
+     */
     public Lauta getLauta() {
         return lauta;
     }
 
+    /**
+     * getteri.
+     * @return historia
+     */
     public TurnHistory getTurnHistory() {
         return historia;
     }
 
+    /**
+     * getteri.
+     * @return vuoro
+     */
     public Nappula.Puoli getVuoro() {
         return vuoro;
     }
 
     /**
      * Pääohjelma.
+     *
      * @param args eivät tee mitään
      */
     public static void main(String[] args) {
@@ -134,60 +147,6 @@ public class Game {
         Nappula.Puoli vuoro = Nappula.Puoli.VALKOINEN;
 
     }
-//
-//    public static Object[] suoritaKomento(Lauta lauta, Nappula.Puoli vuoro, JTextField komentoKentta, JTextArea historiaKentta, TurnHistory historia) {
-//        int[][] startEndPoints = Parser.parseCommand(komentoKentta.getText(), vuoro, lauta);
-//        if (startEndPoints == null) {
-//            System.out.println("Laiton siirto");
-//        } else {
-//            if (startEndPoints[0] == null) {
-//                int[] start = {0, 0};
-//                startEndPoints[0] = start;
-//                return startEndPoints;
-//            }
-//            if (startEndPoints[1] == null) {
-//                return null;
-//            }
-//            if (startEndPoints[0][0] < 8 && startEndPoints[0][0] > -1 && startEndPoints[0][1] < 8 && startEndPoints[0][1] > -1) {
-//                Nappula nappula = lauta.getNappula(startEndPoints[0]);
-//                if (nappula.getPuoli() != vuoro) {
-//                    System.out.println("Ruudussa ei nappulaasi");
-//                }
-//                if (Liikkuminen.koitaSiirtya(nappula, startEndPoints[1], lauta)) {
-//                    if (vuoro == Nappula.Puoli.VALKOINEN) {
-//                        vuoro = Nappula.Puoli.MUSTA;
-//                    } else {
-//                        vuoro = Nappula.Puoli.VALKOINEN;
-//                    }
-//                    if (!historia.getList().isEmpty()) {
-//                        if (historia.getViimeinenVuoro().isComplete()) {
-//                            historia.addTurn(new Turn(historia.getVuoroNumero(), komentoKentta.getText(), ""));
-//                        } else {
-//                            if (historia.getViimeinenVuoro().getWhiteMove().isEmpty()) {
-//                                historia.getViimeinenVuoro().setWhiteMove(komentoKentta.getText());
-//                            } else if (historia.getViimeinenVuoro().getBlackMove().isEmpty()) {
-//                                historia.getViimeinenVuoro().setBlackMove(komentoKentta.getText());
-//                            }
-//                        }
-//                    } else {
-//                        historia.addTurn(new Turn(historia.getVuoroNumero(), komentoKentta.getText(), ""));
-//                    }
-//                } else {
-//                    System.out.print("(" + startEndPoints[0][0] + "," + startEndPoints[0][1] + ")");
-//                    System.out.println("-(" + startEndPoints[1][0] + "," + startEndPoints[1][1] + ")");
-//                    System.out.println("Laiton siirto");
-//                }
-//            } else {
-//                System.out.println("ruutu "
-//                        + "(koordinaatit {" + startEndPoints[0][0] + ","
-//                        + startEndPoints[0][1] + "})" + " ei laudalla");
-//            }
-//        }
-//        komentoKentta.setText("");
-//        historiaKentta.setText(historia.toString());
-//        Object[] returnVal = {vuoro, historia};
-//        return returnVal;
-//    }
 
     /**
      * Metodi muuttaa pelin vuorohistorian käyttäjän syöttämäksi. Ei tällä

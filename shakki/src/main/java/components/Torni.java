@@ -6,9 +6,9 @@ package components;
  */
 public class Torni extends Nappula {
 
-    private static char valkoinenMerkki = '\u2656';
-    private static char mustaMerkki = '\u265C';
-    private static char notaatioMerkki = 'R';
+    private static final char VALKOINENMERKKI = '\u2656';
+    private static final char MUSTAMERKKI = '\u265C';
+    private static final char NOTAATIOMERKKI = 'R';
 
     /**
      * Konstruktori, kutsuu vain Nappula-luokan konstruktoria. Puoli stringinä.
@@ -27,16 +27,16 @@ public class Torni extends Nappula {
 
     @Override
     public char getNotaatioMerkki() {
-        return notaatioMerkki;
+        return NOTAATIOMERKKI;
     }
 
     @Override
     public char getMerkki() {
         if (getPuoli().equals(Puoli.VALKOINEN)) {
-            return valkoinenMerkki;
+            return VALKOINENMERKKI;
         }
         if (getPuoli().equals(Puoli.MUSTA)) {
-            return mustaMerkki;
+            return MUSTAMERKKI;
         }
         return super.getMerkki();
     }

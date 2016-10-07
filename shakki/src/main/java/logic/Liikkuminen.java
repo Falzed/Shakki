@@ -45,6 +45,7 @@ public class Liikkuminen {
      * @param nappula siirrettävä nappula
      * @param minne kohderuudun koordinaatit
      * @param lauta lauta jolla nappula ja ruudut ovat
+     * @param puoli
      * @param enPassant ruutu, josta voi ohesta lyöda sotilaan (jos oma sotilas
      * oikeassa paikassa)
      *
@@ -88,8 +89,8 @@ public class Liikkuminen {
     }
 
     /**
-     * Metodi koittaa siirtää annetun nappulan annettuun kohderuutuun.
-     * Ei huomioi siirrytäänkö shakkiin.
+     * Metodi koittaa siirtää annetun nappulan annettuun kohderuutuun. Ei
+     * huomioi siirrytäänkö shakkiin.
      *
      * @param nappula siirrettävä nappula
      * @param minne kohderuudun koordinaatit
@@ -107,8 +108,8 @@ public class Liikkuminen {
     }
 
     /**
-     * Metodi koittaa siirtää annetun nappulan annettuun kohderuutuun.
-     * Ei huomioi siirrytäänkö shakkiin, ja olettaa ettei voi ohestalyödä. 
+     * Metodi koittaa siirtää annetun nappulan annettuun kohderuutuun. Ei
+     * huomioi siirrytäänkö shakkiin, ja olettaa ettei voi ohestalyödä.
      *
      * @param nappula siirrettävä nappula
      * @param minne kohderuudun koordinaatit
@@ -125,6 +126,7 @@ public class Liikkuminen {
 
     /**
      * Metodi suorittaa ohestalyönnin.
+     *
      * @param nappula ohestalyövä sotilas
      * @param minne ohestalyötävän sotilaan koordinaatit
      * @param lauta lauta jolla sotilaat ovat
@@ -350,6 +352,7 @@ public class Liikkuminen {
         }
         return eiOma(mista, minne, lauta);
     }
+
     private static boolean kuningasVoikoLiikkuaTornittamatta(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
         if (Math.abs(minne[0] - mista[0]) > 1) {
             return false;
@@ -369,7 +372,7 @@ public class Liikkuminen {
         if (Math.abs(minne[0] - mista[0]) != 2) {
             return false;
         }
-        if(Shakitus.shakissa(lauta, puoli)) {
+        if (Shakitus.shakissa(lauta, puoli)) {
             return false;
         }
         Nappula torni = new Nappula();
@@ -379,7 +382,7 @@ public class Liikkuminen {
             for (int i = 0; i < 3; i++) {
                 int[] koordinaatit = {mista[0] + i, minne[1]};
                 if (Shakitus.uhattu(lauta, koordinaatit, puoli)
-                        || (!lauta.getNappula(koordinaatit).isEmpty() && i!=0)) {
+                        || (!lauta.getNappula(koordinaatit).isEmpty() && i != 0)) {
 //                    System.out.println(Arrays.toString(koordinaatit));
 //                    System.out.println("Shakissa: "+Shakitus.uhattu(lauta, koordinaatit, kuningas.getPuoli()));
 //                    System.out.println("Ei tyhjä: "+!lauta.getNappula(koordinaatit).isEmpty());
@@ -394,7 +397,7 @@ public class Liikkuminen {
             for (int i = 0; i < 3; i++) {
                 int[] koordinaatit = {mista[0] - i, minne[1]};
                 if (Shakitus.uhattu(lauta, koordinaatit, puoli)
-                        || (!lauta.getNappula(koordinaatit).isEmpty() && i!=0)) {
+                        || (!lauta.getNappula(koordinaatit).isEmpty() && i != 0)) {
                     return false;
                 }
             }

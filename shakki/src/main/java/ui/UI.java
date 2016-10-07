@@ -2011,10 +2011,18 @@ public class UI extends javax.swing.JFrame {
         h8label.setText(Character.toString(peli.getLauta().getNappula("h8").getMerkki()));
     }
 
+    /**
+     *
+     * @return
+     */
     public String getKomento() {
         return komentoKentta.getText();
     }
 
+    /**
+     *
+     * @return
+     */
     public JLabel[] getLabels() {
         JLabel[] labels = new JLabel[64];
         labels[0] = a1label;

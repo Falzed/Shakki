@@ -6,9 +6,9 @@ package components;
  */
 public class Sotilas extends Nappula {
 
-    private static char valkoinenMerkki = '\u2659';
-    private static char mustaMerkki = '\u265F';
-    private static char notaatioMerkki = ' ';
+    private static final char VALKOINENMERKKI = '\u2659';
+    private static final char MUSTAMERKKI = '\u265F';
+    private static final char NOTAATIOMERKKI = ' ';
 
     /**
      * Konstruktori, kutsuu vain Nappula-luokan konstruktoria. Puoli stringinä.
@@ -27,16 +27,16 @@ public class Sotilas extends Nappula {
     
     @Override
     public char getNotaatioMerkki() {
-        return notaatioMerkki;
+        return NOTAATIOMERKKI;
     }
 
     @Override
     public char getMerkki() {
         if (getPuoli().equals(Puoli.VALKOINEN)) {
-            return valkoinenMerkki;
+            return VALKOINENMERKKI;
         }
         if (getPuoli().equals(Puoli.MUSTA)) {
-            return mustaMerkki;
+            return MUSTAMERKKI;
         }
         return super.getMerkki();
     }
@@ -48,6 +48,10 @@ public class Sotilas extends Nappula {
         return kopio;
     }
     
+    /**
+     * Onko sotilas (on).
+     * @return true
+     */
     @Override
     public boolean onSotilas() {
         return true;

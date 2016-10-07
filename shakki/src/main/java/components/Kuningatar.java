@@ -7,9 +7,9 @@ package components;
  */
 public class Kuningatar extends Nappula {
 
-    private static char valkoinenMerkki = '\u2655';
-    private static char mustaMerkki = '\u265B';
-    private static char notaatioMerkki = 'Q';
+    private static final char VALKOINENMERKKI = '\u2655';
+    private static final char MUSTAMERKKI = '\u265B';
+    private static final char NOTAATIOMERKKI = 'Q';
 
     /**
      * Konstruktori, kutsuu vain Nappula-luokan konstruktoria. Puoli stringinä.
@@ -23,6 +23,7 @@ public class Kuningatar extends Nappula {
 
     /**
      * Konstruktori, kutsuu vain Nappula-luokan konstruktoria. Puoli enumina.
+     *
      * @param puoli valkoinen/musta
      */
     public Kuningatar(Nappula.Puoli puoli) {
@@ -32,22 +33,17 @@ public class Kuningatar extends Nappula {
     @Override
     public char getMerkki() {
         if (getPuoli().equals(Puoli.VALKOINEN)) {
-            return valkoinenMerkki;
+            return VALKOINENMERKKI;
         }
         if (getPuoli().equals(Puoli.MUSTA)) {
-            return mustaMerkki;
+            return MUSTAMERKKI;
         }
         return super.getMerkki();
     }
-
-    /**
-     *
-     * @return Kuningattaren merkki (englanninkielisessä) algebrallisessa
-     * notaatiossa
-     */
+    
     @Override
     public char getNotaatioMerkki() {
-        return notaatioMerkki;
+        return NOTAATIOMERKKI;
     }
 
     @Override

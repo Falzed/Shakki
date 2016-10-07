@@ -6,9 +6,9 @@ package components;
  */
 public class Lahetti extends Nappula {
 
-    private static char valkoinenMerkki = '\u2657';
-    private static char mustaMerkki = '\u265D';
-    private static char notaatioMerkki = 'B';
+    private static final char VALKOINENMERKKI = '\u2657';
+    private static final char MUSTAMERKKI = '\u265D';
+    private static final char NOTAATIOMERKKI = 'B';
 
     /**
      *Konstruktori, kutsuu vain Nappula-luokan konstruktoria. Puoli stringinä.
@@ -25,20 +25,19 @@ public class Lahetti extends Nappula {
     public Lahetti(Nappula.Puoli puoli) {
         super(puoli);
     }
+
     @Override
     public char getNotaatioMerkki() {
-        return notaatioMerkki;
+        return NOTAATIOMERKKI;
     }
-
-
 
     @Override
     public char getMerkki() {
         if (getPuoli().equals(Puoli.VALKOINEN)) {
-            return valkoinenMerkki;
+            return VALKOINENMERKKI;
         }
         if (getPuoli().equals(Puoli.MUSTA)) {
-            return mustaMerkki;
+            return MUSTAMERKKI;
         }
         return super.getMerkki();
     }

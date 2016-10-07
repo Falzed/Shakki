@@ -39,6 +39,10 @@ public class TurnHistory {
         this.history.add(turn);
     }
 
+    /**
+     * getteri.
+     * @return lista
+     */
     public LinkedList<Turn> getList() {
         return this.history;
     }
@@ -54,10 +58,18 @@ public class TurnHistory {
         }
     }
 
+    /**
+     * getteri.
+     * @return viimeinen vuoro
+     */
     public Turn getViimeinenVuoro() {
         return history.getLast();
     }
 
+    /**
+     * getteri.
+     * @return vuoronumero
+     */
     public int getVuoroNumero() {
         if (history.size() == 0) {
             return 1;

@@ -6,9 +6,9 @@ package components;
  */
 public class Ratsu extends Nappula {
 
-    private static char valkoinenMerkki = '\u2658';
-    private static char mustaMerkki = '\u265E';
-    private static char notaatioMerkki = 'N';
+    private static final char VALKOINENMERKKI = '\u2658';
+    private static final char MUSTAMERKKI = '\u265E';
+    private static final char NOTAATIOMERKKI = 'N';
 
     /**
      * Konstruktori, kutsuu vain Nappula-luokan konstruktoria. Puoli stringinä.
@@ -33,16 +33,16 @@ public class Ratsu extends Nappula {
     
     @Override
     public char getNotaatioMerkki() {
-        return notaatioMerkki;
+        return NOTAATIOMERKKI;
     }
 
     @Override
     public char getMerkki() {
         if (getPuoli().equals(Puoli.VALKOINEN)) {
-            return valkoinenMerkki;
+            return VALKOINENMERKKI;
         }
         if (getPuoli().equals(Puoli.MUSTA)) {
-            return mustaMerkki;
+            return MUSTAMERKKI;
         }
         return super.getMerkki();
     }

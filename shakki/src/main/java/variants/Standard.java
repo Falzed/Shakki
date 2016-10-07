@@ -79,6 +79,10 @@ public class Standard implements Variant {
         }
     }
 
+    /**
+     *
+     * @param lauta
+     */
     public static void setUp(Lauta lauta) {
         lauta.alustaLauta();
 //        //System.out.println("alustettu");

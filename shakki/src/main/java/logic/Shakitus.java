@@ -6,14 +6,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Luokka tarjoaa staattisia metodeja, joilla voi tarkistaa onko tietty ruutu 
+ * Luokka tarjoaa staattisia metodeja, joilla voi tarkistaa onko tietty ruutu
  * uhattu tai puoli shakissa.
+ *
  * @author Oskari
  */
 public class Shakitus {
 
     /**
      * Metodi kertoo, uhkaako jokin vastustajan nappula tiettyä ruutua.
+     *
      * @param lauta lauta jolla ruutu on
      * @param koordinaatit ruudun koordinaatit
      * @param puoli onko valkoinen vai musta uhattava osapuoli
@@ -37,6 +39,7 @@ public class Shakitus {
 
     /**
      * Metodi kertoo, uhkaako jokin vastustajan nappula tiettyä ruutua.
+     *
      * @param lauta lauta jolla ruutu on
      * @param koordinaatit ruudun algebralliset koordinaatit
      * @param puoli onko valkoinen vai musta uhattava osapuoli
@@ -70,9 +73,9 @@ public class Shakitus {
 //        }
 //        return Shakitus.uhattu(lauta, koordinaatit, puoli);
 //    }
-
     /**
      * Metodi kertoo, onko annettu puoli shakissa
+     *
      * @param lauta lauta jossa on ehkä shakki
      * @param puoli valkoinen vai musta (enum)
      * @param enPassant ruutu, johon on mahdollisuus ohestalyödä tällä vuorolla
@@ -87,6 +90,7 @@ public class Shakitus {
 
     /**
      * Metodi kertoo, onko annettu puoli shakissa
+     *
      * @param lauta lauta jossa on ehkä shakki
      * @param puoli valkoinen vai musta (string)
      * @param enPassant ruutu, johon on mahdollisuus ohestalyödä tällä vuorolla
@@ -105,6 +109,7 @@ public class Shakitus {
 
     /**
      * Metodi kertoo, onko annettu puoli shakissa.
+     *
      * @param lauta lauta jossa on ehkä shakki
      * @param puoli valkoinen vai musta
      * @return onko annettu puoli shakissa

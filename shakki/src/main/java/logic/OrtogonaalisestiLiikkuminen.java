@@ -5,14 +5,16 @@ import components.Nappula;
 import java.util.Arrays;
 
 /**
- * Luokka tarjoaa apumetodit jotka kertovat voiko aloitusruudusta kulkea 
- * tornin lailla kohderuutuun.
+ * Luokka tarjoaa apumetodit jotka kertovat voiko aloitusruudusta kulkea tornin
+ * lailla kohderuutuun.
+ *
  * @author Oskari
  */
 public class OrtogonaalisestiLiikkuminen {
 
     /**
      * Metodi kertoo, voisiko nappula liikkua vasemmalle (kuten torni).
+     *
      * @param mista aloitusruudun koordinaatit
      * @param minne kohderuudun koordinaatit
      * @param lauta lauta jolla ollaan
@@ -36,6 +38,7 @@ public class OrtogonaalisestiLiikkuminen {
 
     /**
      * Metodi kertoo, voisiko nappula liikkua oikealle (kuten torni).
+     *
      * @param mista aloitusruudun koordinaatit
      * @param minne kohderuudun koordinaatit
      * @param lauta lauta jolla ollaan
@@ -57,6 +60,7 @@ public class OrtogonaalisestiLiikkuminen {
 
     /**
      * Metodi kertoo, voisiko nappula liikkua ylös (kuten torni).
+     *
      * @param mista aloitusruudun koordinaatit
      * @param minne kohderuudun koordinaatit
      * @param lauta lauta jolla ollaan
@@ -78,6 +82,7 @@ public class OrtogonaalisestiLiikkuminen {
 
     /**
      * Metodi kertoo, voisiko nappula liikkua alas (kuten torni).
+     *
      * @param mista aloitusruudun koordinaatit
      * @param minne kohderuudun koordinaatit
      * @param lauta lauta jolla ollaan
@@ -96,7 +101,7 @@ public class OrtogonaalisestiLiikkuminen {
         }
         return eiOma(mista, minne, lauta);
     }
-    
+
     private static boolean eiOma(int[] mista, int[] minne, Lauta lauta) {
         Nappula nappula = lauta.getNappula(mista);
         if (!lauta.getNappula(minne).isEmpty()) {

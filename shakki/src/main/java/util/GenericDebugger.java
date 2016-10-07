@@ -14,7 +14,6 @@ import logic.Shakitus;
  * @author Oskari
  */
 public class GenericDebugger {
-
     public static void main(String[] args) {
 //        Lauta lauta = new Lauta();
 //        lauta.alustaLauta();

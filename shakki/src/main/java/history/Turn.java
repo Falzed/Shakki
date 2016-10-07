@@ -70,8 +70,8 @@ public class Turn {
     }
 
     /**
-     *
-     * @param notation
+     * Luo vuoron, sisältö annettuna stringinä.
+     * @param notation sisältö
      */
     public Turn(String notation) {
         this.turnNumber = Integer.parseInt(Character.toString(notation.charAt(0)));
@@ -95,22 +95,42 @@ public class Turn {
         }
     }
 
+    /**
+     * getteri.
+     * @return vuoronumero
+     */
     public int getTurnNumber() {
         return this.turnNumber;
     }
 
+    /**
+     * getteri.
+     * @return siirto
+     */
     public String getWhiteMove() {
         return this.whiteMove;
     }
 
+    /**
+     * getteri.
+     * @return siirto
+     */
     public String getBlackMove() {
         return this.blackMove;
     }
 
+    /**
+     * setteri.
+     * @param string valkoisen siirto
+     */
     public void setWhiteMove(String string) {
         whiteMove = string;
     }
 
+    /**
+     * setteri.
+     * @param string siirto
+     */
     public void setBlackMove(String string) {
         blackMove = string;
     }

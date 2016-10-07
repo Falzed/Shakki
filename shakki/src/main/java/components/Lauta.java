@@ -35,11 +35,19 @@ public class Lauta {
         this.pituus = pituus;
         nappulat = new Nappula[leveys][pituus];
     }
-
+    /**
+     * getteri.
+     * @param koordinaatit koordinaatit
+     * @return nappula
+     */
     public Nappula getNappula(int[] koordinaatit) {
         return nappulat[koordinaatit[0]][koordinaatit[1]];
     }
-
+    /**
+     * getteri.
+     * @param string koordinaatit
+     * @return nappula
+     */
     public Nappula getNappula(String string) {
         int[] koordinaatit = logic.Parser.parseAlgebraic(string);
         return getNappula(koordinaatit);
@@ -97,7 +105,6 @@ public class Lauta {
                 nappula.asetaKoordinaatit(koordinaatit);
             }
         } else {
-//            System.out.println("Ruudussa on jo nappula");
             return false;
         }
         return true;
@@ -134,11 +141,9 @@ public class Lauta {
             return false;
         }
         if (nappulat[koordinaatit[0]][koordinaatit[1]].isEmpty()) {
-//            System.out.println("Ruudussa ei ole syötävää nappulaa");
             return false;
         } else if (nappula.getPuoli()
                 == nappulat[koordinaatit[0]][koordinaatit[1]].getPuoli()) {
-//            System.out.println("Et voi syöda omaa nappulaasi");
             return false;
         } else {
             nappulat[koordinaatit[0]][koordinaatit[1]] = nappula;
@@ -177,6 +182,7 @@ public class Lauta {
         nappulat[syotava[0]][syotava[1]].asetaKoordinaatit(new int[2]);
         nappulat[syotava[0]][syotava[1]] = new Tyhja();
     }
+
     public int getLeveys() {
         return leveys;
     }
@@ -184,21 +190,4 @@ public class Lauta {
     public int getPituus() {
         return pituus;
     }
-
-    /**
-     * Printtaa laudan konsolille. Ei tällä hetkellä toimi kunnolla unicoden
-     * kanssa, ja on muutenkin turha kun graafinen UI on olemassa.
-     *
-     */
-//    public void printBoardState() {
-//        int[] koordinaatit = {0, 0};
-//        for (int i = 7; i >= 0; i--) {
-//            koordinaatit[1] = i;
-//            for (int j = 0; j < 8; j++) {
-//                koordinaatit[0] = j;
-//                System.out.print(getNappula(koordinaatit).getMerkki());
-//            }
-//            System.out.println("");
-//        }
-//    }
 }

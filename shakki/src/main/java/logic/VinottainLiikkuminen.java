@@ -4,8 +4,9 @@ import components.Lauta;
 import components.Nappula;
 
 /**
- *Luokka tarjoaa apumetodit jotka kertovat voiko aloitusruudusta kulkea 
- * lähetin lailla kohderuutuun.
+ * Luokka tarjoaa apumetodit jotka kertovat voiko aloitusruudusta kulkea lähetin
+ * lailla kohderuutuun.
+ *
  * @author Oskari
  */
 public class VinottainLiikkuminen {
@@ -13,6 +14,7 @@ public class VinottainLiikkuminen {
     /**
      * Metodi kertoo, voisiko nappula liikkua vinoon alas ja vasemmalle (kuten
      * lähetti).
+     *
      * @param mista aloitusruudun koordinaatit
      * @param minne kohderuudun koordinaatit
      * @param lauta lauta jolla ollaan
@@ -34,6 +36,7 @@ public class VinottainLiikkuminen {
     /**
      * Metodi kertoo, voisiko nappula liikkua vinoon ylös ja vasemmalle (kuten
      * lähetti).
+     *
      * @param mista aloitusruudun koordinaatit
      * @param minne kohderuudun koordinaatit
      * @param lauta lauta jolla ollaan
@@ -55,6 +58,7 @@ public class VinottainLiikkuminen {
     /**
      * Metodi kertoo, voisiko nappula liikkua vinoon alas ja oikealle (kuten
      * lähetti).
+     *
      * @param mista aloitusruudun koordinaatit
      * @param minne kohderuudun koordinaatit
      * @param lauta lauta jolla ollaan
@@ -76,6 +80,7 @@ public class VinottainLiikkuminen {
     /**
      * Metodi kertoo, voisiko nappula liikkua vinoon ylös ja oikealle (kuten
      * lähetti).
+     *
      * @param mista aloitusruudun koordinaatit
      * @param minne kohderuudun koordinaatit
      * @param lauta lauta jolla ollaan
@@ -93,7 +98,7 @@ public class VinottainLiikkuminen {
         }
         return eiOma(mista, minne, lauta);
     }
-    
+
     private static boolean eiOma(int[] mista, int[] minne, Lauta lauta) {
         Nappula nappula = lauta.getNappula(mista);
         if (!lauta.getNappula(minne).isEmpty()) {
