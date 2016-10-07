@@ -8,6 +8,8 @@ Toteutetaan shakkiohjelma jolla voi pelata lokaalisti tavallista shakkia tai (jo
 
 *[tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
 
-*[pit](https://htmlpreview.github.io/?https://github.com/Falzed/Shakki-probable-carnival/blob/master/dokumentaatio/pit/viikko4/index.html)
+*[pit](https://htmlpreview.github.io/?https://github.com/Falzed/Shakki-probable-carnival/blob/master/dokumentaatio/pit/viikko5/index.html)
 
-*[checkstyle](https://htmlpreview.github.io/?https://github.com/Falzed/Shakki-probable-carnival/blob/master/dokumentaatio/checkstyle/viikko4/checkstyle.html)
+*[checkstyle](https://htmlpreview.github.io/?https://github.com/Falzed/Shakki-probable-carnival/blob/master/dokumentaatio/checkstyle/viikko5/checkstyle.html)
+
+(Jos checkstyle/pit ihmetyttää, tuli vahingossa katsottua jo viikon 6 vaatimuksia, niin tämän viikon jäi välistä kun huomasin vasta 23:30.)
