@@ -15,28 +15,23 @@ public class Nappula {
      */
     public enum Puoli {
 
-        /**
-         *
-         */
         VALKOINEN,
 
-        /**
-         *
-         */
         MUSTA,
 
         /**
-         *
+         * Tyhjä ruutu.
          */
         TYHJA
     }
     private Puoli puoli;
     private int[] sijainti = {-1, -1};
-    private static char notaatioMerkki;
+    private static char notaatioMerkki = ' ';
+    private boolean liikkunut;
 
     /**
-     *
-     * @param puoli     * 
+     * Konstruktori, asettaa puolen ja ettei ole liikkunut.
+     * @param puoli valkoinen vai musta
      */
     public Nappula(String puoli) {
         if (puoli.equals("valkoinen")) {
@@ -46,13 +41,32 @@ public class Nappula {
         } else {
             System.out.println("Puoli ei kelpaa tai puuttuu");
         }
+        this.liikkunut = false;
+    }
+    
+    /**
+     * Luo uuden nappulan ja asettaa sen puolen.
+     * @param puoli Valkoinen vai musta
+     */
+    public Nappula(Nappula.Puoli puoli) {
+        this.puoli = puoli;
     }
 
     /**
-     *
+     * Luo uuden nappulan ja asettaa sen puolen tyhjäksi ruuduksi.
      */
     public Nappula() {
         puoli = Puoli.TYHJA;
+    }
+    
+    /**
+     * Metodi palauttaa saman tyyppisen nappulan.
+     * @return kopio
+     */
+    public Nappula kopioi() {
+        Nappula kopio = new Nappula(puoli);
+//        kopio.asetaKoordinaatit(sijainti);
+        return kopio;
     }
 
     public Puoli getPuoli() {
@@ -74,7 +88,17 @@ public class Nappula {
         return ' ';
     }
 
+    public boolean onkoLiikkunut() {
+        return liikkunut;
+    }
+    public void setLiikkunut() {
+        this.liikkunut = true;
+    }
     public char getNotaatioMerkki() {
         return notaatioMerkki;
+    }
+    
+    public boolean onSotilas() {
+        return false;
     }
 }

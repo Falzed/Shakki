@@ -12,10 +12,29 @@ public class TurnHistory {
 
     private final LinkedList<Turn> history;
 
+    /**
+     * Luo vuorohistorian.
+     */
     public TurnHistory() {
         this.history = new LinkedList<>();
     }
+    /**
+     * Luo vuorohistorian annetun merkkijonon perusteella.
+     * @param string kuvaa tähänastiset vuorot, esim 1. d4 d5\n 2. c4 ... 
+     */
+    public TurnHistory(String string) {
+        this.history = new LinkedList<Turn>();
+        String[] strings = string.split(Character.toString('\n'));
+        for (int i = 0; i < strings.length; i++) {
+            Turn turn = new Turn(strings[i]);
+            history.add(turn);
+        }
+    }
 
+    /**
+     * Lisää historiaan uuden vuoron.
+     * @param turn lisättävä vuoro
+     */
     public void addTurn(Turn turn) {
         this.history.add(turn);
     }
@@ -24,6 +43,11 @@ public class TurnHistory {
         return this.history;
     }
 
+    /**
+     * Poistaa kaikki vuorot tietyn vuoron jälkeen. Ei tällä hetkellä käytetä
+     * mihinkään.
+     * @param vuoro viimeisen säilytettävän vuoron numero
+     */
     public void removeAfter(int vuoro) {
         while (history.size() > vuoro) {
             history.remove(vuoro - 1);
@@ -44,15 +68,7 @@ public class TurnHistory {
         return history.getLast().getTurnNumber();
     }
 
-    public static TurnHistory parseString(String string) {
-        TurnHistory retHistory = new TurnHistory();
-        String[] strings = string.split(Character.toString('\n'));
-        for (int i = 0; i < strings.length; i++) {
-            Turn turn = new Turn(strings[i]);
-            retHistory.addTurn(turn);
-        }
-        return retHistory;
-    }
+    
 
     @Override
     public String toString() {

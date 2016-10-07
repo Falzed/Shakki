@@ -9,7 +9,7 @@ public class Tyhja extends Nappula {
     private static char notaatioMerkki = ' ';
 
     /**
-     *
+     * Luo tyhjän ruudun.
      */
     public Tyhja() {
         super();
@@ -28,5 +28,15 @@ public class Tyhja extends Nappula {
     @Override
     public int[] getKoordinaatit() {
         throw new UnsupportedOperationException("Tyhjän ruudun ei tarvitse tietää koordinaattejaan");
+    }
+    
+    @Override
+    public char getNotaatioMerkki() {
+        return notaatioMerkki;
+    }
+    
+    @Override
+    public Tyhja kopioi() {
+        return new Tyhja();
     }
 }

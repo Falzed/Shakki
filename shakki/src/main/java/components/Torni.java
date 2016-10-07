@@ -11,10 +11,17 @@ public class Torni extends Nappula {
     private static char notaatioMerkki = 'R';
 
     /**
-     *
-     * @param puoli puoli valkoinen vai musta
+     * Konstruktori, kutsuu vain Nappula-luokan konstruktoria. Puoli stringinä.
+     * @param puoli valkoinen/musta
      */
     public Torni(String puoli) {
+        super(puoli);
+    }
+    /**
+     * Konstruktori, kutsuu vain Nappula-luokan konstruktoria. Puoli enumina.
+     * @param puoli valkoinen/musta
+     */
+    public Torni(Nappula.Puoli puoli) {
         super(puoli);
     }
 
@@ -32,5 +39,12 @@ public class Torni extends Nappula {
             return mustaMerkki;
         }
         return super.getMerkki();
+    }
+    
+    @Override
+    public Torni kopioi() {
+        Torni kopio = new Torni(super.getPuoli());
+//        kopio.asetaKoordinaatit(sijainti);
+        return kopio;
     }
 }

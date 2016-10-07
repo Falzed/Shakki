@@ -8,6 +8,9 @@ import components.*;
  */
 public class Standard implements Variant {
 
+    /**
+     * Standardishakki.
+     */
     public Standard() {
         
     }

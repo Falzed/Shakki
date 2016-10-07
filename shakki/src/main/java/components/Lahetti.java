@@ -11,10 +11,18 @@ public class Lahetti extends Nappula {
     private static char notaatioMerkki = 'B';
 
     /**
-     *
+     *Konstruktori, kutsuu vain Nappula-luokan konstruktoria. Puoli stringinä.
      * @param puoli   valkoinen vai musta  * 
      */
     public Lahetti(String puoli) {
+        super(puoli);
+    }
+    
+    /**
+     * Konstruktori, kutsuu vain Nappula-luokan konstruktoria. Puoli enumina.
+     * @param puoli valkoinen/musta
+     */
+    public Lahetti(Nappula.Puoli puoli) {
         super(puoli);
     }
     @Override
@@ -33,5 +41,12 @@ public class Lahetti extends Nappula {
             return mustaMerkki;
         }
         return super.getMerkki();
+    }
+    
+    @Override
+    public Lahetti kopioi() {
+        Lahetti kopio = new Lahetti(super.getPuoli());
+//        kopio.asetaKoordinaatit(sijainti);
+        return kopio;
     }
 }

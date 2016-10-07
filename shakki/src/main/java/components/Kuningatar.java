@@ -1,7 +1,8 @@
 package components;
 
 /**
- *Luokka toteuttaa standardishakin kuningattaren.
+ * Luokka toteuttaa standardishakin kuningattaren.
+ *
  * @author oemkulma
  */
 public class Kuningatar extends Nappula {
@@ -11,6 +12,7 @@ public class Kuningatar extends Nappula {
     private static char notaatioMerkki = 'Q';
 
     /**
+     * Konstruktori, kutsuu vain Nappula-luokan konstruktoria. Puoli stringinä.
      *
      * @param puoli onko kuningatar valkoinen vai musta
      *
@@ -20,9 +22,13 @@ public class Kuningatar extends Nappula {
     }
 
     /**
-     *
-     * @return palauttaa valkoisen/mustan kuningattaren unicode-merkin.
+     * Konstruktori, kutsuu vain Nappula-luokan konstruktoria. Puoli enumina.
+     * @param puoli valkoinen/musta
      */
+    public Kuningatar(Nappula.Puoli puoli) {
+        super(puoli);
+    }
+
     @Override
     public char getMerkki() {
         if (getPuoli().equals(Puoli.VALKOINEN)) {
@@ -42,5 +48,12 @@ public class Kuningatar extends Nappula {
     @Override
     public char getNotaatioMerkki() {
         return notaatioMerkki;
+    }
+
+    @Override
+    public Kuningatar kopioi() {
+        Kuningatar kopio = new Kuningatar(super.getPuoli());
+//        kopio.asetaKoordinaatit(sijainti);
+        return kopio;
     }
 }

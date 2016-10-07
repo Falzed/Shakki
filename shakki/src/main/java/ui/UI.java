@@ -1906,6 +1906,10 @@ public class UI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
+    /**
+     * turha
+     * @param args
+     */
     public static void main(String args[]) {
         Game peli = new Game();
         UI ui = new UI(peli);
@@ -1913,6 +1917,9 @@ public class UI extends javax.swing.JFrame {
 
     }
 
+    /**
+     * turha
+     */
     public void aja() {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -1927,7 +1934,7 @@ public class UI extends javax.swing.JFrame {
     }
 
     /**
-     *
+     * Metodi päivittää UI:n.
      */
     public void updateUI() {
         historiaKentta.setText(peli.getTurnHistory().toString());

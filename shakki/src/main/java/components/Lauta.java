@@ -1,5 +1,6 @@
 package components;
 
+import java.util.Arrays;
 import java.util.regex.Pattern;
 import logic.Parser;
 
@@ -15,12 +16,20 @@ public class Lauta {
     private int pituus;
     private Nappula[][] nappulat;
 
+    /**
+     * Konstruktori ilman parametreja, olettaa laudan kooksi 8x8.
+     */
     public Lauta() {
         this.leveys = 8;
         this.pituus = 8;
         nappulat = new Nappula[leveys][pituus];
     }
 
+    /**
+     *  Kostruktori jolle annettu laudan leveys ja pituus.
+     * @param leveys laudan leveys
+     * @param pituus laudan pituus
+     */
     public Lauta(int leveys, int pituus) {
         this.leveys = leveys;
         this.pituus = pituus;
@@ -34,6 +43,23 @@ public class Lauta {
     public Nappula getNappula(String string) {
         int[] koordinaatit = logic.Parser.parseAlgebraic(string);
         return getNappula(koordinaatit);
+    }
+
+    /**
+     * Kopioi laudan.
+     * @return palauttaa laudan kopion
+     */
+    public Lauta kopioi() {
+        Lauta kopio = new Lauta(leveys, pituus);
+        kopio.alustaLauta();
+        for (int i = 0; i < leveys; i++) {
+            for (int j = 0; j < pituus; j++) {
+                int[] koordinaatit = {i, j};
+                Nappula kopioituNappula = getNappula(koordinaatit).kopioi();
+                kopio.aseta(kopioituNappula, koordinaatit);
+            }
+        }
+        return kopio;
     }
 
     /**
@@ -77,6 +103,12 @@ public class Lauta {
         return true;
     }
 
+    /**
+     * Metodi asettaa annetun nappulan tyhjään ruutuun.
+     * @param nappula asetettava nappula
+     * @param algebraic algebralliset koordinaatit ruudulle minne nappula asetetaan
+     * @return onnistuiko asetus
+     */
     public boolean aseta(Nappula nappula, String algebraic) {
         int[] koordinaatit = Parser.parseAlgebraic(algebraic);
         if (koordinaatit == null) {
@@ -117,6 +149,13 @@ public class Lauta {
         return true;
     }
 
+    /**
+     * Metodi siirtää nappulan toiseen ruutuun ja syö siinä olevan nappulan.
+     *
+     * @param nappula siirrettävä nappula
+     * @param algebraic algebralliset koordinaatit ruudulle mistä syödään nappula
+     * @return onnistuiko siirto (ei voi syödä omaa)
+     */
     public boolean syo(Nappula nappula, String algebraic) {
         int[] koordinaatit = Parser.parseAlgebraic(algebraic);
         if (koordinaatit == null) {
@@ -128,10 +167,20 @@ public class Lauta {
         }
         return syo(nappula, koordinaatit);
     }
-    
+
+    /**
+     * Metodi laittaa annettuun ruutuun Tyhja-olion. Tarkoitettu ohestalyönnille
+     * mutta voi tarvittaessa käyttää muuhunkin muissa varianteissa.
+     * @param syotava koordinaatit ruudulle josta poistetaan nappula
+     */
+    public void enPassantPoistaSyoty(int[] syotava) {
+        nappulat[syotava[0]][syotava[1]].asetaKoordinaatit(new int[2]);
+        nappulat[syotava[0]][syotava[1]] = new Tyhja();
+    }
     public int getLeveys() {
         return leveys;
     }
+
     public int getPituus() {
         return pituus;
     }

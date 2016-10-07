@@ -51,9 +51,7 @@ public class Parser {
         int[][] startEndPoints = new int[2][2];
         if (pattern.matcher(string).matches()) {
             startEndPoints[0] = parseAlgebraic(string);
-            System.out.println(startEndPoints[0]);
             startEndPoints[1] = parseAlgebraic(string.substring(3));
-            System.out.println(startEndPoints[0]);
             return startEndPoints;
         }
         Pattern sotilas = Pattern.compile("[a-z][1-8]");
@@ -68,6 +66,12 @@ public class Parser {
         if (upseeri.matcher(string).matches()) {
             return parseUpseeri(string, vuoro, lauta);
         }
+//        Pattern tornitus = Pattern.compile("((O-){1,2}(O)) | (0-){1,2}(0)");
+        Pattern tornitus = Pattern.compile("(O-){1,2}O|(0-){1,2}0");
+        if (tornitus.matcher(string).matches()) {
+            return parseTornitus(string, vuoro, lauta);
+        }
+        System.out.println("No match");
         return null;
     }
 
@@ -158,10 +162,8 @@ public class Parser {
     private static int[][] parseUpseeri(String string, Nappula.Puoli vuoro, Lauta lauta) {
         char notaatio = string.charAt(0);
         int[] koordinaatit = parseAlgebraic(string.substring(1));
-        System.out.println(koordinaatit[0] + "," + koordinaatit[1]);
         int[][] startEndPoints = new int[2][2];
         startEndPoints[1] = koordinaatit;
-        System.out.println(startEndPoints[1][0] + "," + startEndPoints[1][1]);
         int[] testKoord = new int[2];
         int n = 0;
         Nappula nappula;
@@ -171,7 +173,7 @@ public class Parser {
                 testKoord[1] = j;
                 nappula = lauta.getNappula(testKoord);
                 if (nappula.getNotaatioMerkki() == notaatio && nappula.getPuoli() == vuoro) {
-                    if (Liikkuminen.voikoSiirtya(nappula, koordinaatit, lauta)) {
+                    if (Liikkuminen.voikoSiirtya(nappula, koordinaatit, lauta, null)) {
                         n++;
                         startEndPoints[0][0] = testKoord[0];
                         startEndPoints[0][1] = testKoord[1];
@@ -186,7 +188,42 @@ public class Parser {
         if (n == 0) {
             return null;
         }
-        System.out.println(startEndPoints[1][0] + "," + startEndPoints[1][1]);
         return startEndPoints;
+    }
+
+    private static int[][] parseTornitus(String string, Nappula.Puoli vuoro, Lauta lauta) {
+        Nappula kuningas = null;
+        int[][] startEnd = new int[2][2];
+        for (int i = 0; i < lauta.getLeveys(); i++) {
+            for (int j = 0; j < lauta.getPituus(); j++) {
+                int[] koord = {i, j};
+                if (lauta.getNappula(koord).getPuoli() == vuoro
+                        && lauta.getNappula(koord).getNotaatioMerkki() == 'K') {
+                    kuningas = lauta.getNappula(koord);
+                    break;
+                }
+            }
+        }
+        if (string.equals("O-O") || string.equals("0-0")) {
+            if (kuningas == null) {
+                return null;
+            }
+            startEnd[0] = kuningas.getKoordinaatit();
+            int[] end = {kuningas.getKoordinaatit()[0] + 2,
+                kuningas.getKoordinaatit()[1]};
+            startEnd[1] = end;
+            return startEnd;
+        }
+        if (string.equals("O-O-O") || string.equals("0-0-0")) {
+            if (kuningas == null) {
+                return null;
+            }
+            startEnd[0] = kuningas.getKoordinaatit();
+            int[] end = {kuningas.getKoordinaatit()[0] - 2,
+                kuningas.getKoordinaatit()[1]};
+            startEnd[1] = end;
+            return startEnd;
+        }
+        return null;
     }
 }

@@ -19,53 +19,79 @@ public class Game {
     private Lauta lauta;
     private TurnHistory historia;
     private Nappula.Puoli vuoro;
+    private int[] enPassant;
 
+    /**
+     * Konstruktori pelille.
+     */
     public Game() {
         this.variant = new Standard();
         variant.setUp();
         this.lauta = variant.getLauta();
         this.historia = new TurnHistory();
         this.vuoro = variant.getAloittaja();
+        this.enPassant = null;
     }
 
     /**
      * Metodi koittaa suorittaa käyttäjän antaman komennon.
      *
      * @param komento käyttäjän syöttämä komento.
+     * @return onnistuiko komennon suoritus.
      *
      */
     public boolean suoritaKomento(String komento) {
         int[][] startEndPoints = Parser.parseCommand(komento, vuoro, lauta);
-        //kirjoita järkevämmäksi myöhemmin
-        if (!(startEndPoints[0][0] < lauta.getLeveys() && startEndPoints[0][0] > -1 && startEndPoints[0][1] < lauta.getPituus() && startEndPoints[0][1] > -1)) {
-            System.out.println("ruutu "
-                    + "(koordinaatit {" + startEndPoints[0][0] + ","
-                    + startEndPoints[0][1] + "})" + " ei laudalla");
-            return false;
-        }
-        Nappula nappula = lauta.getNappula(startEndPoints[0]);
-        if (nappula.getPuoli() != vuoro) {
-            System.out.println("Ruudussa ei nappulaasi");
-            return false;
-        }
-        if (Liikkuminen.koitaSiirtya(nappula, startEndPoints[1], lauta)) {
-            if (vuoro == Nappula.Puoli.VALKOINEN) {
-                vuoro = Nappula.Puoli.MUSTA;
-            } else {
-                vuoro = Nappula.Puoli.VALKOINEN;
+        int[] enPassantTemp = new int[2];
+        if (startEndPoints != null) {
+            //kirjoita järkevämmäksi myöhemmin
+            if (lauta.getNappula(startEndPoints[0]).onSotilas()
+                    && Math.abs(startEndPoints[0][1] - startEndPoints[1][1])
+                    == 2) {
+                enPassantTemp[0] = startEndPoints[0][0];
+                if (vuoro == Nappula.Puoli.VALKOINEN) {
+                    enPassantTemp[1] = startEndPoints[0][1] + 1;
+                } else {
+                    enPassantTemp[1] = startEndPoints[0][1] - 1;
+                }
             }
-            if (!historia.getList().isEmpty()) {
-                jatkaVuoroHistoriaa(komento);
-            } else {
-                historia.addTurn(new Turn(historia.getVuoroNumero(), komento, ""));
+            if (!(startEndPoints[0][0] < lauta.getLeveys() && startEndPoints[0][0] > -1 && startEndPoints[0][1] < lauta.getPituus() && startEndPoints[0][1] > -1)) {
+                System.out.println("ruutu "
+                        + "(koordinaatit {" + startEndPoints[0][0] + ","
+                        + startEndPoints[0][1] + "})" + " ei laudalla");
+                return false;
             }
-        } else {
-            System.out.print("(" + startEndPoints[0][0] + "," + startEndPoints[0][1] + ")");
-            System.out.println("-(" + startEndPoints[1][0] + "," + startEndPoints[1][1] + ")");
-            System.out.println("Laiton siirto");
-            return false;
+            Nappula nappula = lauta.getNappula(startEndPoints[0]);
+            if (nappula.getPuoli() != vuoro) {
+                System.out.println("Ruudussa ei nappulaasi");
+                return false;
+            }
+            if (Liikkuminen.koitaSiirtyaTarkistaShakki(nappula, startEndPoints[1], lauta, vuoro, enPassant)) {
+                if (vuoro == Nappula.Puoli.VALKOINEN) {
+                    vuoro = Nappula.Puoli.MUSTA;
+                } else {
+                    vuoro = Nappula.Puoli.VALKOINEN;
+                }
+                if (!historia.getList().isEmpty()) {
+                    jatkaVuoroHistoriaa(komento);
+                } else {
+                    historia.addTurn(new Turn(historia.getVuoroNumero(), komento, ""));
+                }
+            } else {
+                System.out.print("(" + startEndPoints[0][0] + "," + startEndPoints[0][1] + ")");
+                System.out.println("-(" + startEndPoints[1][0] + "," + startEndPoints[1][1] + ")");
+                System.out.println("Laiton siirto");
+                return false;
+            }
+            if (enPassantTemp != null) {
+                this.enPassant = enPassantTemp;
+            } else {
+                this.enPassant = null;
+            }
+            return true;
         }
-        return true;
+        System.out.println("Parser palautti nullin");
+        return false;
     }
 
     private void jatkaVuoroHistoriaa(String komento) {
@@ -92,6 +118,10 @@ public class Game {
         return vuoro;
     }
 
+    /**
+     * Pääohjelma.
+     * @param args eivät tee mitään
+     */
     public static void main(String[] args) {
         Game peli = new Game();
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -167,7 +197,7 @@ public class Game {
      * kuvaa pelaajien siirtoja.
      */
     public static void setHistory(String string) {
-        TurnHistory historia = TurnHistory.parseString(string);
+        TurnHistory historia = new TurnHistory(string);
 
     }
 }

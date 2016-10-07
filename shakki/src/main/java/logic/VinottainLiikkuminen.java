@@ -10,6 +10,15 @@ import components.Nappula;
  */
 public class VinottainLiikkuminen {
 
+    /**
+     * Metodi kertoo, voisiko nappula liikkua vinoon alas ja vasemmalle (kuten
+     * lähetti).
+     * @param mista aloitusruudun koordinaatit
+     * @param minne kohderuudun koordinaatit
+     * @param lauta lauta jolla ollaan
+     * @param puoli onko siirrettävä nappula vlakoinen vai musta
+     * @return onnistuuko
+     */
     public static boolean moveLeftDown(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
         int delta = mista[0] - minne[0];
         for (int i = 1; i < delta; i++) {
@@ -22,6 +31,15 @@ public class VinottainLiikkuminen {
         return eiOma(mista, minne, lauta);
     }
 
+    /**
+     * Metodi kertoo, voisiko nappula liikkua vinoon ylös ja vasemmalle (kuten
+     * lähetti).
+     * @param mista aloitusruudun koordinaatit
+     * @param minne kohderuudun koordinaatit
+     * @param lauta lauta jolla ollaan
+     * @param puoli onko siirrettävä nappula vlakoinen vai musta
+     * @return onnistuuko
+     */
     public static boolean moveLeftUp(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
         int delta = mista[0] - minne[0];
         for (int i = 1; i < delta; i++) {
@@ -34,6 +52,15 @@ public class VinottainLiikkuminen {
         return eiOma(mista, minne, lauta);
     }
 
+    /**
+     * Metodi kertoo, voisiko nappula liikkua vinoon alas ja oikealle (kuten
+     * lähetti).
+     * @param mista aloitusruudun koordinaatit
+     * @param minne kohderuudun koordinaatit
+     * @param lauta lauta jolla ollaan
+     * @param puoli onko siirrettävä nappula vlakoinen vai musta
+     * @return onnistuuko
+     */
     public static boolean moveRightDown(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
         int delta = minne[0] - mista[0];
         for (int i = 1; i < delta; i++) {
@@ -46,6 +73,15 @@ public class VinottainLiikkuminen {
         return eiOma(mista, minne, lauta);
     }
 
+    /**
+     * Metodi kertoo, voisiko nappula liikkua vinoon ylös ja oikealle (kuten
+     * lähetti).
+     * @param mista aloitusruudun koordinaatit
+     * @param minne kohderuudun koordinaatit
+     * @param lauta lauta jolla ollaan
+     * @param puoli onko siirrettävä nappula vlakoinen vai musta
+     * @return onnistuuko
+     */
     public static boolean moveRightUp(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
         int delta = minne[0] - mista[0];
         for (int i = 1; i < delta; i++) {

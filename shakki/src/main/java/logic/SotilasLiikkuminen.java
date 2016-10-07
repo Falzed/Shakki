@@ -2,16 +2,28 @@ package logic;
 
 import components.Lauta;
 import components.Nappula;
+import java.util.Arrays;
 
 /**
- *Luokka tarjoaa apumetodit jotka kertovat voiko aloitusruudusta kulkea 
- * sotilas kohderuutuun.
+ * Luokka tarjoaa apumetodit jotka kertovat voiko aloitusruudusta kulkea sotilas
+ * kohderuutuun.
+ *
  * @author Oskari
  */
 public class SotilasLiikkuminen {
 
-    public static boolean sotilasVoikoLiikkua(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
-        if (captureMove(mista, minne, lauta, puoli)) {
+    /**
+     * Metodi kertoo, voiko annetussa ruudussa oleva sotilas liikkua annettuun 
+     * kohderuutuun.
+     * @param mista aloitusruudun koordinaatit
+     * @param minne kohderuudun koordinaatit
+     * @param lauta lauta jolla ollaan
+     * @param puoli onko siirrettävä nappula vlakoinen vai musta
+     * @param enPassant ruutu, johon voi tällä vuorolla ohestalyödä
+     * @return onko siirto mahdollinen
+     */
+    public static boolean sotilasVoikoLiikkua(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli, int[] enPassant) {
+        if (captureMove(mista, minne, lauta, puoli, enPassant)) {
             return true;
         }
         if (minne[0] != mista[0]) {
@@ -57,14 +69,25 @@ public class SotilasLiikkuminen {
         return Liikkuminen.eiOma(mista, minne, lauta);
     }
 
-    private static boolean captureMove(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
+    private static boolean captureMove(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli, int[] enPassant) {
+        if (enPassant != null) {
+            if (Arrays.equals(minne, enPassant)) {
+//                Liikkuminen.enPassant(lauta.getNappula(mista), minne, lauta);
+                return true;
+            } 
+//            else {
+//                System.out.println(Arrays.toString(minne));
+//                System.out.println(Arrays.toString(enPassant));
+//            }
+        }
         if (lauta.getNappula(minne).getPuoli() == puoli) {
             return false;
         }
         if (minne[0] != mista[0] + 1
                 && minne[0] != mista[0] - 1) {
             return false;
-        } else if (puoli == Nappula.Puoli.VALKOINEN) {
+        }
+        if (puoli == Nappula.Puoli.VALKOINEN) {
             if (minne[1] != mista[1] + 1) {
                 return false;
             }
@@ -72,12 +95,13 @@ public class SotilasLiikkuminen {
             if (minne[1] != mista[1] - 1) {
                 return false;
             }
-        } else if (lauta.getNappula(minne).isEmpty()) {
+        }
+        if (lauta.getNappula(minne).isEmpty()) {
             return false;
-        } else if (lauta.getNappula(minne).getPuoli().equals(puoli)) {
+        }
+        if (lauta.getNappula(minne).getPuoli().equals(puoli)) {
             return false;
         }
         return Liikkuminen.eiOma(mista, minne, lauta);
     }
-
 }

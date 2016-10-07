@@ -11,10 +11,17 @@ public class Ratsu extends Nappula {
     private static char notaatioMerkki = 'N';
 
     /**
-     *
-     * @param puoli valkoinen vai musta
+     * Konstruktori, kutsuu vain Nappula-luokan konstruktoria. Puoli stringinä.
+     * @param puoli valkoinen/musta
      */
     public Ratsu(String puoli) {
+        super(puoli);
+    }
+    /**
+     * Konstruktori, kutsuu vain Nappula-luokan konstruktoria. Puoli enumina.
+     * @param puoli valkoinen/musta
+     */
+    public Ratsu(Nappula.Puoli puoli) {
         super(puoli);
     }
 
@@ -38,5 +45,12 @@ public class Ratsu extends Nappula {
             return mustaMerkki;
         }
         return super.getMerkki();
+    }
+    
+    @Override
+    public Ratsu kopioi() {
+        Ratsu kopio = new Ratsu(super.getPuoli());
+//        kopio.asetaKoordinaatit(sijainti);
+        return kopio;
     }
 }

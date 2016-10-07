@@ -3,6 +3,10 @@ package util;
 import java.util.Scanner;
 import components.*;
 
+/**
+ * Luokka on vain main-metodi minne tulee välillä työnnettyä bugista koodia ajettavaksi.
+ * @author Oskari
+ */
 public class ParseDebugger {
 
     public static void main(String[] args) {

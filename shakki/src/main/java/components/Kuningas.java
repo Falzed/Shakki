@@ -6,15 +6,23 @@ package components;
  */
 public class Kuningas extends Nappula {
 
-    private static char valkoinenMerkki = '\u2654';
-    private static char mustaMerkki = '\u265A';
-    private static char notaatioMerkki = 'K';
+    private static final char valkoinenMerkki = '\u2654';
+    private static final char mustaMerkki = '\u265A';
+    private static final char notaatioMerkki = 'K';
 
     /**
-     *
+     * Konstruktori, kutsuu vain Nappula-luokan konstruktoria. Puoli stringinä.
      * @param puoli onko kuningas valkoinen vai musta     * 
      */
     public Kuningas(String puoli) {
+        super(puoli);
+    }
+
+    /**
+     * Konstruktori, kutsuu vain Nappula-luokan konstruktoria. Puoli enumina.
+     * @param puoli valkoinen vai musta
+     */
+    public Kuningas(Nappula.Puoli puoli) {
         super(puoli);
     }
 
@@ -28,5 +36,17 @@ public class Kuningas extends Nappula {
             return mustaMerkki;
         }
         return super.getMerkki();
+    }
+    
+    @Override
+    public char getNotaatioMerkki() {
+        return notaatioMerkki;
+    }
+    
+    @Override
+    public Kuningas kopioi() {
+        Kuningas kopio = new Kuningas(super.getPuoli());
+//        kopio.asetaKoordinaatit(sijainti);
+        return kopio;
     }
 }

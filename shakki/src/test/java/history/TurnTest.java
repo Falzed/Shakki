@@ -20,7 +20,7 @@ public class TurnTest {
     }
     @Test
     public void parseStringTest() {
-        Turn vuoro = Turn.parseString("1. d4 d5");
+        Turn vuoro = new Turn("1. d4 d5");
         assertTrue(vuoro.toString().equals("1. d4 d5"));
         assertTrue(vuoro.getWhiteMove().equals("d4"));
         assertTrue(vuoro.getBlackMove().equals("d5"));

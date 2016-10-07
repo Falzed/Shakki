@@ -30,7 +30,7 @@ public class historyTest {
         String vertaus = "1. d4 d5\n"
                 + "2. c4 e5\n"
                 + "3. xe5";
-        TurnHistory historia = TurnHistory.parseString(vertaus);
+        TurnHistory historia = new TurnHistory(vertaus);
         
         for (int i = 0; i < vertaus.length(); i++) {
             assertEquals(vertaus.charAt(i), historia.toString().charAt(i));
