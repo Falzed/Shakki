@@ -136,7 +136,8 @@ public class LaudanMuutokset {
      * @param lauta lauta jolla tämä tehdään
      */
     public static void poista(int[] syotava, Lauta lauta) {
-        lauta.getNappula(syotava).asetaKoordinaatit(new int[2]);
+        int[] koord = {-1, -1};
+        lauta.getNappula(syotava).asetaKoordinaatit(koord);
         lauta.setNappula(new Tyhja(), syotava);
     }
 }

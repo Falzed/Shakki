@@ -98,9 +98,11 @@ public class Game {
 
     private void tarkistaKorotus(int[][] startEndPoints) {
         if (startEndPoints[1][1] == 0
-                || startEndPoints[1][0] == lauta.getPituus() - 1) {
-            int[] koord = {startEndPoints[1][1], startEndPoints[1][1]};
+                || startEndPoints[1][1] == lauta.getPituus() - 1) {
+            int[] koord = {startEndPoints[1][0], startEndPoints[1][1]};
             if (lauta.getNappula(koord).onSotilas()) {
+                System.out.println(lauta.getNappula(koord).getNimi());
+                System.out.println(lauta.getNappula(koord).getPuoli());
                 String korotetaanNimi = ui.popupKorotus();
                 for (Nappula korotuskandidaatti : variant.getNappulaEsimerkit()) {
                     //vuoro jo vaihdettu seuraavaan
