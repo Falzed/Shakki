@@ -9,6 +9,7 @@ public class Torni extends Nappula {
     private static final char VALKOINENMERKKI = '\u2656';
     private static final char MUSTAMERKKI = '\u265C';
     private static final char NOTAATIOMERKKI = 'R';
+    private static final String NIMI = "Torni";
 
     /**
      * Konstruktori, kutsuu vain Nappula-luokan konstruktoria. Puoli stringinä.
@@ -46,5 +47,9 @@ public class Torni extends Nappula {
         Torni kopio = new Torni(super.getPuoli());
 //        kopio.asetaKoordinaatit(sijainti);
         return kopio;
+    }
+    @Override
+    public String getNimi() {
+        return NIMI;
     }
 }

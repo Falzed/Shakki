@@ -34,6 +34,7 @@ public class Nappula {
     private int[] sijainti = {-1, -1};
     private static char notaatioMerkki = ' ';
     private boolean liikkunut;
+    private static final String NIMI = "TYHJA";
 
     /**
      * Konstruktori, asettaa puolen ja ettei ole liikkunut.
@@ -75,6 +76,10 @@ public class Nappula {
         return kopio;
     }
 
+    
+    public String getNimi() {
+        return NIMI;
+    }
     /**
      * getteri.
      * @return puoli

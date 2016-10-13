@@ -3,7 +3,7 @@ package components;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
-import logic.Liikkuminen;
+import logic.liikkuminen.Liikkuminen;
 
 public class LahettiTest {
 
@@ -15,7 +15,7 @@ public class LahettiTest {
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
         Lahetti lahetti1 = new Lahetti("valkoinen");
-        lauta.aseta(lahetti1, koordinaatit);
+        logic.LaudanMuutokset.aseta(lahetti1, koordinaatit, lauta);
 
         koordinaatit[0] = 5;
         koordinaatit[1] = 4;
@@ -57,11 +57,11 @@ public class LahettiTest {
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
         Lahetti lahetti1 = new Lahetti("valkoinen");
-        lauta.aseta(lahetti1, koordinaatit);
+        logic.LaudanMuutokset.aseta(lahetti1, koordinaatit, lauta);
         Lahetti lahetti2 = new Lahetti("musta");
         koordinaatit[0] = 4;
         koordinaatit[1] = 5;
-        lauta.aseta(lahetti2, koordinaatit);
+        logic.LaudanMuutokset.aseta(lahetti2, koordinaatit, lauta);
         koordinaatit[0] = 5;
         koordinaatit[1] = 6;
         assertFalse(Liikkuminen.koitaSiirtya(lahetti1, koordinaatit, lauta));
@@ -75,11 +75,11 @@ public class LahettiTest {
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
         Lahetti lahetti1 = new Lahetti("valkoinen");
-        lauta.aseta(lahetti1, koordinaatit);
+        logic.LaudanMuutokset.aseta(lahetti1, koordinaatit, lauta);
         Lahetti lahetti2 = new Lahetti("musta");
         koordinaatit[0] = 5;
         koordinaatit[1] = 6;
-        lauta.aseta(lahetti2, koordinaatit);
+        logic.LaudanMuutokset.aseta(lahetti2, koordinaatit, lauta);
         assertTrue(Liikkuminen.koitaSiirtya(lahetti1, koordinaatit, lauta));
     }
 }

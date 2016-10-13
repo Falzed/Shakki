@@ -10,6 +10,7 @@ public class Kuningas extends Nappula {
     private static final char VALKOINENMERKKI = '\u2654';
     private static final char MUSTAMERKKI = '\u265A';
     private static final char NOTAATIOMERKKI = 'K';
+    private static final String NIMI = "Kuningas";
 
     /**
      * Konstruktori, kutsuu vain Nappula-luokan konstruktoria. Puoli stringinä.
@@ -50,5 +51,10 @@ public class Kuningas extends Nappula {
         Kuningas kopio = new Kuningas(super.getPuoli());
 //        kopio.asetaKoordinaatit(sijainti);
         return kopio;
+    }
+    
+    @Override
+    public String getNimi() {
+        return NIMI;
     }
 }

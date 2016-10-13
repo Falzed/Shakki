@@ -2,6 +2,7 @@ package util;
 
 import java.util.Scanner;
 import components.*;
+import logic.LaudanMuutokset;
 
 /**
  * Luokka on vain main-metodi minne tulee välillä työnnettyä bugista koodia ajettavaksi.
@@ -19,10 +20,10 @@ public class ParseDebugger {
         koordinaatit[1] = 4;
         Torni torni = new Torni("valkoinen");
         Torni torni2 = new Torni("valkoinen");
-        lauta.aseta(torni, koordinaatit);
+        LaudanMuutokset.aseta(torni, koordinaatit, lauta);
         koordinaatit[0] = 4;
         koordinaatit[1] = 7;
-        lauta.aseta(torni2, koordinaatit);
+        LaudanMuutokset.aseta(torni2, koordinaatit, lauta);
         Nappula.Puoli vuoro = Nappula.Puoli.VALKOINEN;
         while (true) {
             line = lukija.nextLine();
@@ -31,7 +32,7 @@ public class ParseDebugger {
             }
             if (line.equals("algebraic")) {
                 line = lukija.nextLine();
-                int[] table = logic.Parser.parseAlgebraic(line);
+                int[] table = logic.Parser.Parser.parseAlgebraic(line);
                 System.out.println(table[0] + "," + table[1]);
             }
             if (line.equals("musta")) {
@@ -40,7 +41,7 @@ public class ParseDebugger {
             if (line.equals("valkoinen")) {
                 vuoro = Nappula.Puoli.VALKOINEN;
             }
-            int[][] table = logic.Parser.parseCommand(line, vuoro, lauta);
+            int[][] table = logic.Parser.Parser.parseCommand(line, vuoro, lauta);
             if (table == null) {
                 System.out.println("table null");
             } else {

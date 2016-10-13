@@ -11,9 +11,9 @@ public class ShakitusTest {
     public void tunnistaaShakin() {
         Lauta lauta = new Lauta();
         lauta.alustaLauta();
-        lauta.aseta(new Kuningas("valkoinen"), "e1");
+        logic.LaudanMuutokset.aseta(new Kuningas("valkoinen"), "e1", lauta);
         assertFalse(Shakitus.uhattu(lauta, "e1", Nappula.Puoli.VALKOINEN));
-        lauta.aseta(new Torni("musta"), "a1");
+        logic.LaudanMuutokset.aseta(new Torni("musta"), "a1", lauta);
         assertTrue(Shakitus.uhattu(lauta, "e1", Nappula.Puoli.VALKOINEN));
     }
 
@@ -21,10 +21,10 @@ public class ShakitusTest {
     public void tunnistaaMatin() {
         Lauta lauta = new Lauta();
         lauta.alustaLauta();
-        lauta.aseta(new Kuningas("valkoinen"), "e1");
-        lauta.aseta(new Torni("musta"), "a1");
+        logic.LaudanMuutokset.aseta(new Kuningas("valkoinen"), "e1", lauta);
+        logic.LaudanMuutokset.aseta(new Torni("musta"), "a1", lauta);
         assertFalse(Shakitus.matissa(lauta, "valkoinen", null));
-        lauta.aseta(new Torni("musta"), "a2");
+        logic.LaudanMuutokset.aseta(new Torni("musta"), "a2", lauta);
         assertTrue(Shakitus.matissa(lauta, "valkoinen", null));
     }
 

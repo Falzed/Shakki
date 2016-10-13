@@ -3,7 +3,7 @@ package components;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
-import logic.Liikkuminen;
+import logic.liikkuminen.Liikkuminen;
 
 public class KuningatarTest {
 
@@ -15,7 +15,7 @@ public class KuningatarTest {
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
         Kuningatar kuningatar1 = new Kuningatar("valkoinen");
-        lauta.aseta(kuningatar1, koordinaatit);
+        logic.LaudanMuutokset.aseta(kuningatar1, koordinaatit, lauta);
 
         assertFalse(Liikkuminen.koitaSiirtya(kuningatar1, koordinaatit, lauta));
         koordinaatit[0] = 6;
@@ -43,7 +43,7 @@ public class KuningatarTest {
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
         Kuningatar kuningatar = new Kuningatar("valkoinen");
-        lauta.aseta(kuningatar, koordinaatit);
+        logic.LaudanMuutokset.aseta(kuningatar, koordinaatit, lauta);
 
         assertFalse(Liikkuminen.koitaSiirtya(kuningatar, koordinaatit, lauta));
         koordinaatit[0] = 2;
@@ -65,11 +65,11 @@ public class KuningatarTest {
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
         Kuningatar kuningatar = new Kuningatar("valkoinen");
-        lauta.aseta(kuningatar, koordinaatit);
+        logic.LaudanMuutokset.aseta(kuningatar, koordinaatit, lauta);
         Lahetti lahetti2 = new Lahetti("musta");
         koordinaatit[0] = 4;
         koordinaatit[1] = 5;
-        lauta.aseta(lahetti2, koordinaatit);
+        logic.LaudanMuutokset.aseta(lahetti2, koordinaatit, lauta);
         koordinaatit[0] = 5;
         koordinaatit[1] = 6;
         assertFalse(Liikkuminen.koitaSiirtya(kuningatar, koordinaatit, lauta));
@@ -83,11 +83,11 @@ public class KuningatarTest {
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
         Kuningatar kuningatar = new Kuningatar("valkoinen");
-        lauta.aseta(kuningatar, koordinaatit);
+        logic.LaudanMuutokset.aseta(kuningatar, koordinaatit, lauta);
         Lahetti lahetti2 = new Lahetti("musta");
         koordinaatit[0] = 5;
         koordinaatit[1] = 6;
-        lauta.aseta(lahetti2, koordinaatit);
+        logic.LaudanMuutokset.aseta(lahetti2, koordinaatit, lauta);
         assertTrue(Liikkuminen.koitaSiirtya(kuningatar, koordinaatit, lauta));
     }
 
@@ -99,11 +99,11 @@ public class KuningatarTest {
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
         Kuningatar kuningatar = new Kuningatar("valkoinen");
-        lauta.aseta(kuningatar, koordinaatit);
+        logic.LaudanMuutokset.aseta(kuningatar, koordinaatit, lauta);
         Lahetti lahetti2 = new Lahetti("valkoinen");
         koordinaatit[0] = 5;
         koordinaatit[1] = 6;
-        lauta.aseta(lahetti2, koordinaatit);
+        logic.LaudanMuutokset.aseta(lahetti2, koordinaatit, lauta);
         assertFalse(Liikkuminen.koitaSiirtya(kuningatar, koordinaatit, lauta));
     }
 }

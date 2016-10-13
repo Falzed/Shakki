@@ -1,8 +1,9 @@
-package logic;
+package logic.Parser;
 
 import components.Nappula;
 import java.util.regex.Pattern;
 import components.Lauta;
+import logic.liikkuminen.VoikoSiirtya;
 
 /**
  * Luokka tulkitsee annetut komennot ja algebralliset koordinaatit.
@@ -17,24 +18,16 @@ public class Parser {
      * @return x,y koordinaatit
      */
     public static int[] parseAlgebraic(String string) {
-//        Pattern pattern = Pattern.compile("[a-z][1-8]");
-//        if(!pattern.matcher(string).matches()) {
-//            return null;
-//        }
+        Pattern pattern = Pattern.compile("[a-z][0-9]*");
+        if (!pattern.matcher(string).matches()) {
+            return null;
+        }
         int[] koordinaatit = new int[2];
         koordinaatit[0] = string.charAt(0) - 97;
         koordinaatit[1] = string.charAt(1) - 49;
         return koordinaatit;
     }
 
-//    private static String parseFirstPart(String string) {
-//        String ret = "";
-//        for(int i=0; i<string.length(); i++) {
-//            if(string.charAt(i)>96 && string.charAt(i)<123) {
-//                ret = ret.concat(Character.toString(string.charAt(i)));
-//            }
-//        }
-//    }
     /**
      * Tulkitsee algebrallisen komennon siirron alku- ja loppukoordinaateiksi.
      * Esim d2-d4 =&gt; ((3,1),(3,3)), d4 =&gt;((3,1),(3,3)), Qxd4 =&gt;
@@ -43,7 +36,7 @@ public class Parser {
      * @param string annettu komento
      * @param vuoro onko valkoisen vai mustan vuoro param lauta lauta jolla
      * siirretään nappulaa
-     * @param lauta
+     * @param lauta lauta jolla koitetaan siirtyä
      * @return alku- ja loppukoordinaatit
      */
     public static int[][] parseCommand(String string, Nappula.Puoli vuoro, Lauta lauta) {
@@ -56,107 +49,22 @@ public class Parser {
         }
         Pattern sotilas = Pattern.compile("[a-z][1-8]");
         if (sotilas.matcher(string).matches()) {
-            return parseSotilas(string, vuoro, lauta);
+            return SotilasParser.parseSotilas(string, vuoro, lauta);
         }
         Pattern sotilasSyonti = Pattern.compile("x[a-z][1-8]");
         if (sotilasSyonti.matcher(string).matches()) {
-            return parseSotilasSyonti(string, vuoro, lauta);
+            return SotilasParser.parseSotilasSyonti(string, vuoro, lauta);
         }
-        Pattern upseeri = Pattern.compile("[A-Z][a-z][1-8]");
+        Pattern upseeri = Pattern.compile("[A-Z][a-z][1-8]|[\\u2654-\\u265F][a-z][1-8]");
         if (upseeri.matcher(string).matches()) {
             return parseUpseeri(string, vuoro, lauta);
         }
-//        Pattern tornitus = Pattern.compile("((O-){1,2}(O)) | (0-){1,2}(0)");
         Pattern tornitus = Pattern.compile("(O-){1,2}O|(0-){1,2}0");
         if (tornitus.matcher(string).matches()) {
             return parseTornitus(string, vuoro, lauta);
         }
         System.out.println("No match");
         return null;
-    }
-
-    private static int[][] parseSotilas(String string, Nappula.Puoli vuoro, Lauta lauta) {
-        int[][] startEndPoints = new int[2][2];
-        int[] koordinaatit = new int[2];
-        koordinaatit[0] = string.charAt(0) - 97;
-        koordinaatit[1] = string.charAt(1) - 49;
-//        System.out.println(startEndPoints[0][0]+","+startEndPoints[0][1]+"-"+startEndPoints[1][0]+","+startEndPoints[1][0]);
-        int[] testKoord = new int[2];
-
-        if (vuoro == Nappula.Puoli.VALKOINEN) {
-//            System.out.println((int) getNappula(testKoord).getMerkki());
-            testKoord[0] = koordinaatit[0];
-            testKoord[1] = koordinaatit[1] - 1;
-            if (lauta.getNappula(testKoord).isEmpty()) {
-                testKoord[1] = koordinaatit[1] - 2;
-            }
-            if (lauta.getNappula(testKoord).getMerkki() == '\u2659') {
-                startEndPoints[1] = parseAlgebraic(string);
-                startEndPoints[0] = testKoord;
-            }
-        }
-        if (vuoro == Nappula.Puoli.MUSTA) {
-            testKoord[0] = koordinaatit[0];
-            testKoord[1] = koordinaatit[1] + 1;
-            if (lauta.getNappula(testKoord).isEmpty()) {
-                testKoord[1] = koordinaatit[1] + 2;
-            }
-            if (lauta.getNappula(testKoord).getMerkki() == '\u265F') {
-                startEndPoints[1] = parseAlgebraic(string);
-                startEndPoints[0] = testKoord;
-            }
-        }
-        return startEndPoints;
-    }
-
-    private static int[][] parseSotilasSyonti(String string, Nappula.Puoli vuoro, Lauta lauta) {
-        int[] koordinaatit = parseAlgebraic(string.substring(1));
-        int[][] startEndPoints = new int[2][2];
-        startEndPoints[1] = koordinaatit;
-        int[] testKoord = new int[2];
-        int n = 0;
-
-        if (vuoro == Nappula.Puoli.VALKOINEN) {
-            testKoord[1] = koordinaatit[1] - 1;
-
-            if (koordinaatit[0] > 0) {
-                testKoord[0] = koordinaatit[0] - 1;
-                if (lauta.getNappula(testKoord).getMerkki() == '\u2659') {
-                    startEndPoints[0][0] = testKoord[0];
-                    startEndPoints[0][1] = testKoord[1];
-                    n++;
-                }
-            }
-            if (koordinaatit[0] < 7) {
-                testKoord[0] = koordinaatit[0] + 1;
-                if (lauta.getNappula(testKoord).getMerkki() == '\u2659') {
-                    startEndPoints[0] = testKoord;
-                    n++;
-                }
-            }
-        } else {
-            testKoord[1] = koordinaatit[1] + 1;
-            if (koordinaatit[0] > 0) {
-                testKoord[0] = koordinaatit[0] - 1;
-                if (lauta.getNappula(testKoord).getMerkki() == '\u265F') {
-                    startEndPoints[0][0] = testKoord[0];
-                    startEndPoints[0][1] = testKoord[1];
-                    n++;
-                }
-            }
-            if (koordinaatit[0] < 7) {
-                testKoord[0] = koordinaatit[0] + 1;
-                if (lauta.getNappula(testKoord).getMerkki() == '\u265F') {
-                    startEndPoints[0] = testKoord;
-                    n++;
-                }
-            }
-        }
-        if (n > 1) {
-            System.out.println("Komento ei yksikäsitteinen");
-            return null;
-        }
-        return startEndPoints;
     }
 
     private static int[][] parseUpseeri(String string, Nappula.Puoli vuoro, Lauta lauta) {
@@ -172,8 +80,10 @@ public class Parser {
                 testKoord[0] = i;
                 testKoord[1] = j;
                 nappula = lauta.getNappula(testKoord);
-                if (nappula.getNotaatioMerkki() == notaatio && nappula.getPuoli() == vuoro) {
-                    if (Liikkuminen.voikoSiirtya(nappula, koordinaatit, lauta, null)) {
+                if ((nappula.getNotaatioMerkki() == notaatio
+                        || nappula.getMerkki() == notaatio)
+                        && nappula.getPuoli() == vuoro) {
+                    if (VoikoSiirtya.voikoSiirtya(nappula, koordinaatit, lauta, null)) {
                         n++;
                         startEndPoints[0][0] = testKoord[0];
                         startEndPoints[0][1] = testKoord[1];

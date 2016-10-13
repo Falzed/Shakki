@@ -6,4 +6,7 @@
 
 <suppressions>
     <suppress files="UI.java" checks="[a-zA-Z0-9]*"/>
+	<suppress files="UINotUnreadable.java" checks="[a-zA-Z0-9]*"/>
+	<suppress files="GenericDebugger.java" checks="[a-zA-Z0-9]*"/>
+	<suppress files="ParseDebugger.java" checks="[a-zA-Z0-9]*"/>
 </suppressions>

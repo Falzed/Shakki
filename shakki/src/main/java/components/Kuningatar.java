@@ -10,6 +10,7 @@ public class Kuningatar extends Nappula {
     private static final char VALKOINENMERKKI = '\u2655';
     private static final char MUSTAMERKKI = '\u265B';
     private static final char NOTAATIOMERKKI = 'Q';
+    private static final String NIMI = "Kuningatar";
 
     /**
      * Konstruktori, kutsuu vain Nappula-luokan konstruktoria. Puoli stringinä.
@@ -51,5 +52,9 @@ public class Kuningatar extends Nappula {
         Kuningatar kopio = new Kuningatar(super.getPuoli());
 //        kopio.asetaKoordinaatit(sijainti);
         return kopio;
+    }
+    @Override
+    public String getNimi() {
+        return NIMI;
     }
 }

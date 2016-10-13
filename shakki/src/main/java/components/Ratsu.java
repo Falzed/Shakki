@@ -9,6 +9,7 @@ public class Ratsu extends Nappula {
     private static final char VALKOINENMERKKI = '\u2658';
     private static final char MUSTAMERKKI = '\u265E';
     private static final char NOTAATIOMERKKI = 'N';
+    private static final String NIMI = "Ratsu";
 
     /**
      * Konstruktori, kutsuu vain Nappula-luokan konstruktoria. Puoli stringinä.
@@ -52,5 +53,9 @@ public class Ratsu extends Nappula {
         Ratsu kopio = new Ratsu(super.getPuoli());
 //        kopio.asetaKoordinaatit(sijainti);
         return kopio;
+    }
+    @Override
+    public String getNimi() {
+        return NIMI;
     }
 }

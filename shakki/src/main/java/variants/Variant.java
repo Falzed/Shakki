@@ -34,12 +34,11 @@ public interface Variant {
      * Lauta.
      */
     Lauta LAUTA = new Lauta(LAUDAN_LEVEYS, LAUDAN_PITUUS);
-    
+
     /**
      * Laudat.
      */
     ArrayList<Lauta> LAUDAT = new ArrayList<>();
-    
 
     /**
      * Metodi joka laittaa nappulat poikoilleen aloitusasemiin.
@@ -47,8 +46,8 @@ public interface Variant {
     public void setUp();
 
     /**
-     *
-     * @return
+     * getteri.
+     * @return lauta
      */
     default public Lauta getLauta() {
         if (LAUTOJEN_MAARA == 1) {
@@ -59,10 +58,22 @@ public interface Variant {
     }
 
     /**
-     *
-     * @return
+     * getteri.
+     * @return aloittaja
      */
     default public Nappula.Puoli getAloittaja() {
         return ALOITTAJA;
     }
+    
+    /**
+     * getteri.
+     * @return nappuloitten nimet
+     */
+    public String[] getNappuloittenNimet();
+
+    /**
+     * getteri.
+     * @return nappula esimerkit
+     */
+    public Nappula[] getNappulaEsimerkit();
 }

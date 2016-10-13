@@ -1,4 +1,4 @@
-package logic;
+package logic.liikkuminen;
 
 import components.Lauta;
 import components.Nappula;

@@ -4,7 +4,7 @@ import components.Lauta;
 import components.Nappula;
 import components.Torni;
 import org.junit.Test;
-import logic.Liikkuminen;
+import logic.liikkuminen.Liikkuminen;
 import org.junit.Assert;
 import static org.junit.Assert.*;
 
@@ -28,7 +28,7 @@ public class ParseTest {
         startEndPoints[1] = endPoint;
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 2; j++) {
-                assertTrue(logic.Parser.parseCommand("d4", vuoro, lauta)[i][j] == startEndPoints[i][j]);
+                assertTrue(logic.Parser.Parser.parseCommand("d4", vuoro, lauta)[i][j] == startEndPoints[i][j]);
             }
         }
         Liikkuminen.koitaSiirtya(lauta.getNappula(startPoint), endPoint, lauta);
@@ -43,7 +43,7 @@ public class ParseTest {
         startEndPoints[1] = endPoint;
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 2; j++) {
-                assertTrue(logic.Parser.parseCommand("d6", vuoro, lauta)[i][j] == startEndPoints[i][j]);
+                assertTrue(logic.Parser.Parser.parseCommand("d6", vuoro, lauta)[i][j] == startEndPoints[i][j]);
             }
         }
         Liikkuminen.koitaSiirtya(lauta.getNappula(startPoint), endPoint, lauta);
@@ -58,7 +58,7 @@ public class ParseTest {
         startEndPoints[1] = endPoint;
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 2; j++) {
-                assertTrue(logic.Parser.parseCommand("c4", vuoro, lauta)[i][j] == startEndPoints[i][j]);
+                assertTrue(logic.Parser.Parser.parseCommand("c4", vuoro, lauta)[i][j] == startEndPoints[i][j]);
             }
         }
         Liikkuminen.koitaSiirtya(lauta.getNappula(startPoint), endPoint, lauta);
@@ -73,7 +73,7 @@ public class ParseTest {
         startEndPoints[1] = endPoint;
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 2; j++) {
-                assertTrue(logic.Parser.parseCommand("e5", vuoro, lauta)[i][j] == startEndPoints[i][j]);
+                assertTrue(logic.Parser.Parser.parseCommand("e5", vuoro, lauta)[i][j] == startEndPoints[i][j]);
             }
         }
         Liikkuminen.koitaSiirtya(lauta.getNappula(startPoint), endPoint, lauta);
@@ -88,7 +88,7 @@ public class ParseTest {
         startEndPoints[1] = endPoint;
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 2; j++) {
-                assertTrue(logic.Parser.parseCommand("xe5", vuoro, lauta)[i][j] == startEndPoints[i][j]);
+                assertTrue(logic.Parser.Parser.parseCommand("xe5", vuoro, lauta)[i][j] == startEndPoints[i][j]);
             }
         }
         Liikkuminen.koitaSiirtya(lauta.getNappula(startPoint), endPoint, lauta);
@@ -111,7 +111,7 @@ public class ParseTest {
         startEndPoints[1] = endPoint;
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 2; j++) {
-                assertTrue(logic.Parser.parseCommand("Nc3", vuoro, lauta)[i][j] == startEndPoints[i][j]);
+                assertTrue(logic.Parser.Parser.parseCommand("Nc3", vuoro, lauta)[i][j] == startEndPoints[i][j]);
             }
         }
         Liikkuminen.koitaSiirtya(lauta.getNappula(startPoint), endPoint, lauta);
@@ -123,7 +123,7 @@ public class ParseTest {
         endPoint[1] = 4;
         startEndPoints[0] = startPoint;
         startEndPoints[1] = endPoint;
-        assertTrue(logic.Parser.parseCommand("Nc5", vuoro, lauta) == null);
+        assertTrue(logic.Parser.Parser.parseCommand("Nc5", vuoro, lauta) == null);
     }
 
     @Test
@@ -135,11 +135,11 @@ public class ParseTest {
         koordinaatit[1] = 4;
         Torni torni = new Torni("valkoinen");
         Torni torni2 = new Torni("valkoinen");
-        lauta.aseta(torni, koordinaatit);
+        logic.LaudanMuutokset.aseta(torni, koordinaatit, lauta);
         koordinaatit[0] = 4;
         koordinaatit[1] = 7;
-        lauta.aseta(torni2, koordinaatit);
-        assertTrue(logic.Parser.parseCommand("Re6", Nappula.Puoli.VALKOINEN, lauta) == null);
+        logic.LaudanMuutokset.aseta(torni2, koordinaatit, lauta);
+        assertTrue(logic.Parser.Parser.parseCommand("Re6", Nappula.Puoli.VALKOINEN, lauta) == null);
 
     }
 }

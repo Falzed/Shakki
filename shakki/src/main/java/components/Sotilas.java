@@ -9,6 +9,7 @@ public class Sotilas extends Nappula {
     private static final char VALKOINENMERKKI = '\u2659';
     private static final char MUSTAMERKKI = '\u265F';
     private static final char NOTAATIOMERKKI = ' ';
+    private static final String NIMI = "Sotilas";
 
     /**
      * Konstruktori, kutsuu vain Nappula-luokan konstruktoria. Puoli stringinä.
@@ -55,5 +56,9 @@ public class Sotilas extends Nappula {
     @Override
     public boolean onSotilas() {
         return true;
+    }
+    @Override
+    public String getNimi() {
+        return NIMI;
     }
 }

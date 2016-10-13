@@ -1,5 +1,8 @@
 package logic;
 
+import logic.liikkuminen.VoikoSiirtya;
+import logic.liikkuminen.Liikkuminen;
+import logic.Parser.Parser;
 import components.Lauta;
 import components.Nappula;
 import java.util.ArrayList;
@@ -25,7 +28,7 @@ public class Shakitus {
         for (int i = 0; i < lauta.getLeveys(); i++) {
             for (int j = 0; j < lauta.getPituus(); j++) {
                 int[] mista = {i, j};
-                if (Liikkuminen.voikoSiirtyaTornittamatta(mista, koordinaatit, lauta, null)
+                if (VoikoSiirtya.voikoSiirtyaTornittamatta(mista, koordinaatit, lauta, null)
                         && lauta.getNappula(mista).getPuoli()
                         != puoli) {
 //                    System.out.println("Mista: "+Arrays.toString(mista));
@@ -74,7 +77,7 @@ public class Shakitus {
 //        return Shakitus.uhattu(lauta, koordinaatit, puoli);
 //    }
     /**
-     * Metodi kertoo, onko annettu puoli shakissa
+     * Metodi kertoo, onko annettu puoli shakissa.
      *
      * @param lauta lauta jossa on ehkä shakki
      * @param puoli valkoinen vai musta (enum)
@@ -89,7 +92,7 @@ public class Shakitus {
     }
 
     /**
-     * Metodi kertoo, onko annettu puoli shakissa
+     * Metodi kertoo, onko annettu puoli shakissa.
      *
      * @param lauta lauta jossa on ehkä shakki
      * @param puoli valkoinen vai musta (string)
@@ -142,7 +145,7 @@ public class Shakitus {
             for (int i = 0; i < lauta.getLeveys(); i++) {
                 for (int j = 0; j < lauta.getPituus(); j++) {
                     int[] minne = {i, j};
-                    if (Liikkuminen.voikoSiirtya(nappula.getKoordinaatit(), minne, lauta, enPassant)) {
+                    if (VoikoSiirtya.voikoSiirtya(nappula.getKoordinaatit(), minne, lauta, enPassant)) {
                         Lauta testLauta = lauta.kopioi();
                         Liikkuminen.koitaSiirtya(nappula.getKoordinaatit(), minne, testLauta, enPassant);
                         if (!shakissa(testLauta, puoli)) {

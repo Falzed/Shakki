@@ -1,8 +1,6 @@
 package components;
 
-import java.util.Arrays;
-import java.util.regex.Pattern;
-import logic.Parser;
+import logic.Parser.Parser;
 
 /**
  * Luokka toteuttaa shakkilaudan. Lauta tietää mikä nappula on missäkin
@@ -12,8 +10,8 @@ import logic.Parser;
  */
 public class Lauta {
 
-    private int leveys;
-    private int pituus;
+    private final int leveys;
+    private final int pituus;
     private Nappula[][] nappulat;
 
     /**
@@ -26,7 +24,8 @@ public class Lauta {
     }
 
     /**
-     *  Kostruktori jolle annettu laudan leveys ja pituus.
+     * Kostruktori jolle annettu laudan leveys ja pituus.
+     *
      * @param leveys laudan leveys
      * @param pituus laudan pituus
      */
@@ -35,26 +34,31 @@ public class Lauta {
         this.pituus = pituus;
         nappulat = new Nappula[leveys][pituus];
     }
+
     /**
      * getteri.
+     *
      * @param koordinaatit koordinaatit
      * @return nappula
      */
     public Nappula getNappula(int[] koordinaatit) {
         return nappulat[koordinaatit[0]][koordinaatit[1]];
     }
+
     /**
      * getteri.
+     *
      * @param string koordinaatit
      * @return nappula
      */
     public Nappula getNappula(String string) {
-        int[] koordinaatit = logic.Parser.parseAlgebraic(string);
+        int[] koordinaatit = logic.Parser.Parser.parseAlgebraic(string);
         return getNappula(koordinaatit);
     }
 
     /**
      * Kopioi laudan.
+     *
      * @return palauttaa laudan kopion
      */
     public Lauta kopioi() {
@@ -64,7 +68,7 @@ public class Lauta {
             for (int j = 0; j < pituus; j++) {
                 int[] koordinaatit = {i, j};
                 Nappula kopioituNappula = getNappula(koordinaatit).kopioi();
-                kopio.aseta(kopioituNappula, koordinaatit);
+                logic.LaudanMuutokset.aseta(kopioituNappula, koordinaatit, kopio);
             }
         }
         return kopio;
@@ -74,113 +78,20 @@ public class Lauta {
      * Alustaa laudan jokaiseen ruutuun Tyhja-olion.
      */
     public void alustaLauta() {
-        int[] koordinaatit = {0, 0};
         Tyhja tyhja = new Tyhja();
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
+        for (int i = 0; i < leveys; i++) {
+            for (int j = 0; j < pituus; j++) {
                 nappulat[i][j] = tyhja;
             }
         }
     }
-
     /**
-     * Metodi asettaa annetun nappulan tyhjään ruutuun.
-     *
-     * @param nappula laudalle asetettava nappula
-     * @param koordinaatit minne nappula asetetaan
-     * @return onnistuiko asetus
+     * setteri.
+     * @param nappula nappula joka laitetaan laudalle
+     * @param koordinaatit minne nappula laitetaan
      */
-    public boolean aseta(Nappula nappula, int[] koordinaatit) {
-        if (koordinaatit[0] < 0 || koordinaatit[0] >= leveys
-                || koordinaatit[1] < 0 || koordinaatit[1] >= pituus) {
-            return false;
-        }
-        if (nappulat[koordinaatit[0]][koordinaatit[1]].isEmpty()) {
-            nappulat[koordinaatit[0]][koordinaatit[1]] = nappula;
-            if (!nappula.isEmpty()) {
-                int[] vanhaSijainti = nappula.getKoordinaatit();
-                if (vanhaSijainti[0] != -1) {
-                    nappulat[vanhaSijainti[0]][vanhaSijainti[1]] = new Tyhja();
-                }
-                nappula.asetaKoordinaatit(koordinaatit);
-            }
-        } else {
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * Metodi asettaa annetun nappulan tyhjään ruutuun.
-     * @param nappula asetettava nappula
-     * @param algebraic algebralliset koordinaatit ruudulle minne nappula asetetaan
-     * @return onnistuiko asetus
-     */
-    public boolean aseta(Nappula nappula, String algebraic) {
-        int[] koordinaatit = Parser.parseAlgebraic(algebraic);
-        if (koordinaatit == null) {
-            return false;
-        }
-        if (koordinaatit[0] < 0 || koordinaatit[0] >= leveys
-                || koordinaatit[1] < 0 || koordinaatit[1] >= pituus) {
-            return false;
-        }
-        return aseta(nappula, koordinaatit);
-    }
-
-    /**
-     * Metodi siirtää nappulan toiseen ruutuun ja syö siinä olevan nappulan.
-     *
-     * @param nappula siirrettävä nappula
-     * @param koordinaatit ruutu missä nappula syö toisen nappulan
-     * @return onnistuiko siirto (ei voi syödä omaa)
-     */
-    public boolean syo(Nappula nappula, int[] koordinaatit) {
-        if (koordinaatit[0] < 0 || koordinaatit[0] >= leveys
-                || koordinaatit[1] < 0 || koordinaatit[1] >= pituus) {
-            return false;
-        }
-        if (nappulat[koordinaatit[0]][koordinaatit[1]].isEmpty()) {
-            return false;
-        } else if (nappula.getPuoli()
-                == nappulat[koordinaatit[0]][koordinaatit[1]].getPuoli()) {
-            return false;
-        } else {
-            nappulat[koordinaatit[0]][koordinaatit[1]] = nappula;
-            int[] vanhaSijainti = nappula.getKoordinaatit();
-            nappulat[vanhaSijainti[0]][vanhaSijainti[1]] = new Tyhja();
-            nappula.asetaKoordinaatit(koordinaatit);
-        }
-        return true;
-    }
-
-    /**
-     * Metodi siirtää nappulan toiseen ruutuun ja syö siinä olevan nappulan.
-     *
-     * @param nappula siirrettävä nappula
-     * @param algebraic algebralliset koordinaatit ruudulle mistä syödään nappula
-     * @return onnistuiko siirto (ei voi syödä omaa)
-     */
-    public boolean syo(Nappula nappula, String algebraic) {
-        int[] koordinaatit = Parser.parseAlgebraic(algebraic);
-        if (koordinaatit == null) {
-            return false;
-        }
-        if (koordinaatit[0] < 0 || koordinaatit[0] >= leveys
-                || koordinaatit[1] < 0 || koordinaatit[1] >= pituus) {
-            return false;
-        }
-        return syo(nappula, koordinaatit);
-    }
-
-    /**
-     * Metodi laittaa annettuun ruutuun Tyhja-olion. Tarkoitettu ohestalyönnille
-     * mutta voi tarvittaessa käyttää muuhunkin muissa varianteissa.
-     * @param syotava koordinaatit ruudulle josta poistetaan nappula
-     */
-    public void enPassantPoistaSyoty(int[] syotava) {
-        nappulat[syotava[0]][syotava[1]].asetaKoordinaatit(new int[2]);
-        nappulat[syotava[0]][syotava[1]] = new Tyhja();
+    public void setNappula(Nappula nappula, int[] koordinaatit) {
+        nappulat[koordinaatit[0]][koordinaatit[1]] = nappula;
     }
 
     public int getLeveys() {

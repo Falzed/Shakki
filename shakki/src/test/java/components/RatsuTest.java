@@ -8,7 +8,7 @@ package components;
 import components.Lauta;
 import components.Sotilas;
 import components.Ratsu;
-import logic.Liikkuminen;
+import logic.liikkuminen.Liikkuminen;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -22,47 +22,47 @@ public class RatsuTest {
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
         Ratsu ratsu = new Ratsu("valkoinen");
-        lauta.aseta(ratsu, koordinaatit);
+        logic.LaudanMuutokset.aseta(ratsu, koordinaatit, lauta);
 
         koordinaatit[0] = 3;
         koordinaatit[1] = 5;
         Sotilas sotilas1 = new Sotilas("valkoinen");
-        lauta.aseta(sotilas1, koordinaatit);
+        logic.LaudanMuutokset.aseta(sotilas1, koordinaatit, lauta);
 
         koordinaatit[0] = 3;
         koordinaatit[1] = 3;
         Sotilas sotilas2 = new Sotilas("valkoinen");
-        lauta.aseta(sotilas2, koordinaatit);
+        logic.LaudanMuutokset.aseta(sotilas2, koordinaatit, lauta);
 
         koordinaatit[0] = 2;
         koordinaatit[1] = 4;
         Sotilas sotilas3 = new Sotilas("valkoinen");
-        lauta.aseta(sotilas3, koordinaatit);
+        logic.LaudanMuutokset.aseta(sotilas3, koordinaatit, lauta);
 
         koordinaatit[0] = 4;
         koordinaatit[1] = 4;
         Sotilas sotilas4 = new Sotilas("valkoinen");
-        lauta.aseta(sotilas4, koordinaatit);
+        logic.LaudanMuutokset.aseta(sotilas4, koordinaatit, lauta);
 
         koordinaatit[0] = 4;
         koordinaatit[1] = 5;
         Sotilas sotilas5 = new Sotilas("valkoinen");
-        lauta.aseta(sotilas5, koordinaatit);
+        logic.LaudanMuutokset.aseta(sotilas5, koordinaatit, lauta);
 
         koordinaatit[0] = 2;
         koordinaatit[1] = 5;
         Sotilas sotilas6 = new Sotilas("valkoinen");
-        lauta.aseta(sotilas6, koordinaatit);
+        logic.LaudanMuutokset.aseta(sotilas6, koordinaatit, lauta);
 
         koordinaatit[0] = 2;
         koordinaatit[1] = 3;
         Sotilas sotilas7 = new Sotilas("valkoinen");
-        lauta.aseta(sotilas7, koordinaatit);
+        logic.LaudanMuutokset.aseta(sotilas7, koordinaatit, lauta);
 
         koordinaatit[0] = 4;
         koordinaatit[1] = 3;
         Sotilas sotilas8 = new Sotilas("valkoinen");
-        lauta.aseta(sotilas8, koordinaatit);
+        logic.LaudanMuutokset.aseta(sotilas8, koordinaatit, lauta);
 
         koordinaatit[0] = 5;
         koordinaatit[1] = 5;
@@ -99,12 +99,12 @@ public class RatsuTest {
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
         Ratsu ratsu = new Ratsu("valkoinen");
-        lauta.aseta(ratsu, koordinaatit);
+        logic.LaudanMuutokset.aseta(ratsu, koordinaatit, lauta);
 
         koordinaatit[0] = 5;
         koordinaatit[1] = 5;
         Sotilas sotilas1 = new Sotilas("valkoinen");
-        lauta.aseta(sotilas1, koordinaatit);
+        logic.LaudanMuutokset.aseta(sotilas1, koordinaatit, lauta);
 
         assertFalse(Liikkuminen.koitaSiirtya(ratsu, koordinaatit, lauta));
     }

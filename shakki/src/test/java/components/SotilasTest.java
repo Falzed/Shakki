@@ -4,7 +4,7 @@ import components.Sotilas;
 import components.Lauta;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import logic.Liikkuminen;
+import logic.liikkuminen.Liikkuminen;
 
 public class SotilasTest {
 
@@ -16,7 +16,7 @@ public class SotilasTest {
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
         Sotilas sotilas1 = new Sotilas("valkoinen");
-        lauta.aseta(sotilas1, koordinaatit);
+        logic.LaudanMuutokset.aseta(sotilas1, koordinaatit, lauta);
 
         koordinaatit[0] = 3;
         koordinaatit[1] = 5;
@@ -35,7 +35,7 @@ public class SotilasTest {
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
         Sotilas sotilas1 = new Sotilas("musta");
-        lauta.aseta(sotilas1, koordinaatit);
+        logic.LaudanMuutokset.aseta(sotilas1, koordinaatit, lauta);
 
         koordinaatit[0] = 3;
         koordinaatit[1] = 3;
@@ -54,15 +54,15 @@ public class SotilasTest {
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
         Sotilas sotilas1 = new Sotilas("valkoinen");
-        lauta.aseta(sotilas1, koordinaatit);
+        logic.LaudanMuutokset.aseta(sotilas1, koordinaatit, lauta);
         koordinaatit[0] = 4;
         koordinaatit[1] = 5;
         Sotilas sotilas2 = new Sotilas("musta");
-        lauta.aseta(sotilas2, koordinaatit);
+        logic.LaudanMuutokset.aseta(sotilas2, koordinaatit, lauta);
         koordinaatit[0] = 3;
         koordinaatit[1] = 5;
         Sotilas sotilas3 = new Sotilas("musta");
-        lauta.aseta(sotilas3, koordinaatit);
+        logic.LaudanMuutokset.aseta(sotilas3, koordinaatit, lauta);
 
         koordinaatit[0] = 3;
         koordinaatit[1] = 5;
@@ -80,15 +80,15 @@ public class SotilasTest {
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
         Sotilas sotilas1 = new Sotilas("musta");
-        lauta.aseta(sotilas1, koordinaatit);
+        logic.LaudanMuutokset.aseta(sotilas1, koordinaatit, lauta);
         koordinaatit[0] = 2;
         koordinaatit[1] = 3;
         Sotilas sotilas2 = new Sotilas("valkoinen");
-        lauta.aseta(sotilas2, koordinaatit);
+        logic.LaudanMuutokset.aseta(sotilas2, koordinaatit, lauta);
         koordinaatit[0] = 3;
         koordinaatit[1] = 3;
         Sotilas sotilas3 = new Sotilas("valkoinen");
-        lauta.aseta(sotilas3, koordinaatit);
+        logic.LaudanMuutokset.aseta(sotilas3, koordinaatit, lauta);
 
         koordinaatit[0] = 3;
         koordinaatit[1] = 3;
@@ -106,7 +106,7 @@ public class SotilasTest {
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
         Sotilas sotilas1 = new Sotilas("valkoinen");
-        lauta.aseta(sotilas1, koordinaatit);
+        logic.LaudanMuutokset.aseta(sotilas1, koordinaatit, lauta);
 
         koordinaatit[0] = 4;
         koordinaatit[1] = 4;

@@ -1,8 +1,9 @@
-package logic;
+package logic.liikkuminen;
 
 import components.Lauta;
 import components.Nappula;
 import java.util.Arrays;
+import logic.LaudanMuutokset;
 
 /**
  * Luokka tarjoaa apumetodit jotka kertovat voiko aloitusruudusta kulkea sotilas
@@ -103,5 +104,23 @@ public class SotilasLiikkuminen {
             return false;
         }
         return Liikkuminen.eiOma(mista, minne, lauta);
+    }
+    
+    /**
+     * Metodi suorittaa ohestalyönnin.
+     *
+     * @param nappula ohestalyövä sotilas
+     * @param minne ohestalyötävän sotilaan koordinaatit
+     * @param lauta lauta jolla sotilaat ovat
+     */
+    public static void enPassant(Nappula nappula, int[] minne, Lauta lauta) {
+        if (nappula.getPuoli() == Nappula.Puoli.VALKOINEN) {
+            int[] syotavanKoordinaatit = {minne[0], minne[1] - 1};
+            LaudanMuutokset.poista(syotavanKoordinaatit, lauta);
+        } else {
+            int[] syotavanKoordinaatit = {minne[0], minne[1] + 1};
+            LaudanMuutokset.poista(syotavanKoordinaatit, lauta);
+        }
+        LaudanMuutokset.aseta(nappula, minne, lauta);
     }
 }

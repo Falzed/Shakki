@@ -1,10 +1,9 @@
 package logic;
 
+import logic.liikkuminen.Liikkuminen;
+import logic.Parser.Parser;
 import components.Lauta;
 import components.Nappula;
-import ui.*;
-import javax.swing.JTextField;
-import javax.swing.JTextArea;
 import history.*;
 import variants.*;
 
@@ -20,6 +19,7 @@ public class Game {
     private TurnHistory historia;
     private Nappula.Puoli vuoro;
     private int[] enPassant;
+    private ui.UINotUnreadable ui;
 
     /**
      * Konstruktori pelille.
@@ -31,6 +31,7 @@ public class Game {
         this.historia = new TurnHistory();
         this.vuoro = variant.getAloittaja();
         this.enPassant = null;
+        this.ui = new ui.UINotUnreadable(this);
     }
 
     /**
@@ -73,7 +74,7 @@ public class Game {
                     vuoro = Nappula.Puoli.VALKOINEN;
                 }
                 if (!historia.getList().isEmpty()) {
-                    jatkaVuoroHistoriaa(komento);
+                    historia.jatkaVuoroHistoriaa(komento);
                 } else {
                     historia.addTurn(new Turn(historia.getVuoroNumero(), komento, ""));
                 }
@@ -88,26 +89,32 @@ public class Game {
             } else {
                 this.enPassant = null;
             }
+            tarkistaKorotus(startEndPoints);
             return true;
         }
         System.out.println("Parser palautti nullin");
         return false;
     }
 
-    private void jatkaVuoroHistoriaa(String komento) {
-        if (historia.getViimeinenVuoro().isComplete()) {
-            historia.addTurn(new Turn(historia.getVuoroNumero(), komento, ""));
-        } else {
-            if (historia.getViimeinenVuoro().getWhiteMove().isEmpty()) {
-                historia.getViimeinenVuoro().setWhiteMove(komento);
-            } else if (historia.getViimeinenVuoro().getBlackMove().isEmpty()) {
-                historia.getViimeinenVuoro().setBlackMove(komento);
+    private void tarkistaKorotus(int[][] startEndPoints) {
+        if (startEndPoints[1][1] == 0
+                || startEndPoints[1][0] == lauta.getPituus() - 1) {
+            int[] koord = {startEndPoints[1][1], startEndPoints[1][1]};
+            if (lauta.getNappula(koord).onSotilas()) {
+                String korotetaanNimi = ui.popupKorotus();
+                for (Nappula korotuskandidaatti : variant.getNappulaEsimerkit()) {
+                    //vuoro jo vaihdettu seuraavaan
+                    if (korotuskandidaatti.getNimi().equals(korotetaanNimi) && korotuskandidaatti.getPuoli() != vuoro) {
+                        LaudanMuutokset.korvaa(korotuskandidaatti.kopioi(), koord, lauta);
+                    }
+                }
             }
         }
     }
 
     /**
      * getteri.
+     *
      * @return lauta
      */
     public Lauta getLauta() {
@@ -116,6 +123,7 @@ public class Game {
 
     /**
      * getteri.
+     *
      * @return historia
      */
     public TurnHistory getTurnHistory() {
@@ -124,6 +132,7 @@ public class Game {
 
     /**
      * getteri.
+     *
      * @return vuoro
      */
     public Nappula.Puoli getVuoro() {
@@ -139,9 +148,8 @@ public class Game {
         Game peli = new Game();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                UI ui = new UI(peli);
-                ui.setVisible(true);
-                ui.updateUI();
+                peli.ui.setVisible(true);
+                peli.ui.updateUI();
             }
         });
         Nappula.Puoli vuoro = Nappula.Puoli.VALKOINEN;
@@ -149,14 +157,38 @@ public class Game {
     }
 
     /**
-     * Metodi muuttaa pelin vuorohistorian käyttäjän syöttämäksi. Ei tällä
-     * hetkellä käytössä.
-     *
-     * @param string muotoa 1. d4 d5\n2. c4 e5 3. xe5 oleva merkkijono joka
-     * kuvaa pelaajien siirtoja.
+     * Poistaa vuorohistorian.
      */
-    public static void setHistory(String string) {
-        TurnHistory historia = new TurnHistory(string);
+    public void clearHistory() {
+        this.historia.removeAfter(0);
+    }
 
+    /**
+     * (Yrittää) suorittaa annetun vuorohistorian.
+     *
+     * @param history vuorohistoria TurnHistoryna
+     */
+    public void applyHistory(TurnHistory history) {
+        variant.setUp();
+        lauta = variant.getLauta();
+        vuoro = variant.getAloittaja();
+        System.out.println("history: " + history);
+        String komento = "";
+        for (Turn turn : history.getList()) {
+            komento = turn.getWhiteMove();
+            suoritaKomento(komento);
+            komento = turn.getBlackMove();
+            suoritaKomento(komento);
+        }
+    }
+
+    /**
+     * (Yrittää) suorittaa annetun vuorohistorian.
+     *
+     * @param string merkkijonona
+     */
+    public void applyHistory(String string) {
+        TurnHistory history = new TurnHistory(string);
+        applyHistory(history);
     }
 }

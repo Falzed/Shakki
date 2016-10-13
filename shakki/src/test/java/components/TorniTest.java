@@ -4,7 +4,7 @@ import components.Torni;
 import components.Lauta;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import logic.Liikkuminen;
+import logic.liikkuminen.Liikkuminen;
 
 public class TorniTest {
 
@@ -19,7 +19,7 @@ public class TorniTest {
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
         Torni torni1 = new Torni("valkoinen");
-        lauta.aseta(torni1, koordinaatit);
+        logic.LaudanMuutokset.aseta(torni1, koordinaatit, lauta);
 
         assertFalse(Liikkuminen.koitaSiirtya(torni1, koordinaatit, lauta));
         koordinaatit[0] = 4;
@@ -47,11 +47,11 @@ public class TorniTest {
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
         Torni torni1 = new Torni("valkoinen");
-        lauta.aseta(torni1, koordinaatit);
+        logic.LaudanMuutokset.aseta(torni1, koordinaatit, lauta);
         koordinaatit[0] = 4;
         koordinaatit[1] = 4;
         Torni torni2 = new Torni("valkoinen");
-        lauta.aseta(torni2, koordinaatit);
+        logic.LaudanMuutokset.aseta(torni2, koordinaatit, lauta);
 
         koordinaatit[0] = 5;
         koordinaatit[1] = 4;
@@ -66,11 +66,11 @@ public class TorniTest {
         koordinaatit[0] = 3;
         koordinaatit[1] = 4;
         Torni torni1 = new Torni("valkoinen");
-        lauta.aseta(torni1, koordinaatit);
+        logic.LaudanMuutokset.aseta(torni1, koordinaatit, lauta);
         koordinaatit[0] = 4;
         koordinaatit[1] = 4;
         Torni torni2 = new Torni("musta");
-        lauta.aseta(torni2, koordinaatit);
+        logic.LaudanMuutokset.aseta(torni2, koordinaatit, lauta);
 
         assertTrue(Liikkuminen.koitaSiirtya(torni1, koordinaatit, lauta));
     }

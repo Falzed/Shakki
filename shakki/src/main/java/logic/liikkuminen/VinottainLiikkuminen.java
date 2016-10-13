@@ -1,19 +1,19 @@
-package logic;
+package logic.liikkuminen;
 
 import components.Lauta;
 import components.Nappula;
-import java.util.Arrays;
 
 /**
- * Luokka tarjoaa apumetodit jotka kertovat voiko aloitusruudusta kulkea tornin
+ * Luokka tarjoaa apumetodit jotka kertovat voiko aloitusruudusta kulkea lähetin
  * lailla kohderuutuun.
  *
  * @author Oskari
  */
-public class OrtogonaalisestiLiikkuminen {
+public class VinottainLiikkuminen {
 
     /**
-     * Metodi kertoo, voisiko nappula liikkua vasemmalle (kuten torni).
+     * Metodi kertoo, voisiko nappula liikkua vinoon alas ja vasemmalle (kuten
+     * lähetti).
      *
      * @param mista aloitusruudun koordinaatit
      * @param minne kohderuudun koordinaatit
@@ -21,14 +21,11 @@ public class OrtogonaalisestiLiikkuminen {
      * @param puoli onko siirrettävä nappula vlakoinen vai musta
      * @return onnistuuko
      */
-    public static boolean moveLeft(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
-        int delta = 0;
-        delta = mista[0] - minne[0];
-
-        int[] testiKoordinaatit = {0, 0};
+    public static boolean moveLeftDown(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
+        int delta = mista[0] - minne[0];
         for (int i = 1; i < delta; i++) {
-            testiKoordinaatit[0] = mista[0] - i;
-            testiKoordinaatit[1] = mista[1];
+            int[] testiKoordinaatit
+                    = {mista[0] - i, mista[1] - i};
             if (!lauta.getNappula(testiKoordinaatit).isEmpty()) {
                 return false;
             }
@@ -37,7 +34,8 @@ public class OrtogonaalisestiLiikkuminen {
     }
 
     /**
-     * Metodi kertoo, voisiko nappula liikkua oikealle (kuten torni).
+     * Metodi kertoo, voisiko nappula liikkua vinoon ylös ja vasemmalle (kuten
+     * lähetti).
      *
      * @param mista aloitusruudun koordinaatit
      * @param minne kohderuudun koordinaatit
@@ -45,12 +43,33 @@ public class OrtogonaalisestiLiikkuminen {
      * @param puoli onko siirrettävä nappula vlakoinen vai musta
      * @return onnistuuko
      */
-    public static boolean moveRight(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
+    public static boolean moveLeftUp(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
+        int delta = mista[0] - minne[0];
+        for (int i = 1; i < delta; i++) {
+            int[] testiKoordinaatit
+                    = {mista[0] - i, mista[1] + i};
+            if (!lauta.getNappula(testiKoordinaatit).isEmpty()) {
+                return false;
+            }
+        }
+        return eiOma(mista, minne, lauta);
+    }
+
+    /**
+     * Metodi kertoo, voisiko nappula liikkua vinoon alas ja oikealle (kuten
+     * lähetti).
+     *
+     * @param mista aloitusruudun koordinaatit
+     * @param minne kohderuudun koordinaatit
+     * @param lauta lauta jolla ollaan
+     * @param puoli onko siirrettävä nappula vlakoinen vai musta
+     * @return onnistuuko
+     */
+    public static boolean moveRightDown(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
         int delta = minne[0] - mista[0];
-        int[] testiKoordinaatit = {0, 0};
         for (int i = 1; i < delta; i++) {
-            testiKoordinaatit[0] = mista[0] + i;
-            testiKoordinaatit[1] = mista[1];
+            int[] testiKoordinaatit
+                    = {mista[0] + i, mista[1] - i};
             if (!lauta.getNappula(testiKoordinaatit).isEmpty()) {
                 return false;
             }
@@ -59,7 +78,8 @@ public class OrtogonaalisestiLiikkuminen {
     }
 
     /**
-     * Metodi kertoo, voisiko nappula liikkua ylös (kuten torni).
+     * Metodi kertoo, voisiko nappula liikkua vinoon ylös ja oikealle (kuten
+     * lähetti).
      *
      * @param mista aloitusruudun koordinaatit
      * @param minne kohderuudun koordinaatit
@@ -67,34 +87,11 @@ public class OrtogonaalisestiLiikkuminen {
      * @param puoli onko siirrettävä nappula vlakoinen vai musta
      * @return onnistuuko
      */
-    public static boolean moveUp(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
-        int delta = minne[1] - mista[1];
-        int[] testiKoordinaatit = {0, 0};
+    public static boolean moveRightUp(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
+        int delta = minne[0] - mista[0];
         for (int i = 1; i < delta; i++) {
-            testiKoordinaatit[1] = mista[1] + i;
-            testiKoordinaatit[0] = mista[0];
-            if (!lauta.getNappula(testiKoordinaatit).isEmpty()) {
-                return false;
-            }
-        }
-        return eiOma(mista, minne, lauta);
-    }
-
-    /**
-     * Metodi kertoo, voisiko nappula liikkua alas (kuten torni).
-     *
-     * @param mista aloitusruudun koordinaatit
-     * @param minne kohderuudun koordinaatit
-     * @param lauta lauta jolla ollaan
-     * @param puoli onko siirrettävä nappula vlakoinen vai musta
-     * @return onnistuuko
-     */
-    public static boolean moveDown(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
-        int delta = mista[1] - minne[1];
-        int[] testiKoordinaatit = {0, 0};
-        for (int i = 1; i < delta; i++) {
-            testiKoordinaatit[1] = mista[1] - i;
-            testiKoordinaatit[0] = mista[0];
+            int[] testiKoordinaatit
+                    = {mista[0] + i, mista[1] + i};
             if (!lauta.getNappula(testiKoordinaatit).isEmpty()) {
                 return false;
             }

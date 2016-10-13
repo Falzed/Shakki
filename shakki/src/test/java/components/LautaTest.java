@@ -26,15 +26,15 @@ public class LautaTest {
         Lauta lauta = new Lauta(8, 8);
         lauta.alustaLauta();
         int[] koordinaatit = {0, 0};
-        assertTrue(lauta.aseta(new Sotilas("valkoinen"), koordinaatit));
+        assertTrue(logic.LaudanMuutokset.aseta(new Sotilas("valkoinen"), koordinaatit, lauta));
     }
 
     @Test
     public void eiVoiAsettaaToisennappulanPäälle() {
         Lauta lauta = new Lauta();
         lauta.alustaLauta();
-        lauta.aseta(new Sotilas("valkoinen"), "a1");
-        assertFalse(lauta.aseta(new Sotilas("valkoinen"), "a1"));
+        logic.LaudanMuutokset.aseta(new Sotilas("valkoinen"), "a1", lauta);
+        assertFalse(logic.LaudanMuutokset.aseta(new Sotilas("valkoinen"), "a1", lauta));
     }
 
     @Test
@@ -51,7 +51,7 @@ public class LautaTest {
         lauta.alustaLauta();
         variants.Standard.setUp(lauta);
         int[] koord = {3, 5};
-        assertFalse(lauta.syo(lauta.getNappula("d1"), koord));
+        assertFalse(logic.LaudanMuutokset.syo(lauta.getNappula("d1"), koord, lauta));
     }
 
     @Test
@@ -59,8 +59,8 @@ public class LautaTest {
         Lauta lauta = new Lauta();
         lauta.alustaLauta();
         variants.Standard.setUp(lauta);
-        lauta.aseta(new Kuningatar("valkoinen"), "d5");
-        assertFalse(lauta.syo(lauta.getNappula("d1"), "d5"));
+        logic.LaudanMuutokset.aseta(new Kuningatar("valkoinen"), "d5", lauta);
+        assertFalse(logic.LaudanMuutokset.syo(lauta.getNappula("d1"), "d5", lauta));
     }
 
     @Test
@@ -68,21 +68,21 @@ public class LautaTest {
         Lauta lauta = new Lauta();
         lauta.alustaLauta();
         variants.Standard.setUp(lauta);
-        lauta.aseta(new Kuningatar("musta"), "d5");
-        assertTrue(lauta.syo(lauta.getNappula("d1"), "d5"));
+        logic.LaudanMuutokset.aseta(new Kuningatar("musta"), "d5", lauta);
+        assertTrue(logic.LaudanMuutokset.syo(lauta.getNappula("d1"), "d5", lauta));
     }
 
     @Test
     public void eiVoiAsettaaOlemattomaanRuutuun() {
         Lauta lauta = new Lauta();
         lauta.alustaLauta();
-        assertFalse(lauta.aseta(new Sotilas("valkoinen"), "z0"));
-        assertFalse(lauta.aseta(new Sotilas("valkoinen"), "d9"));
+        assertFalse(logic.LaudanMuutokset.aseta(new Sotilas("valkoinen"), "z0", lauta));
+        assertFalse(logic.LaudanMuutokset.aseta(new Sotilas("valkoinen"), "d9", lauta));
         int[] koord = {-3, 100};
-        assertFalse(lauta.aseta(new Sotilas("valkoinen"), koord));
+        assertFalse(logic.LaudanMuutokset.aseta(new Sotilas("valkoinen"), koord, lauta));
         koord[0]=8;
         koord[1]=0;
-        assertFalse(lauta.aseta(new Sotilas("valkoinen"), koord));
+        assertFalse(logic.LaudanMuutokset.aseta(new Sotilas("valkoinen"), koord, lauta));
     }
 
     @Test
@@ -91,8 +91,8 @@ public class LautaTest {
         lauta.alustaLauta();
         variants.Standard.setUp(lauta);
         int[] koord= {-3, 100};
-        assertFalse(lauta.syo(lauta.getNappula("d1"), "z0"));
-        assertFalse(lauta.syo(lauta.getNappula("d1"), "d9"));
-        assertFalse(lauta.syo(lauta.getNappula("d1"), koord));
+        assertFalse(logic.LaudanMuutokset.syo(lauta.getNappula("d1"), "z0", lauta));
+        assertFalse(logic.LaudanMuutokset.syo(lauta.getNappula("d1"), "d9", lauta));
+        assertFalse(logic.LaudanMuutokset.syo(lauta.getNappula("d1"), koord, lauta));
     }
 }
