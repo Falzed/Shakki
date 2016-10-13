@@ -9,3 +9,4 @@ Päivä | Tunnit | Kuvaus
 23.09.2016 | 2h | Testejä, nappuloitten refaktorointi checkstylen mukaisiksi
 29.09.2016 | 5h | UIta eteenpäin, logiikan refaktorointia pois komponenteista
 30.09.2016 | 4h | Refaktorointia, java docseja, testejä
+7.10.2016 | 6h | Tornitus, ohestalyönti, shakki
