@@ -1,4 +1,4 @@
-package logic.Parser;
+package logic.parser;
 
 import components.Nappula;
 import java.util.regex.Pattern;
@@ -39,35 +39,44 @@ public class Parser {
      * @param lauta lauta jolla koitetaan siirtyä
      * @return alku- ja loppukoordinaatit
      */
-    public static int[][] parseCommand(String string, Nappula.Puoli vuoro, Lauta lauta) {
+    public static ParserReturn parseCommand(String string, Nappula.Puoli vuoro, Lauta lauta) {
         Pattern pattern = Pattern.compile("[a-z][1-8]-[a-z][1-8]");
-        int[][] startEndPoints = new int[2][2];
+        ParserReturn retVal = new ParserReturn("Parser ei saanut selvää komennosta");
         if (pattern.matcher(string).matches()) {
-            startEndPoints[0] = parseAlgebraic(string);
+            int[][] startEndPoints = new int[2][2];
+            startEndPoints[0] = parseAlgebraic(string.substring(0, 2));
             startEndPoints[1] = parseAlgebraic(string.substring(3));
-            return startEndPoints;
+            retVal = new ParserReturn(startEndPoints);
+            if (!retVal.getError().isEmpty()) {
+                return retVal;
+            }
+            if (retVal.getCoordinates()[0][0] < 0 || retVal.getCoordinates()[0][0] >= lauta.getLeveys()) {
+                return new ParserReturn("Aloitusruutu ei laudalla");
+            }
+            if (retVal.getCoordinates()[0][1] < 0 || retVal.getCoordinates()[0][1] >= lauta.getPituus()) {
+                return new ParserReturn("Kohderuutu ei laudalla");
+            }
         }
         Pattern sotilas = Pattern.compile("[a-z][1-8]");
         if (sotilas.matcher(string).matches()) {
-            return SotilasParser.parseSotilas(string, vuoro, lauta);
+            retVal = SotilasParser.parseSotilas(string, vuoro, lauta);
         }
         Pattern sotilasSyonti = Pattern.compile("x[a-z][1-8]");
         if (sotilasSyonti.matcher(string).matches()) {
-            return SotilasParser.parseSotilasSyonti(string, vuoro, lauta);
+            retVal = SotilasParser.parseSotilasSyonti(string, vuoro, lauta);
         }
         Pattern upseeri = Pattern.compile("[A-Z][a-z][1-8]|[\\u2654-\\u265F][a-z][1-8]");
         if (upseeri.matcher(string).matches()) {
-            return parseUpseeri(string, vuoro, lauta);
+            retVal = parseUpseeri(string, vuoro, lauta);
         }
         Pattern tornitus = Pattern.compile("(O-){1,2}O|(0-){1,2}0");
         if (tornitus.matcher(string).matches()) {
-            return parseTornitus(string, vuoro, lauta);
+            retVal = parseTornitus(string, vuoro, lauta);
         }
-        System.out.println("No match");
-        return null;
+        return retVal;
     }
 
-    private static int[][] parseUpseeri(String string, Nappula.Puoli vuoro, Lauta lauta) {
+    private static ParserReturn parseUpseeri(String string, Nappula.Puoli vuoro, Lauta lauta) {
         char notaatio = string.charAt(0);
         int[] koordinaatit = parseAlgebraic(string.substring(1));
         int[][] startEndPoints = new int[2][2];
@@ -92,16 +101,16 @@ public class Parser {
             }
         }
         if (n > 1) {
-            System.out.println("Komento ei yksikäsitteinen");
-            return null;
+            return new ParserReturn("Komento ei yksikäsitteinen");
         }
         if (n == 0) {
-            return null;
+            return new ParserReturn("Yksikään antamasi tyyppinen nappulasi ei "
+                    + "voi liikkua kohderuutuun");
         }
-        return startEndPoints;
+        return new ParserReturn(startEndPoints);
     }
 
-    private static int[][] parseTornitus(String string, Nappula.Puoli vuoro, Lauta lauta) {
+    private static ParserReturn parseTornitus(String string, Nappula.Puoli vuoro, Lauta lauta) {
         Nappula kuningas = null;
         int[][] startEnd = new int[2][2];
         for (int i = 0; i < lauta.getLeveys(); i++) {
@@ -116,24 +125,25 @@ public class Parser {
         }
         if (string.equals("O-O") || string.equals("0-0")) {
             if (kuningas == null) {
-                return null;
+                return new ParserReturn("Sinulla ei ole kuningasta");
             }
             startEnd[0] = kuningas.getKoordinaatit();
             int[] end = {kuningas.getKoordinaatit()[0] + 2,
                 kuningas.getKoordinaatit()[1]};
             startEnd[1] = end;
-            return startEnd;
+            return new ParserReturn(startEnd);
         }
         if (string.equals("O-O-O") || string.equals("0-0-0")) {
             if (kuningas == null) {
-                return null;
+                return new ParserReturn("Sinulla ei ole kuningasta");
             }
             startEnd[0] = kuningas.getKoordinaatit();
             int[] end = {kuningas.getKoordinaatit()[0] - 2,
                 kuningas.getKoordinaatit()[1]};
             startEnd[1] = end;
-            return startEnd;
+            return new ParserReturn(startEnd);
         }
-        return null;
+        return new ParserReturn("kutsuttiin logic.parser.Parser.parseTornitus "
+                + "vaikka komento ei ollut O-O, O-O-O, 0-0 tai 0-0-0");
     }
 }

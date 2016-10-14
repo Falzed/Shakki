@@ -3,9 +3,12 @@ package util;
 import java.util.Scanner;
 import components.*;
 import logic.LaudanMuutokset;
+import logic.parser.ParserReturn;
 
 /**
- * Luokka on vain main-metodi minne tulee välillä työnnettyä bugista koodia ajettavaksi.
+ * Luokka on vain main-metodi minne tulee välillä työnnettyä bugista koodia
+ * ajettavaksi.
+ *
  * @author Oskari
  */
 public class ParseDebugger {
@@ -32,7 +35,7 @@ public class ParseDebugger {
             }
             if (line.equals("algebraic")) {
                 line = lukija.nextLine();
-                int[] table = logic.Parser.Parser.parseAlgebraic(line);
+                int[] table = logic.parser.Parser.parseAlgebraic(line);
                 System.out.println(table[0] + "," + table[1]);
             }
             if (line.equals("musta")) {
@@ -41,11 +44,16 @@ public class ParseDebugger {
             if (line.equals("valkoinen")) {
                 vuoro = Nappula.Puoli.VALKOINEN;
             }
-            int[][] table = logic.Parser.Parser.parseCommand(line, vuoro, lauta);
-            if (table == null) {
+            ParserReturn parserReturn = logic.parser.Parser.parseCommand(line, vuoro, lauta);
+            
+            System.out.println(parserReturn);
+
+            if (parserReturn.getCoordinates() == null || parserReturn.getCoordinates()[0] == null) {
                 System.out.println("table null");
+                System.out.println("table.length " + parserReturn.getCoordinates().length);
+                System.out.println("table[0].length " + parserReturn.getCoordinates()[0].length);
             } else {
-                System.out.println(table[0][0] + "," + table[0][1] + "-" + table[1][0] + "," + table[1][1]);
+                System.out.println(parserReturn.getCoordinates()[0][0] + "," + parserReturn.getCoordinates()[0][1] + "-" + parserReturn.getCoordinates()[1][0] + "," + parserReturn.getCoordinates()[1][1]);
             }
         }
     }

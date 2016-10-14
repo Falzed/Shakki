@@ -52,14 +52,7 @@ public class Liikkuminen {
      * @return onnistuiko siirto
      */
     public static boolean koitaSiirtyaTarkistaShakki(Nappula nappula, int[] minne, Lauta lauta, Nappula.Puoli puoli, int[] enPassant) {
-        Lauta kopio = lauta.kopioi();
-        if (!koitaSiirtya(nappula.getKoordinaatit(), minne, kopio, enPassant)) {
-            return false;
-        }
-        if (Shakitus.shakissa(kopio, puoli)) {
-            return false;
-        }
-        return koitaSiirtya(nappula.getKoordinaatit(), minne, lauta, enPassant);
+        return koitaSiirtyaTarkistaShakki(nappula.getKoordinaatit(), minne, lauta, puoli, enPassant);
     }
 
     /**
@@ -103,7 +96,7 @@ public class Liikkuminen {
             return false;
         }
         int[] mista = nappula.getKoordinaatit();
-        return Liikkuminen.koitaSiirtya(mista, minne, lauta, enPassant);
+        return koitaSiirtya(mista, minne, lauta, enPassant);
     }
 
     /**
@@ -141,26 +134,26 @@ public class Liikkuminen {
         return true;
     }
 
-    /**
-     * Siirrä annetussa ruudussa oleva nappula annettuun ruutuun.
-     *
-     * @param mista siirrettävän nappulan koordinaatit
-     * @param minne minne siirrytään
-     * @param lauta lauta jolla liikutaan
-     * @return onnistuiko
-     */
-    public static boolean siirry(int[] mista, int[] minne, Lauta lauta) {
-        Nappula nappula = lauta.getNappula(mista);
-        if (lauta.getNappula(minne).isEmpty()) {
-            LaudanMuutokset.aseta(nappula, minne, lauta);
-        } else if (lauta.getNappula(minne).getPuoli() == nappula.getPuoli()) {
-            System.out.println("Et voi syödä omaa nappulaasi");
-            return false;
-        } else {
-            LaudanMuutokset.syo(nappula, minne, lauta);
-        }
-        return true;
-    }
+//    /**
+//     * Siirrä annetussa ruudussa oleva nappula annettuun ruutuun.
+//     *
+//     * @param mista siirrettävän nappulan koordinaatit
+//     * @param minne minne siirrytään
+//     * @param lauta lauta jolla liikutaan
+//     * @return onnistuiko
+//     */
+//    public static boolean siirry(int[] mista, int[] minne, Lauta lauta) {
+//        Nappula nappula = lauta.getNappula(mista);
+//        if (lauta.getNappula(minne).isEmpty()) {
+//            LaudanMuutokset.aseta(nappula, minne, lauta);
+//        } else if (lauta.getNappula(minne).getPuoli() == nappula.getPuoli()) {
+//            System.out.println("Et voi syödä omaa nappulaasi");
+//            return false;
+//        } else {
+//            LaudanMuutokset.syo(nappula, minne, lauta);
+//        }
+//        return true;
+//    }
 
     /**
      * Siirrä annettu nappula annettuun ruutuun.

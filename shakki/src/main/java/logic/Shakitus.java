@@ -2,7 +2,7 @@ package logic;
 
 import logic.liikkuminen.VoikoSiirtya;
 import logic.liikkuminen.Liikkuminen;
-import logic.Parser.Parser;
+import logic.parser.Parser;
 import components.Lauta;
 import components.Nappula;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.Arrays;
  * Luokka tarjoaa staattisia metodeja, joilla voi tarkistaa onko tietty ruutu
  * uhattu tai puoli shakissa.
  *
- * @author Oskari
+ * @author Oskari Kulmala
  */
 public class Shakitus {
 

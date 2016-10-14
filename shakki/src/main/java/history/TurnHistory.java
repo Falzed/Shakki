@@ -72,7 +72,6 @@ public class TurnHistory {
      */
     public void removeAfter(int vuoro) {
         while (history.size() > vuoro) {
-            System.out.println(history.size());
             history.remove(history.size() - 1);
         }
     }

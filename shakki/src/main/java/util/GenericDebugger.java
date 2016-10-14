@@ -6,7 +6,7 @@ import components.Torni;
 import history.Turn;
 import history.TurnHistory;
 import logic.liikkuminen.Liikkuminen;
-import logic.Parser.Parser;
+import logic.parser.*;
 import logic.Shakitus;
 
 /**
@@ -15,8 +15,14 @@ import logic.Shakitus;
  */
 public class GenericDebugger {
     public static void main(String[] args) {
-        TurnHistory historia = new TurnHistory("1. d4 d5");
-        System.out.println(historia);
-
+        Lauta lauta = new Lauta();
+        lauta.alustaLauta();
+        int[] koordinaatit = new int[2];
+        koordinaatit[0] = 4;
+        koordinaatit[1] = 4;
+        Sotilas sotilas = new Sotilas("valkoinen");
+        logic.LaudanMuutokset.aseta(sotilas, koordinaatit, lauta);
+        ParserReturn parserRet = logic.parser.Parser.parseCommand("0-0-0", Nappula.Puoli.VALKOINEN, lauta);
+        System.out.println(parserRet);
     }
 }

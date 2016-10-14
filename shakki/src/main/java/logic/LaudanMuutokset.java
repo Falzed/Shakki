@@ -1,6 +1,6 @@
 package logic;
 
-import logic.Parser.Parser;
+import logic.parser.Parser;
 import components.Nappula;
 import components.Tyhja;
 import components.Lauta;

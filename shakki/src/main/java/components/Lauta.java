@@ -1,6 +1,6 @@
 package components;
 
-import logic.Parser.Parser;
+import logic.parser.Parser;
 
 /**
  * Luokka toteuttaa shakkilaudan. Lauta tietää mikä nappula on missäkin
@@ -52,7 +52,7 @@ public class Lauta {
      * @return nappula
      */
     public Nappula getNappula(String string) {
-        int[] koordinaatit = logic.Parser.Parser.parseAlgebraic(string);
+        int[] koordinaatit = Parser.parseAlgebraic(string);
         return getNappula(koordinaatit);
     }
 

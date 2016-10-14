@@ -1,11 +1,14 @@
 package logic;
 
 import logic.liikkuminen.Liikkuminen;
-import logic.Parser.Parser;
+import logic.parser.Parser;
 import components.Lauta;
 import components.Nappula;
 import history.*;
+import java.awt.event.ActionEvent;
 import variants.*;
+import ui.*;
+import logic.parser.ParserReturn;
 
 /**
  * Luokka toteuttaa shakkipelin.
@@ -19,8 +22,8 @@ public class Game {
     private TurnHistory historia;
     private Nappula.Puoli vuoro;
     private int[] enPassant;
-    private ui.UINotUnreadable ui;
 
+//    private ui.UI ui;
     /**
      * Konstruktori pelille.
      */
@@ -31,7 +34,7 @@ public class Game {
         this.historia = new TurnHistory();
         this.vuoro = variant.getAloittaja();
         this.enPassant = null;
-        this.ui = new ui.UINotUnreadable(this);
+//        this.ui = new ui.UI(this);
     }
 
     /**
@@ -41,8 +44,12 @@ public class Game {
      * @return onnistuiko komennon suoritus.
      *
      */
-    public boolean suoritaKomento(String komento) {
-        int[][] startEndPoints = Parser.parseCommand(komento, vuoro, lauta);
+    public ParserReturn suoritaKomento(String komento) {
+        ParserReturn parserTulos = Parser.parseCommand(komento, vuoro, lauta);
+        if (!parserTulos.getError().isEmpty()) {
+            return parserTulos;
+        }
+        int[][] startEndPoints = parserTulos.getCoordinates();
         int[] enPassantTemp = new int[2];
         if (startEndPoints != null) {
             //kirjoita järkevämmäksi myöhemmin
@@ -56,16 +63,9 @@ public class Game {
                     enPassantTemp[1] = startEndPoints[0][1] - 1;
                 }
             }
-            if (!(startEndPoints[0][0] < lauta.getLeveys() && startEndPoints[0][0] > -1 && startEndPoints[0][1] < lauta.getPituus() && startEndPoints[0][1] > -1)) {
-                System.out.println("ruutu "
-                        + "(koordinaatit {" + startEndPoints[0][0] + ","
-                        + startEndPoints[0][1] + "})" + " ei laudalla");
-                return false;
-            }
             Nappula nappula = lauta.getNappula(startEndPoints[0]);
             if (nappula.getPuoli() != vuoro) {
-                System.out.println("Ruudussa ei nappulaasi");
-                return false;
+                return new ParserReturn("Ruudussa ei nappulaasi");
             }
             if (Liikkuminen.koitaSiirtyaTarkistaShakki(nappula, startEndPoints[1], lauta, vuoro, enPassant)) {
                 if (vuoro == Nappula.Puoli.VALKOINEN) {
@@ -79,37 +79,52 @@ public class Game {
                     historia.addTurn(new Turn(historia.getVuoroNumero(), komento, ""));
                 }
             } else {
-                System.out.print("(" + startEndPoints[0][0] + "," + startEndPoints[0][1] + ")");
-                System.out.println("-(" + startEndPoints[1][0] + "," + startEndPoints[1][1] + ")");
-                System.out.println("Laiton siirto");
-                return false;
+                return new ParserReturn("(" + startEndPoints[0][0] + ","
+                        + startEndPoints[0][1] + ")\n" + "-("
+                        + startEndPoints[1][0] + "," + startEndPoints[1][1]
+                        + ")\n" + "Laiton siirto");
             }
             if (enPassantTemp != null) {
                 this.enPassant = enPassantTemp;
             } else {
                 this.enPassant = null;
             }
-            tarkistaKorotus(startEndPoints);
-            return true;
         }
-        System.out.println("Parser palautti nullin");
+        return parserTulos;
+    }
+
+    /**
+     * Metodi tarkistaa, onko annetuissa koordinaateissa sotilasta (ja onko se viimeisellä rivillä).
+     * @param koordinaatit missä saattaisi olla korotettava sotilas
+     * @return korottuuko
+     */
+    public boolean tarkistaKorotus(int[] koordinaatit) {
+        if (koordinaatit[1] == 0
+                || koordinaatit[1] == lauta.getPituus() - 1) {
+            if (lauta.getNappula(koordinaatit).onSotilas()) {
+                return true;
+//                String korotetaanNimi = ui.popupKorotus();
+//                for (Nappula korotuskandidaatti : variant.getNappulaEsimerkit()) {
+//                    //vuoro jo vaihdettu seuraavaan
+//                    if (korotuskandidaatti.getNimi().equals(korotetaanNimi) && korotuskandidaatti.getPuoli() != vuoro) {
+//                        LaudanMuutokset.korvaa(korotuskandidaatti.kopioi(), koord, lauta);
+//                    }
+//                }
+            }
+        }
         return false;
     }
 
-    private void tarkistaKorotus(int[][] startEndPoints) {
-        if (startEndPoints[1][1] == 0
-                || startEndPoints[1][1] == lauta.getPituus() - 1) {
-            int[] koord = {startEndPoints[1][0], startEndPoints[1][1]};
-            if (lauta.getNappula(koord).onSotilas()) {
-//                System.out.println(lauta.getNappula(koord).getNimi());
-//                System.out.println(lauta.getNappula(koord).getPuoli());
-                String korotetaanNimi = ui.popupKorotus();
-                for (Nappula korotuskandidaatti : variant.getNappulaEsimerkit()) {
-                    //vuoro jo vaihdettu seuraavaan
-                    if (korotuskandidaatti.getNimi().equals(korotetaanNimi) && korotuskandidaatti.getPuoli() != vuoro) {
-                        LaudanMuutokset.korvaa(korotuskandidaatti.kopioi(), koord, lauta);
-                    }
-                }
+    /**
+     * Metodi korottaa annetussa ruudussa olevan sotilaan annetuksi upseeriksi.
+     * @param koordinaatit missä korotetaan
+     * @param korotetaanNimi mihin korotetaan
+     */
+    public void korota(int[] koordinaatit, String korotetaanNimi) {
+        for (Nappula korotuskandidaatti : variant.getNappulaEsimerkit()) {
+            //vuoro jo vaihdettu seuraavaan
+            if (korotuskandidaatti.getNimi().equals(korotetaanNimi) && korotuskandidaatti.getPuoli() != vuoro) {
+                LaudanMuutokset.korvaa(korotuskandidaatti.kopioi(), koordinaatit, lauta);
             }
         }
     }
@@ -139,23 +154,6 @@ public class Game {
      */
     public Nappula.Puoli getVuoro() {
         return vuoro;
-    }
-
-    /**
-     * Pääohjelma.
-     *
-     * @param args eivät tee mitään
-     */
-    public static void main(String[] args) {
-        Game peli = new Game();
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                peli.ui.setVisible(true);
-                peli.ui.updateUI();
-            }
-        });
-        Nappula.Puoli vuoro = Nappula.Puoli.VALKOINEN;
-
     }
 
     /**
