@@ -34,10 +34,6 @@ public class TurnHistory {
             }
         } else {
             String[] strings = string.split("\\.");
-            System.out.println("Split");
-            for (String s : strings) {
-                System.out.println(s);
-            }
             for (int i = 1; i < strings.length; i++) {
                 String vuoroString = Integer.toString(i) + strings[i];
                 Turn turn = new Turn(vuoroString);

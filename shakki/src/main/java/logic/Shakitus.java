@@ -92,7 +92,7 @@ public class Shakitus {
     }
 
     /**
-     * Metodi kertoo, onko annettu puoli shakissa.
+     * Metodi kertoo, onko annettu puoli matissa.
      *
      * @param lauta lauta jossa on ehkä shakki
      * @param puoli valkoinen vai musta (string)
@@ -108,6 +108,21 @@ public class Shakitus {
         }
         System.out.println("puolta ei hyväksytty");
         return false;
+    }
+
+    /**
+     * Metodi kertoo, onko annettu puoli patissa.
+     *
+     * @param lauta lauta jossa on ehkä shakki
+     * @param puoli valkoinen vai musta (string)
+     * @param enPassant ruutu, johon on mahdollisuus ohestalyödä tällä vuorolla
+     * @return onko annettu puoli matissa.
+     */
+    public static boolean patissa(Lauta lauta, Nappula.Puoli puoli, int[] enPassant) {
+        if (shakissa(lauta, puoli)) {
+            return false;
+        }
+        return iteroiOmienLaillisetSiirrot(lauta, puoli, enPassant);
     }
 
     /**

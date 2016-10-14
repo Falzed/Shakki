@@ -56,8 +56,8 @@ public class UpseerienLiikkuminen {
     }
 
     /**
-     * Metodi kertoo, voiko annetussa ruudussa oleva kuningatar siirtyä annettuun
-     * kohderuutuun.
+     * Metodi kertoo, voiko annetussa ruudussa oleva kuningatar siirtyä
+     * annettuun kohderuutuun.
      *
      * @param mista nappulan ruutu
      * @param minne minne pitäisi siirtyä

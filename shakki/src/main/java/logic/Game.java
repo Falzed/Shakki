@@ -5,9 +5,7 @@ import logic.parser.Parser;
 import components.Lauta;
 import components.Nappula;
 import history.*;
-import java.awt.event.ActionEvent;
 import variants.*;
-import ui.*;
 import logic.parser.ParserReturn;
 
 /**
@@ -50,12 +48,13 @@ public class Game {
             return parserTulos;
         }
         int[][] startEndPoints = parserTulos.getCoordinates();
-        int[] enPassantTemp = new int[2];
+        int[] enPassantTemp = null;
         if (startEndPoints != null) {
             //kirjoita järkevämmäksi myöhemmin
             if (lauta.getNappula(startEndPoints[0]).onSotilas()
                     && Math.abs(startEndPoints[0][1] - startEndPoints[1][1])
                     == 2) {
+                enPassantTemp = new int[2];
                 enPassantTemp[0] = startEndPoints[0][0];
                 if (vuoro == Nappula.Puoli.VALKOINEN) {
                     enPassantTemp[1] = startEndPoints[0][1] + 1;
@@ -94,7 +93,9 @@ public class Game {
     }
 
     /**
-     * Metodi tarkistaa, onko annetuissa koordinaateissa sotilasta (ja onko se viimeisellä rivillä).
+     * Metodi tarkistaa, onko annetuissa koordinaateissa sotilasta (ja onko se
+     * viimeisellä rivillä).
+     *
      * @param koordinaatit missä saattaisi olla korotettava sotilas
      * @return korottuuko
      */
@@ -103,13 +104,6 @@ public class Game {
                 || koordinaatit[1] == lauta.getPituus() - 1) {
             if (lauta.getNappula(koordinaatit).onSotilas()) {
                 return true;
-//                String korotetaanNimi = ui.popupKorotus();
-//                for (Nappula korotuskandidaatti : variant.getNappulaEsimerkit()) {
-//                    //vuoro jo vaihdettu seuraavaan
-//                    if (korotuskandidaatti.getNimi().equals(korotetaanNimi) && korotuskandidaatti.getPuoli() != vuoro) {
-//                        LaudanMuutokset.korvaa(korotuskandidaatti.kopioi(), koord, lauta);
-//                    }
-//                }
             }
         }
         return false;
@@ -117,6 +111,7 @@ public class Game {
 
     /**
      * Metodi korottaa annetussa ruudussa olevan sotilaan annetuksi upseeriksi.
+     *
      * @param koordinaatit missä korotetaan
      * @param korotetaanNimi mihin korotetaan
      */
@@ -190,5 +185,29 @@ public class Game {
     public void applyHistory(String string) {
         TurnHistory history = new TurnHistory(string);
         applyHistory(history);
+    }
+
+    /**
+     * Tarkistaa onko vuorossa oleva pelaaja matissa.
+     *
+     * @return onko matissa
+     */
+    public boolean tarkistaMatti() {
+        if (Shakitus.matissa(lauta, vuoro, enPassant)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Tarkistaa onko vuorossa oleva pelaaja patissa.
+     *
+     * @return onko patissa
+     */
+    public boolean tarkistaPatti() {
+        if (Shakitus.patissa(lauta, vuoro, enPassant)) {
+            return true;
+        }
+        return false;
     }
 }

@@ -21,7 +21,7 @@ public class GameTest {
         assertTrue(peli.getTurnHistory().getViimeinenVuoro().toString().equals("1. d4"));
         assertFalse(peli.tarkistaKorotus(Parser.parseAlgebraic("d4")));
     }
-    
+
     @Test
     public void toisenNappulanSiirtoTest() {
         Game peli = new Game();
@@ -146,5 +146,29 @@ public class GameTest {
         assertTrue(peli.getLauta().getNappula("f1").getKoordinaatit()[1] == 0);
         assertTrue(peli.getLauta().getNappula("f1").getNimi().equals("Torni"));
         assertTrue(peli.getLauta().getNappula("f1").getPuoli() == Nappula.Puoli.VALKOINEN);
+    }
+
+    @Test
+    public void tunnistaaMatin() {
+        Game peli = new Game();
+        peli.applyHistory("1. f3 e5\n"
+                + "2. g4 Qh4");
+        assertTrue(peli.tarkistaMatti());
+    }
+
+    @Test
+    public void tunnistaaPatin() {
+        Game peli = new Game();
+        peli.applyHistory("1. c4 h5\n"
+                + "2. h4 a5\n"
+                + "3. Qa4 Ra6\n"
+                + "4. Qa5 a6-h6\n"
+                + "5. Qc7 f6\n"
+                + "6. Qd7 Kf7\n"
+                + "7. Qb7 Qd3\n"
+                + "8. Qb8 Qh7\n"
+                + "9. Qc8 Kg6\n"
+                + "10. Qe6");
+        assertTrue(peli.tarkistaPatti());
     }
 }

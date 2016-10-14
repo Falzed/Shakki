@@ -3,8 +3,8 @@ package logic.liikkuminen;
 import components.Lauta;
 import components.Nappula;
 
-
 public class VoikoSiirtya {
+
     /**
      *
      * Metodi tarkistaa, onko annetussa ruudussa olevan nappulan annettuun
@@ -18,6 +18,9 @@ public class VoikoSiirtya {
      * @return onko siirto laillinen
      */
     public static boolean voikoSiirtya(int[] mista, int[] minne, Lauta lauta, int[] enPassant) {
+//        if (enPassant != null) {
+//            System.out.println(enPassant[0] + "," + enPassant[1]);
+//        }
         if (lauta.getNappula(mista).isEmpty()) {
             return false;
         }

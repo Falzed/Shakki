@@ -14,8 +14,9 @@ import logic.LaudanMuutokset;
 public class SotilasLiikkuminen {
 
     /**
-     * Metodi kertoo, voiko annetussa ruudussa oleva sotilas liikkua annettuun 
+     * Metodi kertoo, voiko annetussa ruudussa oleva sotilas liikkua annettuun
      * kohderuutuun.
+     *
      * @param mista aloitusruudun koordinaatit
      * @param minne kohderuudun koordinaatit
      * @param lauta lauta jolla ollaan
@@ -75,7 +76,7 @@ public class SotilasLiikkuminen {
             if (Arrays.equals(minne, enPassant)) {
 //                Liikkuminen.enPassant(lauta.getNappula(mista), minne, lauta);
                 return true;
-            } 
+            }
 //            else {
 //                System.out.println(Arrays.toString(minne));
 //                System.out.println(Arrays.toString(enPassant));
@@ -105,7 +106,7 @@ public class SotilasLiikkuminen {
         }
         return Liikkuminen.eiOma(mista, minne, lauta);
     }
-    
+
     /**
      * Metodi suorittaa ohestalyönnin.
      *
@@ -116,6 +117,9 @@ public class SotilasLiikkuminen {
     public static void enPassant(Nappula nappula, int[] minne, Lauta lauta) {
         if (nappula.getPuoli() == Nappula.Puoli.VALKOINEN) {
             int[] syotavanKoordinaatit = {minne[0], minne[1] - 1};
+
+//            System.out.println("(" + nappula.getKoordinaatit()[0] + "," + nappula.getKoordinaatit()[1] + ")-" + "(" + minne[0] + "," + minne[1] + ")");
+
             LaudanMuutokset.poista(syotavanKoordinaatit, lauta);
         } else {
             int[] syotavanKoordinaatit = {minne[0], minne[1] + 1};

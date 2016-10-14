@@ -110,7 +110,7 @@ public class UI extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 ParserReturn komentoReturn = peli.suoritaKomento(komentoKentta.getText());
                 int[][] startEndPoints = komentoReturn.getCoordinates();
-                System.out.println(komentoReturn);
+//                System.out.println(komentoReturn);
                 if(!komentoReturn.getError().isEmpty()) {
                     popUpErrorMessage(komentoReturn.getError());
                 }
@@ -124,6 +124,13 @@ public class UI extends javax.swing.JFrame {
                 komentoKentta.setText("");
 
                 updateUI();
+                
+                if(peli.tarkistaMatti()) {
+                    popUpErrorMessage(peli.getVuoro()+" on matissa");
+                }
+                if(peli.tarkistaPatti()) {
+                    popUpErrorMessage(peli.getVuoro()+" on patissa, tasapeli");
+                }
             }
         });
 
