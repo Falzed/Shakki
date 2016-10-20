@@ -13,6 +13,12 @@ import java.awt.GridLayout;
 import java.util.Arrays;
 import javax.swing.GroupLayout.*;
 import logic.parser.Parser;
+import java.awt.event.KeyEvent;
+import variants.*;
+import fairy.*;
+import java.io.*;
+import org.xml.sax.SAXException;
+import javax.xml.parsers.ParserConfigurationException;
 
 /**
  * Luokka toteuttaa ohjelman graafisen käyttöliittymän. Siirrot syötetään laudan
@@ -192,6 +198,47 @@ public class UI extends javax.swing.JFrame {
                         )));
 
         pack();
+
+        JMenuBar menubar = new JMenuBar();
+        ImageIcon icon = new ImageIcon("exit.png");
+
+        JMenu file = new JMenu("File");
+        file.setMnemonic(KeyEvent.VK_F);
+
+        JMenuItem eMenuItem = new JMenuItem("Exit", icon);
+        eMenuItem.setMnemonic(KeyEvent.VK_E);
+        eMenuItem.setToolTipText("Exit application");
+        eMenuItem.addActionListener((ActionEvent event) -> {
+            System.exit(0);
+        });
+
+        JMenuItem standard = new JMenuItem("standard", icon);
+        standard.setMnemonic(KeyEvent.VK_0);
+        standard.setToolTipText("Standardi shakki");
+        standard.addActionListener((ActionEvent event) -> {
+            vaihdaVarianttia(new Standard());
+        });
+        JMenuItem charge = new JMenuItem("charge", icon);
+        charge.setMnemonic(KeyEvent.VK_1);
+        charge.setToolTipText("Charge of the Light Brigade");
+        charge.addActionListener((ActionEvent event) -> {
+            vaihdaVarianttia(new FairyVariant(new File("src/main/resources/chargeOfTheLightBrigade.xml")));
+        });
+        JMenuItem dunsanys = new JMenuItem("Dunsany's", icon);
+        dunsanys.setMnemonic(KeyEvent.VK_2);
+        dunsanys.setToolTipText("Dunsany's Chess");
+        dunsanys.addActionListener((ActionEvent event) -> {
+            vaihdaVarianttia(new FairyVariant(new File("src/main/resources/dunsanysChess.xml")));
+        });
+
+        file.add(eMenuItem);
+        file.add(standard);
+        file.add(charge);
+        file.add(dunsanys);
+
+        menubar.add(file);
+
+        setJMenuBar(menubar);
     }// </editor-fold>                        
 
     /**
@@ -218,7 +265,6 @@ public class UI extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-
     /**
      * Metodi päivittää UI:n.
      */
@@ -230,6 +276,11 @@ public class UI extends javax.swing.JFrame {
                 labels[i][j].setText(Character.toString(peli.getLauta().getNappula(koordinaatit).getMerkki()));
             }
         }
+    }
+
+    private void vaihdaVarianttia(Variant variant) {
+        peli.vaihdaVariantti(variant);
+        updateUI();
     }
 
     public String popupKorotus() {

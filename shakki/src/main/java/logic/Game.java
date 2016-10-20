@@ -78,7 +78,7 @@ public class Game {
             return new ParserReturn("Ruudussa ei nappulaasi");
         }
         vuoronVaihtoJaHistorianJatko(parserTulos, komento, nappula, startEndPoints);
-        if(!parserTulos.getError().isEmpty()) {
+        if (!parserTulos.getError().isEmpty()) {
             return parserTulos;
         }
 
@@ -233,5 +233,14 @@ public class Game {
             return true;
         }
         return false;
+    }
+
+    public void vaihdaVariantti(Variant variant) {
+        this.variant = variant;
+        variant.setUp();
+        this.lauta = variant.getLauta();
+        clearHistory();
+        this.vuoro = variant.getAloittaja();
+        this.enPassant = null;
     }
 }

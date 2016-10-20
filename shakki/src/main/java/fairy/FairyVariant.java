@@ -29,8 +29,18 @@ public class FairyVariant implements Variant {
     private ArrayList<HashMap> stuff;
     BufferedReader lukija;
 
-    public FairyVariant(File file) throws FileNotFoundException, IOException, SAXException, ParserConfigurationException {
-        stuff = readXml(file);
+    public FairyVariant(File file) {
+        try {
+            stuff = readXml(file);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (SAXException e) {
+            throw new RuntimeException(e);
+        } catch (ParserConfigurationException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println(stuff);
         this.lautojenLeveys = Integer.parseInt((String) stuff.get(0).get("Leveys"));
         this.lautojenPituus = Integer.parseInt((String) stuff.get(0).get("Pituus"));
@@ -170,8 +180,8 @@ public class FairyVariant implements Variant {
         for (Nappula nappula : this.nappuloittenKoordinaatit.keySet()) {
             for (int[] koordinaatit : nappuloittenKoordinaatit.get(nappula)) {
                 logic.LaudanMuutokset.aseta(nappula.kopioi(), koordinaatit, lauta);
-                for(int[] liikkunut:liikkuneet) {
-                    if(Arrays.equals(liikkunut, koordinaatit)) {
+                for (int[] liikkunut : liikkuneet) {
+                    if (Arrays.equals(liikkunut, koordinaatit)) {
                         lauta.getNappula(koordinaatit).setLiikkunut();
                         break;
                     }
@@ -252,9 +262,9 @@ public class FairyVariant implements Variant {
                         hash.put("mustaMerkki", element.getElementsByTagName("mustaMerkki").item(0).getTextContent());
 //                        System.out.println("valkoinenMerkki: " + element.getElementsByTagName("valkoinenMerkki").item(0).getTextContent());
                         ArrayList<String> liikkumiset = new ArrayList<>();
-                        for(int i=0; i<element.getElementsByTagName("liikkumistyyppi").getLength(); i++) {
+                        for (int i = 0; i < element.getElementsByTagName("liikkumistyyppi").getLength(); i++) {
                             liikkumiset.add(element.getElementsByTagName("liikkumistyyppi").item(i).getTextContent());
-                        }                        
+                        }
                         hash.put("liikkumiset", liikkumiset);
                         FairyPiece piece = new FairyPiece(hash, Nappula.Puoli.VALKOINEN);
 //                        System.out.println("ASDF");
@@ -280,7 +290,9 @@ public class FairyVariant implements Variant {
                 hash.put("nappulanPuoli", element.getElementsByTagName("nappulanPuoli").item(0).getTextContent());
                 hash.put("xkoord", element.getElementsByTagName("xkoord").item(0).getTextContent());
                 hash.put("ykoord", element.getElementsByTagName("ykoord").item(0).getTextContent());
-                hash.put("liikkunut", element.getElementsByTagName("ykoord").item(0).getTextContent());
+                if (element.getElementsByTagName("liikkunut").getLength() > 0) {
+                    hash.put("liikkunut", element.getElementsByTagName("liikkunut").item(0).getTextContent());
+                }
                 array.add(hash);
             }
         }
