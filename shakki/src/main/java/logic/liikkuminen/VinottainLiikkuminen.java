@@ -21,12 +21,12 @@ public class VinottainLiikkuminen {
      * @param puoli onko siirrettävä nappula vlakoinen vai musta
      * @return onnistuuko
      */
-    public static boolean moveLeftDown(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
+    public static boolean moveLeftDown(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli, boolean hyppaa) {
         int delta = mista[0] - minne[0];
         for (int i = 1; i < delta; i++) {
             int[] testiKoordinaatit
                     = {mista[0] - i, mista[1] - i};
-            if (!lauta.getNappula(testiKoordinaatit).isEmpty()) {
+            if (!lauta.getNappula(testiKoordinaatit).isEmpty() && hyppaa == false) {
                 return false;
             }
         }
@@ -43,12 +43,12 @@ public class VinottainLiikkuminen {
      * @param puoli onko siirrettävä nappula vlakoinen vai musta
      * @return onnistuuko
      */
-    public static boolean moveLeftUp(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
+    public static boolean moveLeftUp(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli, boolean hyppaa) {
         int delta = mista[0] - minne[0];
         for (int i = 1; i < delta; i++) {
             int[] testiKoordinaatit
                     = {mista[0] - i, mista[1] + i};
-            if (!lauta.getNappula(testiKoordinaatit).isEmpty()) {
+            if (!lauta.getNappula(testiKoordinaatit).isEmpty() && hyppaa == false) {
                 return false;
             }
         }
@@ -65,12 +65,12 @@ public class VinottainLiikkuminen {
      * @param puoli onko siirrettävä nappula vlakoinen vai musta
      * @return onnistuuko
      */
-    public static boolean moveRightDown(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
+    public static boolean moveRightDown(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli, boolean hyppaa) {
         int delta = minne[0] - mista[0];
         for (int i = 1; i < delta; i++) {
             int[] testiKoordinaatit
                     = {mista[0] + i, mista[1] - i};
-            if (!lauta.getNappula(testiKoordinaatit).isEmpty()) {
+            if (!lauta.getNappula(testiKoordinaatit).isEmpty() && hyppaa == false) {
                 return false;
             }
         }
@@ -87,12 +87,12 @@ public class VinottainLiikkuminen {
      * @param puoli onko siirrettävä nappula vlakoinen vai musta
      * @return onnistuuko
      */
-    public static boolean moveRightUp(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
+    public static boolean moveRightUp(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli, boolean hyppaa) {
         int delta = minne[0] - mista[0];
         for (int i = 1; i < delta; i++) {
             int[] testiKoordinaatit
                     = {mista[0] + i, mista[1] + i};
-            if (!lauta.getNappula(testiKoordinaatit).isEmpty()) {
+            if (!lauta.getNappula(testiKoordinaatit).isEmpty() && hyppaa == false) {
                 return false;
             }
         }

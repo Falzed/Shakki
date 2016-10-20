@@ -1,17 +1,19 @@
 package components;
 
 /**
- *  Luokka toteuttaa shakkinappulan. Nappulalla on puoli, sijainti laudalla ja 
- * merkki notaatiota varten. Tyhjän ruudun notaatiomerkiksi on valittu välilyönti.
- * Sama on käytössä sotilaalla (vaikka null olisi sille oikeampi), mutta
- * kummankaan merkkiä ei pitäisi koskaan käyttää mihinkään.
+ * Luokka toteuttaa shakkinappulan. Nappulalla on puoli, sijainti laudalla ja
+ * merkki notaatiota varten. Tyhjän ruudun notaatiomerkiksi on valittu
+ * välilyönti. Sama on käytössä sotilaalla (vaikka null olisi sille oikeampi),
+ * mutta kummankaan merkkiä ei pitäisi koskaan käyttää mihinkään.
+ *
  * @author oemkulma
  */
 public class Nappula {
 
     /**
      * Vaihtoehdot nappulan puolelle, valkoinen/musta/tyhjä ruutu.
-     * Refaktoroidaan luultavasti myöhemmin variantti-luokkaan ja sen aliluokkiin.
+     * Refaktoroidaan luultavasti myöhemmin variantti-luokkaan ja sen
+     * aliluokkiin.
      */
     public enum Puoli {
 
@@ -38,21 +40,23 @@ public class Nappula {
 
     /**
      * Konstruktori, asettaa puolen ja ettei ole liikkunut.
+     *
      * @param puoli valkoinen vai musta
      */
     public Nappula(String puoli) {
-        if (puoli.equals("valkoinen")) {
+        if (puoli.equalsIgnoreCase("valkoinen")) {
             this.puoli = Puoli.VALKOINEN;
-        } else if (puoli.equals("musta")) {
+        } else if (puoli.equalsIgnoreCase("musta")) {
             this.puoli = Puoli.MUSTA;
         } else {
             System.out.println("Puoli ei kelpaa tai puuttuu");
         }
         this.liikkunut = false;
     }
-    
+
     /**
      * Luo uuden nappulan ja asettaa sen puolen.
+     *
      * @param puoli Valkoinen vai musta
      */
     public Nappula(Nappula.Puoli puoli) {
@@ -76,12 +80,23 @@ public class Nappula {
         return kopio;
     }
 
-    
+    public Nappula(Nappula nappula, String puoli) {
+        if (puoli.equalsIgnoreCase("valkoinen")) {
+            this.puoli = Puoli.VALKOINEN;
+        } else if (puoli.equalsIgnoreCase("musta")) {
+            this.puoli = Puoli.MUSTA;
+        } else {
+            this.puoli = Puoli.TYHJA;
+        }
+    }
+
     public String getNimi() {
         return NIMI;
     }
+
     /**
      * getteri.
+     *
      * @return puoli
      */
     public Puoli getPuoli() {
@@ -89,7 +104,23 @@ public class Nappula {
     }
 
     /**
+     * getteri.
+     *
+     * @return puoli
+     */
+    public String getPuoliString() {
+        if (puoli == Puoli.VALKOINEN) {
+            return "valkoinen";
+        }
+        if (puoli == Puoli.MUSTA) {
+            return "musta";
+        }
+        return "tyhja";
+    }
+
+    /**
      * setteri.
+     *
      * @param koordinaatit koordinaatit
      */
     public void asetaKoordinaatit(int[] koordinaatit) {

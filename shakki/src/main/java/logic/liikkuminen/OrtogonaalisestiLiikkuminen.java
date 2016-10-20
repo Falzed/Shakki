@@ -21,7 +21,7 @@ public class OrtogonaalisestiLiikkuminen {
      * @param puoli onko siirrettävä nappula vlakoinen vai musta
      * @return onnistuuko
      */
-    public static boolean moveLeft(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
+    public static boolean moveLeft(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli, boolean hyppaa) {
         int delta = 0;
         delta = mista[0] - minne[0];
 
@@ -29,7 +29,7 @@ public class OrtogonaalisestiLiikkuminen {
         for (int i = 1; i < delta; i++) {
             testiKoordinaatit[0] = mista[0] - i;
             testiKoordinaatit[1] = mista[1];
-            if (!lauta.getNappula(testiKoordinaatit).isEmpty()) {
+            if (!lauta.getNappula(testiKoordinaatit).isEmpty() && hyppaa == false) {
                 return false;
             }
         }
@@ -45,13 +45,13 @@ public class OrtogonaalisestiLiikkuminen {
      * @param puoli onko siirrettävä nappula vlakoinen vai musta
      * @return onnistuuko
      */
-    public static boolean moveRight(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
+    public static boolean moveRight(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli, boolean hyppaa) {
         int delta = minne[0] - mista[0];
         int[] testiKoordinaatit = {0, 0};
         for (int i = 1; i < delta; i++) {
             testiKoordinaatit[0] = mista[0] + i;
             testiKoordinaatit[1] = mista[1];
-            if (!lauta.getNappula(testiKoordinaatit).isEmpty()) {
+            if (!lauta.getNappula(testiKoordinaatit).isEmpty() && hyppaa == false) {
                 return false;
             }
         }
@@ -67,13 +67,13 @@ public class OrtogonaalisestiLiikkuminen {
      * @param puoli onko siirrettävä nappula vlakoinen vai musta
      * @return onnistuuko
      */
-    public static boolean moveUp(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
+    public static boolean moveUp(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli, boolean hyppaa) {
         int delta = minne[1] - mista[1];
         int[] testiKoordinaatit = {0, 0};
         for (int i = 1; i < delta; i++) {
             testiKoordinaatit[1] = mista[1] + i;
             testiKoordinaatit[0] = mista[0];
-            if (!lauta.getNappula(testiKoordinaatit).isEmpty()) {
+            if (!lauta.getNappula(testiKoordinaatit).isEmpty() && hyppaa == false) {
                 return false;
             }
         }
@@ -89,13 +89,13 @@ public class OrtogonaalisestiLiikkuminen {
      * @param puoli onko siirrettävä nappula vlakoinen vai musta
      * @return onnistuuko
      */
-    public static boolean moveDown(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
+    public static boolean moveDown(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli, boolean hyppaa) {
         int delta = mista[1] - minne[1];
         int[] testiKoordinaatit = {0, 0};
         for (int i = 1; i < delta; i++) {
             testiKoordinaatit[1] = mista[1] - i;
             testiKoordinaatit[0] = mista[0];
-            if (!lauta.getNappula(testiKoordinaatit).isEmpty()) {
+            if (!lauta.getNappula(testiKoordinaatit).isEmpty() && hyppaa == false) {
                 return false;
             }
         }

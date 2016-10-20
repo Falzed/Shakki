@@ -13,7 +13,7 @@ public class LiikkuminenTest {
 
     @Test
     public void eiVoiLiikkua() {
-        Game peli = new Game();
+        Game peli = new Game(new Standard());
 
         assertFalse(Liikkuminen.koitaSiirtya(Parser.parseAlgebraic("d2"), Parser.parseAlgebraic("d5"), peli.getLauta(), null));
         assertFalse(Liikkuminen.koitaSiirtya(Parser.parseAlgebraic("d3"), Parser.parseAlgebraic("d5"), peli.getLauta(), null));

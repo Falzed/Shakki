@@ -89,13 +89,13 @@ public class UpseerienLiikkuminen {
         } else if (minne[0] == mista[0] && minne[1] == mista[1]) {
             return false;
         } else if (minne[0] < mista[0]) {
-            return OrtogonaalisestiLiikkuminen.moveLeft(mista, minne, lauta, puoli);
+            return OrtogonaalisestiLiikkuminen.moveLeft(mista, minne, lauta, puoli, false);
         } else if (minne[0] > mista[0]) {
-            return OrtogonaalisestiLiikkuminen.moveRight(mista, minne, lauta, puoli);
+            return OrtogonaalisestiLiikkuminen.moveRight(mista, minne, lauta, puoli, false);
         } else if (minne[1] < mista[1]) {
-            return OrtogonaalisestiLiikkuminen.moveDown(mista, minne, lauta, puoli);
+            return OrtogonaalisestiLiikkuminen.moveDown(mista, minne, lauta, puoli, false);
         } else if (minne[1] > mista[1]) {
-            return OrtogonaalisestiLiikkuminen.moveUp(mista, minne, lauta, puoli);
+            return OrtogonaalisestiLiikkuminen.moveUp(mista, minne, lauta, puoli, false);
         }
         return eiOma(mista, minne, lauta);
     }
@@ -117,13 +117,13 @@ public class UpseerienLiikkuminen {
         } else if (minne[0] == mista[0] && minne[0] == mista[0]) {
             return false;
         } else if (minne[0] < mista[0] && minne[1] < mista[1]) {
-            return VinottainLiikkuminen.moveLeftDown(mista, minne, lauta, puoli);
+            return VinottainLiikkuminen.moveLeftDown(mista, minne, lauta, puoli, false);
         } else if (minne[0] > mista[0] && minne[1] < mista[1]) {
-            return VinottainLiikkuminen.moveRightDown(mista, minne, lauta, puoli);
+            return VinottainLiikkuminen.moveRightDown(mista, minne, lauta, puoli, false);
         } else if (minne[0] < mista[0] && minne[1] > mista[1]) {
-            return VinottainLiikkuminen.moveLeftUp(mista, minne, lauta, puoli);
+            return VinottainLiikkuminen.moveLeftUp(mista, minne, lauta, puoli, false);
         } else if (minne[0] > mista[0] && minne[1] > mista[1]) {
-            return VinottainLiikkuminen.moveRightUp(mista, minne, lauta, puoli);
+            return VinottainLiikkuminen.moveRightUp(mista, minne, lauta, puoli, false);
         }
         return eiOma(mista, minne, lauta);
     }

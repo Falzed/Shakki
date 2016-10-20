@@ -3,6 +3,7 @@ package main;
 import components.Nappula;
 import logic.Game;
 import ui.UI;
+import variants.Standard;
 
 public class Main {
 
@@ -12,7 +13,7 @@ public class Main {
      * @param args eivät tee mitään
      */
     public static void main(String[] args) {
-        Game peli = new Game();
+        Game peli = new Game(new Standard());
         UI ui = new UI(peli);
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

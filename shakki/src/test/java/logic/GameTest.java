@@ -12,7 +12,7 @@ public class GameTest {
 
     @Test
     public void komentoTest() {
-        Game peli = new Game();
+        Game peli = new Game(new Standard());
         peli.suoritaKomento("d4");
         assertTrue(peli.getLauta().getNappula("d4").getKoordinaatit()[0] == 3);
         assertTrue(peli.getLauta().getNappula("d4").getKoordinaatit()[1] == 3);
@@ -24,7 +24,7 @@ public class GameTest {
 
     @Test
     public void toisenNappulanSiirtoTest() {
-        Game peli = new Game();
+        Game peli = new Game(new Standard());
         peli.suoritaKomento("d7-d5");
         assertTrue(peli.getLauta().getNappula("d7").getKoordinaatit()[0] == 3);
         assertTrue(peli.getLauta().getNappula("d7").getKoordinaatit()[1] == 6);
@@ -34,7 +34,7 @@ public class GameTest {
 
     @Test
     public void historiaTest() {
-        Game peli = new Game();
+        Game peli = new Game(new Standard());
         peli.applyHistory("1. e4 e5\n"
                 + "2. Nf3 Nf6\n"
                 + "3. d4 xd4\n"
@@ -48,7 +48,7 @@ public class GameTest {
 
     @Test
     public void enPassantTest() {
-        Game peli = new Game();
+        Game peli = new Game(new Standard());
         peli.applyHistory("1. e4 e5\n"
                 + "2. Nf3 Nf6\n"
                 + "3. d4 xd4\n"
@@ -74,7 +74,7 @@ public class GameTest {
 
     @Test
     public void enPassantTestMusta() {
-        Game peli = new Game();
+        Game peli = new Game(new Standard());
         peli.applyHistory("1. h4 d5\n"
                 + "2. a4 d4\n"
                 + "3. e4 xe3");
@@ -94,7 +94,7 @@ public class GameTest {
 
     @Test
     public void enKorotusTest() {
-        Game peli = new Game();
+        Game peli = new Game(new Standard());
         peli.applyHistory("1. d4 d5\n"
                 + "2. c4 e5\n"
                 + "3. xe5 d4\n"
@@ -127,13 +127,13 @@ public class GameTest {
 
     @Test
     public void eiLaudallaTest() {
-        Game peli = new Game();
+        Game peli = new Game(new Standard());
         assertFalse(peli.suoritaKomento("z4").getError().isEmpty());
     }
 
     @Test
     public void tornitusTest() {
-        Game peli = new Game();
+        Game peli = new Game(new Standard());
         peli.applyHistory("1. e4 e5\n"
                 + "2. Nf3 Nc6\n"
                 + "3. Bc4 Nf6");
@@ -150,7 +150,7 @@ public class GameTest {
 
     @Test
     public void tunnistaaMatin() {
-        Game peli = new Game();
+        Game peli = new Game(new Standard());
         peli.applyHistory("1. f3 e5\n"
                 + "2. g4 Qh4");
         assertTrue(peli.tarkistaMatti());
@@ -158,7 +158,7 @@ public class GameTest {
 
     @Test
     public void tunnistaaPatin() {
-        Game peli = new Game();
+        Game peli = new Game(new Standard());
         peli.applyHistory("1. c4 h5\n"
                 + "2. h4 a5\n"
                 + "3. Qa4 Ra6\n"

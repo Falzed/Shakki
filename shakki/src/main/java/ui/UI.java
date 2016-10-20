@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import logic.Game;
 import logic.parser.ParserReturn;
 import java.awt.GridLayout;
+import java.util.Arrays;
 import javax.swing.GroupLayout.*;
 import logic.parser.Parser;
 
@@ -207,16 +208,16 @@ public class UI extends javax.swing.JFrame {
     /**
      * turha
      */
-    public void aja() {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Game peli = new Game();
-                UI ui = new UI(peli);
-                ui.setVisible(true);
-
-            }
-        });
-    }
+//    public void aja() {
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                Game peli = new Game();
+//                UI ui = new UI(peli);
+//                ui.setVisible(true);
+//
+//            }
+//        });
+//    }
 
     /**
      * Metodi päivittää UI:n.

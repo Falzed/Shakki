@@ -28,21 +28,18 @@ public class VoikoSiirtya {
         boolean voiko = false;
         if (nappula.getMerkki() == '\u2655' || nappula.getMerkki() == '\u265B') {
             voiko = UpseerienLiikkuminen.kuningatarVoikoLiikkua(mista, minne, lauta, nappula.getPuoli());
-        }
-        if (nappula.getMerkki() == '\u2654' || nappula.getMerkki() == '\u265A') {
+        } else if (nappula.getMerkki() == '\u2654' || nappula.getMerkki() == '\u265A') {
             voiko = UpseerienLiikkuminen.kuningasVoikoLiikkua(mista, minne, lauta, nappula.getPuoli());
-        }
-        if (nappula.getMerkki() == '\u2656' || nappula.getMerkki() == '\u265C') {
+        } else if (nappula.getMerkki() == '\u2656' || nappula.getMerkki() == '\u265C') {
             voiko = UpseerienLiikkuminen.torniVoikoLiikkua(mista, minne, lauta, nappula.getPuoli());
-        }
-        if (nappula.getMerkki() == '\u2658' || nappula.getMerkki() == '\u265E') {
+        } else if (nappula.getMerkki() == '\u2658' || nappula.getMerkki() == '\u265E') {
             voiko = UpseerienLiikkuminen.ratsuVoikoLiikkua(mista, minne, lauta, nappula.getPuoli());
-        }
-        if (nappula.getMerkki() == '\u2657' || nappula.getMerkki() == '\u265D') {
+        } else if (nappula.getMerkki() == '\u2657' || nappula.getMerkki() == '\u265D') {
             voiko = UpseerienLiikkuminen.lahettiVoikoLiikkua(mista, minne, lauta, nappula.getPuoli());
-        }
-        if (nappula.getMerkki() == '\u2659' || nappula.getMerkki() == '\u265F') {
+        } else if (nappula.getMerkki() == '\u2659' || nappula.getMerkki() == '\u265F') {
             voiko = SotilasLiikkuminen.sotilasVoikoLiikkua(mista, minne, lauta, nappula.getPuoli(), enPassant);
+        } else {
+            voiko = FairyLiikkuminen.voikoLiikkua(mista, minne, lauta, nappula.getPuoli());
         }
 
         return voiko;

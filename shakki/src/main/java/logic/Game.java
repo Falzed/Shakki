@@ -25,8 +25,8 @@ public class Game {
     /**
      * Konstruktori pelille.
      */
-    public Game() {
-        this.variant = new Standard();
+    public Game(Variant variant) {
+        this.variant = variant;
         variant.setUp();
         this.lauta = variant.getLauta();
         this.historia = new TurnHistory();
