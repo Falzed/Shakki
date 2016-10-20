@@ -91,6 +91,11 @@ public class Game {
         }
         return parserTulos;
     }
+    
+    public ParserReturn suoritaKomento(int[][] startEndPoints) {
+        String komento = Parser.parseToAlgebraicCommand(startEndPoints);
+        return suoritaKomento(komento);
+    }
 
     /**
      * Metodi tarkistaa, onko annetuissa koordinaateissa sotilasta (ja onko se

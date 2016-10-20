@@ -1,5 +1,6 @@
 package ui;
 
+import java.awt.Color;
 import javax.swing.*;
 import java.awt.Font;
 import java.awt.Dimension;
@@ -10,6 +11,7 @@ import logic.Game;
 import logic.parser.ParserReturn;
 import java.awt.GridLayout;
 import javax.swing.GroupLayout.*;
+import logic.parser.Parser;
 
 /**
  * Luokka toteuttaa ohjelman graafisen käyttöliittymän. Siirrot syötetään laudan
@@ -108,29 +110,7 @@ public class UI extends javax.swing.JFrame {
         komentoKentta.setText("");
         komentoKentta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                ParserReturn komentoReturn = peli.suoritaKomento(komentoKentta.getText());
-                int[][] startEndPoints = komentoReturn.getCoordinates();
-//                System.out.println(komentoReturn);
-                if(!komentoReturn.getError().isEmpty()) {
-                    popUpErrorMessage(komentoReturn.getError());
-                }
-                if (startEndPoints != null) {
-                    if (peli.tarkistaKorotus(startEndPoints[1])) {
-                        peli.korota(startEndPoints[1], popupKorotus());
-                    }
-                    historiaKentta.setText(peli.getTurnHistory().toString());
-                }
-
-                komentoKentta.setText("");
-
-                updateUI();
-                
-                if(peli.tarkistaMatti()) {
-                    popUpErrorMessage(peli.getVuoro()+" on matissa");
-                }
-                if(peli.tarkistaPatti()) {
-                    popUpErrorMessage(peli.getVuoro()+" on patissa, tasapeli");
-                }
+                suoritaKomento(komentoKentta.getText());
             }
         });
 
@@ -144,6 +124,12 @@ public class UI extends javax.swing.JFrame {
                 }
             }
         });
+        HiiriKuuntelija hiiriKuuntelija = new HiiriKuuntelija(panels[0].length, panels.length, panels, this);
+        for (JPanel[] panelRivi : panels) {
+            for (JPanel panel : panelRivi) {
+                panel.addMouseListener(hiiriKuuntelija);
+            }
+        }
         JPanel lautaPanel = new JPanel();
         javax.swing.GroupLayout lautaLayout = new javax.swing.GroupLayout(lautaPanel);
         lautaPanel.setLayout(lautaLayout);
@@ -259,11 +245,11 @@ public class UI extends javax.swing.JFrame {
                 "Kuningatar");
         return s;
     }
-    
+
     public void popUpErrorMessage(String string) {
         JFrame frame = new JFrame("Korotus");
         JOptionPane.showMessageDialog(frame, string);
-    } 
+    }
 
     /**
      *
@@ -291,6 +277,62 @@ public class UI extends javax.swing.JFrame {
 
     public String getHistoriaKentta() {
         return historiaKentta.getText();
+    }
+
+    public void suoritaKomento(String komento) {
+        ParserReturn komentoReturn = peli.suoritaKomento(komento);
+        int[][] startEndPoints = komentoReturn.getCoordinates();
+//                System.out.println(komentoReturn);
+        if (!komentoReturn.getError().isEmpty()) {
+            popUpErrorMessage(komentoReturn.getError());
+        }
+        if (startEndPoints != null) {
+            if (peli.tarkistaKorotus(startEndPoints[1])) {
+                peli.korota(startEndPoints[1], popupKorotus());
+            }
+            historiaKentta.setText(peli.getTurnHistory().toString());
+        }
+
+        komentoKentta.setText("");
+
+        updateUI();
+
+        if (peli.tarkistaMatti()) {
+            popUpErrorMessage(peli.getVuoro() + " on matissa");
+        }
+        if (peli.tarkistaPatti()) {
+            popUpErrorMessage(peli.getVuoro() + " on patissa, tasapeli");
+        }
+    }
+
+    public void hiiriKomento(int[][] startEndPoints) {
+        System.out.println(Parser.parseToAlgebraicCommand(startEndPoints));
+        suoritaKomento(Parser.parseToAlgebraicCommand(startEndPoints));
+        unselectAll();
+    }
+
+    public void toggleValittu(int[] koordinaatit) {
+        if (panels[koordinaatit[0]][koordinaatit[1]].getBackground().equals(new java.awt.Color(255, 255, 255))) {
+            panels[koordinaatit[0]][koordinaatit[1]].setBackground(new java.awt.Color(200, 200, 200));
+        } else if (panels[koordinaatit[0]][koordinaatit[1]].getBackground().equals(new java.awt.Color(210, 140, 70))) {
+            panels[koordinaatit[0]][koordinaatit[1]].setBackground(new java.awt.Color(160, 90, 20));
+        } else if (panels[koordinaatit[0]][koordinaatit[1]].getBackground().equals(new java.awt.Color(200, 200, 200))) {
+            panels[koordinaatit[0]][koordinaatit[1]].setBackground(new java.awt.Color(255, 255, 255));
+        } else if (panels[koordinaatit[0]][koordinaatit[1]].getBackground().equals(new java.awt.Color(160, 90, 20))) {
+            panels[koordinaatit[0]][koordinaatit[1]].setBackground(new java.awt.Color(210, 140, 70));
+        }
+    }
+
+    public void unselectAll() {
+        for (int i = 0; i < panels[0].length; i++) {
+            for (int j = 0; j < panels.length; j++) {
+                if (panels[i][j].getBackground().equals(new java.awt.Color(200, 200, 200))) {
+                    panels[i][j].setBackground(new java.awt.Color(255, 255, 255));
+                } else if (panels[i][j].getBackground().equals(new java.awt.Color(160, 90, 20))) {
+                    panels[i][j].setBackground(new java.awt.Color(210, 140, 70));
+                }
+            }
+        }
     }
 
     private javax.swing.JTextField komentoKentta;
