@@ -80,24 +80,24 @@ public class Liikkuminen {
         return siirry(mista, minne, lauta, enPassant);
     }
 
-    /**
-     * Metodi koittaa siirtää annetun nappulan annettuun kohderuutuun. Ei
-     * huomioi siirrytäänkö shakkiin.
-     *
-     * @param nappula siirrettävä nappula
-     * @param minne kohderuudun koordinaatit
-     * @param lauta lauta jolla nappula ja ruudut ovat
-     * @param enPassant ruutu, josta voi ohesta lyöda sotilaan (jos oma sotilas
-     * oikeassa paikassa)
-     * @return onnistuiko siirto
-     */
-    public static boolean koitaSiirtya(Nappula nappula, int[] minne, Lauta lauta, int[] enPassant) {
-        if (nappula.isEmpty()) {
-            return false;
-        }
-        int[] mista = nappula.getKoordinaatit();
-        return koitaSiirtya(mista, minne, lauta, enPassant);
-    }
+//    /**
+//     * Metodi koittaa siirtää annetun nappulan annettuun kohderuutuun. Ei
+//     * huomioi siirrytäänkö shakkiin.
+//     *
+//     * @param nappula siirrettävä nappula
+//     * @param minne kohderuudun koordinaatit
+//     * @param lauta lauta jolla nappula ja ruudut ovat
+//     * @param enPassant ruutu, josta voi ohesta lyöda sotilaan (jos oma sotilas
+//     * oikeassa paikassa)
+//     * @return onnistuiko siirto
+//     */
+//    public static boolean koitaSiirtya(Nappula nappula, int[] minne, Lauta lauta, int[] enPassant) {
+//        if (nappula.isEmpty()) {
+//            return false;
+//        }
+//        int[] mista = nappula.getKoordinaatit();
+//        return koitaSiirtya(mista, minne, lauta, enPassant);
+//    }
 
     /**
      * Metodi koittaa siirtää annetun nappulan annettuun kohderuutuun. Ei

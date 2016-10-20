@@ -252,7 +252,9 @@ public class FairyVariant implements Variant {
                         hash.put("mustaMerkki", element.getElementsByTagName("mustaMerkki").item(0).getTextContent());
 //                        System.out.println("valkoinenMerkki: " + element.getElementsByTagName("valkoinenMerkki").item(0).getTextContent());
                         ArrayList<String> liikkumiset = new ArrayList<>();
-                        liikkumiset.add(element.getElementsByTagName("liikkumistyyppi").item(0).getTextContent());
+                        for(int i=0; i<element.getElementsByTagName("liikkumistyyppi").getLength(); i++) {
+                            liikkumiset.add(element.getElementsByTagName("liikkumistyyppi").item(i).getTextContent());
+                        }                        
                         hash.put("liikkumiset", liikkumiset);
                         FairyPiece piece = new FairyPiece(hash, Nappula.Puoli.VALKOINEN);
 //                        System.out.println("ASDF");

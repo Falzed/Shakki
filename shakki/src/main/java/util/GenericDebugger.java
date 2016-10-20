@@ -46,7 +46,7 @@ public class GenericDebugger {
 
 
 //        File file = new File("src/main/resources/chargeOfTheLightBrigade.xml");
-        File file = new File("src/main/resources/dunsanysChess.xml");
+        File file = new File("src/main/resources/testing.xml");
         Game peli = new Game(new FairyVariant(file));
 //        peli.suoritaKomento("a1-a2");
 //        System.out.println(peli.getLauta().getNappula("a1").getMerkki());

@@ -8,12 +8,6 @@ import java.util.Arrays;
 public class FairyLiikkuminen {
 
     public static boolean voikoLiikkua(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
-        if (!(lauta.getNappula(mista) instanceof FairyPiece)) {
-//            System.out.println(lauta.getNappula(mista).getClass());
-//            System.out.println(lauta.getNappula(mista).getNimi());
-//            System.out.println(Arrays.toString(mista));
-            return false;
-        }
         FairyPiece nappula = (FairyPiece) lauta.getNappula(mista);
         if (nappula.getLiikkumistyypit().contains("Torni")) {
             if (UpseerienLiikkuminen.torniVoikoLiikkua(mista, minne, lauta, puoli)) {
@@ -41,7 +35,7 @@ public class FairyLiikkuminen {
             }
         }
         if (nappula.getLiikkumistyypit().contains("LahettiHyppy")) {
-            if (UpseerienLiikkuminen.lahettiVoikoLiikkua(mista, minne, lauta, puoli)) {
+            if (lahettiHyppy(mista, minne, lauta, puoli)) {
                 return true;
             }
         }

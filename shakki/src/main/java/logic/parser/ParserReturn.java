@@ -38,17 +38,17 @@ public class ParserReturn {
         return errorMessage;
     }
 
-    @Override
-    public String toString() {
-        String string = "";
-        if (this.startEndPoints != null) {
-            string += "(" + startEndPoints[0][0] + ", " + startEndPoints[0][1]
-                    + ")\n";
-            string += "(" + startEndPoints[1][0] + ", " + startEndPoints[1][1] + ")\n";
-        } else {
-            string += "null\n";
-        }
-        string += errorMessage;
-        return string;
-    }
+//    @Override
+//    public String toString() {
+//        String string = "";
+//        if (this.startEndPoints != null) {
+//            string += "(" + startEndPoints[0][0] + ", " + startEndPoints[0][1]
+//                    + ")\n";
+//            string += "(" + startEndPoints[1][0] + ", " + startEndPoints[1][1] + ")\n";
+//        } else {
+//            string += "null\n";
+//        }
+//        string += errorMessage;
+//        return string;
+//    }
 }
