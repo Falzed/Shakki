@@ -27,17 +27,18 @@ public class Parser {
         koordinaatit[1] = string.charAt(1) - 49;
         return koordinaatit;
     }
-    
+
     public static String parseToAlgebraicCommand(int[][] startEndPoints) {
-        String start = Character.toString((char) (startEndPoints[0][0]+97));
-        start += Character.toString((char) (startEndPoints[0][1]+49));
-        String end = Character.toString((char) (startEndPoints[1][0]+97));
-        end += Character.toString((char) (startEndPoints[1][1]+49));
-        return start+"-"+end;
+        String start = Character.toString((char) (startEndPoints[0][0] + 97));
+        start += Character.toString((char) (startEndPoints[0][1] + 49));
+        String end = Character.toString((char) (startEndPoints[1][0] + 97));
+        end += Character.toString((char) (startEndPoints[1][1] + 49));
+        return start + "-" + end;
     }
+
     public static String parseToAlgebraic(int[] coordinates) {
-        String string = Character.toString((char) (coordinates[0]+97));
-        string += Character.toString((char) (coordinates[1]+49));
+        String string = Character.toString((char) (coordinates[0] + 97));
+        string += Character.toString((char) (coordinates[1] + 49));
         return string;
     }
 

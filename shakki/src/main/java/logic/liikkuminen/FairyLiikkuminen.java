@@ -9,9 +9,9 @@ public class FairyLiikkuminen {
 
     public static boolean voikoLiikkua(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli) {
         if (!(lauta.getNappula(mista) instanceof FairyPiece)) {
-            System.out.println(lauta.getNappula(mista).getClass());
-            System.out.println(lauta.getNappula(mista).getNimi());
-            System.out.println(Arrays.toString(mista));
+//            System.out.println(lauta.getNappula(mista).getClass());
+//            System.out.println(lauta.getNappula(mista).getNimi());
+//            System.out.println(Arrays.toString(mista));
             return false;
         }
         FairyPiece nappula = (FairyPiece) lauta.getNappula(mista);

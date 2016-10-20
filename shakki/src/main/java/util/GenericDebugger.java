@@ -45,12 +45,13 @@ public class GenericDebugger {
 //        System.out.println(lista.contains("Torni"));
 
 
-        File file = new File("src/main/resources/chargeOfTheLightBrigade.xml");
+//        File file = new File("src/main/resources/chargeOfTheLightBrigade.xml");
+        File file = new File("src/main/resources/dunsanysChess.xml");
         Game peli = new Game(new FairyVariant(file));
 //        peli.suoritaKomento("a1-a2");
 //        System.out.println(peli.getLauta().getNappula("a1").getMerkki());
         UI ui = new UI(peli);
-        System.out.println(peli.getLauta().getNappula("a1").getNimi());
+//        System.out.println(peli.getLauta().getNappula("a1").getNimi());
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 ui.setVisible(true);

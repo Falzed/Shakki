@@ -24,15 +24,6 @@ and open the template in the editor.
             </liikkumistyypit>-->
         </nappula>
         <nappula>
-            <nimi>Ratsu2</nimi>
-            <notaatioMerkki>N</notaatioMerkki>
-            <valkoinenMerkki>♘</valkoinenMerkki>
-            <mustaMerkki>♞</mustaMerkki>
-            <liikkumistyypit>
-                <liikkumistyyppi>Ratsu</liikkumistyyppi>
-            </liikkumistyypit>
-        </nappula>
-        <nappula>
             <nimi>Sotilas</nimi>
         </nappula>
         <nappula>
@@ -46,15 +37,174 @@ and open the template in the editor.
     <alkupaikat>
         <nappulanPaikka>
             <nappulanNimi>Ratsu</nappulanNimi>
-            <nappulanPuoli>VALKOINEN</nappulanPuoli>
+            <nappulanPuoli>MUSTA</nappulanPuoli>
             <xkoord>0</xkoord>
-            <ykoord>0</ykoord>
+            <ykoord>7</ykoord>
         </nappulanPaikka>
         <nappulanPaikka>
             <nappulanNimi>Ratsu</nappulanNimi>
             <nappulanPuoli>MUSTA</nappulanPuoli>
-            <xkoord>0</xkoord>
+            <xkoord>1</xkoord>
             <ykoord>7</ykoord>
+        </nappulanPaikka>
+        <nappulanPaikka>
+            <nappulanNimi>Ratsu</nappulanNimi>
+            <nappulanPuoli>MUSTA</nappulanPuoli>
+            <xkoord>2</xkoord>
+            <ykoord>7</ykoord>
+        </nappulanPaikka>
+        <nappulanPaikka>
+            <nappulanNimi>Ratsu</nappulanNimi>
+            <nappulanPuoli>MUSTA</nappulanPuoli>
+            <xkoord>3</xkoord>
+            <ykoord>7</ykoord>
+        </nappulanPaikka>
+        <nappulanPaikka>
+            <nappulanNimi>Kuningas</nappulanNimi>
+            <nappulanPuoli>MUSTA</nappulanPuoli>
+            <xkoord>4</xkoord>
+            <ykoord>7</ykoord>
+        </nappulanPaikka>
+        <nappulanPaikka>
+            <nappulanNimi>Ratsu</nappulanNimi>
+            <nappulanPuoli>MUSTA</nappulanPuoli>
+            <xkoord>5</xkoord>
+            <ykoord>7</ykoord>
+        </nappulanPaikka>
+        <nappulanPaikka>
+            <nappulanNimi>Ratsu</nappulanNimi>
+            <nappulanPuoli>MUSTA</nappulanPuoli>
+            <xkoord>6</xkoord>
+            <ykoord>7</ykoord>
+        </nappulanPaikka>
+        <nappulanPaikka>
+            <nappulanNimi>Ratsu</nappulanNimi>
+            <nappulanPuoli>MUSTA</nappulanPuoli>
+            <xkoord>7</xkoord>
+            <ykoord>7</ykoord>
+        </nappulanPaikka>
+        
+        <nappulanPaikka>
+            <nappulanNimi>Sotilas</nappulanNimi>
+            <nappulanPuoli>MUSTA</nappulanPuoli>
+            <xkoord>0</xkoord>
+            <ykoord>6</ykoord>
+        </nappulanPaikka>
+        <nappulanPaikka>
+            <nappulanNimi>Sotilas</nappulanNimi>
+            <nappulanPuoli>MUSTA</nappulanPuoli>
+            <xkoord>1</xkoord>
+            <ykoord>6</ykoord>
+        </nappulanPaikka>
+        <nappulanPaikka>
+            <nappulanNimi>Sotilas</nappulanNimi>
+            <nappulanPuoli>MUSTA</nappulanPuoli>
+            <xkoord>2</xkoord>
+            <ykoord>6</ykoord>
+        </nappulanPaikka>
+        <nappulanPaikka>
+            <nappulanNimi>Sotilas</nappulanNimi>
+            <nappulanPuoli>MUSTA</nappulanPuoli>
+            <xkoord>3</xkoord>
+            <ykoord>6</ykoord>
+        </nappulanPaikka>
+        <nappulanPaikka>
+            <nappulanNimi>Sotilas</nappulanNimi>
+            <nappulanPuoli>MUSTA</nappulanPuoli>
+            <xkoord>4</xkoord>
+            <ykoord>6</ykoord>
+        </nappulanPaikka>
+        <nappulanPaikka>
+            <nappulanNimi>Sotilas</nappulanNimi>
+            <nappulanPuoli>MUSTA</nappulanPuoli>
+            <xkoord>5</xkoord>
+            <ykoord>6</ykoord>
+        </nappulanPaikka>
+        <nappulanPaikka>
+            <nappulanNimi>Sotilas</nappulanNimi>
+            <nappulanPuoli>MUSTA</nappulanPuoli>
+            <xkoord>6</xkoord>
+            <ykoord>6</ykoord>
+        </nappulanPaikka>
+        <nappulanPaikka>
+            <nappulanNimi>Sotilas</nappulanNimi>
+            <nappulanPuoli>MUSTA</nappulanPuoli>
+            <xkoord>7</xkoord>
+            <ykoord>6</ykoord>
+        </nappulanPaikka>
+        
+        <nappulanPaikka>
+            <nappulanNimi>Kuningatar</nappulanNimi>
+            <nappulanPuoli>VALKOINEN</nappulanPuoli>
+            <xkoord>1</xkoord>
+            <ykoord>0</ykoord>
+        </nappulanPaikka>
+        <nappulanPaikka>
+            <nappulanNimi>Kuningatar</nappulanNimi>
+            <nappulanPuoli>VALKOINEN</nappulanPuoli>
+            <xkoord>3</xkoord>
+            <ykoord>0</ykoord>
+        </nappulanPaikka>
+        <nappulanPaikka>
+            <nappulanNimi>Kuningatar</nappulanNimi>
+            <nappulanPuoli>VALKOINEN</nappulanPuoli>
+            <xkoord>6</xkoord>
+            <ykoord>0</ykoord>
+        </nappulanPaikka>
+        <nappulanPaikka>
+            <nappulanNimi>Kuningas</nappulanNimi>
+            <nappulanPuoli>VALKOINEN</nappulanPuoli>
+            <xkoord>4</xkoord>
+            <ykoord>0</ykoord>
+        </nappulanPaikka>
+        
+        <nappulanPaikka>
+            <nappulanNimi>Sotilas</nappulanNimi>
+            <nappulanPuoli>VALKOINEN</nappulanPuoli>
+            <xkoord>0</xkoord>
+            <ykoord>1</ykoord>
+        </nappulanPaikka>
+        <nappulanPaikka>
+            <nappulanNimi>Sotilas</nappulanNimi>
+            <nappulanPuoli>VALKOINEN</nappulanPuoli>
+            <xkoord>1</xkoord>
+            <ykoord>1</ykoord>
+        </nappulanPaikka>
+        <nappulanPaikka>
+            <nappulanNimi>Sotilas</nappulanNimi>
+            <nappulanPuoli>VALKOINEN</nappulanPuoli>
+            <xkoord>2</xkoord>
+            <ykoord>1</ykoord>
+        </nappulanPaikka>
+        <nappulanPaikka>
+            <nappulanNimi>Sotilas</nappulanNimi>
+            <nappulanPuoli>VALKOINEN</nappulanPuoli>
+            <xkoord>3</xkoord>
+            <ykoord>1</ykoord>
+        </nappulanPaikka>
+        <nappulanPaikka>
+            <nappulanNimi>Sotilas</nappulanNimi>
+            <nappulanPuoli>VALKOINEN</nappulanPuoli>
+            <xkoord>4</xkoord>
+            <ykoord>1</ykoord>
+        </nappulanPaikka>
+        <nappulanPaikka>
+            <nappulanNimi>Sotilas</nappulanNimi>
+            <nappulanPuoli>VALKOINEN</nappulanPuoli>
+            <xkoord>5</xkoord>
+            <ykoord>1</ykoord>
+        </nappulanPaikka>
+        <nappulanPaikka>
+            <nappulanNimi>Sotilas</nappulanNimi>
+            <nappulanPuoli>VALKOINEN</nappulanPuoli>
+            <xkoord>6</xkoord>
+            <ykoord>1</ykoord>
+        </nappulanPaikka>
+        <nappulanPaikka>
+            <nappulanNimi>Sotilas</nappulanNimi>
+            <nappulanPuoli>VALKOINEN</nappulanPuoli>
+            <xkoord>7</xkoord>
+            <ykoord>1</ykoord>
         </nappulanPaikka>
     </alkupaikat>
 </root>

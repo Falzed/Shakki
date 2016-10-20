@@ -25,7 +25,7 @@ public class FairyVariant implements Variant {
     private int lautojenLeveys;
     private int lautojenPituus;
     private ArrayList<Nappula> nappulat;
-    private HashMap<Nappula, int[]> nappuloittenKoordinaatit;
+    private HashMap<Nappula, ArrayList<int[]>> nappuloittenKoordinaatit;
     private ArrayList<HashMap> stuff;
     BufferedReader lukija;
 
@@ -46,46 +46,74 @@ public class FairyVariant implements Variant {
         for (int i = 0; i < nimet.size(); i++) {
             this.nappulaEsimerkit[i] = esimerkit.get(i);
         }
-        asetaNappulat(esimerkit);
+//        System.out.println(esimerkit);
+        alustaNappuloittenKoordinaatit(esimerkit);
+
     }
-    
-    public void asetaNappulat(ArrayList<Nappula> esimerkit) {
+
+    public void alustaNappuloittenKoordinaatit(ArrayList<Nappula> esimerkit) {
         this.nappuloittenKoordinaatit = new HashMap<>();
         for (HashMap hash : stuff) {
             if (((String) hash.get("nappulanNimi")) != null) {
                 int[] koordinaatit = new int[2];
                 koordinaatit[0] = Integer.parseInt((String) hash.get("xkoord"));
                 koordinaatit[1] = Integer.parseInt((String) hash.get("ykoord"));
-                int index = -1;
+                ArrayList<Integer> indexes = new ArrayList<>();
 
                 for (Nappula nappula : esimerkit) {
-                    if (nappula.getNimi().equals(((String) hash.get("nappulanNimi")))) {
-                        index = esimerkit.indexOf(nappula);
+                    if (nappula.getNimi().equals(((String) hash.get("nappulanNimi")))
+                            && nappula.getPuoliString().equalsIgnoreCase((String) hash.get("nappulanPuoli"))) {
+                        indexes.add(esimerkit.indexOf(nappula));
                         break;
                     }
                 }
-                if (index > -1) {
+                for (int index : indexes) {
                     if (esimerkit.get(index) instanceof FairyPiece) {
-                        FairyPiece nappula = new FairyPiece((FairyPiece) esimerkit.get(index), (String) hash.get("nappulanPuoli"));
-                        System.out.println(nappula.getNimi());
-                        System.out.println(nappula.getPuoli());
-                        this.nappuloittenKoordinaatit.put(nappula, koordinaatit);
+//                        FairyPiece nappula = new FairyPiece((FairyPiece) esimerkit.get(index), (String) hash.get("nappulanPuoli"));
+                        FairyPiece nappula = (FairyPiece) esimerkit.get(index);
+                        ArrayList<int[]> lista = this.nappuloittenKoordinaatit.get(nappula);
+                        if (lista == null) {
+                            lista = new ArrayList<>();
+                        }
+                        lista.add(koordinaatit);
+                        this.nappuloittenKoordinaatit.put(nappula, lista);
                     } else {
-                        System.out.println(esimerkit.get(index).getNimi());
-                        System.out.println(esimerkit.get(index).getPuoli());
-                        this.nappuloittenKoordinaatit.put(esimerkit.get(index), koordinaatit);
+                        ArrayList<int[]> lista = this.nappuloittenKoordinaatit.get(esimerkit.get(index));
+                        if (lista == null) {
+                            lista = new ArrayList<>();
+                        }
+                        lista.add(koordinaatit);
+                        this.nappuloittenKoordinaatit.put(esimerkit.get(index), lista);
                     }
                 }
             }
         }
-        System.out.println(nappuloittenKoordinaatit);
+//        for (Nappula nappula : nappuloittenKoordinaatit.keySet()) {
+//            System.out.println(nappula.getPuoliString() + " " + nappula.getNimi() + ":");
+//            for (int[] koordinaatit : nappuloittenKoordinaatit.get(nappula)) {
+//                System.out.println(Arrays.toString(koordinaatit));
+//            }
+//        }
+//        System.out.println(nappuloittenKoordinaatit);
+    }
+
+    public ArrayList<int[]> liikkuneet(ArrayList<Nappula> esimerkit) {
+        ArrayList<int[]> liikkuneet = new ArrayList<>();
+        for (HashMap hash : stuff) {
+            if (((String) hash.get("liikkunut")) != null) {
+                int[] koordinaatit = new int[2];
+                koordinaatit[0] = Integer.parseInt((String) hash.get("xkoord"));
+                koordinaatit[1] = Integer.parseInt((String) hash.get("ykoord"));
+                liikkuneet.add(koordinaatit);
+            }
+        }
+        return liikkuneet;
     }
 
     public ArrayList<Nappula> parseEsimerkit(ArrayList<HashMap> stuff) {
         ArrayList<Nappula> esimerkit = new ArrayList<>();
         for (HashMap hash : stuff) {
             if (((Nappula) hash.get("nappula")) != null) {
-//                nimet.add((String) hash.get("Nimi"));
                 if (hash.get("nappula") instanceof FairyPiece) {
                     FairyPiece nappula = (FairyPiece) hash.get("nappula");
                     esimerkit.add(nappula);
@@ -93,7 +121,9 @@ public class FairyVariant implements Variant {
                 } else {
                     Nappula nappula = (Nappula) hash.get("nappula");
                     esimerkit.add(nappula);
-                    esimerkit.add(new Nappula(nappula, "musta"));
+                    Nappula nappula2 = nappula.kopioi();
+                    nappula2.setPuoli(Nappula.Puoli.MUSTA);
+                    esimerkit.add(nappula2);
                 }
             }
         }
@@ -136,17 +166,24 @@ public class FairyVariant implements Variant {
     public void setUp() {
         lauta = new Lauta(this.lautojenLeveys, this.lautojenPituus);
         lauta.alustaLauta();
-//        System.out.println(this.nappuloittenKoordinaatit.keySet());
+        ArrayList<int[]> liikkuneet = liikkuneet(parseEsimerkit(stuff));
         for (Nappula nappula : this.nappuloittenKoordinaatit.keySet()) {
-//            System.out.println(nappula.getNimi());
-//            System.out.println(nappula.getPuoli());
-//            System.out.println(Arrays.toString(nappuloittenKoordinaatit.get(nappula)));
-            System.out.println("Nappula: " + nappula.getPuoli() + " " + nappula.getNimi());
-            System.out.println(Arrays.toString(nappuloittenKoordinaatit.get(nappula)));
-            logic.LaudanMuutokset.aseta(nappula, nappuloittenKoordinaatit.get(nappula), lauta);
-//            System.out.println(lauta.getNappula(nappuloittenKoordinaatit.get(nappula)).getNimi());
-//            System.out.println(lauta.getNappula(nappuloittenKoordinaatit.get(nappula)).getPuoli());
+            for (int[] koordinaatit : nappuloittenKoordinaatit.get(nappula)) {
+                logic.LaudanMuutokset.aseta(nappula.kopioi(), koordinaatit, lauta);
+                for(int[] liikkunut:liikkuneet) {
+                    if(Arrays.equals(liikkunut, koordinaatit)) {
+                        lauta.getNappula(koordinaatit).setLiikkunut();
+                        break;
+                    }
+                }
+            }
         }
+//        System.out.println("LIIKKUNEET");
+//        System.out.println("");
+//        System.out.println("");
+//        for (int[] koordinaatit : liikkuneet) {
+//            System.out.println(Arrays.toString(koordinaatit));
+//        }
     }
 
     public static void main(String[] args) throws FileNotFoundException, IOException, SAXException, ParserConfigurationException {
@@ -161,10 +198,8 @@ public class FairyVariant implements Variant {
         try {
             doc = dBuilder.parse(file);
         } catch (SAXException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         doc.getDocumentElement().normalize();
@@ -220,6 +255,9 @@ public class FairyVariant implements Variant {
                         liikkumiset.add(element.getElementsByTagName("liikkumistyyppi").item(0).getTextContent());
                         hash.put("liikkumiset", liikkumiset);
                         FairyPiece piece = new FairyPiece(hash, Nappula.Puoli.VALKOINEN);
+//                        System.out.println("ASDF");
+//                        System.out.println(piece.getNimi());
+//                        System.out.println(piece.getPuoliString());
 //                        System.out.println(piece.getPuoli());
 //                        System.out.println(piece.getMerkki());
                         hash = new HashMap<>();
@@ -240,6 +278,7 @@ public class FairyVariant implements Variant {
                 hash.put("nappulanPuoli", element.getElementsByTagName("nappulanPuoli").item(0).getTextContent());
                 hash.put("xkoord", element.getElementsByTagName("xkoord").item(0).getTextContent());
                 hash.put("ykoord", element.getElementsByTagName("ykoord").item(0).getTextContent());
+                hash.put("liikkunut", element.getElementsByTagName("ykoord").item(0).getTextContent());
                 array.add(hash);
             }
         }

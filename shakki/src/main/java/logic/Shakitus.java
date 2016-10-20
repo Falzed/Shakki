@@ -77,7 +77,7 @@ public class Shakitus {
 //        return Shakitus.uhattu(lauta, koordinaatit, puoli);
 //    }
     /**
-     * Metodi kertoo, onko annettu puoli shakissa.
+     * Metodi kertoo, onko annettu puoli matissa.
      *
      * @param lauta lauta jossa on ehkä shakki
      * @param puoli valkoinen vai musta (enum)
@@ -85,10 +85,26 @@ public class Shakitus {
      * @return onko annettu puoli matissa.
      */
     public static boolean matissa(Lauta lauta, Nappula.Puoli puoli, int[] enPassant) {
-        if (!shakissa(lauta, puoli)) {
-            return false;
+        if (kuninkaanKoordinaatit(lauta, puoli) != null) {
+            if (!shakissa(lauta, puoli)) {
+                return false;
+            }
+            return iteroiOmienLaillisetSiirrot(lauta, puoli, enPassant);
+        } else {
+            return !nappuloitaLaudalla(lauta, puoli);
         }
-        return iteroiOmienLaillisetSiirrot(lauta, puoli, enPassant);
+    }
+
+    private static boolean nappuloitaLaudalla(Lauta lauta, Nappula.Puoli puoli) {
+        for (int i = 0; i < lauta.getLeveys(); i++) {
+            for (int j = 0; j < lauta.getPituus(); j++) {
+                int[] koordinaatit = {i, j};
+                if (lauta.getNappula(koordinaatit).getPuoli()==puoli) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**
@@ -133,16 +149,24 @@ public class Shakitus {
      * @return onko annettu puoli shakissa
      */
     public static boolean shakissa(Lauta lauta, Nappula.Puoli puoli) {
+        int[] kuninkaanSijainti = kuninkaanKoordinaatit(lauta, puoli);
+        if (kuninkaanSijainti == null) {
+            return false;
+        }
+        return Shakitus.uhattu(lauta, kuninkaanSijainti, puoli);
+    }
+
+    private static int[] kuninkaanKoordinaatit(Lauta lauta, Nappula.Puoli puoli) {
         for (int i = 0; i < lauta.getLeveys(); i++) {
             for (int j = 0; j < lauta.getPituus(); j++) {
                 int[] koordinaatit = {i, j};
                 if (lauta.getNappula(koordinaatit).getPuoli() == puoli
-                        && lauta.getNappula(koordinaatit).getNotaatioMerkki() == 'K') {
-                    return Shakitus.uhattu(lauta, koordinaatit, puoli);
+                        && lauta.getNappula(koordinaatit).getNimi().equals("Kuningas")) {
+                    return koordinaatit;
                 }
             }
         }
-        return false;
+        return null;
     }
 
     private static boolean iteroiOmienLaillisetSiirrot(Lauta lauta, Nappula.Puoli puoli, int[] enPassant) {

@@ -307,7 +307,7 @@ public class UI extends javax.swing.JFrame {
     }
 
     public void hiiriKomento(int[][] startEndPoints) {
-        System.out.println(Parser.parseToAlgebraicCommand(startEndPoints));
+//        System.out.println(Parser.parseToAlgebraicCommand(startEndPoints));
         suoritaKomento(Parser.parseToAlgebraicCommand(startEndPoints));
         unselectAll();
     }

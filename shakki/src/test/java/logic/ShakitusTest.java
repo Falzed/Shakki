@@ -16,7 +16,7 @@ public class ShakitusTest {
         logic.LaudanMuutokset.aseta(new Torni("musta"), "a1", lauta);
         assertTrue(Shakitus.uhattu(lauta, "e1", Nappula.Puoli.VALKOINEN));
     }
-    
+
     @Test
     public void tunnistaaEtteiShakissa() {
         Lauta lauta = new Lauta();
@@ -37,7 +37,7 @@ public class ShakitusTest {
         logic.LaudanMuutokset.aseta(new Torni("musta"), "a2", lauta);
         assertTrue(Shakitus.matissa(lauta, "valkoinen", null));
     }
-    
+
     @Test
     public void tunnistaaPatin() {
         Lauta lauta = new Lauta();
@@ -49,7 +49,7 @@ public class ShakitusTest {
         logic.LaudanMuutokset.aseta(new Torni("musta"), "f8", lauta);
         assertTrue(Shakitus.patissa(lauta, Nappula.Puoli.VALKOINEN, null));
     }
-    
+
     @Test
     public void tunnistaaMatinMusta() {
         Lauta lauta = new Lauta();
@@ -60,7 +60,7 @@ public class ShakitusTest {
         logic.LaudanMuutokset.aseta(new Torni("valkoinen"), "a2", lauta);
         assertTrue(Shakitus.matissa(lauta, "musta", null));
     }
-    
+
     @Test
     public void tunnistaaPatinMusta() {
         Lauta lauta = new Lauta();

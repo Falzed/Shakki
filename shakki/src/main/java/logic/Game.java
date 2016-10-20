@@ -50,48 +50,67 @@ public class Game {
         int[][] startEndPoints = parserTulos.getCoordinates();
         int[] enPassantTemp = null;
         if (startEndPoints != null) {
-            //kirjoita järkevämmäksi myöhemmin
-            if (lauta.getNappula(startEndPoints[0]).onSotilas()
-                    && Math.abs(startEndPoints[0][1] - startEndPoints[1][1])
-                    == 2) {
-                enPassantTemp = new int[2];
-                enPassantTemp[0] = startEndPoints[0][0];
-                if (vuoro == Nappula.Puoli.VALKOINEN) {
-                    enPassantTemp[1] = startEndPoints[0][1] + 1;
-                } else {
-                    enPassantTemp[1] = startEndPoints[0][1] - 1;
-                }
-            }
-            Nappula nappula = lauta.getNappula(startEndPoints[0]);
-            if (nappula.getPuoli() != vuoro) {
-                return new ParserReturn("Ruudussa ei nappulaasi");
-            }
-            if (Liikkuminen.koitaSiirtyaTarkistaShakki(nappula, startEndPoints[1], lauta, vuoro, enPassant)) {
-                if (vuoro == Nappula.Puoli.VALKOINEN) {
-                    vuoro = Nappula.Puoli.MUSTA;
-                } else {
-                    vuoro = Nappula.Puoli.VALKOINEN;
-                }
-                if (!historia.getList().isEmpty()) {
-                    historia.jatkaVuoroHistoriaa(komento);
-                } else {
-                    historia.addTurn(new Turn(historia.getVuoroNumero(), komento, ""));
-                }
-            } else {
-                return new ParserReturn("(" + startEndPoints[0][0] + ","
-                        + startEndPoints[0][1] + ")\n" + "-("
-                        + startEndPoints[1][0] + "," + startEndPoints[1][1]
-                        + ")\n" + "Laiton siirto");
-            }
-            if (enPassantTemp != null) {
-                this.enPassant = enPassantTemp;
-            } else {
-                this.enPassant = null;
-            }
+            enPassantTemp = enPassantApu(startEndPoints);
+            parserTulos = apusuoritus(parserTulos, komento, startEndPoints, enPassantTemp);
         }
         return parserTulos;
     }
-    
+
+    private int[] enPassantApu(int[][] startEndPoints) {
+        int[] enPassantTemp = null;
+        if (lauta.getNappula(startEndPoints[0]).onSotilas()
+                && Math.abs(startEndPoints[0][1] - startEndPoints[1][1])
+                == 2) {
+            enPassantTemp = new int[2];
+            enPassantTemp[0] = startEndPoints[0][0];
+            if (vuoro == Nappula.Puoli.VALKOINEN) {
+                enPassantTemp[1] = startEndPoints[0][1] + 1;
+            } else {
+                enPassantTemp[1] = startEndPoints[0][1] - 1;
+            }
+        }
+        return enPassantTemp;
+    }
+
+    private ParserReturn apusuoritus(ParserReturn parserTulos, String komento, int[][] startEndPoints, int[] enPassantTemp) {
+        Nappula nappula = lauta.getNappula(startEndPoints[0]);
+        if (nappula.getPuoli() != vuoro) {
+            return new ParserReturn("Ruudussa ei nappulaasi");
+        }
+        vuoronVaihtoJaHistorianJatko(parserTulos, komento, nappula, startEndPoints);
+        if(!parserTulos.getError().isEmpty()) {
+            return parserTulos;
+        }
+
+        if (enPassantTemp != null) {
+            this.enPassant = enPassantTemp;
+        } else {
+            this.enPassant = null;
+        }
+        return parserTulos;
+    }
+
+    private ParserReturn vuoronVaihtoJaHistorianJatko(ParserReturn parserTulos, String komento, Nappula nappula, int[][] startEndPoints) {
+        if (Liikkuminen.koitaSiirtyaTarkistaShakki(nappula, startEndPoints[1], lauta, vuoro, enPassant)) {
+            if (vuoro == Nappula.Puoli.VALKOINEN) {
+                vuoro = Nappula.Puoli.MUSTA;
+            } else {
+                vuoro = Nappula.Puoli.VALKOINEN;
+            }
+            if (!historia.getList().isEmpty()) {
+                historia.jatkaVuoroHistoriaa(komento);
+            } else {
+                historia.addTurn(new Turn(historia.getVuoroNumero(), komento, ""));
+            }
+        } else {
+            return new ParserReturn("(" + startEndPoints[0][0] + ","
+                    + startEndPoints[0][1] + ")\n" + "-("
+                    + startEndPoints[1][0] + "," + startEndPoints[1][1]
+                    + ")\n" + "Laiton siirto");
+        }
+        return parserTulos;
+    }
+
     public ParserReturn suoritaKomento(int[][] startEndPoints) {
         String komento = Parser.parseToAlgebraicCommand(startEndPoints);
         return suoritaKomento(komento);

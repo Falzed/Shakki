@@ -38,7 +38,7 @@ public class HiiriKuuntelija implements MouseListener {
             ui.toggleValittu(valittuRuutu);
         } else {
             int[][] startEndPoints = new int[2][2];
-            System.out.println(Parser.parseToAlgebraic(valittuRuutu));
+//            System.out.println(Parser.parseToAlgebraic(valittuRuutu));
             startEndPoints[0][0] = this.valittuRuutu[0];
             startEndPoints[0][1] = this.valittuRuutu[1];
             ruutuValittu = false;

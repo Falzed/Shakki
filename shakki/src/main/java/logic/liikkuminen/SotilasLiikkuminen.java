@@ -48,6 +48,9 @@ public class SotilasLiikkuminen {
             if (!lauta.getNappula(valissa).isEmpty()) {
                 return false;
             }
+            if (lauta.getNappula(mista).onkoLiikkunut()) {
+                return false;
+            }
         } else if (puoli == Nappula.Puoli.MUSTA) {
             if (minne[1] != mista[1] - 1) {
                 if (mista[1] != 6) {
@@ -58,6 +61,9 @@ public class SotilasLiikkuminen {
                 }
                 int[] valissa = {mista[0], mista[1] - 1};
                 if (!lauta.getNappula(valissa).isEmpty()) {
+                    return false;
+                }
+                if (lauta.getNappula(mista).onkoLiikkunut()) {
                     return false;
                 }
             }
@@ -119,7 +125,6 @@ public class SotilasLiikkuminen {
             int[] syotavanKoordinaatit = {minne[0], minne[1] - 1};
 
 //            System.out.println("(" + nappula.getKoordinaatit()[0] + "," + nappula.getKoordinaatit()[1] + ")-" + "(" + minne[0] + "," + minne[1] + ")");
-
             LaudanMuutokset.poista(syotavanKoordinaatit, lauta);
         } else {
             int[] syotavanKoordinaatit = {minne[0], minne[1] + 1};

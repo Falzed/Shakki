@@ -9,7 +9,7 @@ public class Lahetti extends Nappula {
     private static final char VALKOINENMERKKI = '\u2657';
     private static final char MUSTAMERKKI = '\u265D';
     private static final char NOTAATIOMERKKI = 'B';
-    private static final String NIMI = "Lähetti";
+    private static final String NIMI = "Lahetti";
 
     /**
      *Konstruktori, kutsuu vain Nappula-luokan konstruktoria. Puoli stringinä.

@@ -33,10 +33,10 @@ public class FairyPiece extends Nappula {
 
     @Override
     public char getMerkki() {
-        if (this.puoli==Puoli.VALKOINEN) {
+        if (this.puoli == Puoli.VALKOINEN) {
             return valkoinenMerkki;
         }
-        if (this.puoli==Puoli.MUSTA) {
+        if (this.puoli == Puoli.MUSTA) {
             return mustaMerkki;
         }
         return super.getMerkki();
@@ -46,9 +46,21 @@ public class FairyPiece extends Nappula {
     public String getNimi() {
         return this.nimi;
     }
+
     @Override
     public Nappula.Puoli getPuoli() {
         return this.puoli;
+    }
+
+    @Override
+    public String getPuoliString() {
+        if (puoli == Puoli.VALKOINEN) {
+            return "valkoinen";
+        }
+        if (puoli == Puoli.MUSTA) {
+            return "musta";
+        }
+        return "tyhja";
     }
 
     public char getValkoinenMerkki() {
@@ -62,9 +74,9 @@ public class FairyPiece extends Nappula {
     public ArrayList<String> getLiikkumistyypit() {
         return this.liikkumisTyypit;
     }
-    
+
     @Override
-    public Nappula clone() {
+    public Nappula kopioi() {
         FairyPiece kopio = new FairyPiece(this, this.puoli);
 //        kopio.asetaKoordinaatit(sijainti);
         return kopio;

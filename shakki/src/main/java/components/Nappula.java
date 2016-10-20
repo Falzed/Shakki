@@ -102,6 +102,14 @@ public class Nappula {
     public Puoli getPuoli() {
         return puoli;
     }
+    
+    /**
+     * setteri.
+     *
+     */
+    public void setPuoli(Nappula.Puoli puoli) {
+        this.puoli = puoli;
+    }
 
     /**
      * getteri.
