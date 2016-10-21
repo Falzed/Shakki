@@ -4,6 +4,10 @@ import java.awt.event.*;
 import javax.swing.JPanel;
 import logic.parser.Parser;
 
+/**
+ * MouseListener ruudun valinnalle.
+ * @author Oskari Kulmala
+ */
 public class HiiriKuuntelija implements MouseListener {
 
     private boolean ruutuValittu;
@@ -11,7 +15,14 @@ public class HiiriKuuntelija implements MouseListener {
     private int[][] laudanRuudut;
     private JPanel[][] ruudut;
     private UI ui;
-
+ 
+    /**
+     * Konstruktori.
+     * @param leveys laudan leveys
+     * @param pituus laudan pituus
+     * @param ruudut laudan ruudut (JPanelit)
+     * @param ui käytössä oleva ui
+     */
     public HiiriKuuntelija(int leveys, int pituus, JPanel[][] ruudut, UI ui) {
         this.laudanRuudut = new int[leveys][pituus];
         this.valittuRuutu = new int[2];

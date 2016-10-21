@@ -99,7 +99,7 @@ public class Shakitus {
         for (int i = 0; i < lauta.getLeveys(); i++) {
             for (int j = 0; j < lauta.getPituus(); j++) {
                 int[] koordinaatit = {i, j};
-                if (lauta.getNappula(koordinaatit).getPuoli()==puoli) {
+                if (lauta.getNappula(koordinaatit).getPuoli() == puoli) {
                     return true;
                 }
             }

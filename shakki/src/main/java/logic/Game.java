@@ -24,6 +24,7 @@ public class Game {
 //    private ui.UI ui;
     /**
      * Konstruktori pelille.
+     * @param variant pelin variantti
      */
     public Game(Variant variant) {
         this.variant = variant;
@@ -110,7 +111,14 @@ public class Game {
         }
         return parserTulos;
     }
-
+    
+    /**
+     * Metodi koittaa suorittaa käyttäjän antaman komennon.
+     *
+     * @param startEndPoints käyttäjän syöttämä komento sen alku- ja loppupisteinä.
+     * @return onnistuiko komennon suoritus.
+     *
+     */
     public ParserReturn suoritaKomento(int[][] startEndPoints) {
         String komento = Parser.parseToAlgebraicCommand(startEndPoints);
         return suoritaKomento(komento);
@@ -234,7 +242,10 @@ public class Game {
         }
         return false;
     }
-
+    /**
+     * Metodi vaihtaa pelin toiseen varianttiin.
+     * @param variant variantti johon vaihdetaan
+     */
     public void vaihdaVariantti(Variant variant) {
         this.variant = variant;
         variant.setUp();

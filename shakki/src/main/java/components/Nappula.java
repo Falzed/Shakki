@@ -21,12 +21,10 @@ public class Nappula {
          * valkoinen.
          */
         VALKOINEN,
-
         /**
          * musta.
          */
         MUSTA,
-
         /**
          * Tyhjä ruutu.
          */
@@ -69,9 +67,10 @@ public class Nappula {
     public Nappula() {
         puoli = Puoli.TYHJA;
     }
-    
+
     /**
      * Metodi palauttaa saman tyyppisen nappulan.
+     *
      * @return kopio
      */
     public Nappula kopioi() {
@@ -80,6 +79,11 @@ public class Nappula {
         return kopio;
     }
 
+    /**
+     * 
+     *
+     * @return 
+     */
     public Nappula(Nappula nappula, String puoli) {
         if (puoli.equalsIgnoreCase("valkoinen")) {
             this.puoli = Puoli.VALKOINEN;
@@ -102,7 +106,7 @@ public class Nappula {
     public Puoli getPuoli() {
         return puoli;
     }
-    
+
     /**
      * setteri.
      *
@@ -138,6 +142,7 @@ public class Nappula {
 
     /**
      * getteri.
+     *
      * @return koordinaatit
      */
     public int[] getKoordinaatit() {
@@ -146,6 +151,7 @@ public class Nappula {
 
     /**
      * Onko tyhjä vai ei, ei ole.
+     *
      * @return false
      */
     public boolean isEmpty() {
@@ -154,6 +160,7 @@ public class Nappula {
 
     /**
      * getteri.
+     *
      * @return merkki
      */
     public char getMerkki() {
@@ -162,6 +169,7 @@ public class Nappula {
 
     /**
      * getteri.
+     *
      * @return onko liikkunut
      */
     public boolean onkoLiikkunut() {
@@ -177,14 +185,16 @@ public class Nappula {
 
     /**
      * getteri.
+     *
      * @return notaatiomerkki
      */
     public char getNotaatioMerkki() {
         return notaatioMerkki;
     }
-    
+
     /**
      * Onko sotilas, ei ole.
+     *
      * @return false
      */
     public boolean onSotilas() {

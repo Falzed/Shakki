@@ -28,6 +28,12 @@ public class Parser {
         return koordinaatit;
     }
 
+    /**
+     * Tulkitsee alku- ja loppupisteen algebralliseksi käskyksi (muotoa d2-d4).
+     *
+     * @param startEndPoints alku- ja loppupiste
+     * @return algebrallinen käsky
+     */
     public static String parseToAlgebraicCommand(int[][] startEndPoints) {
         String start = Character.toString((char) (startEndPoints[0][0] + 97));
         start += Character.toString((char) (startEndPoints[0][1] + 49));
@@ -36,6 +42,12 @@ public class Parser {
         return start + "-" + end;
     }
 
+    /**
+     * Tulkitsee x- ja y-koordinaatit algebrallisiksi koordinaateiksi.
+     *
+     * @param coordinates x- ja y-koordinaatit
+     * @return algebralliset koordinaatit
+     */
     public static String parseToAlgebraic(int[] coordinates) {
         String string = Character.toString((char) (coordinates[0] + 97));
         string += Character.toString((char) (coordinates[1] + 49));

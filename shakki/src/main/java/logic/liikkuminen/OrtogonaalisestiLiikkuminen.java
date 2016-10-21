@@ -18,7 +18,8 @@ public class OrtogonaalisestiLiikkuminen {
      * @param mista aloitusruudun koordinaatit
      * @param minne kohderuudun koordinaatit
      * @param lauta lauta jolla ollaan
-     * @param puoli onko siirrettävä nappula vlakoinen vai musta
+     * @param puoli onko siirrettävä nappula valkoinen vai musta
+     * @param hyppaa voidaanko hypata tiellä olevan nappulan yli
      * @return onnistuuko
      */
     public static boolean moveLeft(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli, boolean hyppaa) {
@@ -43,6 +44,7 @@ public class OrtogonaalisestiLiikkuminen {
      * @param minne kohderuudun koordinaatit
      * @param lauta lauta jolla ollaan
      * @param puoli onko siirrettävä nappula vlakoinen vai musta
+     * @param hyppaa voidaanko hypata tiellä olevan nappulan yli
      * @return onnistuuko
      */
     public static boolean moveRight(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli, boolean hyppaa) {
@@ -65,6 +67,7 @@ public class OrtogonaalisestiLiikkuminen {
      * @param minne kohderuudun koordinaatit
      * @param lauta lauta jolla ollaan
      * @param puoli onko siirrettävä nappula vlakoinen vai musta
+     * @param hyppaa voidaanko hypata tiellä olevan nappulan yli
      * @return onnistuuko
      */
     public static boolean moveUp(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli, boolean hyppaa) {
@@ -87,6 +90,7 @@ public class OrtogonaalisestiLiikkuminen {
      * @param minne kohderuudun koordinaatit
      * @param lauta lauta jolla ollaan
      * @param puoli onko siirrettävä nappula vlakoinen vai musta
+     * @param hyppaa voidaanko hypata tiellä olevan nappulan yli
      * @return onnistuuko
      */
     public static boolean moveDown(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli, boolean hyppaa) {

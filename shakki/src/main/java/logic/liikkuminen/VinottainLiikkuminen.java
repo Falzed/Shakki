@@ -19,6 +19,7 @@ public class VinottainLiikkuminen {
      * @param minne kohderuudun koordinaatit
      * @param lauta lauta jolla ollaan
      * @param puoli onko siirrettävä nappula vlakoinen vai musta
+     * @param hyppaa voidaanko hypata tiellä olevan nappulan yli
      * @return onnistuuko
      */
     public static boolean moveLeftDown(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli, boolean hyppaa) {
@@ -41,6 +42,7 @@ public class VinottainLiikkuminen {
      * @param minne kohderuudun koordinaatit
      * @param lauta lauta jolla ollaan
      * @param puoli onko siirrettävä nappula vlakoinen vai musta
+     * @param hyppaa voidaanko hypata tiellä olevan nappulan yli
      * @return onnistuuko
      */
     public static boolean moveLeftUp(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli, boolean hyppaa) {
@@ -63,6 +65,7 @@ public class VinottainLiikkuminen {
      * @param minne kohderuudun koordinaatit
      * @param lauta lauta jolla ollaan
      * @param puoli onko siirrettävä nappula vlakoinen vai musta
+     * @param hyppaa voidaanko hypata tiellä olevan nappulan yli
      * @return onnistuuko
      */
     public static boolean moveRightDown(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli, boolean hyppaa) {
@@ -85,6 +88,7 @@ public class VinottainLiikkuminen {
      * @param minne kohderuudun koordinaatit
      * @param lauta lauta jolla ollaan
      * @param puoli onko siirrettävä nappula vlakoinen vai musta
+     * @param hyppaa voidaanko hypata tiellä olevan nappulan yli
      * @return onnistuuko
      */
     public static boolean moveRightUp(int[] mista, int[] minne, Lauta lauta, Nappula.Puoli puoli, boolean hyppaa) {
