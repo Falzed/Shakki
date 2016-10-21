@@ -2,7 +2,7 @@ package components;
 
 /**
  * Luokka toteuttaa standardishakin sotilaan. Korotus puuttuu vielä.
- * @author oemkulma
+ * @author Oskari Kulmala
  */
 public class Sotilas extends Nappula {
 

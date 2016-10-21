@@ -11,7 +11,7 @@ import logic.parser.ParserReturn;
 /**
  * Luokka toteuttaa shakkipelin.
  *
- * @author oemkulma
+ * @author Oskari Kulmala
  */
 public class Game {
 

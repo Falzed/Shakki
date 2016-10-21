@@ -2,7 +2,7 @@ package components;
 
 /**
  *Luokka toteuttaa standardishakin lähetin.
- * @author oemkulma
+ * @author Oskari Kulmala
  */
 public class Lahetti extends Nappula {
 

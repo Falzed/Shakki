@@ -6,7 +6,7 @@ package components;
  * välilyönti. Sama on käytössä sotilaalla (vaikka null olisi sille oikeampi),
  * mutta kummankaan merkkiä ei pitäisi koskaan käyttää mihinkään.
  *
- * @author oemkulma
+ * @author Oskari Kulmala
  */
 public class Nappula {
 
@@ -79,20 +79,20 @@ public class Nappula {
         return kopio;
     }
 
-    /**
-     * 
-     *
-     * @return 
-     */
-    public Nappula(Nappula nappula, String puoli) {
-        if (puoli.equalsIgnoreCase("valkoinen")) {
-            this.puoli = Puoli.VALKOINEN;
-        } else if (puoli.equalsIgnoreCase("musta")) {
-            this.puoli = Puoli.MUSTA;
-        } else {
-            this.puoli = Puoli.TYHJA;
-        }
-    }
+//    /**
+//     * Luo uuden nappulan, jolla on annettu puoli.
+//     *
+//     * @return 
+//     */
+//    public Nappula(Nappula nappula, String puoli) {
+//        if (puoli.equalsIgnoreCase("valkoinen")) {
+//            this.puoli = Puoli.VALKOINEN;
+//        } else if (puoli.equalsIgnoreCase("musta")) {
+//            this.puoli = Puoli.MUSTA;
+//        } else {
+//            this.puoli = Puoli.TYHJA;
+//        }
+//    }
 
     public String getNimi() {
         return NIMI;
@@ -109,7 +109,7 @@ public class Nappula {
 
     /**
      * setteri.
-     *
+     * @param puoli miksi puoli asetetaan
      */
     public void setPuoli(Nappula.Puoli puoli) {
         this.puoli = puoli;

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 /**
  * Luokka toteuttaa standardishakin.
- * @author Oskari
+ * @author Oskari Kulmala
  */
 public class Standard implements Variant {
 

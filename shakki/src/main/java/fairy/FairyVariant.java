@@ -104,7 +104,7 @@ public class FairyVariant implements Variant {
         }
     }
 
-    public ArrayList<int[]> liikkuneet(ArrayList<Nappula> esimerkit) {
+    private ArrayList<int[]> liikkuneet(ArrayList<Nappula> esimerkit) {
         ArrayList<int[]> liikkuneet = new ArrayList<>();
         for (HashMap hash : stuff) {
             if (((String) hash.get("liikkunut")) != null) {

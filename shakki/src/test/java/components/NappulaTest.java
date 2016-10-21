@@ -15,13 +15,13 @@ public class NappulaTest {
         assertEquals(nappula.getPuoli(), kopio.getPuoli());
     }   
     
-    @Test
-    public void konstruktoriTest() {
-        Nappula nappula = new Nappula("valkoinen");
-        Nappula kopio = new Nappula(nappula, "musta");
-        assertEquals(nappula.getPuoli(), Nappula.Puoli.VALKOINEN);
-        assertEquals(kopio.getPuoli(), Nappula.Puoli.MUSTA);
-        assertEquals(nappula.getPuoliString(), "valkoinen");
-        assertEquals(kopio.getPuoliString(), "musta");
-    }   
+//    @Test
+//    public void konstruktoriTest() {
+//        Nappula nappula = new Nappula("valkoinen");
+//        Nappula kopio = new Nappula(nappula, "musta");
+//        assertEquals(nappula.getPuoli(), Nappula.Puoli.VALKOINEN);
+//        assertEquals(kopio.getPuoli(), Nappula.Puoli.MUSTA);
+//        assertEquals(nappula.getPuoliString(), "valkoinen");
+//        assertEquals(kopio.getPuoliString(), "musta");
+//    }   
 }

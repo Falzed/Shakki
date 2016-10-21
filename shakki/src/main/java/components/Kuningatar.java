@@ -3,7 +3,7 @@ package components;
 /**
  * Luokka toteuttaa standardishakin kuningattaren.
  *
- * @author oemkulma
+ * @author Oskari Kulmala
  */
 public class Kuningatar extends Nappula {
 

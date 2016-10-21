@@ -9,7 +9,7 @@ import logic.LaudanMuutokset;
  * Luokka tarjoaa apumetodit jotka kertovat voiko aloitusruudusta kulkea sotilas
  * kohderuutuun.
  *
- * @author Oskari
+ * @author Oskari Kulmala
  */
 public class SotilasLiikkuminen {
 

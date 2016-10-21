@@ -8,7 +8,7 @@ import static logic.liikkuminen.Liikkuminen.eiOma;
 /**
  * Luokka tarjoaa staattisia meodeja selvittämään, onko jokin siirto laillinen.
  *
- * @author Oskari
+ * @author Oskari Kulmala
  */
 public class UpseerienLiikkuminen {
 

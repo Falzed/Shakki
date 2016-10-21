@@ -9,7 +9,7 @@ import logic.parser.ParserReturn;
  * Luokka on vain main-metodi minne tulee välillä työnnettyä bugista koodia
  * ajettavaksi.
  *
- * @author Oskari
+ * @author Oskari Kulmala
  */
 public class ParseDebugger {
 

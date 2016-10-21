@@ -2,7 +2,7 @@ package components;
 
 /**
  *Luokka toteuttaa standardishakin tornin. Tornitusta ei ole vielä toteutettu.
- * @author oemkulma
+ * @author Oskari Kulmala
  */
 public class Torni extends Nappula {
 

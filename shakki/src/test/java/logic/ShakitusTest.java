@@ -4,6 +4,8 @@ import org.junit.Test;
 import org.junit.Assert;
 import static org.junit.Assert.*;
 import components.*;
+import logic.liikkuminen.Liikkuminen;
+import logic.parser.Parser;
 
 public class ShakitusTest {
 
@@ -72,5 +74,16 @@ public class ShakitusTest {
         logic.LaudanMuutokset.aseta(new Torni("valkoinen"), "f8", lauta);
         assertTrue(Shakitus.patissa(lauta, Nappula.Puoli.MUSTA, null));
     }
-
+    
+    //esim. dunsany's chess -varianttia varten
+    @Test
+    public void mattiJosEiNappuloitaLaudalla() {
+        Lauta lauta = new Lauta();
+        lauta.alustaLauta();
+        logic.LaudanMuutokset.aseta(new Torni("musta"), "e2", lauta);
+        logic.LaudanMuutokset.aseta(new Torni("valkoinen"), "a2", lauta);
+        assertFalse(Shakitus.matissa(lauta, Nappula.Puoli.MUSTA, null));
+        Liikkuminen.koitaSiirtya(Parser.parseAlgebraic("a2"), Parser.parseAlgebraic("e2"), lauta, null);
+        assertTrue(Shakitus.matissa(lauta, Nappula.Puoli.MUSTA, null));
+    }
 }

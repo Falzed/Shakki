@@ -8,7 +8,7 @@ import java.util.Arrays;
  * Luokka tarjoaa apumetodit jotka kertovat voiko aloitusruudusta kulkea tornin
  * lailla kohderuutuun.
  *
- * @author Oskari
+ * @author Oskari Kulmala
  */
 public class OrtogonaalisestiLiikkuminen {
 

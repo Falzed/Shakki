@@ -7,7 +7,7 @@ import components.Nappula;
  * Luokka tarjoaa apumetodit jotka kertovat voiko aloitusruudusta kulkea lähetin
  * lailla kohderuutuun.
  *
- * @author Oskari
+ * @author Oskari Kulmala
  */
 public class VinottainLiikkuminen {
 

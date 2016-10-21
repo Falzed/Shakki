@@ -6,7 +6,7 @@ import components.Nappula;
 
 /**
  * Luokka tarjoaa staattiset metodit tornitukseen.
- * @author Oskari
+ * @author Oskari Kulmala
  */
 public class Tornitus {
 

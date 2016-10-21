@@ -2,7 +2,7 @@ package components;
 
 /**
  *Luokka toteuttaa tyhjän ruudun.
- * @author oemkulma
+ * @author Oskari Kulmala
  */
 public class Tyhja extends Nappula {
 

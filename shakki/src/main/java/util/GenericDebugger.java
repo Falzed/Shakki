@@ -21,7 +21,7 @@ import java.util.HashMap;
 
 /**
  * Luokka on vain main-metodi minne tulee välillä työnnettyä bugista koodia ajettavaksi.
- * @author Oskari
+ * @author Oskari Kulmala
  */
 public class GenericDebugger {
     public static void main(String[] args)throws FileNotFoundException, IOException, SAXException, ParserConfigurationException {

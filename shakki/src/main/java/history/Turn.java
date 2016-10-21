@@ -3,7 +3,7 @@ package history;
 /**
  * Luokka toteuttaa yhden shakkivuoron (molempien pelaajien siirrot).
  *
- * @author Oskari
+ * @author Oskari Kulmala
  */
 public class Turn {
 

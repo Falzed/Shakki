@@ -8,7 +8,7 @@ import components.Lauta;
 /**
  * Luokka tarjoaa staattisia metodeja nappuloitten asettamiseen laudalle, 
  * poistamiseen laudalta, ja siirtämiseen laudalla.
- * @author Oskari
+ * @author Oskari Kulmala
  */
 public class LaudanMuutokset {
 /**

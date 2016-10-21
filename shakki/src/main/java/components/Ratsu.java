@@ -2,7 +2,7 @@ package components;
 
 /**
  * Luokka toteuttaa standardishakin ratsun.
- * @author oemkulma
+ * @author Oskari Kulmala
  */
 public class Ratsu extends Nappula {
 

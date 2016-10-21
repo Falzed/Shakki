@@ -6,7 +6,7 @@ import logic.parser.Parser;
  * Luokka toteuttaa shakkilaudan. Lauta tietää mikä nappula on missäkin
  * ruudussa.
  *
- * @author Oskari
+ * @author Oskari Kulmala
  */
 public class Lauta {
 

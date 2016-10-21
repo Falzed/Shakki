@@ -10,7 +10,7 @@ import logic.Tornitus;
  * Luokka hoitaa kaiken laudalla liikkumisen, ja tarjoaa myös metodit jotka
  * kertovat voisiko nappula liikkua tiettyyn ruutuun. *
  *
- * @author oemkulma
+ * @author Oskari Kulmala
  */
 public class Liikkuminen {
 

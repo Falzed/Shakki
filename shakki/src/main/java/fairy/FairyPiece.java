@@ -180,7 +180,7 @@ public class FairyPiece extends Nappula {
         return kopio;
     }
 
-    public ArrayList readXml(File file) {
+    private ArrayList readXml(File file) {
         ArrayList<HashMap> array = new ArrayList<>();
 
         try {

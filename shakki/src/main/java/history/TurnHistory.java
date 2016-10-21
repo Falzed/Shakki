@@ -6,7 +6,7 @@ import variants.*;
 /**
  * Luokka toteuttaa laudan vuorohistorian.
  *
- * @author Oskari
+ * @author Oskari Kulmala
  */
 public class TurnHistory {
 

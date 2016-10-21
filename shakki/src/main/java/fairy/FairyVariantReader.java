@@ -28,6 +28,7 @@ public class FairyVariantReader {
      * variantti.
      *
      * @param file tiedosto joka määrittelee variantin
+     * @return ArrayList jossa tarvittavat tiedot (HashMapeissa)
      */
     public static ArrayList readXml(File file) {
         ArrayList<HashMap> array = new ArrayList<>();
@@ -46,7 +47,7 @@ public class FairyVariantReader {
             array = parseLaitettavatNappulat(nodeLista, array);
         } catch (SAXException | IOException e) {
             throw new RuntimeException(e);
-        } catch(ParserConfigurationException e) {
+        } catch (ParserConfigurationException e) {
             throw new RuntimeException(e);
         }
 

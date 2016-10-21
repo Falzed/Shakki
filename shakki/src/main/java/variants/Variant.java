@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * Rajapinta shakkivarianteille.
  *
- * @author Oskari
+ * @author Oskari Kulmala
  */
 public interface Variant {
 

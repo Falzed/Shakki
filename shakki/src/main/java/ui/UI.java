@@ -28,17 +28,13 @@ import javax.xml.parsers.ParserConfigurationException;
  * kuningattaren d6:een). Sotilaalla syödessä lisätään x tällöin x komennon
  * eteen.
  *
- * @author oemkulma
+ * @author Oskari Kulmala
  */
 public class UI extends javax.swing.JFrame {
 
     private JPanel[][] panels;
     private JLabel[][] labels;
 
-    /**
-     *
-     * @param peli
-     */
     public UI(Game peli) {
         initComponents(peli);
     }
@@ -242,30 +238,6 @@ public class UI extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     /**
-     * turha
-     *
-     * @param args
-     */
-//    public static void main(String args[]) {
-//        Game peli = new Game();
-//        UI ui = new UI(peli);
-//        ui.aja();
-//
-//    }
-    /**
-     * turha
-     */
-//    public void aja() {
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                Game peli = new Game();
-//                UI ui = new UI(peli);
-//                ui.setVisible(true);
-//
-//            }
-//        });
-//    }
-    /**
      * Metodi päivittää UI:n.
      */
     public void updateUI() {
@@ -303,18 +275,10 @@ public class UI extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(frame, string);
     }
 
-    /**
-     *
-     * @return
-     */
     public String getKomento() {
         return komentoKentta.getText();
     }
 
-    /**
-     *
-     * @return
-     */
     public JLabel[][] getLabels() {
         return this.labels;
     }
