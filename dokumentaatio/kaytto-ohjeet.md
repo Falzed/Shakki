@@ -24,7 +24,9 @@ Voit kirjoittaa vuorohistoriaan siirtoja, esim
 ja klikata submit-painiketta, jolloin peli palaa alkuasemaan ja käy läpi annetut siirrot. Tässä on kuitenkin samat rajoitteet kuin komentojen antamisessa. Jos ohjelma ei saa selvää syötteestä, se antaa virheilmoituksen ja palauttaa vanhan historian.
 
 ##Variantin valinta
-Jos ajat ohjelmaa NetBeansissa, vasemmassa ylälaidassa on File-valikko, josta voi sulkea ohjelman tai vaihtaa varianttia. Varianttia vaihtaessa peli palaa alkuasemaan. Tuettuja variantteja on tosin vain Dunsany's Chess ja Charge of the Light Brigade. Variantit määritellään xml-tiedostossa, mutta UI on liian tyhmä löytääkseen ne automaattisesti, joten sitä pitää muokata jos haluaa lisätä oman variantin.
+ Varianttia vaihtaessa peli palaa alkuasemaan. Variantit määritellään xml-tiedostossa. UIn tuntemia variantteja on tosin vain Dunsany's Chess ja Charge of the Light Brigade, muut saat käyttöön klikkaamalla File->Open ja valitsemalla haluamasi xml-tiedoston.
+
+File-valikosta voi myös vaihtaa variantin Dunsany's Chess tai Charge of the Light Brigade -variantteihin. Tämä vaatii, että xml-tiedostot ovat ohjelman odottamassa paikassa. jos ajat ohjelmaa Netbeansissa, ongelmaa ei pitäisi olla.
 
 Jos ajat ohjelmaa .jar: sta, täytyy sen löytää olla src/main/resources -kansio. Jos olet kloonannut repon, repon juuressa olevan .jar-tiedoston pitäisi löytää tarvittavat xml-tiedostot. Jos olet ladannut pelkän .jar-tiedoston, tee samanlainen hakemistostruktuuri, eli tee sen sijaintiin kansio src, sen sisälle kansio main, ja sen sisälle kansio resources ja kopioi resourcesiin [src/main/resources](../shakki/src/main/resources)-kansion sisältö.
 
