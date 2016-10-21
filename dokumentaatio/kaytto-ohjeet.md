@@ -21,9 +21,12 @@ Korottaessa peli avaa valikon, josta voit valita miksi korotat.
 Voit kirjoittaa vuorohistoriaan siirtoja, esim
 1. d4 d5
 2. c4 xc4
-ja klikata submit-painiketta, jolloin peli palaa alkuasemaan ja käy läpi annetut siirrot. Tässä on kuitenkin samat rajoitteet kuin komentojen antamisessa, ja valitettavasti ei tule virheilmoitusta jos jokin menee pieleen, joten ole varovainen tämän käyttämisessä. Kuitenkin voit turvallisesti copy pastata pelin generoiman historian talteen jos haluat säilyttää aseman, ja laittaa sen takaisin vuorohistoriaan kun pelaat seuraavan kerran.
+ja klikata submit-painiketta, jolloin peli palaa alkuasemaan ja käy läpi annetut siirrot. Tässä on kuitenkin samat rajoitteet kuin komentojen antamisessa. Jos ohjelma ei saa selvää syötteestä, se antaa virheilmoituksen ja palauttaa vanhan historian.
 
 ##Variantin valinta
 Jos ajat ohjelmaa NetBeansissa, vasemmassa ylälaidassa on File-valikko, josta voi sulkea ohjelman tai vaihtaa varianttia. Varianttia vaihtaessa peli palaa alkuasemaan. Tuettuja variantteja on tosin vain Dunsany's Chess ja Charge of the Light Brigade. Variantit määritellään xml-tiedostossa, mutta UI on liian tyhmä löytääkseen ne automaattisesti, joten sitä pitää muokata jos haluaa lisätä oman variantin.
 
 Jos ajat ohjelmaa .jar: sta, täytyy sen löytää olla src/main/resources -kansio. Jos olet kloonannut repon, repon juuressa olevan .jar-tiedoston pitäisi löytää tarvittavat xml-tiedostot. Jos olet ladannut pelkän .jar-tiedoston, tee samanlainen hakemistostruktuuri, eli tee sen sijaintiin kansio src, sen sisälle kansio main, ja sen sisälle kansio resources ja kopioi resourcesiin [src/main/resources](../shakki/src/main/resources)-kansion sisältö.
+
+##Virheilmoitukset
+Ohjelman virheilmoitukset eivät valitettavasti ole kovin tarkkoja siitä, mikä täsmälleen meni pieleen.
