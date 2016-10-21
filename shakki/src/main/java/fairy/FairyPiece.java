@@ -183,66 +183,7 @@ public class FairyPiece extends Nappula {
         return kopio;
     }
 
-    public FairyPiece(char valkoinenMerkki, char mustaMerkki,
-            char notaatioMerkki, String nimi,
-            ArrayList<String> liikkumistyypit, Nappula.Puoli puoli) {
-        this.valkoinenMerkki = valkoinenMerkki;
-        this.mustaMerkki = mustaMerkki;
-        this.notaatioMerkki = notaatioMerkki;
-        this.liikkumisTyypit = liikkumistyypit;
-        this.puoli = puoli;
-    }
-
-    public FairyPiece(HashMap<String, Object> hash, Nappula.Puoli puoli) throws FileNotFoundException, IOException, SAXException, ParserConfigurationException {
-        this.valkoinenMerkki = ((String) hash.get("valkoinenMerkki")).charAt(0);
-        this.mustaMerkki = ((String) hash.get("mustaMerkki")).charAt(0);
-        this.notaatioMerkki = ((String) hash.get("notaatioMerkki")).charAt(0);
-        this.nimi = (String) hash.get("nimi");
-        this.liikkumisTyypit = (ArrayList<String>) hash.get("liikkumiset");
-        this.puoli = puoli;
-    }
-
-    public FairyPiece(String filepath, Nappula.Puoli puoli) throws FileNotFoundException, IOException, SAXException, ParserConfigurationException {
-        File file = new File(filepath);
-        stuff = readXml(file);
-        this.valkoinenMerkki = ((String) stuff.get(0).get("valkoinenMerkki")).charAt(0);
-        this.mustaMerkki = ((String) stuff.get(0).get("mustaMerkki")).charAt(0);
-        this.notaatioMerkki = ((String) stuff.get(0).get("notaatioMerkki")).charAt(0);
-        this.nimi = (String) stuff.get(0).get("nimi");
-        this.liikkumisTyypit = (ArrayList<String>) stuff.get(0).get("liikkumiset");
-        this.puoli = puoli;
-    }
-
-    public FairyPiece(FairyPiece fairyPiece, Nappula.Puoli puoli) {
-        this.valkoinenMerkki = fairyPiece.getValkoinenMerkki();
-        this.mustaMerkki = fairyPiece.getMustaMerkki();
-        this.notaatioMerkki = fairyPiece.getNotaatioMerkki();
-        this.nimi = fairyPiece.getNimi();
-        this.liikkumisTyypit = fairyPiece.getLiikkumistyypit();
-        this.puoli = puoli;
-    }
-
-    public FairyPiece(FairyPiece fairyPiece, String puoli) {
-        this.valkoinenMerkki = fairyPiece.getValkoinenMerkki();
-        this.mustaMerkki = fairyPiece.getMustaMerkki();
-        this.notaatioMerkki = fairyPiece.getNotaatioMerkki();
-        this.nimi = fairyPiece.getNimi();
-        this.liikkumisTyypit = fairyPiece.getLiikkumistyypit();
-        if (puoli.equalsIgnoreCase("valkoinen")) {
-            this.puoli = Nappula.Puoli.VALKOINEN;
-        } else if (puoli.equalsIgnoreCase("musta")) {
-            this.puoli = Nappula.Puoli.MUSTA;
-        } else {
-            this.puoli = Nappula.Puoli.TYHJA;
-        }
-
-    }
-
-    public static void main(String[] args) throws FileNotFoundException, IOException, SAXException, ParserConfigurationException {
-        FairyPiece test = new FairyPiece("src/main/resources/testPiece.xml", Nappula.Puoli.VALKOINEN);
-    }
-
-    public ArrayList readXml(File file) throws ParserConfigurationException {
+    private ArrayList readXml(File file) throws ParserConfigurationException {
         ArrayList<HashMap> array = new ArrayList<>();
 
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
