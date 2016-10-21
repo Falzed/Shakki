@@ -183,10 +183,6 @@ public class FairyPiece extends Nappula {
         return kopio;
     }
 
-    public static void main(String[] args) throws FileNotFoundException, IOException, SAXException, ParserConfigurationException {
-        FairyPiece test = new FairyPiece("src/main/resources/testPiece.xml", Nappula.Puoli.VALKOINEN);
-    }
-
     public ArrayList readXml(File file) throws ParserConfigurationException {
         ArrayList<HashMap> array = new ArrayList<>();
 

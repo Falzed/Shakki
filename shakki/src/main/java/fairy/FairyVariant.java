@@ -47,9 +47,7 @@ public class FairyVariant implements Variant {
             throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
-        } catch (SAXException e) {
-            throw new RuntimeException(e);
-        } catch (ParserConfigurationException e) {
+        } catch (SAXException | ParserConfigurationException e) {
             throw new RuntimeException(e);
         }
         System.out.println(stuff);
@@ -67,12 +65,11 @@ public class FairyVariant implements Variant {
         for (int i = 0; i < nimet.size(); i++) {
             this.nappulaEsimerkit[i] = esimerkit.get(i);
         }
-//        System.out.println(esimerkit);
         alustaNappuloittenKoordinaatit(esimerkit);
 
     }
 
-    public void alustaNappuloittenKoordinaatit(ArrayList<Nappula> esimerkit) {
+    private void alustaNappuloittenKoordinaatit(ArrayList<Nappula> esimerkit) {
         this.nappuloittenKoordinaatit = new HashMap<>();
         for (HashMap hash : stuff) {
             if (((String) hash.get("nappulanNimi")) != null) {
@@ -90,7 +87,6 @@ public class FairyVariant implements Variant {
                 }
                 for (int index : indexes) {
                     if (esimerkit.get(index) instanceof FairyPiece) {
-//                        FairyPiece nappula = new FairyPiece((FairyPiece) esimerkit.get(index), (String) hash.get("nappulanPuoli"));
                         FairyPiece nappula = (FairyPiece) esimerkit.get(index);
                         ArrayList<int[]> lista = this.nappuloittenKoordinaatit.get(nappula);
                         if (lista == null) {
@@ -109,13 +105,6 @@ public class FairyVariant implements Variant {
                 }
             }
         }
-//        for (Nappula nappula : nappuloittenKoordinaatit.keySet()) {
-//            System.out.println(nappula.getPuoliString() + " " + nappula.getNimi() + ":");
-//            for (int[] koordinaatit : nappuloittenKoordinaatit.get(nappula)) {
-//                System.out.println(Arrays.toString(koordinaatit));
-//            }
-//        }
-//        System.out.println(nappuloittenKoordinaatit);
     }
 
     public ArrayList<int[]> liikkuneet(ArrayList<Nappula> esimerkit) {
@@ -131,7 +120,7 @@ public class FairyVariant implements Variant {
         return liikkuneet;
     }
 
-    public ArrayList<Nappula> parseEsimerkit(ArrayList<HashMap> stuff) {
+    private ArrayList<Nappula> parseEsimerkit(ArrayList<HashMap> stuff) {
         ArrayList<Nappula> esimerkit = new ArrayList<>();
         for (HashMap hash : stuff) {
             if (((Nappula) hash.get("nappula")) != null) {
@@ -151,11 +140,10 @@ public class FairyVariant implements Variant {
         return esimerkit;
     }
 
-    public ArrayList<String> parseNimet(ArrayList<HashMap> stuff) {
+    private ArrayList<String> parseNimet(ArrayList<HashMap> stuff) {
         ArrayList<String> nimet = new ArrayList<>();
         for (HashMap hash : stuff) {
             if (((Nappula) hash.get("nappula")) != null) {
-//                nimet.add((String) hash.get("Nimi"));
                 if (hash.get("nappula") instanceof FairyPiece) {
                     FairyPiece nappula = (FairyPiece) hash.get("nappula");
                     nimet.add(nappula.getNimi());
@@ -199,29 +187,17 @@ public class FairyVariant implements Variant {
                 }
             }
         }
-//        System.out.println("LIIKKUNEET");
-//        System.out.println("");
-//        System.out.println("");
-//        for (int[] koordinaatit : liikkuneet) {
-//            System.out.println(Arrays.toString(koordinaatit));
-//        }
     }
 
-    public static void main(String[] args) throws FileNotFoundException, IOException, SAXException, ParserConfigurationException {
-        FairyVariant variant = new FairyVariant(new File("src/main/resources/testXml.xml"));
-    }
-
-    public ArrayList readXml(File file) throws ParserConfigurationException, FileNotFoundException, IOException, SAXException {
+    private ArrayList readXml(File file) throws ParserConfigurationException, FileNotFoundException, IOException, SAXException {
         ArrayList<HashMap> array = new ArrayList<>();
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document doc = null;
         try {
             doc = dBuilder.parse(file);
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (SAXException | IOException e) {
+            throw new RuntimeException(e);
         }
         doc.getDocumentElement().normalize();
         NodeList nList = doc.getElementsByTagName("lauta");
