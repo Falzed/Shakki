@@ -10,3 +10,6 @@ Päivä | Tunnit | Kuvaus
 29.09.2016 | 5h | UIta eteenpäin, logiikan refaktorointia pois komponenteista
 30.09.2016 | 4h | Refaktorointia, java docseja, testejä
 7.10.2016 | 6h | Tornitus, ohestalyönti, shakki
+14.10.2016 | ~6h | En muista, unohtui kirjata silloin tänne
+20.10.2016 | 4h | Variantin lukeminen xml:stä
+21.10.2016 | 3h | Refaktorointia, javadocseja, dokumentaation päivitystä
