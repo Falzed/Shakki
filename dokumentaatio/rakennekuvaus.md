@@ -7,6 +7,8 @@ Nappuloilla on sijainti, merkki joka kuvastaa valkoista nappulaa ja toinen merkk
 Nappulalla on tietenkin monta aliluokkaa. Perusshakin nappuloille löytyy kätevästi unicode-merkit. Keijushakkinappulat joutuvat luultavasti tyytymään tylsempiin merkkeihin.
 ##Variantti
 Jokaisella variantilla on määritelty laudan/lautojen koko, kuinka monta lautaa on, ja kumpi puoli aloittaa. Niillä on funktiot nappuloitten asettamisseen aloituspaikoilleen.
+##FairyVariant, FairyPiece ja FairyVariantReader
+FairyVariant voi toteuttaa monenlaisia shakkivariantteja. FairyVariantReader-luokan avulla FairyVariantin voi tehdä xml-tiedostosta, jossa variantti on määritelty.
 ##Vuorohistoria
 Vuorohistorialla on lista pelin menneistä vuoroista.
 #Vuoro
