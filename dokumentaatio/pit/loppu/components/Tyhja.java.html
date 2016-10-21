@@ -1,0 +1,773 @@
+<html>
+<head>
+<style type='text/css'>
+html, body, div, span, p, blockquote, pre {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+body{
+	line-height: 1;
+	color: black;
+	background: white;
+	margin-left: 20px;
+}
+
+.src { 
+	border: 1px solid #dddddd;
+	padding-top: 10px;
+	padding-right: 5px;
+	padding-left: 5px;
+	font-family: Consolas, Courier, monospace;
+}
+
+
+.covered {background-color: #ddffdd}
+.uncovered {background-color: #ffdddd}
+.killed {background-color: #aaffaa}
+.survived {background-color: #ffaaaa}
+.uncertain {background-color: #dde7ef}
+.run_error {background-color: #dde7ef}
+.na {background-color: #eeeeee}
+.timed_out {background-color: #dde7ef}
+.non_viable {background-color: #aaffaa}
+.memory_error {background-color: #dde7ef}
+.not_started {background-color: #dde7ef; color : red}
+.no_coverage {background-color: #ffaaaa}
+
+
+.pop {outline:none; }
+.pop strong {line-height:30px;}
+.pop {text-decoration:none;}
+.pop span { z-index:10;display:none; padding:14px 20px; margin-top:-30px; margin-left:28px; width:800px; line-height:16px; word-wrap:break-word; }
+.pop:hover span{ display:inline; position:absolute; color:#111; border:1px solid #DCA; background:#fffAF0;}
+
+.pop span { border-radius:4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -moz-box-shadow: 5px 5px 8px #CCC; -webkit-box-shadow: 5px 5px 8px #CCC; box-shadow: 5px 5px 8px #CCC; }
+</style>
+
+</head>
+<body>
+
+
+<h1>Tyhja.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_1'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package components;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_2'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_3'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_4'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *Luokka toteuttaa tyhj&#195;&#164;n ruudun.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_5'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * @author Oskari Kulmala</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_6'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_7'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public class Tyhja extends Nappula {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_8'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_9'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    private static char notaatioMerkki = &#39; &#39;;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_10'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_11'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_12'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Luo tyhj&#195;&#164;n ruudun.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_13'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_14'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Tyhja() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_15'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        super();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_16'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_17'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_18'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_19'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_20'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public boolean isEmpty() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_21'/>
+21
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_21'>1</a>
+<span>
+
+1. isEmpty : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return true;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_22'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_23'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_24'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_25'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_26'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public void asetaKoordinaatit(int[] koordinaatit) {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_27'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>        throw new UnsupportedOperationException(&#34;Tyhj&#195;&#164;n ruudun ei tarvitse tiet&#195;&#164;&#195;&#164; koordinaattejaan&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_28'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_29'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_30'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_31'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_32'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public int[] getKoordinaatit() {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_33'/>
+33
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_33'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>        throw new UnsupportedOperationException(&#34;Tyhj&#195;&#164;n ruudun ei tarvitse tiet&#195;&#164;&#195;&#164; koordinaattejaan&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_34'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_35'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_36'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_37'/>
+37
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_37'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public char getNotaatioMerkki() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_38'/>
+38
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_38'>1</a>
+<span>
+
+1. getNotaatioMerkki : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; SURVIVED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return notaatioMerkki;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_39'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_40'/>
+40
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_40'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_41'/>
+41
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_41'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_42'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Tyhja kopioi() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_43'/>
+43
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_43'>1</a>
+<span>
+
+1. kopioi : mutated return of Object value for components/Tyhja::kopioi to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new Tyhja();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_44'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@575fe6da_45'/>
+45
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_45'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@575fe6da_21'>21</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_21'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isEmpty<br/><b>Killed by : </b>components.LautaTest.alustusTest(components.LautaTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@575fe6da_38'>38</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_38'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getNotaatioMerkki<br/><b>Killed by : </b>none</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; SURVIVED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@575fe6da_43'>43</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@575fe6da_43'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>kopioi<br/><b>Killed by : </b>logic.ShakitusTest.tunnistaaMatinMusta(logic.ShakitusTest)</span></span> mutated return of Object value for components/Tyhja::kopioi to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+
+<li class='mutator'>MATH_MUTATOR</li>
+
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>components.LautaTest.eiVoisyodaOlematontaRuutua(components.LautaTest) (1 ms)</li><li>components.RatsuTest.voiHypätäToisenNappulanYli(components.RatsuTest) (1 ms)</li><li>logic.GameTest.toisenNappulanSiirtoTest(logic.GameTest) (1 ms)</li><li>components.TorniTest.eiVoiLiikkuaToisenNappulanLäpi(components.TorniTest) (1 ms)</li><li>logic.ParseTest.eiLaudallaTest(logic.ParseTest) (6 ms)</li><li>variants.FairyMovementTest.torniHyppyTest(variants.FairyMovementTest) (5 ms)</li><li>logic.GameTest.tunnistaaMatin(logic.GameTest) (12 ms)</li><li>components.KuningatarTest.testLiikkuminenTyhjallaLaudallaTornimainen(components.KuningatarTest) (4 ms)</li><li>logic.ShakitusTest.tunnistaaMatin(logic.ShakitusTest) (2 ms)</li><li>logic.GameTest.enPassantTest(logic.GameTest) (8 ms)</li><li>logic.GameTest.komentoTest(logic.GameTest) (1 ms)</li><li>components.LautaTest.getNappulaAlgebraic(components.LautaTest) (1 ms)</li><li>logic.GameTest.enKorotusTest(logic.GameTest) (22 ms)</li><li>components.LahettiTest.testSyöminen(components.LahettiTest) (1 ms)</li><li>components.LahettiTest.testLiikkuminenTyhjallaLaudalla(components.LahettiTest) (1 ms)</li><li>components.KuningatarTest.eiVoiSyodaOmaa(components.KuningatarTest) (0 ms)</li><li>components.LautaTest.alustusTest(components.LautaTest) (1 ms)</li><li>logic.ParseTest.a2a4Test(logic.ParseTest) (2 ms)</li><li>components.SotilasTest.syoVinoonMusta(components.SotilasTest) (0 ms)</li><li>components.SotilasTest.mustaLiikkuuTaaksepäin(components.SotilasTest) (1 ms)</li><li>logic.GameTest.tornitusTest(logic.GameTest) (6 ms)</li><li>logic.ShakitusTest.tunnistaaPatinMusta(logic.ShakitusTest) (2 ms)</li><li>logic.GameTest.enPassantTestMusta(logic.GameTest) (5 ms)</li><li>logic.ParseTest.stuff(logic.ParseTest) (3 ms)</li><li>logic.ShakitusTest.tunnistaaShakin(logic.ShakitusTest) (2 ms)</li><li>variants.FairyMovementTest.bigTest(variants.FairyMovementTest) (46 ms)</li><li>components.SotilasTest.valkoinenLiikkuuEteenpäin(components.SotilasTest) (0 ms)</li><li>components.SotilasTest.syoVinoonValkoinen(components.SotilasTest) (1 ms)</li><li>components.KuningatarTest.testLiikkuminenTyhjallaLaudallaLahettimainen(components.KuningatarTest) (0 ms)</li><li>logic.TornitusTest.eiVoiTornittaaJosRuutuValissaUhattu(logic.TornitusTest) (1 ms)</li><li>components.TorniTest.testLiikkuminenTyhjälläLaudalla(components.TorniTest) (1 ms)</li><li>components.LautaTest.eiVoiSyodaOmaa(components.LautaTest) (7 ms)</li><li>logic.ParseTest.tornitusEiKuningastaTest(logic.ParseTest) (1 ms)</li><li>components.KuningasTest.eiVoiSyodaOmaa(components.KuningasTest) (32 ms)</li><li>components.KuningasTest.testLiikkuminenTyhjallaLaudalla(components.KuningasTest) (2 ms)</li><li>logic.TornitusTest.tornitaVasemmalleTest(logic.TornitusTest) (1 ms)</li><li>logic.ShakitusTest.tunnistaaMatinMusta(logic.ShakitusTest) (1 ms)</li><li>components.LautaTest.eiVoiSyodaTyhjaa(components.LautaTest) (1 ms)</li><li>components.LautaTest.eiVoiAsettaaToisennappulanPäälle(components.LautaTest) (0 ms)</li><li>components.KuningatarTest.testSyominen(components.KuningatarTest) (1 ms)</li><li>components.SotilasTest.eiVoiLiikkuaSivulle(components.SotilasTest) (3 ms)</li><li>logic.GameTest.tunnistaaPatin(logic.GameTest) (12 ms)</li><li>logic.TornitusTest.tornitaOikealleTest(logic.TornitusTest) (1 ms)</li><li>components.KuningasTest.testSyominen(components.KuningasTest) (1 ms)</li><li>components.TorniTest.testSyöminen(components.TorniTest) (1 ms)</li><li>components.RatsuTest.eiVoiSyodaOmaa(components.RatsuTest) (4 ms)</li><li>components.LautaTest.voiSyodaVastustajan(components.LautaTest) (1 ms)</li><li>variants.StandardTest.setUpTest(variants.StandardTest) (0 ms)</li><li>logic.ParseTest.upseeriTest(logic.ParseTest) (1 ms)</li><li>components.LautaTest.voiAsettaaTyhjään(components.LautaTest) (4 ms)</li><li>logic.ParseTest.komentoEiYksikasitteinen(logic.ParseTest) (1 ms)</li><li>logic.LiikkuminenTest.eiVoiLiikkua(logic.LiikkuminenTest) (3 ms)</li><li>logic.ShakitusTest.mattiJosEiNappuloitaLaudalla(logic.ShakitusTest) (2 ms)</li><li>components.LahettiTest.eiVoiLiikkuaToisenNappulanLäpi(components.LahettiTest) (1 ms)</li><li>logic.TornitusTest.eiVoiTornittaaJosJotainValissa(logic.TornitusTest) (1 ms)</li><li>logic.ShakitusTest.tunnistaaPatin(logic.ShakitusTest) (2 ms)</li><li>logic.GameTest.historiaTest(logic.GameTest) (4 ms)</li><li>logic.ShakitusTest.tunnistaaEtteiShakissa(logic.ShakitusTest) (1 ms)</li><li>components.KuningatarTest.eiVoiLiikkuaToisenNappulanLäpi(components.KuningatarTest) (1 ms)</li><li>logic.GameTest.eiLaudallaTest(logic.GameTest) (7 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.1.8
+
+</body>
+</html>

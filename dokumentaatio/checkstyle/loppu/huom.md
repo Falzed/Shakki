@@ -1,0 +1,1 @@
+Checkstylessa muutettu tiedoston maksimipituus 200->300
