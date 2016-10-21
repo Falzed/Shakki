@@ -24,6 +24,7 @@ public class Game {
 //    private ui.UI ui;
     /**
      * Konstruktori pelille.
+     *
      * @param variant pelin variantti
      */
     public Game(Variant variant) {
@@ -111,11 +112,12 @@ public class Game {
         }
         return parserTulos;
     }
-    
+
     /**
      * Metodi koittaa suorittaa käyttäjän antaman komennon.
      *
-     * @param startEndPoints käyttäjän syöttämä komento sen alku- ja loppupisteinä.
+     * @param startEndPoints käyttäjän syöttämä komento sen alku- ja
+     * loppupisteinä.
      * @return onnistuiko komennon suoritus.
      *
      */
@@ -194,29 +196,46 @@ public class Game {
      * (Yrittää) suorittaa annetun vuorohistorian.
      *
      * @param history vuorohistoria TurnHistoryna
+     * @return parserTulos kertoo kävikö virhe
      */
-    public void applyHistory(TurnHistory history) {
+    public ParserReturn applyHistory(TurnHistory history) {
         variant.setUp();
         lauta = variant.getLauta();
         vuoro = variant.getAloittaja();
         System.out.println("history: " + history);
         String komento = "";
+        ParserReturn parserTulos = new ParserReturn("error");
         for (Turn turn : history.getList()) {
             komento = turn.getWhiteMove();
-            suoritaKomento(komento);
+            if (!komento.isEmpty()) {
+//                System.out.println(komento);
+                parserTulos = suoritaKomento(komento);
+                if (!parserTulos.getError().isEmpty()) {
+                    return parserTulos;
+                }
+            }
+
             komento = turn.getBlackMove();
-            suoritaKomento(komento);
+            if (!komento.isEmpty()) {
+//                System.out.println(komento);
+                parserTulos = suoritaKomento(komento);
+                if (!parserTulos.getError().isEmpty()) {
+                    return parserTulos;
+                }
+            }
         }
+        return parserTulos;
     }
 
     /**
      * (Yrittää) suorittaa annetun vuorohistorian.
      *
      * @param string merkkijonona
+     * @return parserTulos kertoo kävikö virhe
      */
-    public void applyHistory(String string) {
+    public ParserReturn applyHistory(String string) {
         TurnHistory history = new TurnHistory(string);
-        applyHistory(history);
+        return applyHistory(history);
     }
 
     /**
@@ -242,8 +261,10 @@ public class Game {
         }
         return false;
     }
+
     /**
      * Metodi vaihtaa pelin toiseen varianttiin.
+     *
      * @param variant variantti johon vaihdetaan
      */
     public void vaihdaVariantti(Variant variant) {

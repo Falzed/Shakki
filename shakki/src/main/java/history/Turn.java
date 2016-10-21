@@ -1,5 +1,7 @@
 package history;
 
+import logic.parser.Parser;
+
 /**
  * Luokka toteuttaa yhden shakkivuoron (molempien pelaajien siirrot).
  *
@@ -42,7 +44,7 @@ public class Turn {
      * @param string valkoisen ja mustan siirrot, esim. "d4 d5"
      */
     public Turn(int turnNumber, String string) {
-        this(Integer.toString(turnNumber).concat(" ").concat(string));
+        this(Integer.toString(turnNumber).concat(". ").concat(string));
 
 //        this.turnNumber = turnNumber;
 //        String temp = "";
@@ -71,12 +73,14 @@ public class Turn {
 
     /**
      * Luo vuoron, sisältö annettuna stringinä.
+     *
      * @param notation sisältö
      */
     public Turn(String notation) {
-        this.turnNumber = Integer.parseInt(Character.toString(notation.charAt(0)));
+        int pisteIndex = notation.indexOf(".");
+        this.turnNumber = Integer.parseInt(notation.substring(0, pisteIndex));
         String temp = "";
-        for (int i = 2; i < notation.length(); i++) {
+        for (int i = pisteIndex + 1; i < notation.length(); i++) {
             if (notation.charAt(i) != ' ') {
                 temp = temp.concat(Character.toString(notation.charAt(i)));
             } else if (!temp.isEmpty() && this.whiteMove.isEmpty()) {
@@ -97,6 +101,7 @@ public class Turn {
 
     /**
      * getteri.
+     *
      * @return vuoronumero
      */
     public int getTurnNumber() {
@@ -105,6 +110,7 @@ public class Turn {
 
     /**
      * getteri.
+     *
      * @return siirto
      */
     public String getWhiteMove() {
@@ -113,6 +119,7 @@ public class Turn {
 
     /**
      * getteri.
+     *
      * @return siirto
      */
     public String getBlackMove() {
@@ -121,6 +128,7 @@ public class Turn {
 
     /**
      * setteri.
+     *
      * @param string valkoisen siirto
      */
     public void setWhiteMove(String string) {
@@ -129,6 +137,7 @@ public class Turn {
 
     /**
      * setteri.
+     *
      * @param string siirto
      */
     public void setBlackMove(String string) {

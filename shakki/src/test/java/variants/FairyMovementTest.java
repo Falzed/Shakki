@@ -136,4 +136,14 @@ public class FairyMovementTest {
         assertTrue(peli.getLauta().getNappula("d5").getPuoli() == Nappula.Puoli.MUSTA);
     }
 
+    
+    @Test
+    public void variantinVaihto() {
+        File file = new File("src/main/resources/dunsanysChess.xml");
+        Game peli = new Game(new FairyVariant(file));
+        assertTrue(peli.getLauta().getNappula("b1").getNimi().equals("Sotilas"));
+        File file2 = new File("src/main/resources/chargeOfTheLightBrigade.xml");
+        peli.vaihdaVariantti(new FairyVariant(file2));
+        assertTrue(peli.getLauta().getNappula("b1").getNimi().equals("Kuningatar"));
+    }
 }

@@ -43,6 +43,7 @@ public class UI extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     private void initComponents(Game peli) {
         this.peli = peli;
+        this.variant = new Standard();
 
         historiaKentta = new javax.swing.JTextArea(20, 20);
         historiaButton = new javax.swing.JButton();
@@ -121,8 +122,17 @@ public class UI extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (!peli.getTurnHistory().toString().equals(historiaKentta.getText())) {
                     String historiaString = historiaKentta.getText();
-                    peli.clearHistory();
-                    peli.applyHistory(historiaString);
+                    String vanhaHistoriaString = peli.getTurnHistory().toString();
+                    Game testPeli = new Game(variant);
+                    ParserReturn parserReturn = testPeli.applyHistory(historiaString);
+                    if(!parserReturn.getError().isEmpty()) {
+                        popUpErrorMessage(parserReturn.getError());
+                        peli.clearHistory();
+                        peli.applyHistory(vanhaHistoriaString);
+                    } else {
+                        peli.clearHistory();
+                        peli.applyHistory(historiaString);
+                    }
                     updateUI();
                 }
             }
@@ -251,6 +261,7 @@ public class UI extends javax.swing.JFrame {
     }
 
     private void vaihdaVarianttia(Variant variant) {
+        this.variant = variant;
         peli.vaihdaVariantti(variant);
         updateUI();
     }
@@ -359,4 +370,5 @@ public class UI extends javax.swing.JFrame {
     private JButton historiaButton;
 
     private Game peli;
+    private Variant variant;
 }

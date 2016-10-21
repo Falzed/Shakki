@@ -35,7 +35,7 @@ public class TurnHistory {
         } else {
             String[] strings = string.split("\\.");
             for (int i = 1; i < strings.length; i++) {
-                String vuoroString = Integer.toString(i) + strings[i];
+                String vuoroString = Integer.toString(i) + ". " + strings[i];
                 Turn turn = new Turn(vuoroString);
                 history.add(turn);
             }
@@ -71,8 +71,9 @@ public class TurnHistory {
             history.remove(history.size() - 1);
         }
     }
+
     /**
-     * Lisää historian loppuun joko uuden vuoron tai siirron olemassa olevalle 
+     * Lisää historian loppuun joko uuden vuoron tai siirron olemassa olevalle
      * vuorolle.
      *
      * @param komento annettu komento joka lisätään historiaan

@@ -46,18 +46,18 @@ public class GenericDebugger {
 
 
 //        File file = new File("src/main/resources/chargeOfTheLightBrigade.xml");
-        File file = new File("src/main/resources/testing.xml");
-        Game peli = new Game(new FairyVariant(file));
+//        File file = new File("src/main/resources/testing.xml");
+//        Game peli = new Game(new FairyVariant(file));
 //        peli.suoritaKomento("a1-a2");
 //        System.out.println(peli.getLauta().getNappula("a1").getMerkki());
-        UI ui = new UI(peli);
+//        UI ui = new UI(peli);
 //        System.out.println(peli.getLauta().getNappula("a1").getNimi());
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                ui.setVisible(true);
-                ui.updateUI();
-            }
-        });
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                ui.setVisible(true);
+//                ui.updateUI();
+//            }
+//        });
         
         
 //        Nappula.Puoli vuoro = Nappula.Puoli.VALKOINEN;
@@ -69,5 +69,16 @@ public class GenericDebugger {
 //        
 //        FairyPiece piece = new FairyPiece(hash, Nappula.Puoli.VALKOINEN);
 //        System.out.println(piece.getNimi());
+        
+        TurnHistory historia = new TurnHistory();
+        Turn turn = new Turn(1, "d4", "d5");
+        historia.addTurn(turn);
+        turn = new Turn(2, "c4", "e5");
+        historia.addTurn(turn);
+        turn = new Turn(3, "xe5");
+        historia.addTurn(turn);
+        String vertaus = "1. d4 d5\n"
+                + "2. c4 e5\n"
+                + "3. xe5";
     }
 }

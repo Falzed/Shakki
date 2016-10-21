@@ -61,7 +61,7 @@ public class GameTest {
         assertTrue(peli.getLauta().getNappula("d6").getPuoli() == Nappula.Puoli.VALKOINEN);
 
         peli.applyHistory("1. e4 e5\n"
-                + "2. Nf3 Nh6\n"
+                + "2. Nf3 Nf6\n"
                 + "3. d4 xd4\n"
                 + "4. e5 Ne4\n"
                 + "5. Qd4 f5");
@@ -90,6 +90,8 @@ public class GameTest {
         assertTrue(peli.getLauta().getNappula("c3").getKoordinaatit()[1] == 2);
         assertTrue(peli.getLauta().getNappula("c3").getNimi().equals("Sotilas"));
         assertTrue(peli.getLauta().getNappula("c3").getPuoli() == Nappula.Puoli.MUSTA);
+        peli.clearHistory();
+        assertTrue(peli.getTurnHistory().toString().equals(""));
     }
 
     @Test
@@ -171,4 +173,6 @@ public class GameTest {
                 + "10. Qe6");
         assertTrue(peli.tarkistaPatti());
     }
+    
+    
 }
