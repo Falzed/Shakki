@@ -2,7 +2,7 @@
 Pääluokka on main.Main
 Käynnistettyäsi ohjelman pitäisi tulla näkyviin shakkilauta, sen alla tekstikenttä ja isompi tekstikenttä oikealle. Laudan alapuolella kenttä on komennoille, oikealle tulee näkymään tehdyt siirrot.
 ##Komennot
-Voit antaa komennon klikkaamalla (vasen hiirinäppäin) nappulaa jota haluat siirtää ja sitten ruutua minne haluat siirtää sen. Kun olet valinnut nappulan et voi sinänsä poistaa valintaa, mutta voit tietenkin koittaa tehdä laittoman siirron (esim. käskeä nappulan syödä itsensä) jos klikkaat vahingossa väärää nappulaa.
+Voit antaa komennon klikkaamalla (vasen hiirinäppäin) nappulaa jota haluat siirtää ja sitten ruutua minne haluat siirtää sen. Kun olet valinnut nappulan et voi sinänsä poistaa valintaa, mutta voit tietenkin koittaa tehdä laittoman siirron (esim. käskeä nappulan syödä itsensä) jos klikkaat vahingossa väärää nappulaa. Käyttöliittymä ei jostain syystä vaikuta aina reagoivan klikkaukseen ensimmäisellä yrityksellä.
 
 Voit myös antaa komennon laudan alla olevalla komentorivillä (joudut luultavasti kasvattamaan ikkunaa jotta se tulee näkyviin). Komento voi alla muotoa e2-e4, jolloin siirretään (jos mahdollista) nappula e2:sta e4:ään. Koordinaattien pitäisi olla ruutujen vasemmassa yläkulmassa. a-kolumni on vasemmalla, h oikealla. Alin rivi on 1 (missä valkoisen upseerit aloittavat), korkein 8.
 Toinen vaihtoehto on laittaa komennon alkuun siirrettävän nappulan merkki englanninkielisessä algebrallisessa shakkinotaatiossa:
