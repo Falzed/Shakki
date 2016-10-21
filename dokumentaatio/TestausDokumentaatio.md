@@ -6,3 +6,7 @@ UI:n testaus olisi vaatinut kirjastojen joita en tunne käyttöä, eikä se ollu
 Testasin variantin vaihtoa vain nopeasti laitoksen koneella tai linuxilla ylipäänsä. Variantin lukemisessa xml-tiedostosta saattaisi olla bugeja muulla kuin windowsilla (tai sitten se ei vain toimi).
 
 Komentojen ja vuorohistorian jäsentämisessä saattaa olla vielä bugeja jotka eivät ole jääneet kiinni testeissä, mutta sain toivottavasti ne korjattua aiemmin tänään.
+
+Variantin vaihto mielivaltaisen xml-tiedoston kuvaamaksi File->Open kautta tuli toteutettua vasta tänä iltana, joten sitä ei valitettavasti ole testattu laitoksen koneella lainkaan.
+
+Ainakin perusfunktionaliteetin pitäisi kuitenkin toimia laitoksen koneella.
