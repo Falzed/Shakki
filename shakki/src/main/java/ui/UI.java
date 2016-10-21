@@ -208,8 +208,8 @@ public class UI extends javax.swing.JFrame {
         JMenuBar menubar = new JMenuBar();
         ImageIcon icon = new ImageIcon("exit.png");
 
-        JMenu file = new JMenu("File");
-        file.setMnemonic(KeyEvent.VK_F);
+        JMenu fileMenu = new JMenu("File");
+        fileMenu.setMnemonic(KeyEvent.VK_F);
 
         JMenuItem eMenuItem = new JMenuItem("Exit", icon);
         eMenuItem.setMnemonic(KeyEvent.VK_E);
@@ -236,13 +236,25 @@ public class UI extends javax.swing.JFrame {
         dunsanys.addActionListener((ActionEvent event) -> {
             vaihdaVarianttia(new FairyVariant(new File("src/main/resources/dunsanysChess.xml")));
         });
+        JMenuItem open = new JMenuItem("Open", icon);
+        open.setMnemonic(KeyEvent.VK_3);
+        open.setToolTipText("Open");
+        open.addActionListener((ActionEvent event) -> {
+            JFileChooser fileChooser = new JFileChooser();
+            int returnVal = fileChooser.showOpenDialog(this.historiaKentta);
+            if(returnVal == JFileChooser.APPROVE_OPTION) {
+                File file = fileChooser.getSelectedFile();
+                vaihdaVarianttia(new FairyVariant(file));
+            }
+        });
 
-        file.add(eMenuItem);
-        file.add(standard);
-        file.add(charge);
-        file.add(dunsanys);
+        fileMenu.add(eMenuItem);
+        fileMenu.add(standard);
+        fileMenu.add(charge);
+        fileMenu.add(dunsanys);
+        fileMenu.add(open);
 
-        menubar.add(file);
+        menubar.add(fileMenu);
 
         setJMenuBar(menubar);
     }// </editor-fold>                        
