@@ -1,5 +1,5 @@
 ##Game
-Pääohjelma löytyy logic.Game-luokasta. Pelillä on variantti (tällä hetkellä vain standardishakki on toteutettu), lauta (tai lautoja myöhemmin), UI ja vuorohistoria.
+Pelillä on variantti (tällä hetkellä vain standardishakki on toteutettu), lauta (tai lautoja myöhemmin), UI ja vuorohistoria.
 ##Lauta
 Laudalla on leveys ja pituus, ja taulukko siitä mitä on missäkin ruudussa.
 #Nappula
@@ -18,4 +18,8 @@ UIssa on JPanel jokaiselle ruudulle (tällä hetkellä lukittu 8x8 lautaan), kom
 ##Parser
 Parser-luokka tarjoaa staattisia metodeja käskyjen ja algebrallisten koordinaittien kääntämiseksi.
 ##Liikkuminen
-Liikkuminen-luokka taas tarjoaa staattisia metodeja nappuloitten siirtämiseen. Selkeyden vuoksi osa sen käyttämistä metodeista on muissa xyzLiikkuminen luokissa, jolloin luokka ei pääse kasvamaan valtavaksi. 
+Liikkuminen-luokka taas tarjoaa staattisia metodeja nappuloitten siirtämiseen. Selkeyden vuoksi osa sen käyttämistä metodeista on muissa luokissa (enimmäkseen xyzLiikkuminen, mutta myös Tornitus), jolloin luokka ei pääse kasvamaan valtavaksi. 
+##Shakitus
+Luokka tarjoaa staattisia metodeja, joilla selvittää onko joku shakissa, matissa tai patissa.
+##HiiriKuuntelija
+Luokka toteuttaa kuuntelijan siirtojen hiirellä tekemistä varten.
