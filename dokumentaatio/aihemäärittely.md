@@ -11,7 +11,6 @@ Toteutetaan shakkiohjelma jota voi pelata itseään (tai hotseat-tyylisesti tois
 * Voi syöttää siirtosarjan (esim. 1. d4 d5 2. d4 e5 3. xe5 jne) ja jatkaa siitä pelaamista
 
 ###Varianttien lisäys
-* Voidaan lisätä tiedosto (luultavasti yksinkertainen tekstitiedosto, ehkä xml) joka kuvaa koko variantin tai esim. yksittäisen nappulatyypin liikkumissäännöt.
-  * Mahdollisesti jonkinlainen käyttöliittymä tälle
+* Voidaan lisätä tiedosto (luultavasti yksinkertainen tekstitiedosto, ehkä xml) joka kuvaa koko variantin tai esim. yksittäisen nappulatyypin liikkumissäännöt. Valitettavasti kuitenkin täytyy UI:ta muokata ennen kuin saadaan vaihdettua uuteen varianttiin.
 
 ![Luokkakaavio](/dokumentaatio/luokkakaavio.png)
