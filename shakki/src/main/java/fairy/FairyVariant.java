@@ -13,6 +13,12 @@ import org.xml.sax.SAXException;
 import java.util.HashMap;
 import variants.Variant;
 
+/**
+ * Luokka toteuttaa halutun shakkivariantin. Variantti määritellään
+ * xml-tiedostossa.
+ *
+ * @author Oskari Kulmala
+ */
 public class FairyVariant implements Variant {
 
     private ArrayList<Nappula> pieces;
@@ -29,6 +35,11 @@ public class FairyVariant implements Variant {
     private ArrayList<HashMap> stuff;
     BufferedReader lukija;
 
+    /**
+     * Variantin luonti xml-tieddoston perusteella.
+     *
+     * @param file tiedosto joka määrittelee variantin
+     */
     public FairyVariant(File file) {
         try {
             stuff = readXml(file);
