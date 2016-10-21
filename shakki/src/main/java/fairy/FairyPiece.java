@@ -17,6 +17,7 @@ import org.xml.sax.SAXException;
 
 /**
  * Luokika toteuttaa jonkin variantin jonkin nappulan.
+ *
  * @author Oskari Kulmala
  */
 public class FairyPiece extends Nappula {
@@ -75,12 +76,8 @@ public class FairyPiece extends Nappula {
      * @param puoli valkoinen vai musta
      */
     public FairyPiece(String filepath, Nappula.Puoli puoli) {
-        try {
-            File file = new File(filepath);
-            stuff = readXml(file);
-        } catch (ParserConfigurationException e) {
-            throw new RuntimeException(e);
-        }
+        File file = new File(filepath);
+        stuff = readXml(file);
         this.valkoinenMerkki = ((String) stuff.get(0).get("valkoinenMerkki")).charAt(0);
         this.mustaMerkki = ((String) stuff.get(0).get("mustaMerkki")).charAt(0);
         this.notaatioMerkki = ((String) stuff.get(0).get("notaatioMerkki")).charAt(0);
@@ -183,39 +180,36 @@ public class FairyPiece extends Nappula {
         return kopio;
     }
 
-    public ArrayList readXml(File file) throws ParserConfigurationException {
+    public ArrayList readXml(File file) {
         ArrayList<HashMap> array = new ArrayList<>();
 
-        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-        Document doc = null;
         try {
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = null;
             doc = dBuilder.parse(file);
-        } catch (SAXException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        doc.getDocumentElement().normalize();
-        NodeList nList = doc.getElementsByTagName("nappula");
-        for (int temp = 0; temp < nList.getLength(); temp++) {
-            Node node = nList.item(temp);
-            if (node.getNodeType() == Node.ELEMENT_NODE) {
-                Element element = (Element) node;
-                HashMap<String, Object> hash = new HashMap<>();
-                hash.put("nimi", element.getElementsByTagName("nimi").item(0).getTextContent());
-                hash.put("notaatioMerkki", element.getElementsByTagName("notaatioMerkki").item(0).getTextContent());
-                hash.put("valkoinenMerkki", element.getElementsByTagName("valkoinenMerkki").item(0).getTextContent());
-                hash.put("mustaMerkki", element.getElementsByTagName("mustaMerkki").item(0).getTextContent());
+            doc.getDocumentElement().normalize();
+            NodeList nList = doc.getElementsByTagName("nappula");
+            for (int temp = 0; temp < nList.getLength(); temp++) {
+                Node node = nList.item(temp);
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
+                    Element element = (Element) node;
+                    HashMap<String, Object> hash = new HashMap<>();
+                    hash.put("nimi", element.getElementsByTagName("nimi").item(0).getTextContent());
+                    hash.put("notaatioMerkki", element.getElementsByTagName("notaatioMerkki").item(0).getTextContent());
+                    hash.put("valkoinenMerkki", element.getElementsByTagName("valkoinenMerkki").item(0).getTextContent());
+                    hash.put("mustaMerkki", element.getElementsByTagName("mustaMerkki").item(0).getTextContent());
 
-                ArrayList<String> liikkumiset = new ArrayList<>();
-                liikkumiset.add(element.getElementsByTagName("liikkumistyyppi").item(0).getTextContent());
-                hash.put("liikkumiset", liikkumiset);
-                array.add(hash);
+                    ArrayList<String> liikkumiset = new ArrayList<>();
+                    liikkumiset.add(element.getElementsByTagName("liikkumistyyppi").item(0).getTextContent());
+                    hash.put("liikkumiset", liikkumiset);
+                    array.add(hash);
+                }
             }
+        } catch (SAXException | IOException | ParserConfigurationException e) {
+            throw new RuntimeException(e);
         }
+
         return array;
     }
 

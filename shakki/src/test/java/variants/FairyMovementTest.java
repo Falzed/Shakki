@@ -15,7 +15,7 @@ import javax.xml.parsers.ParserConfigurationException;
 public class FairyMovementTest {
 
     @Test
-    public void torniHyppyTest() throws FileNotFoundException, IOException, SAXException, ParserConfigurationException{
+    public void torniHyppyTest() {
         File file = new File("src/main/resources/testXml.xml");
         Game peli = new Game(new FairyVariant(file));
         peli.suoritaKomento("a1-a3");
@@ -34,7 +34,7 @@ public class FairyMovementTest {
     }
     
     @Test
-    public void bigTest() throws FileNotFoundException, IOException, SAXException, ParserConfigurationException{
+    public void bigTest() {
         File file = new File("src/main/resources/testing.xml");
         Game peli = new Game(new FairyVariant(file));
         peli.suoritaKomento("a1-d4");

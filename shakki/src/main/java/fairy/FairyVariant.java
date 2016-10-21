@@ -41,15 +41,8 @@ public class FairyVariant implements Variant {
      * @param file tiedosto joka määrittelee variantin
      */
     public FairyVariant(File file) {
-        try {
-            stuff = readXml(file);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (SAXException | ParserConfigurationException e) {
-            throw new RuntimeException(e);
-        }
+        stuff = FairyVariantReader.readXml(file);
+
         System.out.println(stuff);
         this.lautojenLeveys = Integer.parseInt((String) stuff.get(0).get("Leveys"));
         this.lautojenPituus = Integer.parseInt((String) stuff.get(0).get("Pituus"));
@@ -85,24 +78,28 @@ public class FairyVariant implements Variant {
                         break;
                     }
                 }
-                for (int index : indexes) {
-                    if (esimerkit.get(index) instanceof FairyPiece) {
-                        FairyPiece nappula = (FairyPiece) esimerkit.get(index);
-                        ArrayList<int[]> lista = this.nappuloittenKoordinaatit.get(nappula);
-                        if (lista == null) {
-                            lista = new ArrayList<>();
-                        }
-                        lista.add(koordinaatit);
-                        this.nappuloittenKoordinaatit.put(nappula, lista);
-                    } else {
-                        ArrayList<int[]> lista = this.nappuloittenKoordinaatit.get(esimerkit.get(index));
-                        if (lista == null) {
-                            lista = new ArrayList<>();
-                        }
-                        lista.add(koordinaatit);
-                        this.nappuloittenKoordinaatit.put(esimerkit.get(index), lista);
-                    }
+                alustaNappuloittenKoordinaatit(esimerkit, indexes, koordinaatit);
+            }
+        }
+    }
+
+    private void alustaNappuloittenKoordinaatit(ArrayList<Nappula> esimerkit, ArrayList<Integer> indexes, int[] koordinaatit) {
+        for (int index : indexes) {
+            if (esimerkit.get(index) instanceof FairyPiece) {
+                FairyPiece nappula = (FairyPiece) esimerkit.get(index);
+                ArrayList<int[]> lista = this.nappuloittenKoordinaatit.get(nappula);
+                if (lista == null) {
+                    lista = new ArrayList<>();
                 }
+                lista.add(koordinaatit);
+                this.nappuloittenKoordinaatit.put(nappula, lista);
+            } else {
+                ArrayList<int[]> lista = this.nappuloittenKoordinaatit.get(esimerkit.get(index));
+                if (lista == null) {
+                    lista = new ArrayList<>();
+                }
+                lista.add(koordinaatit);
+                this.nappuloittenKoordinaatit.put(esimerkit.get(index), lista);
             }
         }
     }
@@ -187,102 +184,5 @@ public class FairyVariant implements Variant {
                 }
             }
         }
-    }
-
-    private ArrayList readXml(File file) throws ParserConfigurationException, FileNotFoundException, IOException, SAXException {
-        ArrayList<HashMap> array = new ArrayList<>();
-        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-        Document doc = null;
-        try {
-            doc = dBuilder.parse(file);
-        } catch (SAXException | IOException e) {
-            throw new RuntimeException(e);
-        }
-        doc.getDocumentElement().normalize();
-        NodeList nList = doc.getElementsByTagName("lauta");
-        for (int temp = 0; temp < nList.getLength(); temp++) {
-            Node node = nList.item(temp);
-            if (node.getNodeType() == Node.ELEMENT_NODE) {
-                Element element = (Element) node;
-                HashMap<String, String> hash = new HashMap<>();
-                hash.put("Leveys", element.getElementsByTagName("leveys").item(0).getTextContent());
-                hash.put("Pituus", element.getElementsByTagName("pituus").item(0).getTextContent());
-                array.add(hash);
-            }
-        }
-        nList = doc.getElementsByTagName("nappula");
-        for (int temp = 0; temp < nList.getLength(); temp++) {
-            Node node = nList.item(temp);
-            if (node.getNodeType() == Node.ELEMENT_NODE) {
-                Element element = (Element) node;
-                HashMap<String, Object> hash = new HashMap<>();
-                switch (element.getElementsByTagName("nimi").item(0).getTextContent()) {
-                    case "Sotilas":
-                        hash.put("nappula", new Sotilas("valkoinen"));
-                        array.add(hash);
-                        break;
-                    case "Kuningas":
-                        hash.put("nappula", new Kuningas("valkoinen"));
-                        array.add(hash);
-                        break;
-                    case "Kuningatar":
-                        hash.put("nappula", new Kuningatar("valkoinen"));
-                        array.add(hash);
-                        break;
-                    case "Ratsu":
-                        hash.put("nappula", new Ratsu("valkoinen"));
-                        array.add(hash);
-                        break;
-                    case "Torni":
-                        hash.put("nappula", new Torni("valkoinen"));
-                        array.add(hash);
-                        break;
-                    case "Lahetti":
-                        hash.put("nappula", new Lahetti("valkoinen"));
-                        array.add(hash);
-                        break;
-                    default:
-                        hash.put("nimi", element.getElementsByTagName("nimi").item(0).getTextContent());
-                        hash.put("notaatioMerkki", element.getElementsByTagName("notaatioMerkki").item(0).getTextContent());
-                        hash.put("valkoinenMerkki", element.getElementsByTagName("valkoinenMerkki").item(0).getTextContent());
-                        hash.put("mustaMerkki", element.getElementsByTagName("mustaMerkki").item(0).getTextContent());
-//                        System.out.println("valkoinenMerkki: " + element.getElementsByTagName("valkoinenMerkki").item(0).getTextContent());
-                        ArrayList<String> liikkumiset = new ArrayList<>();
-                        for (int i = 0; i < element.getElementsByTagName("liikkumistyyppi").getLength(); i++) {
-                            liikkumiset.add(element.getElementsByTagName("liikkumistyyppi").item(i).getTextContent());
-                        }
-                        hash.put("liikkumiset", liikkumiset);
-                        FairyPiece piece = new FairyPiece(hash, Nappula.Puoli.VALKOINEN);
-//                        System.out.println("ASDF");
-//                        System.out.println(piece.getNimi());
-//                        System.out.println(piece.getPuoliString());
-//                        System.out.println(piece.getPuoli());
-//                        System.out.println(piece.getMerkki());
-                        hash = new HashMap<>();
-                        hash.put("nappula", piece);
-                        array.add(hash);
-                        break;
-                }
-
-            }
-        }
-        nList = doc.getElementsByTagName("nappulanPaikka");
-        for (int temp = 0; temp < nList.getLength(); temp++) {
-            Node node = nList.item(temp);
-            if (node.getNodeType() == Node.ELEMENT_NODE) {
-                Element element = (Element) node;
-                HashMap<String, Object> hash = new HashMap<>();
-                hash.put("nappulanNimi", element.getElementsByTagName("nappulanNimi").item(0).getTextContent());
-                hash.put("nappulanPuoli", element.getElementsByTagName("nappulanPuoli").item(0).getTextContent());
-                hash.put("xkoord", element.getElementsByTagName("xkoord").item(0).getTextContent());
-                hash.put("ykoord", element.getElementsByTagName("ykoord").item(0).getTextContent());
-                if (element.getElementsByTagName("liikkunut").getLength() > 0) {
-                    hash.put("liikkunut", element.getElementsByTagName("liikkunut").item(0).getTextContent());
-                }
-                array.add(hash);
-            }
-        }
-        return array;
     }
 }
