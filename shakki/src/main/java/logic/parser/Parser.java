@@ -79,8 +79,14 @@ public class Parser {
         if (sotilasSyonti.matcher(string).matches()) {
             retVal = SotilasParser.parseSotilasSyonti(string, vuoro, lauta);
         }
+        //voi myös syödä ilman x:ää
         Pattern upseeri = Pattern.compile("[A-Z][a-z][1-8]|[\\u2654-\\u265F][a-z][1-8]");
         if (upseeri.matcher(string).matches()) {
+            retVal = parseUpseeri(string, vuoro, lauta);
+        }
+        //Voi liikkua tyhjään vaikka antaisi käskyn syödä
+        Pattern upseeriSyonti = Pattern.compile("[A-Z]x[a-z][1-8]|[\\u2654-\\u265F]x[a-z][1-8]");
+        if (upseeriSyonti.matcher(string).matches()) {
             retVal = parseUpseeri(string, vuoro, lauta);
         }
         Pattern tornitus = Pattern.compile("(O-){1,2}O|(0-){1,2}0");

@@ -62,7 +62,7 @@ public class UI extends javax.swing.JFrame {
         for (int i = 0; i < peli.getLauta().getLeveys(); i++) {
             for (int j = 0; j < peli.getLauta().getPituus(); j++) {
                 panels[i][j] = new JPanel();
-                panels[i][j].setMinimumSize(dimension);
+//                panels[i][j].setMinimumSize(dimension);
                 panels[i][j].setPreferredSize(dimension);
                 labels[i][j] = new JLabel("");
                 char merkki = (char) (97 + i);
